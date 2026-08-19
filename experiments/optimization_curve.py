@@ -1,5 +1,13 @@
 """How cheap a replicator gets, against how long the run was.
 
+Read the "repeats?" column before anything else.  Cost here is what a creature
+spends to make its *first* daughter, and the cheapest genome this world has
+produced spends 178 instructions on one daughter and then runs itself into an
+error loop until the reaper takes it.  That is a real strategy -- in a soup at
+steady state each creature only needs one surviving child -- but it is not the
+same animal as a replicator that goes round again every 240 instructions, and
+the number alone does not say which you are looking at.
+
 One table, gathered from every finished run in results/: the cheapest
 self-sufficient replicator each one produced, what it cost per daughter, and
 how many instructions per cell copied that works out to.  Runs are split by
@@ -52,6 +60,8 @@ def rows() -> list[dict]:
             "cells": best["size"],
             "cost": best["cost"],
             "per_cell": best.get("cost_per_cell"),
+            "repeats": best.get("repeats"),
+            "second_cost": best.get("second_copy_cost"),
             "mean_length": r["history"][-1]["mean_size"],
             "generations": r["history"][-1].get("mean_generation", 0),
         })
@@ -70,12 +80,14 @@ def main() -> None:
               f"   (ancestor: {ANCESTOR[0]} cells, {ANCESTOR[1]} instructions, "
               f"{ANCESTOR[2]} per cell)\n")
         header = (f"  {'run':<22}{'length':>9}{'cheapest':>10}{'cells':>7}"
-                  f"{'per cell':>10}{'mean len':>10}{'gens':>8}")
+                  f"{'per cell':>10}{'repeats?':>10}{'mean len':>10}{'gens':>8}")
         print(header)
         print("  " + "-" * (len(header) - 2))
         for d in sorted(group, key=lambda d: (d["instructions"], d["cost"])):
+            repeats = ("yes" if d["repeats"] else
+                       "ONE-SHOT" if d["repeats"] is False else "?")
             print(f"  {d['run']:<22}{d['instructions']/1e6:>8.0f}M{d['cost']:>10}"
-                  f"{d['cells']:>7}{str(d['per_cell']):>10}"
+                  f"{d['cells']:>7}{str(d['per_cell']):>10}{repeats:>10}"
                   f"{d['mean_length']:>10.1f}{d['generations']:>8.0f}")
     with open(os.path.join(RESULTS, "optimization_curve.json"), "w") as fh:
         json.dump({"ancestor": {"cells": ANCESTOR[0], "cost": ANCESTOR[1],

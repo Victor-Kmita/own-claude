@@ -83,3 +83,34 @@
   1245.0M  alive= 683 types= 216  H= 5.63  size~  37.2  dom=0037pzd (20%)  foreign=3% fbreed=2% gen=6727
   1260.0M  alive= 852 types= 237  H= 5.00  size~  37.1  dom=0037pzd (27%)  foreign=3% fbreed=3% gen=6807
   1275.0M  alive= 763 types= 238  H= 5.33  size~  37.0  dom=0037oyr (32%)  foreign=2% fbreed=2% gen=6887
+  1290.0M  alive= 661 types= 205  H= 6.00  size~  37.1  dom=0037oyr (10%)  foreign=3% fbreed=2% gen=6968
+  1305.0M  alive= 659 types= 258  H= 6.63  size~  37.1  dom=0037siu (9%)  foreign=4% fbreed=2% gen=7049
+  1320.0M  alive= 662 types= 219  H= 6.17  size~  37.1  dom=0037suh (11%)  foreign=4% fbreed=5% gen=7131
+  1335.0M  alive= 662 types= 216  H= 6.12  size~  37.2  dom=0037txe (9%)  foreign=4% fbreed=2% gen=7211
+  1350.0M  alive= 730 types= 255  H= 6.13  size~  37.1  dom=0037txe (22%)  foreign=4% fbreed=4% gen=7291
+  1365.0M  alive= 812 types= 274  H= 6.30  size~  37.0  dom=0037txe (14%)  foreign=3% fbreed=4% gen=7371
+  1380.0M  alive= 986 types= 275  H= 6.02  size~  36.8  dom=0037tov (14%)  foreign=3% fbreed=2% gen=7450
+  1395.0M  alive= 710 types= 236  H= 5.89  size~  37.2  dom=0037tov (16%)  foreign=4% fbreed=3% gen=7531
+  1410.0M  alive= 668 types= 215  H= 5.87  size~  37.1  dom=0037ijt (18%)  foreign=4% fbreed=4% gen=7615
+  1425.0M  alive= 883 types= 275  H= 6.16  size~  37.2  dom=0037lyx (14%)  foreign=3% fbreed=2% gen=7694
+  1440.0M  alive= 690 types= 223  H= 5.71  size~  37.1  dom=0037lyx (18%)  foreign=2% fbreed=2% gen=7775
+  1455.0M  alive= 663 types= 210  H= 5.67  size~  37.3  dom=0037ohp (19%)  foreign=3% fbreed=2% gen=7855
+  1470.0M  alive= 665 types= 236  H= 6.08  size~  37.3  dom=0037uej (11%)  foreign=3% fbreed=3% gen=7936
+  1485.0M  alive= 844 types= 272  H= 6.09  size~  37.1  dom=0037xyc (16%)  foreign=3% fbreed=3% gen=8017
+  1500.0M  alive= 898 types= 287  H= 5.85  size~  37.2  dom=0037dtd (21%)  foreign=4% fbreed=4% gen=8100
+
+wrote /home/user/own-claude/experiments/results/deep-flaw-s1.json  (853,750 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0037dtd  191    37    6265  0.97    replicator    240        0 0037xyc
+  0037nhj  155    37    9653  0.97    replicator    240        0 0037ijt
+  0037ehy   28    37    2880  0.97    replicator    240        0 0037xyc
+  0037qiy   23    37     806  0.95    replicator    240        0 0037lyx
+  0037gss   22    37    1548  0.96    replicator    240        0 0037dtd
+  0037jdm   22    37     731  0.93    replicator    240        0 0037zth
+  0037egj   20    37    1606  0.93    replicator    240        0 0037xyc
+  0037hgi   15    37     299  0.93    replicator    240        0 0037dtd
+  0037iub   15    37     247  0.90    replicator    240        0 0037nhj
+  0037xyc   13    37   10713  0.97    replicator    240        0 0037xtn
+  0037enr    8    37     325  0.81    replicator    240        0 0037eif
+  0037ojm    7    37     161  0.76 host-dependent      -        0 0037dep

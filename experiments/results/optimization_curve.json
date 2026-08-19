@@ -61,6 +61,28 @@
    "generations": 18460.4
   },
   {
+   "run": "deep-flaw-s1",
+   "instructions": 1500000000,
+   "flaws": 1000,
+   "genotype": "0037dtd",
+   "cells": 37,
+   "cost": 240,
+   "per_cell": 6.49,
+   "mean_length": 37.24,
+   "generations": 8099.6
+  },
+  {
+   "run": "deep-flaw-s2",
+   "instructions": 1500000000,
+   "flaws": 1000,
+   "genotype": "0027lcw",
+   "cells": 27,
+   "cost": 178,
+   "per_cell": 6.59,
+   "mean_length": 27.1,
+   "generations": 7878.3
+  },
+  {
    "run": "flaw-0-s1",
    "instructions": 60000000,
    "flaws": 0,

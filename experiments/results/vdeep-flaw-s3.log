@@ -8,3 +8,36 @@
    160.0M  alive= 609 types= 286  H= 7.59  size~  44.4  dom=0044kly (3%)  foreign=2% fbreed=1% gen=890
    180.0M  alive= 553 types= 306  H= 7.70  size~  44.6  dom=0044smn (4%)  foreign=4% fbreed=9% gen=1004
    200.0M  alive= 565 types= 295  H= 7.75  size~  44.9  dom=0045skb (2%)  foreign=3% fbreed=6% gen=1114
+   220.0M  alive= 551 types= 260  H= 7.33  size~  44.3  dom=0044cjp (4%)  foreign=2% fbreed=3% gen=1227
+   240.0M  alive= 576 types= 303  H= 7.81  size~  44.3  dom=0045byl (2%)  foreign=5% fbreed=12% gen=1342
+   260.0M  alive= 675 types= 189  H= 4.15  size~  37.3  dom=0037afh (56%)  foreign=2% fbreed=3% gen=1464
+   280.0M  alive= 832 types= 243  H= 5.64  size~  37.2  dom=0037afh (25%)  foreign=3% fbreed=4% gen=1570
+   300.0M  alive= 665 types= 206  H= 5.29  size~  37.2  dom=0037afh (22%)  foreign=3% fbreed=6% gen=1677
+   320.0M  alive= 704 types= 235  H= 5.91  size~  37.3  dom=0037ajl (18%)  foreign=4% fbreed=6% gen=1786
+   340.0M  alive= 662 types= 209  H= 5.46  size~  37.1  dom=0037ajl (23%)  foreign=4% fbreed=3% gen=1895
+   360.0M  alive= 670 types= 207  H= 5.52  size~  37.0  dom=0037ajl (15%)  foreign=5% fbreed=7% gen=2003
+   380.0M  alive= 949 types= 267  H= 5.60  size~  37.2  dom=0037bwd (24%)  foreign=3% fbreed=2% gen=2111
+   400.0M  alive= 660 types= 240  H= 6.41  size~  37.2  dom=0037vsl (10%)  foreign=4% fbreed=7% gen=2216
+   420.0M  alive= 658 types= 226  H= 5.87  size~  37.2  dom=0037goc (14%)  foreign=4% fbreed=4% gen=2325
+   440.0M  alive= 667 types= 196  H= 5.18  size~  37.0  dom=0037eov (22%)  foreign=3% fbreed=5% gen=2432
+   460.0M  alive= 967 types= 272  H= 5.58  size~  37.0  dom=0037ifh (23%)  foreign=3% fbreed=4% gen=2542
+   480.0M  alive= 655 types= 203  H= 5.51  size~  37.3  dom=0037ifh (28%)  foreign=3% fbreed=6% gen=2650
+   500.0M  alive= 695 types= 212  H= 5.56  size~  37.2  dom=0037ifh (22%)  foreign=3% fbreed=6% gen=2761
+   520.0M  alive= 702 types= 235  H= 6.21  size~  37.2  dom=0037jxk (11%)  foreign=6% fbreed=9% gen=2869
+   540.0M  alive= 769 types= 254  H= 5.83  size~  37.2  dom=0037ren (17%)  foreign=3% fbreed=3% gen=2978
+   560.0M  alive= 667 types= 220  H= 5.69  size~  37.2  dom=0037ren (19%)  foreign=2% fbreed=2% gen=3087
+   580.0M  alive= 755 types= 229  H= 5.82  size~  37.2  dom=0037pao (16%)  foreign=2% fbreed=2% gen=3198
+   600.0M  alive= 668 types= 223  H= 5.74  size~  37.1  dom=0037ren (21%)  foreign=4% fbreed=4% gen=3306
+   620.0M  alive= 668 types= 201  H= 5.39  size~  36.9  dom=0037ren (16%)  foreign=4% fbreed=1% gen=3415
+   640.0M  alive= 679 types= 220  H= 5.72  size~  37.4  dom=0037ren (20%)  foreign=3% fbreed=5% gen=3523
+   660.0M  alive= 813 types= 244  H= 5.90  size~  37.0  dom=0037ptn (15%)  foreign=4% fbreed=3% gen=3631
+   680.0M  alive= 679 types= 226  H= 5.83  size~  37.1  dom=0037inc (16%)  foreign=3% fbreed=4% gen=3736
+   700.0M  alive= 664 types= 228  H= 5.43  size~  37.3  dom=0037inc (26%)  foreign=5% fbreed=7% gen=3840
+   720.0M  alive= 660 types= 235  H= 6.06  size~  37.3  dom=0037inc (15%)  foreign=3% fbreed=2% gen=3944
+   740.0M  alive= 738 types= 233  H= 5.73  size~  37.2  dom=0037jod (26%)  foreign=3% fbreed=3% gen=4054
+   760.0M  alive= 901 types= 275  H= 6.15  size~  37.0  dom=0037jod (20%)  foreign=5% fbreed=4% gen=4160
+   780.0M  alive= 995 types= 281  H= 5.99  size~  37.0  dom=0037dwl (15%)  foreign=3% fbreed=2% gen=4264
+   800.0M  alive= 660 types= 214  H= 5.77  size~  37.1  dom=0037vme (18%)  foreign=3% fbreed=4% gen=4378
+   820.0M  alive= 663 types= 232  H= 6.26  size~  37.1  dom=0037zyf (11%)  foreign=4% fbreed=3% gen=4485
+   840.0M  alive= 670 types= 250  H= 6.46  size~  37.0  dom=0037ksd (12%)  foreign=4% fbreed=6% gen=4588
+   860.0M  alive= 697 types= 297  H= 7.07  size~  37.0  dom=0037ksd (8%)  foreign=4% fbreed=5% gen=4701

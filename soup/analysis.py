@@ -55,18 +55,29 @@ def isolation_assay(genome: bytes, budget: int = 500_000, soup_size: int = 4000,
     label = crs[0].genotype
     seeded = w.genebank.births[label]
     divided_at = None
+    first = crs[0]
+    # Cost is measured in the mother's *own* instructions, not the world clock:
+    # once the first daughter exists it is running too, and the clock stops
+    # being a measure of what the mother spent.
+    copy_costs: list[int] = []
+    spent = 0
     while w.clock < budget and w.alive_count() > 0:
+        before_copies = w.genebank.births[label]
         w.step_generation()
         if divided_at is None and w.births:
             divided_at = w.clock
-        if w.genebank.births[label] > seeded:      # an exact copy exists
-            break
-    first = crs[0]
+        if w.genebank.births[label] > before_copies:
+            copy_costs.append(first.stats.instructions - spent)
+            spent = first.stats.instructions
+            if len(copy_costs) >= 2:      # enough to know whether it repeats
+                break
     copied = w.genebank.births[label] > seeded
     return {
         "self_sufficient": copied,
         "divided": divided_at is not None,
-        "instructions": w.clock if copied else None,
+        "instructions": copy_costs[0] if copy_costs else None,
+        "second_copy_cost": copy_costs[1] if len(copy_costs) > 1 else None,
+        "repeats": len(copy_costs) > 1,
         "instructions_to_first_division": divided_at,
         "births": w.births,
         "errors": first.stats.errors,
@@ -106,6 +117,12 @@ def describe(genome: bytes, budget: int = 500_000) -> dict:
     if alone["self_sufficient"]:
         return {"kind": "replicator", "cost": alone["instructions"],
                 "cost_per_cell": round(alone["instructions"] / len(genome), 2),
+                # Whether it can do it twice.  A creature that spends everything
+                # on one daughter and then runs itself into an error loop scores
+                # best on cost and cannot found a lineage on its own -- which is
+                # a strategy, not a bug, and worth telling apart.
+                "repeats": alone["repeats"],
+                "second_copy_cost": alone["second_copy_cost"],
                 "cost_paired": None, "divides_without_copying": False}
     pair = isolation_assay(genome, budget=budget, copies=2)
     if pair["self_sufficient"]:

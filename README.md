@@ -200,7 +200,7 @@ mine, and two of them corrected the instrument rather than the result.
 | 10 | genome length follows the CPU scheduler | 57–62 cells vs 77–106 |
 | 11 | a parasite needs its whole community, not just its hosts | 58 survive vs 0 |
 | 12 | the error threshold sits where theory puts it | one mutation per genome |
-| 13 | the mutation mode I was missing doubles the rate of evolution | 30,000 vs 15,000 genotypes |
+| 13 | the mutation mode I was missing doubles the rate of evolution | 64 → 27 cells |
 | 14 | about a hundred distinct behaviours, however many genomes | 22–121 phenotypes |
 | 15 | evolvability is expensive | a fifth of all reproduction |
 
@@ -670,6 +670,32 @@ Twice as many genotypes tried in the same time, and replicators a fifth cheaper
 than the ancestor found in 60 million instructions — a level the flawless runs
 did not reach until three billion. Generation depth is unchanged, so this is not
 a matter of running faster; it is a matter of exploring a larger space.
+
+**Given a deep run, flaws take the genomes further than anything else has.** Two
+runs of 1.5 billion instructions with flaws on, against the earlier ones without:
+
+| | mean genome length | best replicator | repeats? |
+|---|---:|---|---|
+| no flaws, 3 billion | 37.2, 38.0 | 239 and 216 instructions, 37 and 38 cells | yes |
+| no flaws, ~4 billion (killed early) | 38.8, 45.9 | — | — |
+| **flaws, 1.5 billion** | **37.2, 27.1** | **240 at 37 cells; 178 at 27 cells** | yes; **no** |
+
+Half the instructions, and one of the two seeds went to 27 cells — below
+anything the flawless runs reached. Ray's Tierra plateaued at 22, 27 and 30.
+
+**But read that last column.** My headline number all along has been the cost of
+a creature's *first* daughter, and the 27-cell champion makes exactly one. It
+spends 178 instructions on a daughter and then walks off the end of its own
+counter into an error loop, accumulating errors until the reaper takes it. The
+ancestor, by contrast, produces a daughter every 407 instructions indefinitely.
+
+One-shot reproduction is not a defect. In a soup at steady state every creature
+needs exactly one surviving child on average, and a creature that produces it
+fast and then dies fast frees the memory its child needs. That genotype held a
+fifth of its population and recorded 143,670 births. But it is a different
+animal from a sustained replicator, and my metric could not tell them apart
+until I looked. `describe()` now reports whether a replicator can do it twice,
+and the optimization table has a column for it.
 
 This also revises finding 5. I explained the slowness of optimization here by
 two things: a copy loop that started at the efficiency Tierra's creatures had to

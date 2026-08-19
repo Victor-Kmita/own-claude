@@ -74,3 +74,43 @@
   1110.0M  alive= 946 types= 214  H= 5.70  size~  27.0  dom=0027kxd (13%)  foreign=7% fbreed=11% gen=5866
   1125.0M  alive=1125 types= 257  H= 5.81  size~  27.0  dom=0027lcw (18%)  foreign=6% fbreed=7% gen=5942
   1140.0M  alive= 945 types= 203  H= 5.63  size~  27.0  dom=0027lcw (11%)  foreign=6% fbreed=4% gen=6019
+  1155.0M  alive= 979 types= 236  H= 6.08  size~  27.0  dom=0027ivn (15%)  foreign=10% fbreed=19% gen=6095
+  1170.0M  alive= 982 types= 221  H= 5.82  size~  27.1  dom=0027ivn (10%)  foreign=6% fbreed=8% gen=6175
+  1185.0M  alive= 983 types= 235  H= 5.75  size~  27.0  dom=0027kdc (16%)  foreign=4% fbreed=6% gen=6251
+  1200.0M  alive= 944 types= 216  H= 5.47  size~  27.0  dom=0027lcw (16%)  foreign=6% fbreed=9% gen=6329
+  1215.0M  alive= 943 types= 205  H= 5.62  size~  27.0  dom=0027ivn (12%)  foreign=6% fbreed=5% gen=6406
+  1230.0M  alive= 962 types= 217  H= 5.52  size~  27.0  dom=0027lxl (16%)  foreign=8% fbreed=14% gen=6481
+  1245.0M  alive= 980 types= 228  H= 5.88  size~  27.1  dom=0027ivn (16%)  foreign=7% fbreed=10% gen=6557
+  1260.0M  alive=1128 types= 235  H= 5.72  size~  27.0  dom=0027ivn (14%)  foreign=5% fbreed=7% gen=6636
+  1275.0M  alive= 966 types= 227  H= 5.86  size~  27.0  dom=0027ivn (15%)  foreign=8% fbreed=16% gen=6714
+  1290.0M  alive=1078 types= 198  H= 5.65  size~  27.0  dom=0027iyi (10%)  foreign=4% fbreed=2% gen=6791
+  1305.0M  alive=1447 types= 258  H= 5.47  size~  27.0  dom=0027kym (16%)  foreign=6% fbreed=6% gen=6869
+  1320.0M  alive=1029 types= 227  H= 5.84  size~  27.0  dom=0027kym (12%)  foreign=5% fbreed=7% gen=6947
+  1335.0M  alive=1102 types= 236  H= 5.87  size~  27.0  dom=0027kym (12%)  foreign=6% fbreed=10% gen=7025
+  1350.0M  alive= 983 types= 239  H= 5.97  size~  27.0  dom=0027jrl (10%)  foreign=6% fbreed=10% gen=7102
+  1365.0M  alive= 976 types= 209  H= 5.54  size~  27.0  dom=0027mzn (13%)  foreign=8% fbreed=6% gen=7179
+  1380.0M  alive=1170 types= 249  H= 5.77  size~  27.0  dom=0027ntn (15%)  foreign=3% fbreed=2% gen=7257
+  1395.0M  alive=1083 types= 251  H= 5.99  size~  27.0  dom=0027wiu (11%)  foreign=6% fbreed=2% gen=7335
+  1410.0M  alive= 961 types= 222  H= 5.16  size~  27.0  dom=0027lbt (33%)  foreign=7% fbreed=10% gen=7412
+  1425.0M  alive=1220 types= 256  H= 5.63  size~  27.0  dom=0027lbt (10%)  foreign=4% fbreed=4% gen=7490
+  1440.0M  alive=1130 types= 256  H= 5.35  size~  27.0  dom=0027lcw (19%)  foreign=5% fbreed=9% gen=7568
+  1455.0M  alive= 936 types= 193  H= 4.97  size~  27.0  dom=0027lcw (21%)  foreign=7% fbreed=3% gen=7647
+  1470.0M  alive= 964 types= 231  H= 5.58  size~  27.1  dom=0027lbt (17%)  foreign=6% fbreed=9% gen=7725
+  1485.0M  alive=1261 types= 269  H= 5.73  size~  27.0  dom=0027lbt (18%)  foreign=7% fbreed=8% gen=7802
+  1500.0M  alive= 944 types= 244  H= 5.61  size~  27.1  dom=0027jrl (20%)  foreign=6% fbreed=10% gen=7878
+
+wrote /home/user/own-claude/experiments/results/deep-flaw-s2.json  (738,927 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0027jrl  185    27   32666  0.96         inert      -        0 0027mme
+  0027lbt   88    27   99571  0.97 self-assisted      -        0 0029jqd
+  0027ivn   73    27  232453  0.97 host-dependent      -        0 0027lbt
+  0027kym   67    27  181940  0.97 host-dependent      -        0 0027njh
+  0027iyi   48    27   96111  0.96 host-dependent      -        0 0027ttc
+  0027lcw   41    27  143670  0.97    replicator    178        0 0027cyt
+  0027ntn   35    27   35315  0.96    replicator    180        0 0027bny
+  0027evh   24    27    7306  0.87 host-dependent      -        0 0027uvc
+  0027bqt   18    27    6049  0.86 host-dependent      -        0 0025cqt
+  0027jcz   12    27   46818  0.96 host-dependent      -        0 0027mme
+  0027cyt   11    27    3512  0.86    replicator    178        0 0027ciq
+  0027kdc   10    27  186096  0.96 host-dependent      -        0 0027kcl

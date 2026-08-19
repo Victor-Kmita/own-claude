@@ -451,6 +451,15 @@ class TestAnalysis(unittest.TestCase):
         fragment = bytes(ancestor()[:11])
         self.assertEqual(analysis.classify(fragment), "inert")
 
+    def test_reproducing_once_is_not_the_same_as_reproducing(self):
+        # The ancestor makes a daughter every 407 instructions, forever.  The
+        # cheapest replicator this world has produced makes one and then runs
+        # itself into an error loop until the reaper takes it -- which scores
+        # best on cost per daughter and is a different way of being alive.
+        what = analysis.describe(bytes(ancestor()))
+        self.assertTrue(what["repeats"])
+        self.assertEqual(what["second_copy_cost"], 407)
+
     def test_dividing_is_not_the_same_as_reproducing(self):
         # Asks for the smallest legal block, scribbles in half of it, divides.
         # It reproduces *something* in a few dozen instructions, but never
