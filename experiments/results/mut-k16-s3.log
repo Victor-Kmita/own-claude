@@ -18,3 +18,19 @@
     54.0M  alive= 112 types=  83  H= 5.73  size~ 121.6  dom=0009aaa (20%)  foreign=100% fbreed=100% gen=7
     57.0M  alive= 112 types=  83  H= 5.73  size~ 121.6  dom=0009aaa (20%)  foreign=100% fbreed=100% gen=7
     60.0M  alive= 113 types=  84  H= 5.75  size~ 122.0  dom=0009aaa (20%)  foreign=100% fbreed=100% gen=7
+
+wrote /home/user/own-claude/experiments/results/mut-k16-s3.json  (367,827 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0009aaa   23     9      69  0.25         inert      -   105316 0130aaa
+  0009aas    4     9       4  0.00         inert      -   102108 0009aab
+  0047aab    3    47       4  0.50 host-dependent      -    83090 0009aaa
+  0064adr    2    64       2  0.50    replicator    420   120356 0064ado
+  0008aab    2     8       2  0.00         inert      -   124696 0009aaa
+  0018aaa    1    18       3  0.00         inert      -   173163 0064acp
+  0064aaa    1    64      19  0.84    replicator    410   117359 None
+  0018aac    1    18       1  0.00         inert      -   116469 0064acp
+  0063aal    1    63       1  0.00 host-dependent      -   119516 0064aba
+  0065abc    1    65       1  0.00 host-dependent      -   119525 0065aae
+  0065abf    1    65       1  0.00 host-dependent      -    68453 0064aaw
+  0063aap    1    63       1  0.00 host-dependent      -   123287 0064abn

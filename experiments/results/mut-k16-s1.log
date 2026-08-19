@@ -16,3 +16,21 @@
     48.0M  alive=  75 types=  74  H= 6.20  size~ 142.0  dom=0063aau (3%)  foreign=100% fbreed=100% gen=14
     51.0M  alive=  79 types=  78  H= 6.28  size~ 141.3  dom=0063aau (2%)  foreign=100% fbreed=100% gen=14
     54.0M  alive=  84 types=  83  H= 6.37  size~ 134.1  dom=0063aau (2%)  foreign=99% fbreed=100% gen=14
+    57.0M  alive= 127 types= 126  H= 6.97  size~  93.9  dom=0063aau (2%)  foreign=100% fbreed=100% gen=15
+    60.0M  alive= 133 types= 132  H= 7.04  size~  90.1  dom=0063aau (2%)  foreign=100% fbreed=100% gen=16
+
+wrote /home/user/own-claude/experiments/results/mut-k16-s1.json  (350,646 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0063aau    2    63       3  0.00 host-dependent      -   119946 0065aeb
+  0064aeb    1    64       1  0.00 host-dependent      -   138535 0064aco
+  0132aac    1   132       1  0.00 host-dependent      -    52785 0132aab
+  0008aag    1     8       1  0.00         inert      -   130119 0065abs
+  0008aae    1     8      13  0.00         inert      -    60634 0065abs
+  0064aeq    1    64       1  0.00 host-dependent      -   127567 0065acf
+  0066aaf    1    66       1  0.00         inert      -    91979 0064aef
+  0008aai    1     8       9  0.00         inert      -   178326 0065abo
+  0065adu    1    65       1  0.00 host-dependent      -   131924 0065abo
+  0065adv    1    65       1  0.00 host-dependent      -   171153 0065adj
+  0065aeb    1    65       1  0.00 host-dependent      -   135641 0065abo
+  0019aak    1    19       1  0.00         inert      -   172869 0065adl

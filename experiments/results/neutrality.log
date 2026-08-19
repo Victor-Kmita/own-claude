@@ -1,0 +1,10 @@
+seed 1: 15,311 genotypes seen, 70 sampled -> 26 phenotypes (2.69 genotypes per phenotype); parasitism indicator 12%
+     18  ('host-dependent', None, True, 'other', 'other')
+     11  ('host-dependent', None, False, 'hijacked', 'hijacked')
+     10  ('host-dependent', None, False, 'none', 'none')
+      4  ('host-dependent', None, False, 'other', 'other')
+seed 2: 14,347 genotypes seen, 70 sampled -> 25 phenotypes (2.8 genotypes per phenotype); parasitism indicator 25%
+     13  ('host-dependent', None, False, 'hijacked', 'hijacked')
+     11  ('host-dependent', None, False, 'none', 'none')
+     10  ('host-dependent', None, True, 'other', 'other')
+      5  ('replicator', 412, False, 'independent', 'independent')

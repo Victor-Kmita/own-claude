@@ -61,8 +61,48 @@ def grow(seed: int) -> World:
     return w
 
 
+def from_saved(paths: list[str], refs: list[bytes], limit: int = 70) -> list[dict]:
+    """Same measurement, but on the gene-bank samples stored in saved runs.
+
+    Runs that recorded a slice of their gene bank can be re-examined without
+    re-simulating them, which is what makes a within-condition comparison
+    affordable: two runs at the *same* mutation rate, one that filled with
+    parasites and one that did not, is the contrast Standish's explanation
+    actually predicts something about.
+    """
+    rows = []
+    for path in paths:
+        with open(path) as fh:
+            r = json.load(fh)
+        labels = r.get("gene_bank_sample") or list(r["genomes"])
+        rng = random.Random(r["config"]["seed"])
+        chosen = rng.sample(labels, min(limit, len(labels)))
+        sigs = Counter(phenotype_signature(bytes(r["genomes"][l]), refs,
+                                           budget=ASSAY_BUDGET) for l in chosen)
+        h = r["history"][-1]
+        rows.append({
+            "run": r["name"], "sampled": len(chosen), "phenotypes": len(sigs),
+            "genotypes_per_phenotype": round(len(chosen) / len(sigs), 2),
+            "foreign_breeder_share": h["foreign_breeder_share"],
+            "genotypes_seen": r["totals"]["genotypes_seen"],
+            "mean_generation": h.get("mean_generation", 0),
+        })
+        print(f"{r['name']}: {len(chosen)} sampled -> {len(sigs)} phenotypes "
+              f"({rows[-1]['genotypes_per_phenotype']} per phenotype); "
+              f"parasitism indicator {h['foreign_breeder_share']:.0%}; "
+              f"generations {rows[-1]['mean_generation']:.0f}")
+    return rows
+
+
 def main() -> None:
     refs = panel()
+    if len(sys.argv) > 1:
+        rows = from_saved(sys.argv[1:], refs)
+        out = os.path.join(RESULTS, "neutrality_saved.json")
+        with open(out, "w") as fh:
+            json.dump({"assay_budget": ASSAY_BUDGET, "rows": rows}, fh, indent=1)
+        print("wrote", out)
+        return
     rows = []
     for seed in SEEDS:
         w = grow(seed)

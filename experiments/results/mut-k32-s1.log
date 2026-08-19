@@ -18,3 +18,19 @@
     54.0M  alive= 132 types= 127  H= 6.93  size~  75.2  dom=0008aaa (4%)  foreign=100% fbreed=100% gen=4
     57.0M  alive= 135 types= 130  H= 6.96  size~  77.5  dom=0008aaa (4%)  foreign=100% fbreed=100% gen=4
     60.0M  alive= 136 types= 131  H= 6.97  size~  77.0  dom=0008aaa (4%)  foreign=100% fbreed=100% gen=4
+
+wrote /home/user/own-claude/experiments/results/mut-k32-s1.json  (410,373 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0008aaa    6     8      17  0.00         inert      -   108480 0064aat
+  0044aaa    1    44       1  0.00 host-dependent      -    98118 0064aad
+  0064aae    1    64       1  0.00    replicator    414    86107 0064aaa
+  0132aab    1   132       1  0.00 host-dependent      -   102796 0064aac
+  0064aar    1    64       1  0.00 host-dependent      -   102718 0066aab
+  0064abb    1    64       1  0.00 host-dependent      -   100176 0066aab
+  0066aaf    1    66       1  0.00 host-dependent      -    93381 0064aab
+  0064abg    1    64       1  0.00 host-dependent      -   123077 0064aax
+  0064abi    1    64       1  0.00 host-dependent      -   105831 0064aaa
+  0064abp    1    64       1  0.00 host-dependent      -   115166 0064aaa
+  0064aaa    1    64       5  0.60    replicator    410    86242 None
+  0008aaf    1     8       1  0.00         inert      -   103170 0064aat

@@ -185,17 +185,68 @@ assay option (`coculture_assay(..., flank=True)`), since a guest with hosts on
 both sides is in a different world from one with a host on one side and empty
 medium on the other — a template search runs outward in both directions.
 
-## What the literature says to do next
+## What the reading produced
+
+### Ray's mutation-rate claims, tested
+
+Twenty-four runs, eight rates, three seeds each. Both mutation rates scale
+together by a factor *k*; µ is mutations per 64-cell genome per replication.
+
+| k | µ | generations | cheapest replicator | breeders on foreign code |
+|---:|---:|---:|---|---:|
+| 0.25 | 0.016 | 367 | 387, 399, 406 | 53% |
+| 1 | 0.064 | 347 | 387, 407, 402 | 11% |
+| 8 | 0.512 | 243 | **379, 365, 346** | 35% |
+| 16 | 1.016 | **10** | none | 100% |
+| 32 | 2.065 | **4** | none | 100% |
+
+**Ray's optimization claim holds.** All three seeds at k=8 — the highest rate
+that does not destabilise — produced the cheapest replicators in the whole
+sweep, the best at 346 instructions against the ancestor's 410.
+
+**The error threshold sits exactly at one mutation per genome per
+replication**, between µ = 0.51 and µ = 1.02. At k=16 the census contains no
+self-sufficient replicator, every fidelity is zero, generation depth falls from
+~250 to 10, and 132 distinct genotypes are alive among 133 creatures — nothing
+copies itself accurately enough to found a lineage. This is the classic
+quasispecies result, reproduced without being aimed at.
+
+**Ray's ecology claim I cannot test with three seeds.** The direction is right —
+the parasite indicator is highest at the lowest rates — but the within-condition
+spread (0.12 to 0.85 at the same rate) is as large as the effect.
+
+### How optimization happens here, and why it is smaller
+
+The cheapest replicator found, `0053abg` at 346 instructions, keeps the
+ancestor's copy loop exactly: six instructions per cell copied, 6.53 against the
+ancestor's 6.41. It is cheaper solely because it is shorter — 53 cells against
+64. Tierra's optimized creatures won on both counts, unrolling the loop from ten
+instructions per cell to six *and* shrinking the genome. Half of that prize does
+not exist in my world, because my hand-written loop starts at six.
+
+Unrolling would still pay here — copying two cells per iteration would cost five
+instructions per cell rather than six — and nothing has found it in 60M
+instructions.
+
+### Run length was the other missing factor
+
+Ray's descendants needed billions of instructions. At 400M my genomes sat at
+57–62 cells. A 3-billion-instruction run passes 42 cells at the one-billion mark
+with a single genotype holding 22% of the population, and 5,900 generations. The
+size reduction had not stopped at 400M; it had barely started.
+
+## Agenda
 
 | experiment | why | status |
 |---|---|---|
-| runs of billions of instructions | Ray's optimization result needed 15B; mine are 37× shorter | 2 × 3B running |
-| mutation-rate sweep with replicates | tests both of Ray's claims and locates the error threshold | 18 runs (6 rates × 3 seeds) |
-| phenotype signatures, not genotype counts | Standish: ~100k genotypes → ~100 phenotypes | implemented, to run |
-| report generation depth | the review's criterion for a credible evolution experiment | now recorded every sample |
-| flanked co-culture | Ray's immunity demonstration used hosts on both sides | implemented |
+| runs of billions of instructions | Ray's optimization result needed 15B | 2 × 3B, in progress; already down to 42 cells at 1B |
+| mutation-rate sweep with replicates | tests both of Ray's claims, locates the error threshold | done, 24 runs |
+| phenotype signatures, not genotype counts | Standish: ~100k genotypes → ~100 phenotypes | in progress |
+| report generation depth | the review's criterion for a credible experiment | now recorded in every sample |
+| flanked co-culture | Ray demonstrated immunity with hosts on both sides | implemented |
 | instruction flaws as a third mutation mode | Tierra has it, I do not | not started |
 | hyper-parasites | Ray found them; I have not looked | not started |
+| loop unrolling | the one optimization Tierra found that mine has not | watching the 3B runs for it |
 
 ## Caveats about this document
 

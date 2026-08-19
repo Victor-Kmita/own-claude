@@ -322,7 +322,51 @@ search range. Parasitism needs a crowd, and apparently a familiar one.
 
 This is the clearest open question the project leaves.
 
-### 10. Evolvability is expensive
+### 10. Mutation rate: an optimization peak, and an error threshold exactly where theory puts it
+
+Ray reports two things about Tierra that pull against each other: optimization
+is best "at the highest mutation rate that does not cause instability", while
+ecology is richer at slightly lower rates. Quasispecies theory adds a third
+expectation — above about one mutation per genome per replication a population
+can no longer hold onto its information and melts.
+
+Twenty-four runs, eight rates, three seeds each, 60M instructions apiece. Both
+of this world's mutation rates are multiplied by the same factor *k*, so k=1 is
+the standard setting and µ is the resulting mutations per 64-cell genome per
+replication:
+
+| k | µ per genome | generations reached | cheapest replicator (3 seeds) | breeders running foreign code |
+|---:|---:|---:|---|---:|
+| 0.25 | 0.016 | 367 | 387, 399, 406 | 53% |
+| 0.5 | 0.032 | 360 | 384, 392, 378 | 43% |
+| 1 | 0.064 | 347 | 387, 407, 402 | 11% |
+| 2 | 0.128 | 319 | 403, 408, 394 | 12% |
+| 4 | 0.256 | 230 | 413, —, 403 | 42% |
+| 8 | 0.512 | 243 | **379, 365, 346** | 35% |
+| 16 | 1.016 | **10** | none evolved | 100% |
+| 32 | 2.065 | **4** | none evolved | 100% |
+
+**The optimization peak is real.** At eight times the standard rate all three
+seeds found replicators cheaper than anything at any other rate, the best at 346
+instructions against the ancestor's 410 — a 16% saving. Ray's claim holds here.
+
+**The error threshold is where theory says it should be.** Between µ = 0.51 and
+µ = 1.02 — one mutation per genome per replication — the population stops being a
+population. At k=16 the census contains no self-sufficient replicator at all,
+every genotype's breeding fidelity is zero, and **132 distinct genotypes are
+alive among 133 creatures**: no two individuals are alike, because nothing
+copies itself accurately enough to found a lineage. Generation depth collapses
+from ~250 to 10. The soup does not go extinct — it persists as a churn of
+fragments running each other's code, with 100% of reproduction happening through
+foreign execution.
+
+**The ecology claim I cannot support.** Averaged over seeds the parasite
+indicator is highest at the lowest rates, which is the direction Ray describes.
+But the within-condition spread is 0.12 to 0.85 at the same rate — as large as
+the effect. Three seeds are not enough to say anything here, and I am not going
+to pretend otherwise.
+
+### 11. Evolvability is expensive
 
 The same 100M instructions bought 218,916 births with mutation off and
 171,721 – 175,651 with it on: a fifth of the world's reproductive output goes on
@@ -403,6 +447,8 @@ finding 6 built by hand.
   have several, and the outcome depends on which template is nearest.
 * Classification uses a fixed instruction budget; a very slow replicator would
   be filed as host-dependent or inert.
+* The ecology half of finding 10 is not supported by its own data; see the
+  paragraph that says so.
 * Findings 5 and 6 rest on one seed's ecology — the seed that produced parasites
   at all. Two of three did not.
 * Finding 9 is a null result at 20M instructions with one parasite genotype and
