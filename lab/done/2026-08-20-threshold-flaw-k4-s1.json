@@ -1,0 +1,53 @@
+{
+ "id": "2026-08-20-threshold-flaw-k4-s1",
+ "kind": "soup_run",
+ "priority": 5,
+ "created_by": "cloud",
+ "why": "with flaws on, does the error threshold still sit at one mutation per genome per replication, or does a third mutation source move it?",
+ "expect_hours": 0.02,
+ "params": {
+  "name": "tf-k4-s1",
+  "instructions": 60000000,
+  "seed": 1,
+  "copy_mutation": 250,
+  "cosmic": 500,
+  "flaw": 1000,
+  "sample_every": 3000000
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-19T21:25:31+00:00",
+ "cores": 12,
+ "status": "ok",
+ "host": "nexus",
+ "finished": "2026-08-19T21:27:31+00:00",
+ "seconds": 117.9,
+ "returncode": 0,
+ "produced": [
+  "experiments/results/tf-k1-s2.json",
+  "experiments/results/tf-k4-s1.json",
+  "experiments/results/tf-k8-s1.json",
+  "experiments/results/tf-k8-s2.json"
+ ],
+ "log_tail": [
+  "    51.0M  alive= 492 types= 360  H= 8.29  size~  51.2  dom=0051dkj (2%)  foreign=12% fbreed=16% gen=235",
+  "    54.0M  alive= 495 types= 344  H= 8.11  size~  50.7  dom=0050car (4%)  foreign=9% fbreed=7% gen=251",
+  "    57.0M  alive= 484 types= 354  H= 8.22  size~  51.2  dom=0050diy (3%)  foreign=11% fbreed=8% gen=266",
+  "    60.0M  alive= 481 types= 359  H= 8.28  size~  51.6  dom=0051iue (2%)  foreign=13% fbreed=15% gen=281",
+  "",
+  "wrote /home/cld/own-claude/experiments/results/tf-k4-s1.json  (510,353 instructions/sec)",
+  "",
+  " genotype    n  size  births   fid          kind   cost   fcalls parent",
+  "  0051iue    8    51      14  0.79    replicator    328        0 0051isd",
+  "  0051ion    6    51      18  0.89    replicator    329        0 0051imh",
+  "  0050ein    6    50      60  0.95    replicator    321        0 0050efu",
+  "  0050fih    6    50       6  0.00    replicator    322        0 0050eqk",
+  "  0051iub    5    51       9  0.89    replicator    649        0 0051iov",
+  "  0051iyy    5    51       6  0.67    replicator    328        0 0051ids",
+  "  0050fhw    5    50       5  0.40    replicator    321        0 0050enc",
+  "  0050diy    5    50      91  0.94    replicator    322        0 0050dac",
+  "  0051iww    4    51       6  0.83    replicator    329        0 0051ion",
+  "  0051isb    4    51      10  0.80    replicator    328        0 0050eyu",
+  "  0050eyz    4    50      14  0.93    replicator    322        0 0050eiu",
+  "  0051hqj    4    51     100  0.79    replicator    329        0 0051hih"
+ ]
+}
