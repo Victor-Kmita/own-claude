@@ -1,0 +1,6 @@
+      host  size  births alone  births infected  parasite births  captured
+   0064nye    64           394             52.8            210.2     79.6%
+   0070aea    70           403            276.9              0.0      0.0%
+  ancestor    64           423            282.7             97.2     26.2%
+
+mean over 9 parasites, 200,000 instructions per pairing

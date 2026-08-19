@@ -1,0 +1,19 @@
+20,005,020 instructions, 35,907 births, 4,546 distinct genotypes seen
+
+uniform over genotypes  (n=150)
+    host-dependent    96   64.0%
+    replicator        42   28.0%
+    inert              7    4.7%
+    self-assisted      5    3.3%
+    replication cost: min 389, median 414, max 1315   (the ancestor needs 410)
+    cheapest: 0061aax at 389 instructions, 61 cells
+
+weighted by births  (n=150)
+    replicator       127   84.7%
+    host-dependent    20   13.3%
+    inert              2    1.3%
+    self-assisted      1    0.7%
+    replication cost: min 394, median 410, max 477   (the ancestor needs 410)
+    cheapest: 0061acs at 394 instructions, 61 cells
+
+wrote /home/user/own-claude/experiments/results/viability.json

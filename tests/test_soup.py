@@ -432,6 +432,57 @@ class TestAnalysis(unittest.TestCase):
         self.assertNotEqual(what["kind"], "replicator")
         self.assertTrue(what["divides_without_copying"])
 
+    def test_a_truncated_creature_reproduces_its_neighbour_not_itself(self):
+        # Cut the ancestor's copy procedure off but leave the 1100 marker that
+        # names it.  Its `call` still finds that marker, jumps to where the copy
+        # loop used to be, runs off the end of its own genome and into whatever
+        # lies next -- the top of the neighbour's body.  The neighbour's
+        # self-inspection then runs on the neighbour's coordinates, so the
+        # daughter is a copy of the *host*.  The creature spends its whole CPU
+        # allowance reproducing somebody else.
+        code = ancestor()
+        truncated = bytes(code[:45])
+        out = analysis.coculture_assay(truncated, bytes(code), budget=150_000)
+        self.assertEqual(dict(out["with_host"]["offspring"]), {"host": 1})
+        self.assertGreater(out["with_host"]["guest_foreign_calls"], 0)
+        self.assertEqual(analysis.interaction(truncated, bytes(code),
+                                              budget=150_000), "hijacked")
+
+    def test_a_host_that_loses_the_template_loses_the_parasite(self):
+        # The mechanism behind the resistant replicator in baseline-s2, built by
+        # hand so that the causation is not in doubt.
+        #
+        # A parasite is a creature that has lost its own copy loop *and* the
+        # marker that names it, so its `call` searches outward and lands in
+        # somebody else's.  What it seeks is the four-cell pattern 1100.  A host
+        # that still has a working copy loop but no longer has 1100 anywhere in
+        # its genome is invisible to that search -- immunity by receptor loss,
+        # at no cost to the host's own replication.
+        code = ancestor()
+        parasite = list(code[:45])              # copy procedure gone
+        parasite[40] = NOP0                     # and its own 1100 marker with it
+        parasite = bytes(parasite)
+
+        resistant = list(code)
+        resistant[43] = NOP1                    # copy-loop marker 1100 -> 1101
+        resistant[32] = NOP0                    # its own call now seeks 1101
+        resistant = bytes(resistant)
+
+        self.assertEqual(analysis.classify(parasite, budget=150_000),
+                         "host-dependent")
+        self.assertEqual(analysis.describe(resistant)["kind"], "replicator")
+        self.assertEqual(analysis.describe(resistant)["cost"],
+                         analysis.describe(bytes(code))["cost"])
+
+        # 150k instructions is ~350 replication times for a healthy creature,
+        # so a genotype that has not reproduced by then is not going to.
+        beside_ancestor = analysis.coculture_assay(parasite, bytes(code),
+                                                   budget=150_000)
+        beside_resistant = analysis.coculture_assay(parasite, resistant,
+                                                    budget=150_000)
+        self.assertTrue(sum(beside_ancestor["with_host"]["offspring"].values()))
+        self.assertFalse(sum(beside_resistant["with_host"]["offspring"].values()))
+
     def test_genome_diff_reports_substitutions_and_length(self):
         a = bytes([1, 2, 3])
         b = bytes([1, 5, 3, 4])

@@ -67,13 +67,14 @@ def demonstrate_mechanism() -> str:
             f"errors: {cr.stats.errors}")
 
 
-def trial(soup_size: int, lazy: bool, errors_kill: bool) -> dict:
+def trial(soup_size: int, lazy: bool, errors_kill: bool,
+          budget: int = BUDGET) -> dict:
     code = load_ancestor()
     w = World(soup_size=soup_size, seed=1, copy_mutation_rate=0.0,
               cosmic_period=10 ** 18, reap_on_alloc_failure=not lazy,
               errors_hasten_death=errors_kill)
     w.inject(code, address=0)
-    while w.clock < BUDGET and not w.extinct:
+    while w.clock < budget and not w.extinct:
         w.step_generation()
     snap = sample(w)
     return {
@@ -115,11 +116,9 @@ def main() -> None:
     deep = []
     print(f"{'reaper':>10} {'errors kill':>12} {'mal fails':>10} {'genotypes':>10} "
           f"{'mean size':>10} {'max size':>9}")
-    global BUDGET
-    BUDGET = DEEP_BUDGET
     for lazy in (False, True):
         for errors_kill in (True, False):
-            r = trial(DEEP_SOUP, lazy, errors_kill)
+            r = trial(DEEP_SOUP, lazy, errors_kill, budget=DEEP_BUDGET)
             deep.append(r)
             print(f"{r['reaper']:>10} {str(r['errors_hasten_death']):>12} "
                   f"{r['alloc_failures']:>10} {r['genotypes_seen']:>10} "

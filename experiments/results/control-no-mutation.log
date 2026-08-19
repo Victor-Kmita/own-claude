@@ -92,3 +92,14 @@
     92.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     93.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     94.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    95.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    96.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    97.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    98.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    99.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+   100.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+
+wrote /home/user/own-claude/experiments/results/control-no-mutation.json  (750,875 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0064aaa  375    64  218917  1.00    replicator    420        0 None

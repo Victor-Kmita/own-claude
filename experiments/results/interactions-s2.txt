@@ -1,0 +1,15 @@
+           4nye 0aea stor
+  0045adk     P    .    P   (host-dependent)
+  0049abh     P    .    P   (host-dependent)
+  0045ags     P    .    P   (host-dependent)
+  0045afp     P    .    P   (host-dependent)
+  0045adm     P    .    P   (host-dependent)
+  0044aiq     P    .    P   (host-dependent)
+  0053aal     P    .    P   (host-dependent)
+  0045ajd     P    .    P   (host-dependent)
+  0045afu     P    .    P   (host-dependent)
+
+columns are hosts (last four characters of each label)
+P = guest copies itself using the host's code (parasitism)
+H = guest spends its own CPU copying the host (its CPU was captured)
+M = both;  . = the guest does not reproduce beside this host

@@ -90,3 +90,27 @@
     90.0M  alive= 296 types= 177  H= 7.18  size~  84.4  dom=0080dpr (3%)  foreign=3% fbreed=3%
     91.0M  alive= 287 types= 177  H= 6.94  size~  84.9  dom=0080dvb (10%)  foreign=4% fbreed=3%
     92.0M  alive= 283 types= 185  H= 6.92  size~  87.3  dom=0080dvb (13%)  foreign=4% fbreed=6%
+    93.0M  alive= 284 types= 186  H= 7.04  size~  86.5  dom=0080dvb (12%)  foreign=3% fbreed=4%
+    94.0M  alive= 278 types= 179  H= 7.06  size~  88.0  dom=0080dvb (9%)  foreign=5% fbreed=3%
+    95.0M  alive= 282 types= 170  H= 6.98  size~  87.8  dom=0080dvb (8%)  foreign=4% fbreed=6%
+    96.0M  alive= 299 types= 169  H= 6.85  size~  84.8  dom=0071cnx (8%)  foreign=7% fbreed=15%
+    97.0M  alive= 463 types= 208  H= 6.87  size~  82.1  dom=0071cnx (11%)  foreign=4% fbreed=5%
+    98.0M  alive= 359 types= 183  H= 6.87  size~  80.2  dom=0071cnx (9%)  foreign=6% fbreed=8%
+    99.0M  alive= 350 types= 179  H= 6.72  size~  78.8  dom=0071cnx (11%)  foreign=5% fbreed=8%
+   100.0M  alive= 329 types= 179  H= 6.54  size~  74.2  dom=0071cnx (15%)  foreign=6% fbreed=13%
+
+wrote /home/user/own-claude/experiments/results/matched-neutral-s1.json  (745,402 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0071cnx   49    71     662  0.97    replicator    460        0 0071cnw
+  0074bdt   22    74     122  0.97    replicator    480        1 0074bdp
+  0074bdp   11    74      70  0.99    replicator    480        0 0074bdm
+  0071cuc    9    71      29  0.90    replicator    460        0 0071cnx
+  0074bff    7    74      14  0.86    replicator    480        2 0074beh
+  0074bee    6    74      34  0.97    replicator    480        0 0074bdt
+  0074bfg    5    74      14  0.93    replicator    480        0 0074bdt
+  0074bet    5    74      19  0.95 host-dependent      -        0 0074bek
+  0071crp    5    71      31  0.81    replicator    460        0 0071cqr
+  0074bdu    4    74      82  0.98 host-dependent      -        0 0074bdn
+  0085aii    4    85      15  0.93    replicator    560        0 0085aig
+  0080ehs    4    80     226  0.99    replicator    520        0 0080eaw

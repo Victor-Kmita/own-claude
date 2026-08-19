@@ -77,3 +77,40 @@
     77.0M  alive= 329 types= 195  H= 6.82  size~  74.4  dom=0081aba (11%)  foreign=4% fbreed=8%
     78.0M  alive= 337 types= 204  H= 7.01  size~  74.0  dom=0081aba (10%)  foreign=4% fbreed=4%
     79.0M  alive= 324 types= 195  H= 7.13  size~  74.8  dom=0081aba (6%)  foreign=2% fbreed=7%
+    80.0M  alive= 328 types= 206  H= 7.37  size~  76.6  dom=0081aba (3%)  foreign=5% fbreed=10%
+    81.0M  alive= 363 types= 243  H= 7.54  size~  74.4  dom=0074bpf (3%)  foreign=4% fbreed=2%
+    82.0M  alive= 323 types= 239  H= 7.56  size~  77.0  dom=0074bqa (6%)  foreign=3% fbreed=7%
+    83.0M  alive= 315 types= 248  H= 7.79  size~  78.3  dom=0074bqa (3%)  foreign=4% fbreed=8%
+    84.0M  alive= 310 types= 218  H= 7.51  size~  78.3  dom=0074bvc (4%)  foreign=4% fbreed=8%
+    85.0M  alive= 311 types= 240  H= 7.73  size~  79.5  dom=0081ayo (3%)  foreign=3% fbreed=8%
+    86.0M  alive= 342 types= 238  H= 7.68  size~  80.5  dom=0074bvc (2%)  foreign=5% fbreed=8%
+    87.0M  alive= 315 types= 227  H= 7.51  size~  79.3  dom=0074bvc (5%)  foreign=5% fbreed=9%
+    88.0M  alive= 306 types= 228  H= 7.54  size~  80.5  dom=0074bvc (6%)  foreign=3% fbreed=7%
+    89.0M  alive= 298 types= 219  H= 7.55  size~  81.6  dom=0074bvc (4%)  foreign=3% fbreed=6%
+    90.0M  alive= 302 types= 223  H= 7.51  size~  80.7  dom=0074bvc (6%)  foreign=5% fbreed=5%
+    91.0M  alive= 304 types= 219  H= 7.39  size~  81.4  dom=0074bvc (7%)  foreign=3% fbreed=6%
+    92.0M  alive= 349 types= 249  H= 7.50  size~  81.3  dom=0074bvc (9%)  foreign=3% fbreed=4%
+    93.0M  alive= 308 types= 232  H= 7.54  size~  81.9  dom=0074cif (6%)  foreign=4% fbreed=9%
+    94.0M  alive= 281 types= 221  H= 7.59  size~  89.5  dom=0074cif (4%)  foreign=5% fbreed=7%
+    95.0M  alive= 286 types= 212  H= 7.38  size~  87.0  dom=0077bck (6%)  foreign=4% fbreed=6%
+    96.0M  alive= 290 types= 202  H= 7.30  size~  83.6  dom=0077bck (6%)  foreign=6% fbreed=10%
+    97.0M  alive= 283 types= 209  H= 7.39  size~  85.8  dom=0074cif (6%)  foreign=4% fbreed=11%
+    98.0M  alive= 298 types= 223  H= 7.55  size~  86.0  dom=0074cif (4%)  foreign=5% fbreed=12%
+    99.0M  alive= 362 types= 217  H= 7.21  size~  83.7  dom=0077bgm (7%)  foreign=4% fbreed=7%
+   100.0M  alive= 351 types= 211  H= 7.25  size~  78.8  dom=0074cif (6%)  foreign=4% fbreed=5%
+
+wrote /home/user/own-claude/experiments/results/matched-neutral-s3.json  (693,770 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0074cif   20    74     508  0.96    replicator    480        0 0074bvc
+  0074cqt   12    74      65  0.95    replicator    480        0 0074coi
+  0077bkz   10    77      22  0.91    replicator    500        0 0077bck
+  0074crw   10    74      32  0.97    replicator    480        0 0074cif
+  0077bgm    8    77     151  0.93    replicator    500        0 0074cif
+  0077bgl    7    77      90  0.98    replicator    500        0 0077bck
+  0077biw    7    77      62  0.90    replicator    500        0 0077bdr
+  0087arw    6    87      23  0.96    replicator    580        0 0087are
+  0077blm    5    77      12  0.92    replicator    500        0 0077bgm
+  0077bde    4    77      79  0.96    replicator    500        0 0074clv
+  0077bml    4    77       8  0.75    replicator    500        0 0077bhw
+  0077bln    4    77      10  0.70    replicator    500        0 0077bde

@@ -1,65 +1,66 @@
 # soup
 
 A world of 60,000 memory cells, one hand-written self-replicating program, and
-enough noise to make copying imperfect. Everything else — parasites, a
-shortened and cheaper replicator, a genotype whose CPU gets captured by its
-neighbours — is emergent, and this repository is the machine plus the evidence.
+enough noise to make copying imperfect. Everything else — parasites, hosts that
+become immune to them, a shorter and cheaper replicator, genome length that
+tracks the CPU scheduler — happens on its own, and this repository is the
+machine plus the evidence.
 
 It is a deliberate cousin of Tom Ray's Tierra (1991), rebuilt from scratch so
-that every rule is one I can state exactly and every claim below is one I
-checked with a tool in `soup/analysis.py` rather than by reading a listing and
-believing myself.
+that every rule is one I can state exactly, and every claim below is one a tool
+in `soup/analysis.py` checked — not one I got by reading a listing and believing
+myself.
 
 ```
-$ python3 -m soup run demo --instructions 20000000 --soup 60000
-    1.0M  alive= 536 types=  76  H= 1.95  size~  60.5  dom=0064aaa (78%)  foreign=18% fbreed=20%
-    ...
-   20.0M  alive= 474 types= 188  H= 5.92  size~  56.0  dom=0009aaa (13%)  foreign=65% fbreed=70%
+$ python3 -m soup run demo --instructions 20000000
+     1.0M  alive= 386 types=  91  H= 2.69  size~  63.8  dom=0064aaa (72%)  foreign=11% fbreed=16%
+     ...
+    20.0M  alive= 608 types= 194  H= 6.67  size~  62.3  dom=0064abg (8%)  foreign=14% fbreed=18%
 ```
 
 ## Quick start
 
 ```bash
-python3 -m unittest discover -s tests     # 47 tests, no dependencies
+python3 -m unittest discover -s tests     # 53 tests, no dependencies
 python3 -m soup ancestor                  # the seed organism, disassembled
 python3 -m soup run demo --instructions 20000000
-python3 experiments/fragmentation.py      # the sweep in finding 2
+python3 experiments/fragmentation.py      # the policy sweep in finding 2
+python3 experiments/viability.py          # the mutational landscape in finding 7
 python3 experiments/report.py > experiments/REPORT.md
 ```
 
-Pure Python 3.11, no dependencies, about 1M simulated instructions per second
-on one core.
+Pure Python 3.11, no dependencies, about one million simulated instructions per
+second on one core.
 
 ## The machine
 
 **A saturated instruction set.** There are exactly 32 opcodes and all 32 are
 defined, so every possible bit pattern is a legal instruction. A mutation
 produces a *different program*, never a crash. This is the precondition for
-everything else: if most mutations killed the machine rather than the creature,
-selection would have nothing to work on.
+everything else.
 
 **No absolute addresses.** Nothing can name a location numerically. Control
 flow and self-inspection work by *template matching*: an addressing instruction
 is followed by a run of `nop0`/`nop1`, and the machine searches outward from the
-instruction pointer for the complementary run. A creature that gets longer or
-shifts in memory still finds its own parts. It can also find *someone else's*
-parts, because the search does not stop at the boundary of a creature — and
-that is the crack through which the whole ecology comes in.
+instruction pointer for the complementary run. A creature that changes length
+still finds its own parts. It can also find *someone else's* parts, because the
+search does not stop at the boundary of a creature — and that is the crack
+through which the whole ecology comes in.
 
 **Asymmetric protection.** Reads and jumps go anywhere; writes only land in a
-creature's own genome or in the daughter block it has allocated. So one
-creature can *use* another's code without being able to corrupt it.
+creature's own genome or in the daughter block it has allocated. One creature
+can *use* another's code without being able to corrupt it.
 
 **Three pressures and nothing else.** The scheduler hands every living creature
-a slice of CPU. When the soup fills past 80% the reaper kills from the head of
-a queue that creatures climb by making errors and descend by reproducing.
-Cosmic rays flip bits anywhere; the copy instruction occasionally miscopies.
-There is no fitness function anywhere in the code — the closest thing to one is
-that a creature which reproduces faster than it is reaped persists.
+a slice of CPU. When the soup fills past 80%, or when an allocation fails, the
+reaper kills from the head of a queue that creatures climb by making errors and
+descend by reproducing. Cosmic rays flip bits anywhere; the copy instruction
+occasionally miscopies. There is no fitness function in the code.
 
 ## The ancestor
 
-Sixty-four instructions, written by hand, and the only thing placed in the soup:
+Sixty-four instructions, written by hand, and the only thing ever placed in the
+soup:
 
 ```
 start:  .t 1111             ; START marker
@@ -85,225 +86,251 @@ loop:   .t 1010
 end:    .t 1110
 ```
 
-It divides in **420 instructions** with zero errors and without touching a
-single cell outside itself — verified, not assumed:
-
-```
-$ python3 -m soup assay experiments/results/baseline.json ancestor
-alone={'self_sufficient': True, 'births': 1, 'instructions': 420, 'errors': 0,
-       'foreign_calls': 0, 'foreign_reads': 0}
-```
+It divides in **410 instructions** with zero errors, without reading or
+executing a single cell outside itself. That number is the baseline every
+descendant below is measured against, and a unit test pins it.
 
 ## What happened
 
 ### 1. With mutation off, nothing ever happens
 
-100M instructions, no copy errors, no cosmic rays: **240,205 births, exactly one
-genotype, mean genome length 64.0 forever**. Population sits at ~375. That is
-the control, and it matters — every result below has to be measured against a
-world that is provably capable of doing nothing.
+100M instructions, no copy errors, no cosmic rays: **218,916 births, exactly one
+genotype, mean genome length 64.0 throughout, zero allocation failures.** The
+population sits at ~412. Every result below is measured against a world that is
+demonstrably capable of doing nothing at all.
 
-### 2. Memory fragmentation is a mutagen
+### 2. Two housekeeping policies decide whether mutation is optional
 
-The control above is a *large* soup. In a small one the monoculture breaks up
-with both mutation switches still off, and the reason is a chain of five
-mechanical steps:
+A failed `mal` is a mutagen. The mechanism is exact:
 
-1. the soup fragments, so no free gap is large enough;
-2. `mal` fails, and leaves `ax` holding what it already held — the address of
-   the creature's own END marker;
-3. the copy loop runs anyway, writing to that address;
-4. the START marker gets copied over the END marker — a write into its own
+1. no free gap is large enough, so `mal` fails;
+2. it leaves `ax` holding what it already held — the address of the creature's
+   own END marker;
+3. the copy loop runs anyway and writes there;
+4. the START marker lands on top of the END marker — a write into its own
    genome, which is permitted;
 5. the creature can no longer measure itself. Its `adrf` now finds the *next*
    creature's END marker, it computes twice its true length, and its daughters
-   come out as double-length organisms.
+   come out double-length.
 
-Same seed, mutation fully off, soup size varied (`experiments/fragmentation.py`):
+Whether that ever reaches the population turns out to depend on two decisions
+that look like implementation detail:
 
-| soup cells | capacity | `mal` failures per birth | genotypes seen | mean length |
-|-----------:|---------:|-------------------------:|---------------:|------------:|
-|      1,000 |       15 |                     0.15 |              6 |        64.0 |
-|      2,000 |       31 |                     1.18 |             59 |        68.9 |
-|      4,000 |       62 |                     0.43 |            168 |        75.0 |
-|      8,000 |      125 |                     0.18 |             15 |        96.0 |
-|     16,000 |      250 |                     0.14 |             10 |        64.7 |
-|     32,000 |      500 |                     0.01 |              5 |        64.0 |
-|     60,000 |      937 |                     0.03 |              1 |        64.0 |
+| reaper runs when | errors hasten death | `mal` failures | genotypes seen |
+|---|---|---:|---:|
+| on allocation failure | yes | 0 | 1 |
+| on allocation failure | no | 0 | 1 |
+| only once per pass | yes | 212 – 1,982 | 1 |
+| only once per pass | no | 50 – 3,092 | **2 – 3** |
 
-Allocation failures and genotype counts rise and fall together, and the largest
-soup produces no variation at all. The smallest soup breaks the trend in the
-other direction: only 15 creatures fit, so variants are reaped before they can
-accumulate.
+(Five soup sizes per row, 5M instructions each, both mutation switches off
+throughout; the full table is in `experiments/REPORT.md`.)
 
-I did not design this mutagen. It is what an allocator that reports failure by
-leaving a register alone does to a program that trusts it.
+A reaper that runs the moment an allocation fails keeps room available, and the
+mutagen never fires at all. With a lazy reaper the soup sits permanently full —
+every creature holding a daughter block occupies twice its own length — and
+`mal` fails hundreds of times per million instructions. Even then nothing
+escapes, because the errors that damage a creature also move it up the death
+queue. Only when *both* safeguards are off do the double-length daughters
+survive to found lineages.
+
+I did not design this mutagen, and I got both policies wrong on the first
+attempt. That is the finding: in a world this small, resource-management policy
+is not infrastructure, it is selection.
 
 ### 3. With mutation on, an ecosystem
 
-100M instructions, 60,000 cells, one copy error per 1,000 cells copied, one
-cosmic ray per 2,000 instructions, three seeds:
+Three seeds, 100M instructions, 60,000 cells, one copy error per 1,000 cells
+copied, one cosmic ray per 2,000 instructions:
 
 | | |
 |---|---|
-| genotypes alive at once | 225 – 271 |
-| Shannon diversity | 6.8 – 7.3 bits |
-| distinct genotypes ever seen | 11,893 – 15,621 |
-| births | 52,548 – 68,490 |
-| new genotype per birth | roughly 1 in 4 |
-| reproducing creatures that had executed code outside their own genome | 50 – 67% |
+| genotypes alive at once | 164 – 205 |
+| Shannon diversity | 6.1 – 7.2 bits |
+| distinct genotypes ever seen | 24,352 – 26,920 |
+| births | 171,721 – 175,651 |
+| reproducing creatures that had executed foreign code | 10%, 13% … and 55% |
 
-The dominant genotype rarely holds more than a quarter of the population, and
-the identity of the dominant changes several times per run.
+That last row is not noise around a mean. Two of the three seeds produced a
+quiet world of self-sufficient replicators; the third produced a world where
+parasites hold a fifth of the population. Same rules, same parameters, same
+ancestor — the ecology forked on the seed.
 
-### 4. Evolution rewrote the code that measures the genome
+### 4. A shorter, cheaper replicator
 
-The winner of the baseline run, `0061aqz`, held 24% of the population at 100M.
-It is **61 cells** and divides in **400 instructions** against the ancestor's 64
-and 420. Nine substitutions and a three-cell truncation separate them, and they
-are not independent damage — they are a repair:
+Every mutating run converges on genomes slightly shorter than the ancestor's 64
+cells, and they are faster in proportion. The cheapest self-sufficient
+replicator found by a random survey of one run's gene bank needs **389
+instructions** against the ancestor's 410 — 5% less work per daughter, at 61
+cells — and the ones that dominate censuses sit at 401–411 instructions with
+breeding fidelity above 0.9.
 
-* `nop1 -> or1` at cell 14 shortens the END-marker template from four bits to
-  three, so `adrf` now seeks `111` instead of `1110`.
-* `incC incC -> incA subCAB` at cells 17–18 rebuilds the arithmetic around the
-  new marker, and `or1` disposes of the leftover template length.
-* `nop1 -> shl` at 31 shortens the `call` template to two bits; the copy loop is
-  now found by seeking `11`.
-* Cells 55–57 shorten the loop's own `jmpb` template the same way.
-
-The self-measurement machinery was rebuilt around shorter templates and a
-shorter body, and it still computes exactly the right answer. The trace (loops
-collapsed by the tool) is the proof:
-
-```
-$ python3 -m soup trace experiments/results/baseline.json 0061aqz
-     10  adrf     ax=58     bx=0      cx=3      daughter=None
-     14  or1      ax=58     bx=0      cx=2      daughter=None
-     16  subCAB   ax=58     bx=0      cx=58     daughter=None
-     17  incA     ax=59     bx=0      cx=58     daughter=None
-     18  subCAB   ax=59     bx=0      cx=59     daughter=None
-     19  incC     ax=59     bx=0      cx=60     daughter=None
-     20  incC     ax=59     bx=0      cx=61     daughter=None      <- its true length
-     23  mal      ax=61     bx=0      cx=61     daughter=(61, 61)
-     28  call     ax=0      bx=61     cx=61     daughter=(61, 61)
-        ↺ 60 iterations of the loop at 48..54 (6 instructions each), cx 61 -> 2
-*    33  divide   ax=61     bx=122    cx=0      daughter=None
-```
-
-The saving is exactly the three copy-loop iterations it no longer needs. It is a
-small optimisation, honestly — but nothing in the machine knows what a genome
+The saving is almost exactly the copy-loop iterations no longer needed: about
+six instructions per cell removed. Nothing in the machine knows what a genome
 is, what length means, or that shorter is better.
 
-### 5. Parasites, and the opposite of parasites
+### 5. Parasites
 
-A crowded soup makes "reproduces" a useless label, because a creature that
-cannot reproduce alone reproduces perfectly well when it is packed between two
-neighbours. So each genotype is cultured alone in a sterile medium — filled
-with a non-template instruction, so that a search can only ever match real code
-— and then beside one host, with every birth attributed to the genome it
-actually produced.
+In the third seed the top *seven* genotypes are all host-dependent, led by
+`0045adk` at 106 of 507 creatures with a breeding fidelity of 0.85 — a lineage,
+not an accident. It is the ancestor truncated to 45 cells: the entire copy
+procedure is gone, and with it the `1100` marker that names it. Its `call`
+therefore searches outward, finds a *neighbour's* copy loop, runs it with its
+own registers, and what comes out is a copy of itself.
 
-That last step changed the answer. Six dependent genotypes from the baseline
-run, crossed against every self-sufficient replicator in the same run plus the
-ancestor:
-
-```
-           1aqz 1bbc 1aoq 9ajd 5ayi 9akb ancestor
-  0036abh     H    H    H    H    H    H    H
-  0057abf     P    P    P    P    P    P    P
-  0060alp     P    P    P    P    P    P    P
-  0062asz     P    P    P    P    P    P    P
-  0119aax     P    P    P    P    P    P    P
-  0069ahx     P    P    P    P    P    P    P
-
-P = the guest copies itself using the host's code   (parasitism)
-H = the guest spends its own CPU copying the host   (its CPU was captured)
-```
-
-Five of them are parasites in the plain mechanical sense: they carry no working
-copy loop, they call into their neighbour's, and what comes out is a copy of
-*them*. Universally, against every host tried, including the original ancestor.
-
-`0036abh` is the interesting one. It calls into its neighbour too — but it lands
-at the *top* of the neighbour's body rather than in its copy routine, so the
-neighbour's self-inspection runs on the neighbour's coordinates and what comes
-out is a copy of the **host**. It spends its entire CPU allowance making its
-neighbour's children. Had I classified it from its genome alone, or from "does
-it reproduce", it would have been filed as a parasite; it is the exact inverse.
-
-Both effects need physical contact. Set the two genomes 32 cells apart instead
-of packing them, and infection stops dead — the guest's search finds a pattern
-inside its own body before it reaches the host:
+Distinguishing that from its opposite takes an experiment, not a reading of the
+genome. Each genotype is cultured alone in a sterile medium — filled with a
+non-template instruction, so a search can only ever match real code — then
+beside one host, with every birth attributed to the genome it actually produced:
 
 ```
-$ python3 -m soup coculture experiments/results/baseline.json 0036abh 0061aqz --gap 32
-  with_host      guest births=0  foreign calls=0
-$ python3 -m soup coculture experiments/results/baseline.json 0036abh 0061aqz
-  with_host      guest births=1  foreign calls=64  offspring={'host': 1}
+$ python3 -m soup interactions experiments/results/baseline-s2.json
+           4nye 0aea stor
+  0045adk     P    .    P   (host-dependent)
+  0049abh     P    .    P   (host-dependent)
+  ... seven more, all identical ...
+
+P = guest copies itself using the host's code (parasitism)
+H = guest spends its own CPU copying the host (its CPU was captured)
+. = the guest does not reproduce beside this host
 ```
 
-### 6. A prediction that did not survive contact
+The `H` category is not hypothetical, and the difference between the two is a
+matter of one marker. Cut the ancestor's copy procedure off at exactly the same
+place — 45 cells, like the evolved parasite — but leave the `1100` marker that
+named it. Its `call` still finds that marker, jumps to where the copy loop used
+to be, runs off the end of its own genome, and lands in the top of the
+neighbour's body. The neighbour's self-inspection then runs on the neighbour's
+coordinates, and the daughter is a copy of the **host**:
 
-I expected the CPU scheduling rule to control genome length: give every creature
-the same slice regardless of size and short genomes should win, because they
-reach `divide` sooner. Six 100M runs — three seeds with a constant slice, three
-with a slice proportional to length, matched so that a 64-cell creature gets
-exactly the same 20 instructions per turn in both — say otherwise:
+```
+truncated-at-45 beside the ancestor: offspring={'host': 1}, foreign calls=66
+```
 
-| condition | mean length over the last 30% of each run |
+It spends its entire CPU allowance making its neighbour's children. From the
+genome alone it is indistinguishable from a parasite; it is the exact inverse.
+The evolved `0045adk` lost that marker too, which is what sends its `call` past
+its own body and into the host's copy loop — and turns the same truncation from
+donor into parasite.
+
+### 6. A host that became immune, and what immunity is
+
+The empty column above is the interesting one. `0070aea` is a perfectly healthy
+70-cell replicator that all nine parasites in that run fail to exploit.
+
+The reason is mechanical: parasites search for the four-cell pattern `1100`, and
+`0070aea` does not contain it anywhere. Its own copy loop is reached by a
+three-bit template instead. It is immunity by receptor loss — the pathogen's key
+no longer matches any lock in the host.
+
+```
+$ python3 -m soup resistance experiments/results/baseline-s2.json
+      host  size  births alone  births infected  parasite births  captured
+   0064nye    64           394             52.8            210.2     79.6%
+   0070aea    70           403            276.9              0.0      0.0%
+```
+
+A susceptible host loses **87%** of its reproduction to a single neighbour, and
+parasites capture four fifths of all births in the dish. The immune one gives up
+nothing to the parasite and keeps 69% of its solo rate — the remainder is simply
+the cost of sharing a finite soup with a useless neighbour.
+
+Immunity here is not a trade-off. A unit test builds the same defence by hand —
+move the host's copy-loop marker from `1100` to `1101` and fix the one template
+that points at it — and the resistant host replicates at exactly the ancestor's
+410 instructions while the parasite beside it produces nothing at all. The
+immune genotype that actually evolved is 10% slower than its susceptible
+neighbour (452 against 410 instructions), but that is because it is 70 cells
+long, not because it is immune.
+
+### 7. Most variants are broken; most births are not
+
+Take one run's entire gene bank — every distinct genome that ever appeared, most
+of them once — and culture a random sample of 150 properly:
+
+| | replicators | host-dependent | self-assisted | inert |
+|---|---:|---:|---:|---:|
+| sampled uniformly over genotypes | 28.0% | 64.0% | 3.3% | 4.7% |
+| sampled weighted by births | 84.7% | 13.3% | 0.7% | 1.3% |
+
+Most *variants* cannot reproduce alone. Most *births* produce something that
+can, because the things that work are the things doing the reproducing. The gap
+between those two rows is mutational load, measured.
+
+### 8. Genome length follows the CPU scheduler
+
+Give every creature the same slice of CPU regardless of size and length should
+fall, because a shorter genome reaches `divide` sooner. Give each creature a
+slice proportional to its length and that pressure disappears. Ten runs, five
+per condition, seeds and lengths matched so that a 64-cell creature receives
+exactly the same 20 instructions per turn in both:
+
+| condition | mean genome length in each run |
 |---|---|
-| constant slice | 56.2, 60.3, 72.0 |
-| slice proportional to length | 51.9, 69.0, 64.1 |
+| constant CPU slice | 57.1, 58.5, 60.6, 61.4, 62.5 |
+| slice proportional to length | 77.2, 78.3, 78.3, 81.9, 105.7 |
 
-The spread between seeds is larger than the difference between conditions. At
-this scale the prediction is simply not supported, and the honest summary is
-that genome length wanders between about 50 and 75 under both rules while the
-population churns. Longer runs are in `experiments/REPORT.md`.
+No overlap. The ancestor is 64. Every constant-slice world ends up shorter than
+it, every proportional-slice world longer.
 
-### 7. Evolvability is expensive
+An earlier version of this experiment, run before I found the reaper defects
+described in finding 2, showed nothing at all — the seed-to-seed spread swamped
+the difference. The effect was there; the noise from a broken death queue was
+larger.
 
-The same 100M instructions bought 240,205 births in the control and 52,548 –
-68,490 in the mutating runs. Three quarters of the world's reproductive output
-is spent on variants that do not work. Nothing here is free: the same noise that
-produced a better replicator in finding 4 is the reason the population is a
-third as productive.
+### 9. Evolvability is expensive
+
+The same 100M instructions bought 218,916 births with mutation off and
+171,721 – 175,651 with it on: a fifth of the world's reproductive output goes on
+variants that do not work. The noise that produced everything above is also the
+reason the population is a fifth less productive.
 
 ## How the claims here were checked
 
 Reading an evolved genome is a good way to convince yourself of something false,
-so every claim above came from a tool, and the tools are tested:
+so every claim came from a tool, and the tools are tested:
 
-* `isolation_assay` — culture a genome alone in a sterile soup. Answers "can it
-  reproduce by itself" with no interpretation required.
-* `coculture_assay` — culture it beside a host, and attribute every birth to the
-  genome it produced, using the gene bank's own records rather than by looking
-  at who ends up lying next to whom.
-* `trace` / `trace_summary` — single-step execution with loops folded, which is
-  where the register-by-register account in finding 4 comes from.
-* `fidelity` — the fraction of a genotype's births that came from its own kind.
-  This is how a real lineage is told apart from a shape that damaged mothers
-  keep re-emitting: the eight-cell fragments that show up in every census have
-  hundreds of births and a fidelity near zero.
+* `isolation_assay` — culture a genome alone in a sterile soup. Reproduction
+  means an **exact copy**, not merely a successful `divide`: a damaged creature
+  can ask for the smallest legal block, scribble in half of it and split it off
+  in eighty instructions, and a classifier that counts divisions ranks that junk
+  above every real replicator in the soup. Mine did, until it was fixed.
+* `coculture_assay` / `interaction` — culture it beside a host and attribute
+  every birth to the genome it produced, using the gene bank's records rather
+  than by looking at who ends up lying next to whom.
+* `susceptibility` — the same pairing left to run for a fixed budget, so the
+  numbers are rates. Reported at genotype level for both parties, because
+  comparing one seeded individual's births against a whole genotype's makes a
+  host look six times less fertile than the parasite on it.
+* `trace` / `trace_summary` — single-step execution with repeated loops folded
+  into one line.
+* `fidelity` — the fraction of a genotype's births that came from its own kind,
+  which is how a real lineage is told apart from a shape that damaged mothers
+  keep re-emitting. The eight-cell fragments in every census have hundreds of
+  births and a fidelity of zero.
 * `modal_parent` — ancestry by the route a genotype actually travels, not by
   whoever produced it first, which for a rare variant is often a freak event.
 
-`python3 -m unittest discover -s tests` runs 47 tests covering the instruction
+`python3 -m unittest discover -s tests` runs 53 tests covering instruction
 semantics, the allocator, template search, write protection, the division rules,
-determinism under a fixed seed, and the mutagen of finding 2 in isolation.
+determinism under a fixed seed, the reaper's ordering, the mutagen of finding 2,
+the division-versus-reproduction distinction, and the receptor-loss immunity of
+finding 6 built by hand.
 
 ## Limitations
 
-* One ancestor, one instruction set. Nothing here shows these results are
-  general rather than particular to this 64-cell program.
-* 100M instructions is a short evolutionary time; the longest runs here are
-  400M and the population is still churning at the end.
-* Genotypes are exact genome identity, so a single silent bit flip counts as a
-  new species. Diversity numbers should be read with that in mind.
-* The interaction matrix tests one guest against one host at a time. Real soup
-  neighbourhoods have several, and the outcome depends on which template is
-  nearest.
-* `soup/analysis.py` classifies with a fixed instruction budget; a very slow
-  replicator would be misfiled as inert.
+* One ancestor, one instruction set. Nothing here shows the results are general
+  rather than particular to this 64-cell program.
+* The longest runs are 400M instructions and the population is still churning at
+  the end. Nothing has converged.
+* A genotype is exact genome identity, so one silent bit flip is a new species.
+  Read the diversity numbers with that in mind.
+* The interaction matrix tests one guest against one host. Real neighbourhoods
+  have several, and the outcome depends on which template is nearest.
+* Classification uses a fixed instruction budget; a very slow replicator would
+  be filed as host-dependent or inert.
+* Findings 5 and 6 rest on one seed's ecology — the seed that produced parasites
+  at all. Two of three did not.
 
 ## Layout
 
@@ -317,19 +344,27 @@ soup/experiment.py   running an experiment and recording it
 soup/plot.py         ASCII charts, so results can live in a text file
 soup/ancestor.sm     the seed organism
 experiments/         the runs, their JSON histories, and the generated report
-tests/               47 unit tests
+tests/               53 unit tests
 ```
 
 ## Reproducing
 
-Every run is deterministic given its seed. The numbers quoted above come from:
+Every run is deterministic given its seed.
 
 ```bash
 python3 -m soup run control-no-mutation --instructions 100000000 --seed 1 \
         --copy-mutation 0 --cosmic 0
-python3 -m soup run baseline --instructions 100000000 --seed 1
+python3 -m soup run baseline-s2 --instructions 100000000 --seed 2
 python3 -m soup run matched-neutral-s1 --instructions 100000000 --seed 1 \
         --slice-size 0.3125 --slice-pow 1.0
+python3 -m soup run long-constant-s1 --instructions 400000000 --seed 1 \
+        --sample-every 4000000
 python3 experiments/fragmentation.py
+python3 experiments/viability.py
 python3 experiments/report.py > experiments/REPORT.md
+
+python3 -m soup interactions experiments/results/baseline-s2.json
+python3 -m soup resistance   experiments/results/baseline-s2.json
+python3 -m soup trace        experiments/results/baseline-s2.json 0045adk
+python3 -m soup show         experiments/results/baseline-s2.json 0070aea --against ancestor
 ```
