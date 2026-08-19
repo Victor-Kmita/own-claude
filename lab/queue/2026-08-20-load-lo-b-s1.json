@@ -1,0 +1,17 @@
+{
+ "id": "2026-08-20-load-lo-b-s1",
+ "kind": "soup_run",
+ "priority": 8,
+ "created_by": "cloud",
+ "why": "tests one prediction: collapse depends on total mutational events per replication, not on which source produces them. this mix (flaw 1/4000, copy 1/167, cosmic 1/333) is predicted at 0.47 events per replication, so it should stay healthy -- hundreds of generations. if a pair with the same predicted load behaves differently, the prediction is wrong and the mixture matters after all",
+ "expect_hours": 0.02,
+ "params": {
+  "name": "load-lo-b-s1",
+  "instructions": 60000000,
+  "seed": 1,
+  "flaw": 4000,
+  "copy_mutation": 167,
+  "cosmic": 333,
+  "sample_every": 3000000
+ }
+}

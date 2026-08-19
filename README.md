@@ -640,6 +640,33 @@ lineage. Generation depth collapses from ~250 to 10, and 100% of reproduction
 happens through foreign execution. The soup does not go extinct; it persists as
 a churn of fragments running each other's code.
 
+**Adding a third mutation source moves the threshold down, by exactly as much
+as it should.** The sweep above was run again on a compute server with
+instruction flaws switched on at one per 1,000 (finding 13), two seeds each:
+
+| k | generations, flaws off | generations, flaws on | cheapest replicator, flaws on |
+|---:|---:|---:|---|
+| 1 | 347 | 336, 336 | 386, **327** |
+| 2 | 319 | 311, 310 | **334**, 360 |
+| 4 | 230 | 281, 275 | **321**, 351 |
+| 8 | 243 | **41**, 221 | none, 380 |
+
+At eight times the standard rate, which was comfortable without flaws, one seed
+of two now collapses: 41 generations, 79 creatures left, 7,366 births against
+the 84,000 of its neighbours, and no self-sufficient replicator anywhere in the
+census.
+
+The arithmetic works out. A flaw every 1,000 instructions costs a creature
+about **0.4 events per replication**, since a replication is around 400
+instructions. Copy errors at k=8 cost about 0.5 per genome. Together that is
+0.9 — just under the one-per-replication threshold, which is precisely where a
+population should start failing to hold onto itself. The threshold has not
+moved; what moved is how much of the budget was already spent.
+
+And in the middle of the range, flaws buy what a higher mutation rate used to:
+the cheapest replicators at k=2 and k=4 (321–360) beat anything the flawless
+sweep found below k=8.
+
 **The ecology claim I cannot support.** Averaged over seeds the parasite
 indicator is highest at the lowest rates, which is the direction Ray describes.
 But the within-condition spread is 0.12 to 0.85 at the same rate — as large as

@@ -1,0 +1,17 @@
+{
+ "id": "2026-08-20-load-hi-b-s2",
+ "kind": "soup_run",
+ "priority": 8,
+ "created_by": "cloud",
+ "why": "tests one prediction: collapse depends on total mutational events per replication, not on which source produces them. this mix (flaw 1/500, copy 1/250, cosmic 1/500) is predicted at 1.05 events per replication, so it should collapse -- few generations, no self-sufficient replicator. if a pair with the same predicted load behaves differently, the prediction is wrong and the mixture matters after all",
+ "expect_hours": 0.02,
+ "params": {
+  "name": "load-hi-b-s2",
+  "instructions": 60000000,
+  "seed": 2,
+  "flaw": 500,
+  "copy_mutation": 250,
+  "cosmic": 500,
+  "sample_every": 3000000
+ }
+}
