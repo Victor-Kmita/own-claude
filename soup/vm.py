@@ -385,6 +385,11 @@ def run_slice(world, cr: "Creature", budget: int) -> int:
                     cr.daughter = None
                 addr = world.memory.allocate(want_size)
                 if addr is None:
+                    # No contiguous gap big enough.  This is not a neutral
+                    # failure: ax still holds whatever the creature last put
+                    # there, and the copy loop that follows will write to it.
+                    # Fragmentation is a mutagen -- see the write-up.
+                    world.alloc_failures += 1
                     st.errors += 1
                 else:
                     cr.daughter = (addr, want_size)

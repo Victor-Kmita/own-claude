@@ -1,0 +1,97 @@
+{
+ "budget": 5000000,
+ "mutation": "off",
+ "rows": [
+  {
+   "soup_size": 1000,
+   "capacity": 15,
+   "alive": 6,
+   "genotypes_seen": 6,
+   "genotypes_alive": 1,
+   "alloc_failures": 1441,
+   "alloc_failures_per_birth": 0.15,
+   "births": 9613,
+   "mean_size": 64.0,
+   "max_size": 64,
+   "extinct": false
+  },
+  {
+   "soup_size": 2000,
+   "capacity": 31,
+   "alive": 23,
+   "genotypes_seen": 59,
+   "genotypes_alive": 5,
+   "alloc_failures": 4498,
+   "alloc_failures_per_birth": 1.184,
+   "births": 3798,
+   "mean_size": 68.87,
+   "max_size": 130,
+   "extinct": false
+  },
+  {
+   "soup_size": 4000,
+   "capacity": 62,
+   "alive": 27,
+   "genotypes_seen": 168,
+   "genotypes_alive": 10,
+   "alloc_failures": 3380,
+   "alloc_failures_per_birth": 0.43,
+   "births": 7860,
+   "mean_size": 75.0,
+   "max_size": 133,
+   "extinct": false
+  },
+  {
+   "soup_size": 8000,
+   "capacity": 125,
+   "alive": 34,
+   "genotypes_seen": 15,
+   "genotypes_alive": 2,
+   "alloc_failures": 1760,
+   "alloc_failures_per_birth": 0.183,
+   "births": 9624,
+   "mean_size": 96.0,
+   "max_size": 128,
+   "extinct": false
+  },
+  {
+   "soup_size": 16000,
+   "capacity": 250,
+   "alive": 93,
+   "genotypes_seen": 10,
+   "genotypes_alive": 2,
+   "alloc_failures": 1592,
+   "alloc_failures_per_birth": 0.138,
+   "births": 11515,
+   "mean_size": 64.69,
+   "max_size": 128,
+   "extinct": false
+  },
+  {
+   "soup_size": 32000,
+   "capacity": 500,
+   "alive": 311,
+   "genotypes_seen": 5,
+   "genotypes_alive": 1,
+   "alloc_failures": 91,
+   "alloc_failures_per_birth": 0.008,
+   "births": 11708,
+   "mean_size": 64.0,
+   "max_size": 64,
+   "extinct": false
+  },
+  {
+   "soup_size": 60000,
+   "capacity": 937,
+   "alive": 375,
+   "genotypes_seen": 1,
+   "genotypes_alive": 1,
+   "alloc_failures": 393,
+   "alloc_failures_per_birth": 0.033,
+   "births": 11741,
+   "mean_size": 64.0,
+   "max_size": 64,
+   "extinct": false
+  }
+ ]
+}

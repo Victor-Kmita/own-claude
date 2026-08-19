@@ -134,7 +134,7 @@ class World:
         self,
         soup_size: int = 60000,
         seed: int = 1,
-        slice_size: int = 20,
+        slice_size: float = 20,
         slice_pow: float = 0.0,
         copy_mutation_rate: float = 1 / 1500,
         cosmic_period: int = 3000,
@@ -168,6 +168,7 @@ class World:
         self.next_ray = cosmic_period
         self.deaths = 0
         self.births = 0
+        self.alloc_failures = 0
         self.history: list[dict] = []
         self.extinct = False
         self._pending_births: list[Creature] = []

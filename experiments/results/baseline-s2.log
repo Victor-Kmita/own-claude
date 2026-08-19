@@ -1,0 +1,116 @@
+     1.0M  alive= 457 types=  55  H= 1.80  size~  60.2  dom=0064aaa (78%)  foreign=19% fbreed=16%
+     2.0M  alive= 500 types=  61  H= 2.07  size~  57.1  dom=0064aaa (72%)  foreign=29% fbreed=27%
+     3.0M  alive= 462 types=  66  H= 2.42  size~  54.0  dom=0064aaa (65%)  foreign=45% fbreed=38%
+     4.0M  alive= 495 types=  92  H= 2.83  size~  55.0  dom=0064aaa (62%)  foreign=46% fbreed=47%
+     5.0M  alive= 448 types=  83  H= 2.99  size~  52.6  dom=0064aaa (57%)  foreign=56% fbreed=54%
+     6.0M  alive= 455 types=  99  H= 3.50  size~  52.3  dom=0064aaa (51%)  foreign=57% fbreed=57%
+     7.0M  alive= 442 types= 108  H= 3.71  size~  52.6  dom=0064aaa (49%)  foreign=62% fbreed=61%
+     8.0M  alive= 445 types= 124  H= 4.18  size~  53.8  dom=0064aaa (44%)  foreign=63% fbreed=64%
+     9.0M  alive= 461 types= 127  H= 4.37  size~  53.3  dom=0064aaa (39%)  foreign=66% fbreed=69%
+    10.0M  alive= 475 types= 142  H= 4.71  size~  53.1  dom=0064aaa (36%)  foreign=70% fbreed=71%
+    11.0M  alive= 480 types= 157  H= 4.97  size~  54.7  dom=0064aaa (34%)  foreign=70% fbreed=72%
+    12.0M  alive= 472 types= 162  H= 5.19  size~  55.2  dom=0064aaa (31%)  foreign=71% fbreed=73%
+    13.0M  alive= 469 types= 165  H= 5.26  size~  55.0  dom=0064aaa (31%)  foreign=72% fbreed=74%
+    14.0M  alive= 465 types= 180  H= 5.47  size~  54.7  dom=0064aaa (29%)  foreign=72% fbreed=73%
+    15.0M  alive= 453 types= 175  H= 5.59  size~  54.1  dom=0064aaa (27%)  foreign=72% fbreed=73%
+    16.0M  alive= 464 types= 186  H= 5.81  size~  53.2  dom=0064aaa (25%)  foreign=70% fbreed=72%
+    17.0M  alive= 488 types= 209  H= 6.11  size~  53.4  dom=0064aaa (21%)  foreign=70% fbreed=71%
+    18.0M  alive= 511 types= 214  H= 6.18  size~  53.0  dom=0064aaa (19%)  foreign=69% fbreed=70%
+    19.0M  alive= 508 types= 218  H= 6.35  size~  52.3  dom=0064aaa (16%)  foreign=70% fbreed=68%
+    20.0M  alive= 499 types= 218  H= 6.42  size~  52.4  dom=0064aaa (16%)  foreign=71% fbreed=68%
+    21.0M  alive= 496 types= 226  H= 6.59  size~  52.6  dom=0064aaa (14%)  foreign=71% fbreed=69%
+    22.0M  alive= 510 types= 244  H= 6.76  size~  54.4  dom=0064aaa (13%)  foreign=72% fbreed=70%
+    23.0M  alive= 499 types= 243  H= 6.84  size~  55.0  dom=0064aaa (12%)  foreign=74% fbreed=72%
+    24.0M  alive= 506 types= 248  H= 6.91  size~  55.6  dom=0064aaa (11%)  foreign=74% fbreed=72%
+    25.0M  alive= 516 types= 254  H= 6.98  size~  56.5  dom=0064aaa (10%)  foreign=72% fbreed=69%
+    26.0M  alive= 519 types= 256  H= 6.99  size~  57.3  dom=0064aaa (9%)  foreign=71% fbreed=70%
+    27.0M  alive= 508 types= 259  H= 7.09  size~  58.2  dom=0064aaa (9%)  foreign=72% fbreed=70%
+    28.0M  alive= 504 types= 261  H= 7.15  size~  58.5  dom=0064aaa (8%)  foreign=74% fbreed=71%
+    29.0M  alive= 509 types= 263  H= 7.18  size~  58.6  dom=0064aaa (8%)  foreign=72% fbreed=69%
+    30.0M  alive= 539 types= 267  H= 7.10  size~  55.2  dom=0008acd (8%)  foreign=72% fbreed=68%
+    31.0M  alive= 561 types= 260  H= 6.91  size~  53.2  dom=0008acd (12%)  foreign=73% fbreed=70%
+    32.0M  alive= 582 types= 263  H= 6.77  size~  51.6  dom=0008acd (15%)  foreign=76% fbreed=70%
+    33.0M  alive= 567 types= 255  H= 6.77  size~  51.6  dom=0008acd (15%)  foreign=77% fbreed=71%
+    34.0M  alive= 589 types= 265  H= 6.69  size~  50.0  dom=0008acd (17%)  foreign=80% fbreed=74%
+    35.0M  alive= 569 types= 257  H= 6.72  size~  50.9  dom=0008acd (16%)  foreign=78% fbreed=71%
+    36.0M  alive= 565 types= 252  H= 6.73  size~  51.1  dom=0008acd (16%)  foreign=77% fbreed=70%
+    37.0M  alive= 557 types= 247  H= 6.72  size~  50.8  dom=0008acd (16%)  foreign=77% fbreed=70%
+    38.0M  alive= 556 types= 256  H= 6.79  size~  51.7  dom=0008acd (16%)  foreign=76% fbreed=70%
+    39.0M  alive= 537 types= 241  H= 6.71  size~  51.2  dom=0008acd (15%)  foreign=76% fbreed=69%
+    40.0M  alive= 539 types= 243  H= 6.74  size~  50.8  dom=0008acd (14%)  foreign=75% fbreed=67%
+    41.0M  alive= 550 types= 264  H= 6.90  size~  50.9  dom=0008acd (14%)  foreign=76% fbreed=70%
+    42.0M  alive= 552 types= 269  H= 6.94  size~  50.9  dom=0008acd (13%)  foreign=78% fbreed=72%
+    43.0M  alive= 543 types= 271  H= 7.03  size~  51.5  dom=0008acd (11%)  foreign=79% fbreed=73%
+    44.0M  alive= 561 types= 293  H= 7.18  size~  52.4  dom=0008acd (10%)  foreign=78% fbreed=74%
+    45.0M  alive= 564 types= 292  H= 7.18  size~  52.1  dom=0008acd (9%)  foreign=76% fbreed=74%
+    46.0M  alive= 567 types= 285  H= 7.09  size~  52.4  dom=0008acd (9%)  foreign=76% fbreed=74%
+    47.0M  alive= 558 types= 288  H= 7.14  size~  53.4  dom=0008acd (8%)  foreign=76% fbreed=74%
+    48.0M  alive= 550 types= 289  H= 7.18  size~  53.9  dom=0008aeh (8%)  foreign=77% fbreed=76%
+    49.0M  alive= 539 types= 279  H= 7.13  size~  54.4  dom=0008aeh (8%)  foreign=76% fbreed=76%
+    50.0M  alive= 472 types= 248  H= 6.96  size~  55.6  dom=0008aeh (8%)  foreign=76% fbreed=77%
+    51.0M  alive= 484 types= 251  H= 7.02  size~  55.6  dom=0008aeh (8%)  foreign=74% fbreed=76%
+    52.0M  alive= 537 types= 266  H= 7.05  size~  54.5  dom=0067adj (7%)  foreign=73% fbreed=75%
+    53.0M  alive= 539 types= 261  H= 7.03  size~  53.0  dom=0008aeh (7%)  foreign=76% fbreed=78%
+    54.0M  alive= 553 types= 264  H= 6.95  size~  52.6  dom=0008ago (9%)  foreign=75% fbreed=76%
+    55.0M  alive= 575 types= 267  H= 6.89  size~  51.9  dom=0008ago (11%)  foreign=75% fbreed=78%
+    56.0M  alive= 561 types= 262  H= 6.87  size~  51.8  dom=0008ago (11%)  foreign=78% fbreed=78%
+    57.0M  alive= 545 types= 253  H= 6.83  size~  51.8  dom=0008ago (11%)  foreign=78% fbreed=78%
+    58.0M  alive= 546 types= 261  H= 6.94  size~  52.4  dom=0008ago (11%)  foreign=76% fbreed=77%
+    59.0M  alive= 523 types= 245  H= 6.88  size~  52.0  dom=0008ago (11%)  foreign=75% fbreed=75%
+    60.0M  alive= 517 types= 243  H= 6.87  size~  52.5  dom=0008ago (11%)  foreign=75% fbreed=75%
+    61.0M  alive= 531 types= 249  H= 6.92  size~  52.7  dom=0008ago (10%)  foreign=73% fbreed=74%
+    62.0M  alive= 527 types= 245  H= 6.89  size~  52.3  dom=0008ago (10%)  foreign=72% fbreed=71%
+    63.0M  alive= 508 types= 232  H= 6.85  size~  52.8  dom=0008ago (9%)  foreign=72% fbreed=71%
+    64.0M  alive= 480 types= 224  H= 6.81  size~  53.5  dom=0008ago (9%)  foreign=71% fbreed=69%
+    65.0M  alive= 463 types= 222  H= 6.82  size~  53.9  dom=0008ago (8%)  foreign=70% fbreed=69%
+    66.0M  alive= 488 types= 235  H= 6.90  size~  54.8  dom=0008ago (8%)  foreign=66% fbreed=67%
+    67.0M  alive= 505 types= 243  H= 6.94  size~  54.9  dom=0008ago (7%)  foreign=64% fbreed=64%
+    68.0M  alive= 446 types= 230  H= 7.00  size~  55.8  dom=0008ago (6%)  foreign=65% fbreed=65%
+    69.0M  alive= 442 types= 224  H= 6.95  size~  57.0  dom=0064cng (8%)  foreign=65% fbreed=64%
+    70.0M  alive= 468 types= 229  H= 6.97  size~  59.1  dom=0064cng (9%)  foreign=58% fbreed=60%
+    71.0M  alive= 474 types= 240  H= 7.07  size~  59.1  dom=0064cng (9%)  foreign=60% fbreed=62%
+    72.0M  alive= 468 types= 241  H= 7.13  size~  58.7  dom=0064cng (8%)  foreign=59% fbreed=62%
+    73.0M  alive= 486 types= 247  H= 7.17  size~  59.0  dom=0064cng (9%)  foreign=58% fbreed=61%
+    74.0M  alive= 461 types= 229  H= 7.04  size~  59.1  dom=0064cng (8%)  foreign=58% fbreed=63%
+    75.0M  alive= 461 types= 237  H= 7.09  size~  59.2  dom=0064cng (8%)  foreign=57% fbreed=64%
+    76.0M  alive= 479 types= 245  H= 7.11  size~  59.4  dom=0064cng (7%)  foreign=59% fbreed=64%
+    77.0M  alive= 492 types= 249  H= 7.06  size~  57.3  dom=0044ada (7%)  foreign=63% fbreed=69%
+    78.0M  alive= 462 types= 244  H= 7.15  size~  56.1  dom=0064cng (6%)  foreign=64% fbreed=72%
+    79.0M  alive= 474 types= 256  H= 7.17  size~  54.6  dom=0064cng (6%)  foreign=67% fbreed=72%
+    80.0M  alive= 570 types= 286  H= 7.11  size~  53.3  dom=0008aaa (6%)  foreign=62% fbreed=72%
+    81.0M  alive= 546 types= 288  H= 7.23  size~  54.6  dom=0008aaa (7%)  foreign=68% fbreed=72%
+    82.0M  alive= 504 types= 282  H= 7.27  size~  55.2  dom=0008aaa (8%)  foreign=71% fbreed=72%
+    83.0M  alive= 518 types= 296  H= 7.39  size~  55.1  dom=0008aaa (7%)  foreign=70% fbreed=71%
+    84.0M  alive= 531 types= 306  H= 7.49  size~  54.6  dom=0008aaa (7%)  foreign=71% fbreed=72%
+    85.0M  alive= 536 types= 310  H= 7.51  size~  54.3  dom=0008aaa (6%)  foreign=71% fbreed=73%
+    86.0M  alive= 537 types= 316  H= 7.58  size~  54.5  dom=0008aaa (6%)  foreign=70% fbreed=72%
+    87.0M  alive= 536 types= 309  H= 7.53  size~  54.5  dom=0008aaa (5%)  foreign=67% fbreed=69%
+    88.0M  alive= 517 types= 302  H= 7.55  size~  54.4  dom=0008aaa (5%)  foreign=68% fbreed=71%
+    89.0M  alive= 518 types= 301  H= 7.52  size~  54.5  dom=0008aaa (5%)  foreign=68% fbreed=70%
+    90.0M  alive= 491 types= 287  H= 7.48  size~  54.8  dom=0008aaa (5%)  foreign=70% fbreed=70%
+    91.0M  alive= 509 types= 299  H= 7.52  size~  54.4  dom=0008aaa (4%)  foreign=68% fbreed=69%
+    92.0M  alive= 503 types= 289  H= 7.45  size~  53.9  dom=0008aaa (5%)  foreign=68% fbreed=67%
+    93.0M  alive= 507 types= 286  H= 7.45  size~  54.5  dom=0008aaa (4%)  foreign=65% fbreed=66%
+    94.0M  alive= 477 types= 262  H= 7.31  size~  55.1  dom=0064ebm (5%)  foreign=63% fbreed=62%
+    95.0M  alive= 471 types= 262  H= 7.29  size~  55.2  dom=0064ebm (5%)  foreign=64% fbreed=64%
+    96.0M  alive= 488 types= 269  H= 7.32  size~  56.2  dom=0064ebm (4%)  foreign=63% fbreed=63%
+    97.0M  alive= 486 types= 262  H= 7.25  size~  56.7  dom=0064enh (4%)  foreign=62% fbreed=67%
+    98.0M  alive= 453 types= 254  H= 7.28  size~  57.0  dom=0064enh (6%)  foreign=65% fbreed=68%
+    99.0M  alive= 445 types= 249  H= 7.27  size~  58.0  dom=0064enh (5%)  foreign=61% fbreed=65%
+   100.0M  alive= 428 types= 255  H= 7.36  size~  59.7  dom=0064enh (5%)  foreign=61% fbreed=64%
+
+wrote /home/user/own-claude/experiments/results/baseline-s2.json  (502,402 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0064enh   21    64     435  0.68    replicator    420      412 0064ecn
+  0064ebm   17    64     649  0.51    replicator    420      358 0064crv
+  0008aaa   16     8    1551  0.00         inert      -     5589 0064aaq
+  0064eoy   16    64     319  0.56    replicator    420      586 0064eah
+  0064emm   10    64     263  0.58    replicator    420     1076 0008aaa
+  0015aas    8    15     112  0.00         inert      -     3312 0128amn
+  0064eah    7    64     231  0.68    replicator    420      981 0064crv
+  0009aag    7     9     243  0.00         inert      -     1367 0064aaa
+  0064fap    7    64      87  0.33    replicator    420      415 0064exy
+  0008aku    6     8      56  0.00         inert      -     2732 0069agy
+  0011aac    6    11      63  0.00         inert      -     1032 0064emm
+  0064ffq    6    64      87  0.33    replicator    420      114 0064enh
