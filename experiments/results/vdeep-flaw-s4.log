@@ -62,3 +62,6 @@
   1240.0M  alive= 666 types= 219  H= 6.09  size~  37.2  dom=0037skb (14%)  foreign=3% fbreed=1% gen=6673
   1260.0M  alive= 647 types= 233  H= 6.51  size~  37.1  dom=0037uvb (8%)  foreign=3% fbreed=5% gen=6781
   1280.0M  alive= 659 types= 235  H= 6.18  size~  37.1  dom=0037pdp (10%)  foreign=4% fbreed=4% gen=6892
+  1300.0M  alive= 665 types= 221  H= 6.10  size~  37.0  dom=0037xsc (10%)  foreign=4% fbreed=4% gen=6998
+  1320.0M  alive= 634 types= 201  H= 6.10  size~  37.1  dom=0037xsc (12%)  foreign=2% fbreed=1% gen=7107
+  1340.0M  alive= 637 types= 201  H= 5.79  size~  37.2  dom=0037iei (16%)  foreign=3% fbreed=2% gen=7215
