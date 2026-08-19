@@ -77,10 +77,10 @@ Three consequences follow, and all three matter:
   parts, because nothing is addressed numerically.
 * **Shared namespace.** The search does not stop at the edge of a creature. A
   creature that has lost its own copy loop will find its *neighbour's*. This is
-  where parasitism comes from — see finding 6 in the README.
+  where parasitism comes from — see finding 7 in the README.
 * **Templates can be attacked and defended.** A host that changes the pattern
   naming its copy loop becomes invisible to a parasite searching for the old
-  one, at no cost to itself. That is finding 7.
+  one, at no cost to itself. That is finding 8.
 
 Templates are capped at 10 cells. A longer nop run is truncated when used as a
 template.
@@ -256,7 +256,7 @@ every result in the README.
 **Time.** The scheduler gives every living creature a slice of instructions in
 turn. The slice may be constant, or proportional to genome length raised to a
 power — and which one you choose decides whether selection favours short
-genomes or is indifferent to length (finding 9).
+genomes or is indifferent to length (finding 10).
 
 **Death.** When the soup fills past 80%, or when an allocation cannot be
 satisfied, the reaper kills from the head of a queue. Creatures enter at the

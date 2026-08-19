@@ -1,0 +1,114 @@
+{
+ "budget": 40000000,
+ "ancestor_cost": 410,
+ "rows": [
+  {
+   "genotype": "0038rdr",
+   "size": 38,
+   "cost": 216,
+   "advantage": 0.473,
+   "share": 1.0,
+   "births": {
+    "ancestor": 38,
+    "challenger": 166447
+   },
+   "outcome": "challenger sweeps"
+  },
+  {
+   "genotype": "0056gte",
+   "size": 56,
+   "cost": 365,
+   "advantage": 0.11,
+   "share": 1.0,
+   "births": {
+    "ancestor": 470,
+    "challenger": 99157
+   },
+   "outcome": "challenger sweeps"
+  },
+  {
+   "genotype": "0057gto",
+   "size": 57,
+   "cost": 375,
+   "advantage": 0.085,
+   "share": 1.0,
+   "births": {
+    "ancestor": 488,
+    "challenger": 99039
+   },
+   "outcome": "challenger sweeps"
+  },
+  {
+   "genotype": "0059imr",
+   "size": 59,
+   "cost": 381,
+   "advantage": 0.071,
+   "share": 0.874,
+   "births": {
+    "ancestor": 11259,
+    "challenger": 83882
+   },
+   "outcome": "coexist"
+  },
+  {
+   "genotype": "0061abg",
+   "size": 61,
+   "cost": 390,
+   "advantage": 0.049,
+   "share": 0.96,
+   "births": {
+    "ancestor": 16462,
+    "challenger": 77056
+   },
+   "outcome": "coexist"
+  },
+  {
+   "genotype": "0061ukh",
+   "size": 61,
+   "cost": 395,
+   "advantage": 0.037,
+   "share": 0.917,
+   "births": {
+    "ancestor": 18034,
+    "challenger": 75625
+   },
+   "outcome": "coexist"
+  },
+  {
+   "genotype": "0062mup",
+   "size": 62,
+   "cost": 401,
+   "advantage": 0.022,
+   "share": 0.512,
+   "births": {
+    "ancestor": 44309,
+    "challenger": 45759
+   },
+   "outcome": "coexist"
+  },
+  {
+   "genotype": "0063bhk",
+   "size": 63,
+   "cost": 405,
+   "advantage": 0.012,
+   "share": 0.508,
+   "births": {
+    "ancestor": 43944,
+    "challenger": 45406
+   },
+   "outcome": "coexist"
+  },
+  {
+   "genotype": "0062pqw",
+   "size": 62,
+   "cost": 409,
+   "advantage": 0.002,
+   "share": 0.504,
+   "births": {
+    "ancestor": 45066,
+    "challenger": 45744
+   },
+   "outcome": "coexist"
+  }
+ ]
+}

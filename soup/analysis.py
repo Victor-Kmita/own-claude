@@ -431,3 +431,167 @@ def phenotype_signature(genome: bytes, panel: list[bytes], budget: int = 200_000
     what = describe(genome, budget=budget)
     encounters = tuple(interaction(genome, ref, budget=budget) for ref in panel)
     return (what["kind"], what["cost"], what["divides_without_copying"]) + encounters
+
+
+def competition(genomes: dict[str, bytes], budget: int = 20_000_000,
+                soup_size: int = 20_000, each: int = 12, layout: int = 0,
+                samples: int = 20, cosmic_period: int | None = None,
+                profile_each: int = 0, seed: int = 1) -> dict:
+    """Put two or more genotypes in one soup and see which one takes it over.
+
+    A cheaper replicator is only interesting if being cheaper actually wins, and
+    that is not a given: a creature also has to survive the reaper, find room to
+    allocate, and not be eaten.  This is the digital version of a competition
+    assay -- equal numbers of each, interleaved so neither gets a better
+    neighbourhood, and then simply count.
+
+    ``cosmic_period`` adds background noise.  It is worth using: with mutation
+    off this world is deterministic and finite, so it must eventually fall into
+    a periodic orbit, and two genotypes can then sit in fixed proportions
+    forever without that meaning selection cannot tell them apart.  A trickle of
+    noise breaks the orbit and lets the contest resolve.
+    """
+    from .world import World
+
+    w = World(soup_size=soup_size, seed=seed, copy_mutation_rate=0.0,
+              cosmic_period=cosmic_period or 10 ** 18)
+    names = list(genomes)
+    labels: dict[str, str] = {}
+    addr = 0
+    for i in range(each):
+        order = names[i % len(names):] + names[:i % len(names)] if layout else names
+        for name in order:
+            cr = w.inject(list(genomes[name]), address=addr, lineage=name)
+            labels[cr.genotype] = name
+            addr += len(genomes[name])
+
+    def census():
+        """Count by lineage, not by genotype.
+
+        With any mutation at all the seeded genotypes disappear within a few
+        million instructions -- not because they lost, but because their
+        children are no longer bit-identical to them.  Counting descendants
+        instead is what makes the contest answerable at all.
+        """
+        counts = {n: 0 for n in names}
+        for cr in w.creatures:
+            if cr.alive and cr.lineage in counts:
+                counts[cr.lineage] += 1
+        return counts
+
+    history = []
+    step = max(1, budget // samples)
+    next_sample = 0
+    while w.clock < budget and not w.extinct:
+        w.step_generation()
+        if w.clock >= next_sample:
+            history.append({"clock": w.clock, **census()})
+            next_sample += step
+    final = census()
+    total = sum(final.values()) or 1
+    # Standing population is not the whole story: a faster replicator can have
+    # produced far more daughters and still hold the same number of cells, if
+    # what limits the population is memory rather than CPU.
+    births = {n: 0 for n in names}
+    for cr in w.creatures:
+        if cr.lineage in births:
+            births[cr.lineage] += cr.stats.births
+    # Two replicators sharing a soup are not necessarily just competing.  If one
+    # of them is reaching into the other's code, that shows up here.
+    foreign = {n: {"calls": 0, "reads": 0, "n": 0} for n in names}
+    for cr in w.creatures:
+        if cr.alive and cr.lineage in foreign:
+            f = foreign[cr.lineage]
+            f["calls"] += cr.stats.foreign_calls
+            f["reads"] += cr.stats.foreign_reads
+            f["n"] += 1
+    for n in names:
+        c = foreign[n]
+        if c["n"]:
+            c["calls_per_creature"] = round(c["calls"] / c["n"], 1)
+            c["reads_per_creature"] = round(c["reads"] / c["n"], 1)
+    return {
+        "final": final,
+        "share": {n: round(final[n] / total, 3) for n in names},
+        "births": births,
+        "winner": max(final, key=final.get),
+        "foreign": foreign,
+        "survivors": _survivor_profile(w, names, profile_each),
+        "history": history,
+        "instructions": w.clock,
+    }
+
+
+def _survivor_profile(w, names: list[str], sample_size: int) -> dict:
+    """What is left of each lineage at the end, as behaviour rather than count.
+
+    A lineage can be numerous and no longer carry the thing that made it
+    interesting.  Sampling its living members and culturing each one says
+    whether the innovation is still there: an unrolled copy loop shows up as a
+    cost per cell below six, a reverted one as six and a half.
+    """
+    import random as _random
+
+    if not sample_size:
+        return {}
+    rng = _random.Random(11)
+    out = {}
+    for name in names:
+        members = [c for c in w.creatures if c.alive and c.lineage == name]
+        if not members:
+            out[name] = {"alive": 0}
+            continue
+        picked = rng.sample(members, min(sample_size, len(members)))
+        kinds, per_cell = Counter(), []
+        for cr in picked:
+            what = describe(w.read_genome(cr.start, cr.size), budget=120_000)
+            kinds[what["kind"]] += 1
+            if what.get("cost_per_cell"):
+                per_cell.append(what["cost_per_cell"])
+        out[name] = {
+            "alive": len(members),
+            "sampled": len(picked),
+            "kinds": dict(kinds),
+            "replicator_share": round(kinds["replicator"] / len(picked), 2),
+            "mean_cost_per_cell": (round(sum(per_cell) / len(per_cell), 2)
+                                   if per_cell else None),
+        }
+    return out
+
+
+def robustness(genome: bytes, budget: int = 150_000) -> dict:
+    """How much of a genome's one-mutation neighbourhood still works.
+
+    Every single-bit flip of every cell, cultured alone.  The fraction that
+    still replicates is the genotype's *flatness*: how much of the space around
+    it is habitable.  Quasispecies theory says selection acts on that
+    neighbourhood, not only on the genotype itself, which is why a slower but
+    flatter replicator can beat a faster but more fragile one when mutation is
+    common -- survival of the flattest, in Wilke's phrase.
+
+    Returns the fraction that still self-replicate, the fraction that are
+    exactly as cheap as the parent, and the mean cost of the survivors.
+    """
+    parent = describe(genome, budget=budget)
+    survivors, neutral, costs = 0, 0, []
+    total = 0
+    for i in range(len(genome)):
+        for bit in range(5):
+            mutant = bytearray(genome)
+            mutant[i] ^= 1 << bit
+            total += 1
+            what = describe(bytes(mutant), budget=budget)
+            if what["kind"] == "replicator":
+                survivors += 1
+                costs.append(what["cost"])
+                if what["cost"] == parent["cost"] and len(mutant) == len(genome):
+                    neutral += 1
+    return {
+        "cells": len(genome),
+        "parent_cost": parent["cost"],
+        "mutants": total,
+        "still_replicate": survivors,
+        "fraction_viable": round(survivors / total, 3) if total else 0.0,
+        "fraction_neutral": round(neutral / total, 3) if total else 0.0,
+        "mean_cost_of_survivors": round(sum(costs) / len(costs), 1) if costs else None,
+    }

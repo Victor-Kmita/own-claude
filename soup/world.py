@@ -262,7 +262,8 @@ class World:
             self.soup[(start + i) % self.soup_size] = op
 
     # -- population --------------------------------------------------------
-    def inject(self, code, address: int | None = None) -> Creature:
+    def inject(self, code, address: int | None = None,
+               lineage: str | None = None) -> Creature:
         """Place a genome in the soup as a living creature."""
         size = len(code)
         addr = self.memory.allocate(size) if address is None else address
@@ -275,7 +276,8 @@ class World:
         self.write_genome(addr, code)
         label = self.genebank.name(bytes(code), self.clock, None)
         cr = Creature(self.next_cid, addr, size, genotype=label,
-                      born_tick=self.clock, generation=0)
+                      born_tick=self.clock, generation=0,
+                      lineage=lineage if lineage is not None else label)
         self.next_cid += 1
         self.creatures.append(cr)
         self.reaper.append(cr)
@@ -290,7 +292,8 @@ class World:
         label = self.genebank.name(genome, self.clock, mother.genotype)
         child = Creature(self.next_cid, dstart, dsize, genotype=label,
                          mother=mother.cid, born_tick=self.clock,
-                         generation=mother.generation + 1)
+                         generation=mother.generation + 1,
+                         lineage=mother.lineage)
         self.next_cid += 1
         self.births += 1
         self._pending_births.append(child)

@@ -145,11 +145,11 @@ class Creature:
 
     __slots__ = ("cid", "start", "size", "cpu", "daughter", "daughter_writes",
                  "genotype", "mother", "born_tick", "generation", "stats",
-                 "alive", "slice_left")
+                 "alive", "slice_left", "lineage")
 
     def __init__(self, cid: int, start: int, size: int, genotype: str = "?",
                  mother: int | None = None, born_tick: int = 0,
-                 generation: int = 0):
+                 generation: int = 0, lineage: str | None = None):
         self.cid = cid
         self.start = start
         self.size = size
@@ -158,6 +158,12 @@ class Creature:
         self.daughter_writes = 0
         self.genotype = genotype
         self.mother = mother
+        # A label inherited from the mother and never changed by mutation.  A
+        # genotype is an exact genome and dissolves within a few million
+        # instructions once mutation is on; a lineage is "everything descended
+        # from this creature", which is the level most questions are really
+        # about.
+        self.lineage = lineage
         self.born_tick = born_tick
         self.generation = generation
         self.stats = ExecStats()

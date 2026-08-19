@@ -274,6 +274,51 @@ immediately; the first pass through those cells throws a harmless error.
 | per cell copied | 6.41 | 5.68 | 6 (from 10) |
 | efficiency gain | — | 1.9× | 5.75× |
 
+### Survival of the flattest, unlooked for
+
+Wilke et al. (2001) showed in Avida that at high mutation rates selection favours
+the genotype with the flattest neighbourhood rather than the fastest replicator.
+I did not set out to test this; it turned up while asking whether the unrolled
+replicator from the 3-billion-instruction run actually beats its compressed
+sibling.
+
+It does not.  From one cosmic ray per five million instructions down to one per
+two hundred thousand, the slower and flatter lineage wins, and at the bottom of
+that window the faster one goes extinct in every seed tried.  Measuring the two
+neighbourhoods directly says why: both tolerate mutation about equally often
+(32% and 31% of single-bit mutants still replicate), but the flat replicator's
+surviving mutants cost what it costs -- 239 instructions -- while the unrolled
+one's average 5,109.  Twenty-one times worse, for a genotype that is only 10%
+cheaper to begin with.
+
+Two methodological notes came out of it.  Counting exact genotypes rather than
+lineages gave the opposite answer at low noise, because with any mutation the
+seeded genotypes disappear into their own descendants within a few million
+instructions.  And with mutation entirely off, this world is deterministic and
+finite, so a two-genotype competition falls into a periodic orbit and sits there
+-- which looks exactly like stable coexistence and is not.
+
+Below the window the comparison degenerates rather than reversing cleanly: the
+faster lineage becomes numerous again while its members' cost per cell rises
+from 5.68 to 95, so they are descendants in name only.  I have no established
+explanation for that tail.
+
+### How strong is selection here at all
+
+A companion measurement, since the flatness result depends on knowing what a 10%
+advantage is worth.  The ancestor against a series of its own descendants of
+known cost, forty million instructions each:
+
+| advantage in instructions per daughter | outcome |
+|---|---|
+| 47%, 11%, 8.5% | the challenger sweeps to 100% |
+| 7.1%, 4.9%, 3.7% | the challenger takes 87–96% |
+| 2.2%, 1.2%, 0.2% | 50/50, no resolution |
+
+Selection here resolves differences above about 4% within forty million
+instructions and is blind to anything under 2%.  That is the tempo everything
+else in this repository runs at.
+
 ## Agenda
 
 | experiment | why | status |
@@ -285,7 +330,9 @@ immediately; the first pass through those cells throws a harmless error.
 | flanked co-culture | Ray demonstrated immunity with hosts on both sides | implemented |
 | instruction flaws as a third mutation mode | Tierra has it, I do not | not started |
 | hyper-parasites | Ray found them; I have not looked | not started |
-| loop unrolling | the one optimization Tierra found that mine has not | watching the 3B runs for it |
+| loop unrolling | the one optimization Tierra found that mine has not | found at 3B -- and then found to be selected against under noise |
+| survival of the flattest | Wilke et al. 2001 | reproduced, with the neighbourhood measured directly |
+| strength of selection | needed to interpret any competition result | measured: blind below 2%, decisive above 8% |
 
 ## Caveats about this document
 

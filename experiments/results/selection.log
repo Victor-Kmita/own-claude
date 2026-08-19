@@ -1,0 +1,15 @@
+the ancestor is 64 cells at 410 instructions per daughter; 40,000,000 instructions per contest
+
+challenger  cells   cost  advantage  final share             births      outcome
+--------------------------------------------------------------------------------
+   0038rdr     38    216     47.3%      100.0% {'ancestor': 38, 'challenger': 166447} challenger sweeps
+   0056gte     56    365     11.0%      100.0% {'ancestor': 470, 'challenger': 99157} challenger sweeps
+   0057gto     57    375      8.5%      100.0% {'ancestor': 488, 'challenger': 99039} challenger sweeps
+   0059imr     59    381      7.1%       87.4% {'ancestor': 11259, 'challenger': 83882}      coexist
+   0061abg     61    390      4.9%       96.0% {'ancestor': 16462, 'challenger': 77056}      coexist
+   0061ukh     61    395      3.7%       91.7% {'ancestor': 18034, 'challenger': 75625}      coexist
+   0062mup     62    401      2.2%       51.2% {'ancestor': 44309, 'challenger': 45759}      coexist
+   0063bhk     63    405      1.2%       50.8% {'ancestor': 43944, 'challenger': 45406}      coexist
+   0062pqw     62    409      0.2%       50.4% {'ancestor': 45066, 'challenger': 45744}      coexist
+
+wrote /home/user/own-claude/experiments/results/selection.json

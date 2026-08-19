@@ -25,10 +25,12 @@ python3 -m unittest discover -s tests     # 53 tests, no dependencies
 python3 -m soup ancestor                  # the seed organism, disassembled
 python3 -m soup run demo --instructions 20000000
 python3 experiments/fragmentation.py      # the policy sweep in finding 2
-python3 experiments/viability.py          # the mutational landscape in finding 8
-python3 experiments/epidemic.py           # the resistance experiment in finding 10
-python3 experiments/mutation_rate.py      # the sweep and error threshold, finding 11
-python3 experiments/neutrality.py         # behaviours rather than genomes, finding 12
+python3 experiments/viability.py          # the mutational landscape in finding 9
+python3 experiments/epidemic.py           # the resistance experiment in finding 11
+python3 experiments/mutation_rate.py      # the sweep and error threshold, finding 12
+python3 experiments/neutrality.py         # behaviours rather than genomes, finding 13
+python3 experiments/flatness.py           # survival of the flattest, finding 6
+python3 experiments/selection.py          # how strong selection is here
 python3 experiments/report.py > experiments/REPORT.md
 ```
 
@@ -246,7 +248,7 @@ ancestor — the ecology forked on the seed.
 ### 4. A shorter, cheaper replicator
 
 Every constant-slice run converges on genomes slightly shorter than the
-ancestor's 64 cells (finding 9 is about why the other condition does the
+ancestor's 64 cells (finding 10 is about why the other condition does the
 opposite), and they are faster in proportion. The cheapest self-sufficient
 replicator found by a random survey of one run's gene bank needs **389
 instructions** against the ancestor's 410 — 5% less work per daughter, at 61
@@ -314,7 +316,66 @@ That only one of two runs found the unrolling is itself a replication: Ray
 reports that different runs reach different plateaus and cannot easily get past
 them, his own stopping at 22, 27 and 30 instructions.
 
-### 6. Parasites
+### 6. The faster replicator loses, and its mutants explain why
+
+Two replicators came out of those runs: the 37-cell one at 239 instructions with
+the ancestor's copy loop, and the 38-cell one at 216 with the loop unrolled. By
+every measure in this repository the second is the better organism — 10%
+cheaper per daughter, and only one cell longer.
+
+Put them in a soup together and it loses.
+
+```
+$ python3 experiments/flatness.py
+  cosmic ray every  seed    flat   sharp   flat /cell  sharp /cell
+                 0     1     109     104         6.46         5.68   a periodic orbit
+        20,000,000     1     117      96         6.46         5.68
+         5,000,000   1-3  115,119,111   98,94,102  6.46        5.68
+         2,000,000   1-3  163,146,113   83,68,100  6.46        5.68
+           800,000   1-3  216,216,216      0,0,0   6.46            —   extinct in every seed
+           200,000     1     216           0       6.46            —
+```
+
+The reason is in the neighbourhoods. Flip every bit of every cell in turn and
+culture each mutant alone:
+
+| | mutants that still replicate | mutants unchanged in cost | **mean cost of the survivors** |
+|---|---:|---:|---:|
+| flat, 37 cells, 239 | 32% | 24% | **239** |
+| sharp, 38 cells, 216 | 31% | 17% | **5,109** |
+| ancestor, 64 cells, 410 | 34% | 25% | 416 |
+
+Both genotypes tolerate mutation about equally often. The difference is what
+survival is worth: a mutated descendant of the flat replicator costs what its
+parent cost, while a mutated descendant of the unrolled one, if it works at all,
+averages **twenty-one times** its parent's cost. The unrolled loop sits on a
+spike; the plain one sits on a plateau. Under mutation the spike keeps throwing
+off crippled children that burn CPU, and that costs more than the 10% its speed
+saves.
+
+This is survival of the flattest — Wilke, Wang, Ofria, Lenski and Adami,
+*Nature* 2001 — arriving in a system built without it in mind, and it explains
+something in this repository's own history: unrolling appeared in one of two
+deep runs and never spread.
+
+Two cautions, both of which cost me a wrong answer first.
+
+**Count lineages, not genotypes.** With any noise at all, the seeded genotypes
+disappear within a few million instructions — not because they lost but because
+their children are no longer bit-identical. Counting exact genomes said the
+faster replicator was winning at low noise; counting descendants says the
+opposite. The instrument was reporting mutation, not competition.
+
+**Outside the window, the comparison degenerates.** Below one ray per 200,000
+instructions the faster lineage becomes numerous again — but its surviving
+members then replicate at 95 instructions per cell instead of 5.68. They are
+descendants in name only, and the count no longer measures anything about the
+innovation. I have no established explanation for that regime; the plausible one
+is that two effects scale differently — exposure to damage per replication rises
+with how long a replication takes, while fragility depends on where the genome
+sits — but I have not tested it.
+
+### 7. Parasites
 
 In the odd seed out, the top *seven* genotypes are all host-dependent, led by
 `0045adk` at 106 of 507 creatures with a breeding fidelity of 0.85 — a lineage,
@@ -361,7 +422,7 @@ The evolved `0045adk` lost that marker too, which is what sends its `call` past
 its own body and into the host's copy loop — and turns the same truncation from
 donor into parasite.
 
-### 7. A host that became immune, and what immunity is
+### 8. A host that became immune, and what immunity is
 
 The empty column above is the interesting one. `0070aea` is a perfectly healthy
 70-cell replicator that all nine parasites in that run fail to exploit.
@@ -391,7 +452,7 @@ immune genotype that actually evolved is 10% slower than its susceptible
 neighbour (452 against 410 instructions), but that is because it is 70 cells
 long, not because it is immune.
 
-### 8. Most variants are broken; most births are not
+### 9. Most variants are broken; most births are not
 
 Take one run's entire gene bank — every distinct genome that ever appeared, most
 of them once — and culture a random sample of 150 properly:
@@ -405,7 +466,7 @@ Most *variants* cannot reproduce alone. Most *births* produce something that
 can, because the things that work are the things doing the reproducing. The gap
 between those two rows is mutational load, measured.
 
-### 9. Genome length follows the CPU scheduler
+### 10. Genome length follows the CPU scheduler
 
 Give every creature the same slice of CPU regardless of size and length should
 fall, because a shorter genome reaches `divide` sooner. Give each creature a
@@ -426,9 +487,9 @@ described in finding 2, showed nothing at all — the seed-to-seed spread swampe
 the difference. The effect was there; the noise from a broken death queue was
 larger.
 
-### 10. Immunity is worth something in a dish, but I could not show it being selected
+### 11. Immunity is worth something in a dish, but I could not show it being selected
 
-Finding 7 is an observation. The demonstration would be that immunity *spreads*
+Finding 8 is an observation. The demonstration would be that immunity *spreads*
 when there is something to resist, so: seed a soup with equal numbers of the
 ancestor and a hand-built resistant variant (copy-loop marker moved from `1100`
 to `1101`, one template corrected, **410 instructions per daughter — an exact
@@ -462,7 +523,7 @@ search range. Parasitism needs a crowd, and apparently a familiar one.
 
 This is the clearest open question the project leaves.
 
-### 11. Mutation rate: an optimization peak, and an error threshold exactly where theory puts it
+### 12. Mutation rate: an optimization peak, and an error threshold exactly where theory puts it
 
 Ray reports two things about Tierra that pull against each other: optimization
 is best "at the highest mutation rate that does not cause instability", while
@@ -507,7 +568,7 @@ But the within-condition spread is 0.12 to 0.85 at the same rate — as large as
 the effect. Three seeds are not enough to say anything here, and I am not going
 to pretend otherwise.
 
-### 12. About a hundred distinct behaviours, however many genomes there are
+### 13. About a hundred distinct behaviours, however many genomes there are
 
 Standish measured something in Tierra that I had not thought to: gene banks of
 69,139, 87,003 and 198,982 genotypes collapsed onto **83, 86 and 158 distinct
@@ -540,7 +601,7 @@ parasite-rich world holds three times as many distinct behaviours (121 against
 mine rather than his, and a noisy estimator: this is a failure to reproduce, not
 a refutation.
 
-### 13. Evolvability is expensive
+### 14. Evolvability is expensive
 
 The same 100M instructions bought 218,916 births with mutation off and
 171,721 – 175,651 with it on: a fifth of the world's reproductive output goes on
@@ -561,7 +622,7 @@ this soup. The short version:
   `0045adk`. And his decisive test is the one I arrived at independently: "not
   able to self-replicate in isolated culture".
 * **One goes further than the primary source.** Ray reports immune hosts that
-  eliminate parasites but gives no mechanism. Finding 7 gives one — the host no
+  eliminate parasites but gives no mechanism. Finding 8 gives one — the host no
   longer contains the pattern the parasite searches for — and it predicts what
   an immune Tierran host should look like: changed in the templates that *name*
   its copy procedure, not in the procedure itself.
@@ -607,7 +668,7 @@ so every claim came from a tool, and the tools are tested:
 semantics, the allocator, template search, write protection, the division rules,
 determinism under a fixed seed, the reaper's ordering, the mutagen of finding 2,
 the division-versus-reproduction distinction, and the receptor-loss immunity of
-finding 7 built by hand.
+finding 8 built by hand.
 
 ## Limitations
 
@@ -621,11 +682,11 @@ finding 7 built by hand.
   have several, and the outcome depends on which template is nearest.
 * Classification uses a fixed instruction budget; a very slow replicator would
   be filed as host-dependent or inert.
-* The ecology half of finding 11 is not supported by its own data; see the
+* The ecology half of finding 12 is not supported by its own data; see the
   paragraph that says so.
-* Findings 6 and 7 rest on one seed's ecology — the seed that produced parasites
+* Findings 7 and 8 rest on one seed's ecology — the seed that produced parasites
   at all. Two of three did not.
-* Finding 10 is a null result at 20M instructions with one parasite genotype and
+* Finding 11 is a null result at 20M instructions with one parasite genotype and
   one hand-built resistant host. It bounds nothing: a longer run, a different
   parasite, or resistance evolving in place rather than being transplanted
   could all show the sweep it failed to find.
@@ -664,6 +725,8 @@ python3 experiments/viability.py
 python3 experiments/epidemic.py
 python3 experiments/mutation_rate.py
 python3 experiments/neutrality.py
+python3 experiments/flatness.py
+python3 experiments/selection.py
 python3 experiments/reclassify.py         # redo the assays after a classifier change
 python3 experiments/report.py > experiments/REPORT.md
 
