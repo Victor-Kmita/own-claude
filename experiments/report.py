@@ -27,7 +27,9 @@ def load(pattern: str) -> list[dict]:
     for path in sorted(glob.glob(os.path.join(RESULTS, pattern))):
         with open(path) as fh:
             data = json.load(fh)
-        if "config" in data:            # skip the standalone sweeps
+        # Skip the standalone sweeps (no config) and the checkpoints written by
+        # runs that are still going (config and history, but no totals yet).
+        if "config" in data and "totals" in data:
             out.append(data)
     return out
 
@@ -47,11 +49,27 @@ def table(headers: list[str], rows: list[list]) -> str:
     return "\n".join(out)
 
 
+STANDARD = {"copy_mutation_rate": 1 / 1000, "cosmic_period": 2000}
+
+
+def is_standard(run: dict) -> bool:
+    """Standard mutation, no flaws -- the runs the length comparison is about."""
+    c = run["config"]
+    return (c["copy_mutation_rate"] == STANDARD["copy_mutation_rate"]
+            and c["cosmic_period"] == STANDARD["cosmic_period"]
+            and not c.get("flaw_period"))
+
+
 def length_by_condition(runs: list[dict]) -> str:
-    """The comparison the runs were done for, on one line per condition."""
+    """The comparison the runs were done for, on one line per condition.
+
+    Only runs at the standard mutation rate and without instruction flaws: the
+    mutation-rate sweep and the flaw sweep vary something else on purpose, and
+    averaging them in here would say nothing about the scheduler.
+    """
     groups: dict[str, list] = {}
     for r in runs:
-        if r["config"]["copy_mutation_rate"] == 0:
+        if r["config"]["copy_mutation_rate"] == 0 or not is_standard(r):
             continue
         h = r["history"]
         groups.setdefault(condition_of(r), []).append(
@@ -67,6 +85,7 @@ def summary_section(runs: list[dict]) -> str:
         h = r["history"]
         rows.append([
             r["name"], r["config"]["slice_pow"], r["config"]["seed"],
+            r["config"].get("flaw_period") or "-",
             f"{r['config']['instructions'] / 1e6:.0f}M",
             round(st.mean(tail(h, "mean_size")), 1),
             round(st.mean(tail(h, "genotypes"))),
@@ -77,7 +96,7 @@ def summary_section(runs: list[dict]) -> str:
             r["totals"]["births"],
             r["totals"]["genotypes_seen"],
         ])
-    return table(["run", "slice_pow", "seed", "length", "mean size", "types alive",
+    return table(["run", "slice_pow", "seed", "flaws", "length", "mean size", "types alive",
                   "diversity H", "alive", "foreign breeders", "births", "types seen"],
                  rows)
 
@@ -92,6 +111,8 @@ def chart_section(runs: list[dict], key: str, ylabel: str) -> str:
 def condition_of(run: dict) -> str:
     if run["config"]["copy_mutation_rate"] == 0:
         return "no mutation (control)"
+    if run["config"].get("flaw_period"):
+        return f"instruction flaws, one in {run['config']['flaw_period']:,}"
     if run["config"]["slice_pow"] == 0:
         return "constant CPU slice"
     # The first proportional run used a slice four times larger in absolute
@@ -158,8 +179,10 @@ def main() -> None:
     runs = load("*.json")
     if not runs:
         sys.exit("no results in " + RESULTS)
-    hundred = [r for r in runs if r["config"]["instructions"] == 100_000_000]
-    long_runs = [r for r in runs if r["config"]["instructions"] == 400_000_000]
+    hundred = [r for r in runs
+               if r["config"]["instructions"] == 100_000_000 and is_standard(r)]
+    long_runs = [r for r in runs
+                 if r["config"]["instructions"] == 400_000_000 and is_standard(r)]
     deep_runs = [r for r in runs if r["config"]["instructions"] >= 1_000_000_000]
 
     print("# Results\n")
