@@ -1,0 +1,24 @@
+{
+ "host": "nexus",
+ "time": "2026-08-19T21:27:04+00:00",
+ "cores": 12,
+ "load": [
+  7.7431640625,
+  2.7412109375,
+  1.08642578125
+ ],
+ "queued": 10,
+ "running": [
+  "2026-08-20-flaw-3b-s5",
+  "2026-08-20-flaw-3b-s6",
+  "2026-08-20-threshold-flaw-k1-s1",
+  "2026-08-20-threshold-flaw-k2-s1",
+  "2026-08-20-threshold-flaw-k2-s2",
+  "2026-08-20-threshold-flaw-k4-s1",
+  "2026-08-20-threshold-flaw-k4-s2",
+  "2026-08-20-threshold-flaw-k8-s1",
+  "2026-08-20-threshold-flaw-k8-s2"
+ ],
+ "done": 1,
+ "progress": {}
+}
