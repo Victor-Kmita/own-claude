@@ -212,6 +212,7 @@ class World:
         filler: int = 0,
         reap_on_alloc_failure: bool = True,
         errors_hasten_death: bool = True,
+        flaw_period: int = 0,
     ):
         self.soup_size = soup_size
         self.filler = filler
@@ -236,6 +237,11 @@ class World:
         # This is the only thing in the world that resembles quality control,
         # and switching it off is the cleanest way to ask what it is doing.
         self.errors_hasten_death = errors_hasten_death
+        # One instruction in this many produces a result off by one.  Tierra's
+        # third mutation mode; off by default here, since this world got its
+        # first results without it.
+        self.flaw_period = flaw_period
+        self.flaw_countdown = flaw_period or 0
 
         self.creatures: list[Creature] = []
         self.reaper = ReaperQueue()

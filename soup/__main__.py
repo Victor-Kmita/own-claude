@@ -23,7 +23,7 @@ def cmd_run(args) -> None:
         cosmic_period=(args.cosmic if args.cosmic else 10 ** 18),
         sample_every=args.sample_every, reap_threshold=args.reap_threshold,
         search_limit=args.search_limit,
-        reap_on_alloc_failure=not args.lazy_reaper,
+        reap_on_alloc_failure=not args.lazy_reaper, flaw_period=args.flaw,
         checkpoint_path=os.path.join(args.out, f"{args.name}.checkpoint.json"),
     )
     path = experiment.save(result, args.out)
@@ -178,6 +178,9 @@ def main(argv=None) -> None:
     r.add_argument("--sample-every", type=int, default=1_000_000)
     r.add_argument("--reap-threshold", type=float, default=0.8)
     r.add_argument("--search-limit", type=int, default=1024)
+    r.add_argument("--flaw", type=int, default=0,
+                   help="one instruction in N produces a result off by one "
+                        "(Tierra's third mutation mode); 0 disables")
     r.add_argument("--lazy-reaper", action="store_true",
                    help="do not reap when an allocation fails; the soup then "
                         "sits full and mal failures become a mutagen")

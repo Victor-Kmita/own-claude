@@ -129,7 +129,7 @@ class ExecStats:
     """Counters the world uses to decide who dies and what to report."""
 
     __slots__ = ("instructions", "errors", "births", "foreign_reads",
-                 "foreign_calls", "writes")
+                 "foreign_calls", "writes", "flaws")
 
     def __init__(self):
         self.instructions = 0
@@ -138,6 +138,7 @@ class ExecStats:
         self.foreign_reads = 0
         self.foreign_calls = 0
         self.writes = 0
+        self.flaws = 0
 
 
 class Creature:
@@ -224,6 +225,24 @@ def find_template(soup, soup_size: int, origin: int, wanted: list[int],
 
 MAX_TEMPLATE = 10        # longer nop runs are truncated when used as a template
 
+# Tierra has a third mutation mode besides cosmic rays and copy errors: "for
+# most of the 32 instructions, the result is off by plus or minus one at some
+# low frequency".  This table says what the result *is* for each opcode -- which
+# register it lands in, or the instruction pointer for a jump.  0 means the
+# instruction has no numeric result to spoil, so a flaw on it does nothing.
+_NONE, _AX, _BX, _CX, _DX, _IP = 0, 1, 2, 3, 4, 5
+_FLAW_TARGET = [_NONE] * 32
+for _op, _target in (
+    ("or1", _CX), ("shl", _CX), ("zero", _CX), ("subCAB", _CX), ("incC", _CX),
+    ("decC", _CX), ("popC", _CX), ("movDC", _DX), ("popD", _DX),
+    ("subAAC", _AX), ("incA", _AX), ("popA", _AX), ("mal", _AX),
+    ("adr", _AX), ("adrb", _AX), ("adrf", _AX),
+    ("incB", _BX), ("popB", _BX), ("movBA", _BX), ("movii", _BX),
+    ("jmp", _IP), ("jmpb", _IP), ("call", _IP), ("ret", _IP),
+):
+    _FLAW_TARGET[OPCODE[_op]] = _target
+_FLAW_TARGET = tuple(_FLAW_TARGET)
+
 
 def run_slice(world, cr: "Creature", budget: int) -> int:
     """Execute up to ``budget`` instructions for one creature.
@@ -242,6 +261,8 @@ def run_slice(world, cr: "Creature", budget: int) -> int:
     rng = world.rng
     copy_mut = world.copy_mutation_rate
     start, csize = cr.start, cr.size
+    flaw_period = world.flaw_period
+    flaw_countdown = world.flaw_countdown
 
     executed = 0
     while executed < budget:
@@ -415,8 +436,30 @@ def run_slice(world, cr: "Creature", budget: int) -> int:
         else:                                                  # pragma: no cover
             raise AssertionError(f"unhandled opcode {op}")
 
+        if flaw_period:
+            flaw_countdown -= 1
+            if flaw_countdown <= 0:
+                # Jitter the interval so flaws cannot fall into step with a
+                # creature's own replication cycle.
+                flaw_countdown = flaw_period + rng.randrange(flaw_period)
+                target = _FLAW_TARGET[op]
+                if target:
+                    delta = 1 if rng.getrandbits(1) else -1
+                    if target == _AX:
+                        ax = (ax + delta) & MASK32
+                    elif target == _BX:
+                        bx = (bx + delta) & MASK32
+                    elif target == _CX:
+                        cx = (cx + delta) & MASK32
+                    elif target == _DX:
+                        dx = (dx + delta) & MASK32
+                    else:
+                        nxt = (nxt + delta) % N
+                    st.flaws += 1
+
         ip = nxt
 
     cpu.ip, cpu.ax, cpu.bx, cpu.cx, cpu.dx, cpu.sp = ip, ax, bx, cx, dx, sp
+    world.flaw_countdown = flaw_countdown
     st.instructions += executed
     return executed

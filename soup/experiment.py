@@ -150,6 +150,7 @@ def run(
     reap_threshold: float = 0.8,
     search_limit: int = 1024,
     reap_on_alloc_failure: bool = True,
+    flaw_period: int = 0,
     quiet: bool = False,
     genome_sample: int = 150,
     checkpoint_every: int = 25,
@@ -161,7 +162,7 @@ def run(
         soup_size=soup_size, seed=seed, slice_size=slice_size, slice_pow=slice_pow,
         copy_mutation_rate=copy_mutation_rate, cosmic_period=cosmic_period,
         reap_threshold=reap_threshold, search_limit=search_limit,
-        reap_on_alloc_failure=reap_on_alloc_failure,
+        reap_on_alloc_failure=reap_on_alloc_failure, flaw_period=flaw_period,
     )
     world.inject(code, address=0)
 
@@ -206,6 +207,7 @@ def run(
             "copy_mutation_rate": copy_mutation_rate, "cosmic_period": cosmic_period,
             "reap_threshold": reap_threshold, "search_limit": search_limit,
             "reap_on_alloc_failure": reap_on_alloc_failure,
+            "flaw_period": flaw_period,
             "ancestor_size": len(code),
         },
         "extinct": world.extinct,

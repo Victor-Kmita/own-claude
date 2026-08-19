@@ -34,6 +34,10 @@ from soup.experiment import load_ancestor
 RESULTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
 BUDGET = 40_000_000
 ANCESTOR_COST = 410
+# Optional: a budget in instructions, then a maximum advantage to test, so that
+# the near-neutral contests can be re-run for ten times as long without
+# repeating the ones that were already decisive.
+#   python3 experiments/selection.py 400000000 0.03
 
 
 def candidates() -> list[tuple[int, int, str, bytes]]:
@@ -58,6 +62,10 @@ def candidates() -> list[tuple[int, int, str, bytes]]:
 
 
 def main() -> None:
+    global BUDGET
+    if len(sys.argv) > 1:
+        BUDGET = int(sys.argv[1])
+    max_advantage = float(sys.argv[2]) if len(sys.argv) > 2 else 1.0
     ancestor = bytes(load_ancestor())
     assert describe(ancestor)["cost"] == ANCESTOR_COST
     picks = candidates()
@@ -65,6 +73,8 @@ def main() -> None:
     # dozen, which would all be within a few instructions of each other.
     step = max(1, len(picks) // 8)
     picks = picks[::step][:9]
+    picks = [p for p in picks
+             if (ANCESTOR_COST - p[0]) / ANCESTOR_COST <= max_advantage]
 
     header = (f"{'challenger':>10} {'cells':>6} {'cost':>6} {'advantage':>10} "
               f"{'final share':>12} {'births':>18} {'outcome':>12}")
@@ -86,10 +96,12 @@ def main() -> None:
         print(f"{label:>10} {size:>6} {cost:>6} {adv:>9.1%} {share:>11.1%} "
               f"{str(out['births']):>18} {outcome:>12}")
 
-    with open(os.path.join(RESULTS, "selection.json"), "w") as fh:
+    name = ("selection.json" if BUDGET == 40_000_000
+            else f"selection-{BUDGET // 1_000_000}M.json")
+    with open(os.path.join(RESULTS, name), "w") as fh:
         json.dump({"budget": BUDGET, "ancestor_cost": ANCESTOR_COST,
                    "rows": rows}, fh, indent=1)
-    print(f"\nwrote {os.path.join(RESULTS, 'selection.json')}")
+    print(f"\nwrote {os.path.join(RESULTS, name)}")
 
 
 if __name__ == "__main__":

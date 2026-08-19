@@ -246,6 +246,39 @@ class TestInstructions(unittest.TestCase):
             h.run(3)
 
 
+class TestFlaws(unittest.TestCase):
+    """Tierra's third mutation mode: results off by one, at a low rate."""
+
+    def run_world(self, flaw_period, budget=1_000_000):
+        w = World(soup_size=8000, copy_mutation_rate=0.0, cosmic_period=10 ** 18,
+                  flaw_period=flaw_period)
+        w.inject(ancestor(), address=0)
+        while w.clock < budget:
+            w.step_generation()
+        return w
+
+    def test_off_by_default(self):
+        w = self.run_world(0)
+        self.assertEqual(sum(c.stats.flaws for c in w.creatures), 0)
+        self.assertEqual(len(w.genebank.genome), 1)
+
+    def test_flaws_alone_generate_variation(self):
+        # No copy errors, no cosmic rays: the genomes are never touched
+        # directly.  Variation appears anyway, because a flawed `mal` asks for
+        # the wrong size and a flawed `movii` writes to the wrong cell -- which
+        # is how this world gets insertions and deletions at all.
+        w = self.run_world(500)
+        self.assertGreater(sum(c.stats.flaws for c in w.creatures), 0)
+        self.assertGreater(len(w.genebank.genome), 1)
+
+    def test_a_flaw_lands_on_the_instruction_s_own_result(self):
+        h = _Harness(assemble("incC " * 20), flaw_period=1)
+        h.run(20)
+        # Twenty increments, every one of them off by one in either direction.
+        self.assertNotEqual(h.creature.cpu.cx, 20)
+        self.assertEqual(h.creature.stats.flaws, 20)
+
+
 class TestAncestor(unittest.TestCase):
     def test_length_and_shape(self):
         code = ancestor()
