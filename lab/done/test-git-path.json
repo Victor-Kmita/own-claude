@@ -1,0 +1,44 @@
+{
+ "id": "test-git-path",
+ "kind": "soup_run",
+ "priority": 0,
+ "created_by": "cloud",
+ "why": "verify that claim, run, commit and push all work end to end before the server relies on it",
+ "expect_hours": 0.01,
+ "params": {
+  "name": "lab-gitcheck",
+  "instructions": 1500000,
+  "seed": 3,
+  "sample_every": 1500000
+ },
+ "claimed_by": "vm",
+ "claimed_at": "2026-08-19T21:01:07+00:00",
+ "cores": 4,
+ "status": "ok",
+ "host": "vm",
+ "finished": "2026-08-19T21:01:36+00:00",
+ "seconds": 27.4,
+ "returncode": 0,
+ "produced": [
+  "experiments/results/lab-gitcheck.json"
+ ],
+ "log_tail": [
+  "     1.5M  alive= 580 types= 129  H= 3.44  size~  63.7  dom=0064aaa (63%)  foreign=10% fbreed=13% gen=12",
+  "",
+  "wrote /home/user/own-claude/experiments/results/lab-gitcheck.json  (890,885 instructions/sec)",
+  "",
+  " genotype    n  size  births   fid          kind   cost   fcalls parent",
+  "  0064aaa  363    64    1988  0.99    replicator    410        0 None",
+  "  0064aal   11    64      39  0.90    replicator    410        0 0064aaa",
+  "  0064aab    9    64      73  0.94 host-dependent      -       37 0064aaa",
+  "  0018aaa    6    18       9  0.22         inert      -       55 0064aei",
+  "  0063aab    5    63      23  0.87    replicator    404        1 0064aak",
+  "  0064adz    5    64      16  0.75    replicator    410        0 0064aaa",
+  "  0064acw    5    64      15  0.80 host-dependent      -       26 0064aaa",
+  "  0064acy    4    64       9  0.78 host-dependent      -       33 0064aaa",
+  "  0064abs    4    64      11  0.82    replicator    410        0 0064aaa",
+  "  0064adv    4    64       6  0.50 host-dependent      -       32 0064aaa",
+  "  0064ade    4    64      11  0.82    replicator    410        0 0064aaa",
+  "  0064aas    4    64      15  0.87    replicator    411        0 0064aaa"
+ ]
+}
