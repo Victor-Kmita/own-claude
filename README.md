@@ -21,7 +21,7 @@ $ python3 -m soup run demo --instructions 20000000
 ## Quick start
 
 ```bash
-python3 -m unittest discover -s tests     # 53 tests, no dependencies
+python3 -m unittest discover -s tests     # 54 tests, no dependencies
 python3 -m soup ancestor                  # the seed organism, disassembled
 python3 -m soup run demo --instructions 20000000
 python3 experiments/fragmentation.py      # the policy sweep in finding 2
@@ -664,7 +664,7 @@ so every claim came from a tool, and the tools are tested:
 * `modal_parent` — ancestry by the route a genotype actually travels, not by
   whoever produced it first, which for a rare variant is often a freak event.
 
-`python3 -m unittest discover -s tests` runs 53 tests covering instruction
+`python3 -m unittest discover -s tests` runs 54 tests covering instruction
 semantics, the allocator, template search, write protection, the division rules,
 determinism under a fixed seed, the reaper's ordering, the mutagen of finding 2,
 the division-versus-reproduction distinction, and the receptor-loss immunity of
@@ -705,7 +705,7 @@ soup/experiment.py   running an experiment and recording it
 soup/plot.py         ASCII charts, so results can live in a text file
 soup/ancestor.sm     the seed organism
 experiments/         the runs, their JSON histories, and the generated report
-tests/               53 unit tests
+tests/               54 unit tests
 ```
 
 ## Reproducing

@@ -448,6 +448,21 @@ class TestAnalysis(unittest.TestCase):
         self.assertEqual(analysis.interaction(truncated, bytes(code),
                                               budget=150_000), "hijacked")
 
+    def test_a_creature_that_stays_inside_itself_costs_its_neighbour_nothing(self):
+        # The control that made the hyper-parasite measurement honest.  A
+        # creature filled with a do-nothing instruction is *not* inert: its
+        # instruction pointer walks off the end of its own genome and into the
+        # neighbour's code, which it then executes.  One that jumps back to its
+        # own start instead never leaves, and its neighbour does not notice it.
+        spinner = assemble(".t 10 " + "zero " * 38 + "jmpb .t 01")
+        rows = analysis.trace(bytes(spinner), steps=120)
+        self.assertTrue(all(0 <= r["ip"] < len(spinner) for r in rows))
+        self.assertEqual(sum(1 for r in rows if r["error"]), 0)
+
+        walker = bytes([OPCODE["zero"]] * len(spinner))
+        rows = analysis.trace(walker, steps=120, neighbours=[bytes(ancestor())])
+        self.assertTrue(any(r["ip"] >= len(walker) for r in rows))
+
     def test_a_host_that_loses_the_template_loses_the_parasite(self):
         # The mechanism behind the resistant replicator in baseline-s2, built by
         # hand so that the causation is not in doubt.

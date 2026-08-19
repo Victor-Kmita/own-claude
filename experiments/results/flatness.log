@@ -1,3 +1,4 @@
 Mutational neighbourhoods -- every single-bit mutant, cultured alone:
 
   flat 0037vvz      37 cells, costs  239: 32% of mutants still replicate, 24% are unchanged in cost, and the survivors average 239.2
+  sharp 0038rdr     38 cells, costs  216: 30% of mutants still replicate, 17% are unchanged in cost, and the survivors average 5109.4
