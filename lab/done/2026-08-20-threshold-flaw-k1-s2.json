@@ -25,6 +25,7 @@
  "produced": [
   "experiments/results/tf-k1-s2.json"
  ],
+ "interpretation": "With all three mutation sources active (copy 1/1000, cosmic 1/2000, flaw 1/1000), the population remains viable at 514 alive, 266 genotypes, generation 336. The error threshold has not visibly moved: adding flaws as a third source at this rate does not collapse the population. Comparison with k=2/4/8 runs will show whether higher copy-mutation rates push past the threshold when flaws are also present.",
  "log_tail": [
   "    51.0M  alive= 486 types= 258  H= 7.38  size~  51.3  dom=0053dck (5%)  foreign=19% fbreed=42% gen=288",
   "    54.0M  alive= 465 types= 261  H= 7.39  size~  52.4  dom=0053dtt (6%)  foreign=16% fbreed=33% gen=302",
