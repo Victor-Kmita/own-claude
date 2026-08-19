@@ -20,5 +20,81 @@ creatures alive
        |       +          +          +          +
        |        +          +          +          
        |                                         
+       |                                         
+       | ++++++  +++++++++  +++++++++  +++++++++ 
+  50.0 |                                         
+       |                                         
+       |                                         
+       |                                         
+       |+                                        
+   0.0 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+       +-----------------------------------------
+        640                            20,000,720
+                       instructions
+        o susceptible   + resistant   x parasite
+```
 
-[exited with code 0]
+hosts: susceptible+resistant, with parasites:
+```
+creatures alive
+ 96.0 |                          o        o      
+      |                                          
+      |                 o        +        +      
+      |                      o                   
+      | +++++++     o  o+oo o+ooo oooooo o oooooo
+      |        o   o +++ ++++ +++ ++++++++ ++++++
+ 43.6 |        +++x +                            
+      |         xx+x x                           
+      |             x                            
+      |        x                                 
+      |+              xxx  x   x x  xx  x x xxx  
+  0.0 |xxxxxxxx          xx xxx x xx  xx x x   xx
+      +------------------------------------------
+       640                             20,000,400
+                      instructions
+       o susceptible   + resistant   x parasite
+```
+
+hosts: susceptible, with parasites:
+```
+creatures alive
+ 232.0 |                    o                     
+       |                                          
+       |                                          
+       |                     o         o          
+       |          o                               
+       |           o                    o         
+ 105.5 | ooooooooo  oooooooo  ooooooooo  ooooooooo
+       |                                          
+       |                                          
+       |                                          
+       |                                          
+   0.0 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+       +------------------------------------------
+        320                             20,000,500
+                       instructions
+        o susceptible   + resistant   x parasite
+```
+
+hosts: resistant, with parasites:
+```
+creatures alive
+ 172.0 |                     +          +         
+       |          +                               
+       |           +          +          +        
+       |                                          
+       | +++++++++  +++++++++  +++++++++  ++++++++
+       |                                          
+  78.2 |                                          
+       |                                          
+       |                                          
+       |                                          
+       |+                                         
+   0.0 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+       +------------------------------------------
+        320                             20,000,280
+                       instructions
+        o susceptible   + resistant   x parasite
+```
+
+wrote /home/user/own-claude/experiments/results/epidemic.json

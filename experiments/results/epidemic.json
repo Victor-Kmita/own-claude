@@ -1,0 +1,2142 @@
+{
+ "budget": 20000000,
+ "soup": 20000,
+ "hosts_each": 16,
+ "parasites": 6,
+ "runs": [
+  {
+   "with_parasites": false,
+   "layout": 0,
+   "hosts": [
+    "susceptible",
+    "resistant"
+   ],
+   "history": [
+    {
+     "clock": 640,
+     "susceptible": 16,
+     "resistant": 16,
+     "parasite": 0
+    },
+    {
+     "clock": 500720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 1000720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 1500720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 2000720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 2500720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 3000720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 3500720,
+     "susceptible": 110,
+     "resistant": 108,
+     "parasite": 0
+    },
+    {
+     "clock": 4000080,
+     "susceptible": 94,
+     "resistant": 94,
+     "parasite": 0
+    },
+    {
+     "clock": 4500720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 5000720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 5500720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 6000720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 6500720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 7000720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 7500720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 8000720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 8500720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 9000720,
+     "susceptible": 110,
+     "resistant": 108,
+     "parasite": 0
+    },
+    {
+     "clock": 9500080,
+     "susceptible": 94,
+     "resistant": 94,
+     "parasite": 0
+    },
+    {
+     "clock": 10000720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 10500720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 11000720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 11500720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 12000720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 12500720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 13000720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 13500720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 14000720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 14500720,
+     "susceptible": 110,
+     "resistant": 108,
+     "parasite": 0
+    },
+    {
+     "clock": 15000080,
+     "susceptible": 94,
+     "resistant": 94,
+     "parasite": 0
+    },
+    {
+     "clock": 15500720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 16000720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 16500720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 17000720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 17500720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 18000720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 18500720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 19000720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 19500720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 20000720,
+     "susceptible": 110,
+     "resistant": 108,
+     "parasite": 0
+    }
+   ],
+   "final": {
+    "clock": 20000720,
+    "susceptible": 110,
+    "resistant": 108,
+    "parasite": 0
+   }
+  },
+  {
+   "with_parasites": false,
+   "layout": 1,
+   "hosts": [
+    "susceptible",
+    "resistant"
+   ],
+   "history": [
+    {
+     "clock": 640,
+     "susceptible": 16,
+     "resistant": 16,
+     "parasite": 0
+    },
+    {
+     "clock": 500720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 1000720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 1500720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 2000720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 2500720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 3000720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 3500720,
+     "susceptible": 108,
+     "resistant": 110,
+     "parasite": 0
+    },
+    {
+     "clock": 4000080,
+     "susceptible": 94,
+     "resistant": 94,
+     "parasite": 0
+    },
+    {
+     "clock": 4500720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 5000720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 5500720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 6000720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 6500720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 7000720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 7500720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 8000720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 8500720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 9000720,
+     "susceptible": 108,
+     "resistant": 110,
+     "parasite": 0
+    },
+    {
+     "clock": 9500080,
+     "susceptible": 94,
+     "resistant": 94,
+     "parasite": 0
+    },
+    {
+     "clock": 10000720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 10500720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 11000720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 11500720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 12000720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 12500720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 13000720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 13500720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 14000720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 14500720,
+     "susceptible": 108,
+     "resistant": 110,
+     "parasite": 0
+    },
+    {
+     "clock": 15000080,
+     "susceptible": 94,
+     "resistant": 94,
+     "parasite": 0
+    },
+    {
+     "clock": 15500720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 16000720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 16500720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 17000720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 17500720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 18000720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 18500720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 19000720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 19500720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 20000720,
+     "susceptible": 108,
+     "resistant": 110,
+     "parasite": 0
+    }
+   ],
+   "final": {
+    "clock": 20000720,
+    "susceptible": 108,
+    "resistant": 110,
+    "parasite": 0
+   }
+  },
+  {
+   "with_parasites": true,
+   "layout": 0,
+   "hosts": [
+    "susceptible",
+    "resistant"
+   ],
+   "history": [
+    {
+     "clock": 640,
+     "susceptible": 16,
+     "resistant": 16,
+     "parasite": 0
+    },
+    {
+     "clock": 500720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 1000720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 1500720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 2000720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 2500720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 3000720,
+     "event": "6 parasites introduced",
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 6
+    },
+    {
+     "clock": 3000720,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 6
+    },
+    {
+     "clock": 3501260,
+     "susceptible": 53,
+     "resistant": 52,
+     "parasite": 21
+    },
+    {
+     "clock": 4000760,
+     "susceptible": 45,
+     "resistant": 45,
+     "parasite": 43
+    },
+    {
+     "clock": 4500120,
+     "susceptible": 44,
+     "resistant": 51,
+     "parasite": 43
+    },
+    {
+     "clock": 5001840,
+     "susceptible": 47,
+     "resistant": 43,
+     "parasite": 50
+    },
+    {
+     "clock": 5502160,
+     "susceptible": 55,
+     "resistant": 42,
+     "parasite": 37
+    },
+    {
+     "clock": 6000160,
+     "susceptible": 63,
+     "resistant": 45,
+     "parasite": 31
+    },
+    {
+     "clock": 6500340,
+     "susceptible": 56,
+     "resistant": 54,
+     "parasite": 39
+    },
+    {
+     "clock": 7002140,
+     "susceptible": 61,
+     "resistant": 58,
+     "parasite": 14
+    },
+    {
+     "clock": 7500420,
+     "susceptible": 62,
+     "resistant": 58,
+     "parasite": 9
+    },
+    {
+     "clock": 8000900,
+     "susceptible": 79,
+     "resistant": 65,
+     "parasite": 9
+    },
+    {
+     "clock": 8500000,
+     "susceptible": 62,
+     "resistant": 56,
+     "parasite": 6
+    },
+    {
+     "clock": 9000300,
+     "susceptible": 62,
+     "resistant": 56,
+     "parasite": 7
+    },
+    {
+     "clock": 9500740,
+     "susceptible": 59,
+     "resistant": 60,
+     "parasite": 9
+    },
+    {
+     "clock": 10001240,
+     "susceptible": 66,
+     "resistant": 57,
+     "parasite": 7
+    },
+    {
+     "clock": 10500360,
+     "susceptible": 76,
+     "resistant": 69,
+     "parasite": 6
+    },
+    {
+     "clock": 11000700,
+     "susceptible": 63,
+     "resistant": 56,
+     "parasite": 7
+    },
+    {
+     "clock": 11501080,
+     "susceptible": 65,
+     "resistant": 60,
+     "parasite": 9
+    },
+    {
+     "clock": 12001520,
+     "susceptible": 64,
+     "resistant": 57,
+     "parasite": 8
+    },
+    {
+     "clock": 12502500,
+     "susceptible": 96,
+     "resistant": 80,
+     "parasite": 9
+    },
+    {
+     "clock": 13001080,
+     "susceptible": 63,
+     "resistant": 57,
+     "parasite": 6
+    },
+    {
+     "clock": 13501380,
+     "susceptible": 62,
+     "resistant": 55,
+     "parasite": 7
+    },
+    {
+     "clock": 14001860,
+     "susceptible": 62,
+     "resistant": 59,
+     "parasite": 9
+    },
+    {
+     "clock": 14502360,
+     "susceptible": 65,
+     "resistant": 55,
+     "parasite": 9
+    },
+    {
+     "clock": 15001520,
+     "susceptible": 64,
+     "resistant": 58,
+     "parasite": 6
+    },
+    {
+     "clock": 15501800,
+     "susceptible": 62,
+     "resistant": 57,
+     "parasite": 7
+    },
+    {
+     "clock": 16002220,
+     "susceptible": 61,
+     "resistant": 59,
+     "parasite": 9
+    },
+    {
+     "clock": 16500120,
+     "susceptible": 64,
+     "resistant": 57,
+     "parasite": 8
+    },
+    {
+     "clock": 17001100,
+     "susceptible": 96,
+     "resistant": 80,
+     "parasite": 9
+    },
+    {
+     "clock": 17502200,
+     "susceptible": 63,
+     "resistant": 57,
+     "parasite": 7
+    },
+    {
+     "clock": 18002460,
+     "susceptible": 63,
+     "resistant": 59,
+     "parasite": 9
+    },
+    {
+     "clock": 18500460,
+     "susceptible": 62,
+     "resistant": 59,
+     "parasite": 9
+    },
+    {
+     "clock": 19000960,
+     "susceptible": 65,
+     "resistant": 55,
+     "parasite": 9
+    },
+    {
+     "clock": 19500120,
+     "susceptible": 64,
+     "resistant": 58,
+     "parasite": 6
+    },
+    {
+     "clock": 20000400,
+     "susceptible": 62,
+     "resistant": 57,
+     "parasite": 7
+    }
+   ],
+   "final": {
+    "clock": 20000400,
+    "susceptible": 62,
+    "resistant": 57,
+    "parasite": 7
+   }
+  },
+  {
+   "with_parasites": true,
+   "layout": 1,
+   "hosts": [
+    "susceptible",
+    "resistant"
+   ],
+   "history": [
+    {
+     "clock": 640,
+     "susceptible": 16,
+     "resistant": 16,
+     "parasite": 0
+    },
+    {
+     "clock": 500720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 1000720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 1500720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 2000720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 2500720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 3000720,
+     "event": "6 parasites introduced",
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 6
+    },
+    {
+     "clock": 3000720,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 6
+    },
+    {
+     "clock": 3501600,
+     "susceptible": 58,
+     "resistant": 59,
+     "parasite": 11
+    },
+    {
+     "clock": 4000080,
+     "susceptible": 55,
+     "resistant": 55,
+     "parasite": 33
+    },
+    {
+     "clock": 4501220,
+     "susceptible": 41,
+     "resistant": 45,
+     "parasite": 49
+    },
+    {
+     "clock": 5001120,
+     "susceptible": 40,
+     "resistant": 44,
+     "parasite": 58
+    },
+    {
+     "clock": 5501220,
+     "susceptible": 46,
+     "resistant": 50,
+     "parasite": 38
+    },
+    {
+     "clock": 6000100,
+     "susceptible": 43,
+     "resistant": 47,
+     "parasite": 67
+    },
+    {
+     "clock": 6502480,
+     "susceptible": 55,
+     "resistant": 57,
+     "parasite": 60
+    },
+    {
+     "clock": 7002380,
+     "susceptible": 45,
+     "resistant": 42,
+     "parasite": 57
+    },
+    {
+     "clock": 7500200,
+     "susceptible": 45,
+     "resistant": 42,
+     "parasite": 53
+    },
+    {
+     "clock": 8001280,
+     "susceptible": 59,
+     "resistant": 51,
+     "parasite": 29
+    },
+    {
+     "clock": 8502620,
+     "susceptible": 67,
+     "resistant": 64,
+     "parasite": 18
+    },
+    {
+     "clock": 9001520,
+     "susceptible": 92,
+     "resistant": 88,
+     "parasite": 8
+    },
+    {
+     "clock": 9500800,
+     "susceptible": 63,
+     "resistant": 62,
+     "parasite": 3
+    },
+    {
+     "clock": 10002260,
+     "susceptible": 64,
+     "resistant": 67,
+     "parasite": 0
+    },
+    {
+     "clock": 10502020,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 11001680,
+     "susceptible": 61,
+     "resistant": 65,
+     "parasite": 0
+    },
+    {
+     "clock": 11501360,
+     "susceptible": 63,
+     "resistant": 67,
+     "parasite": 0
+    },
+    {
+     "clock": 12001180,
+     "susceptible": 66,
+     "resistant": 68,
+     "parasite": 0
+    },
+    {
+     "clock": 12501460,
+     "susceptible": 101,
+     "resistant": 96,
+     "parasite": 0
+    },
+    {
+     "clock": 13002060,
+     "susceptible": 64,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 13501780,
+     "susceptible": 64,
+     "resistant": 67,
+     "parasite": 0
+    },
+    {
+     "clock": 14001540,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 14501200,
+     "susceptible": 61,
+     "resistant": 65,
+     "parasite": 0
+    },
+    {
+     "clock": 15000880,
+     "susceptible": 63,
+     "resistant": 67,
+     "parasite": 0
+    },
+    {
+     "clock": 15500700,
+     "susceptible": 66,
+     "resistant": 68,
+     "parasite": 0
+    },
+    {
+     "clock": 16000980,
+     "susceptible": 101,
+     "resistant": 96,
+     "parasite": 0
+    },
+    {
+     "clock": 16501580,
+     "susceptible": 64,
+     "resistant": 62,
+     "parasite": 0
+    },
+    {
+     "clock": 17001300,
+     "susceptible": 64,
+     "resistant": 67,
+     "parasite": 0
+    },
+    {
+     "clock": 17501060,
+     "susceptible": 62,
+     "resistant": 63,
+     "parasite": 0
+    },
+    {
+     "clock": 18000720,
+     "susceptible": 61,
+     "resistant": 65,
+     "parasite": 0
+    },
+    {
+     "clock": 18500400,
+     "susceptible": 63,
+     "resistant": 67,
+     "parasite": 0
+    },
+    {
+     "clock": 19000220,
+     "susceptible": 66,
+     "resistant": 68,
+     "parasite": 0
+    },
+    {
+     "clock": 19500500,
+     "susceptible": 101,
+     "resistant": 96,
+     "parasite": 0
+    },
+    {
+     "clock": 20001100,
+     "susceptible": 64,
+     "resistant": 62,
+     "parasite": 0
+    }
+   ],
+   "final": {
+    "clock": 20001100,
+    "susceptible": 64,
+    "resistant": 62,
+    "parasite": 0
+   }
+  },
+  {
+   "with_parasites": true,
+   "layout": 0,
+   "hosts": [
+    "susceptible"
+   ],
+   "history": [
+    {
+     "clock": 320,
+     "susceptible": 16,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 500660,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 1000560,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 1500480,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 2000380,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 2500300,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 3000200,
+     "event": "6 parasites introduced",
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 6
+    },
+    {
+     "clock": 3000200,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 6
+    },
+    {
+     "clock": 3502000,
+     "susceptible": 118,
+     "resistant": 0,
+     "parasite": 2
+    },
+    {
+     "clock": 4001320,
+     "susceptible": 126,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 4503280,
+     "susceptible": 167,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 5000920,
+     "susceptible": 141,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 5500740,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 6000560,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 6500380,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 7000220,
+     "susceptible": 126,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 7500040,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 8002360,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 8502180,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 9002000,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 9501840,
+     "susceptible": 232,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 10001280,
+     "susceptible": 171,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 10501420,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 11001240,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 11501060,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 12000880,
+     "susceptible": 126,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 12500720,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 13000540,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 13500360,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 14000180,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 14500000,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 15004460,
+     "susceptible": 172,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 15502100,
+     "susceptible": 141,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 16001920,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 16501740,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 17001560,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 17501400,
+     "susceptible": 126,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 18001220,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 18501040,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 19000860,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 19500680,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 20000500,
+     "susceptible": 126,
+     "resistant": 0,
+     "parasite": 0
+    }
+   ],
+   "final": {
+    "clock": 20000500,
+    "susceptible": 126,
+    "resistant": 0,
+    "parasite": 0
+   }
+  },
+  {
+   "with_parasites": true,
+   "layout": 1,
+   "hosts": [
+    "susceptible"
+   ],
+   "history": [
+    {
+     "clock": 320,
+     "susceptible": 16,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 500660,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 1000560,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 1500480,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 2000380,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 2500300,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 3000200,
+     "event": "6 parasites introduced",
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 6
+    },
+    {
+     "clock": 3000200,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 6
+    },
+    {
+     "clock": 3502000,
+     "susceptible": 118,
+     "resistant": 0,
+     "parasite": 2
+    },
+    {
+     "clock": 4001320,
+     "susceptible": 126,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 4503280,
+     "susceptible": 167,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 5000920,
+     "susceptible": 141,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 5500740,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 6000560,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 6500380,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 7000220,
+     "susceptible": 126,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 7500040,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 8002360,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 8502180,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 9002000,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 9501840,
+     "susceptible": 232,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 10001280,
+     "susceptible": 171,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 10501420,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 11001240,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 11501060,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 12000880,
+     "susceptible": 126,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 12500720,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 13000540,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 13500360,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 14000180,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 14500000,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 15004460,
+     "susceptible": 172,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 15502100,
+     "susceptible": 141,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 16001920,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 16501740,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 17001560,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 17501400,
+     "susceptible": 126,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 18001220,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 18501040,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 19000860,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 19500680,
+     "susceptible": 125,
+     "resistant": 0,
+     "parasite": 0
+    },
+    {
+     "clock": 20000500,
+     "susceptible": 126,
+     "resistant": 0,
+     "parasite": 0
+    }
+   ],
+   "final": {
+    "clock": 20000500,
+    "susceptible": 126,
+    "resistant": 0,
+    "parasite": 0
+   }
+  },
+  {
+   "with_parasites": true,
+   "layout": 0,
+   "hosts": [
+    "resistant"
+   ],
+   "history": [
+    {
+     "clock": 320,
+     "susceptible": 0,
+     "resistant": 16,
+     "parasite": 0
+    },
+    {
+     "clock": 500660,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 1000560,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 1500480,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 2000380,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 2500300,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 3000200,
+     "event": "6 parasites introduced",
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 6
+    },
+    {
+     "clock": 3000200,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 6
+    },
+    {
+     "clock": 3500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 4000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 4502460,
+     "susceptible": 0,
+     "resistant": 171,
+     "parasite": 0
+    },
+    {
+     "clock": 5000280,
+     "susceptible": 0,
+     "resistant": 141,
+     "parasite": 0
+    },
+    {
+     "clock": 5500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 6000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 6500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 7000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 7500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 8000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 8500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 9000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 9500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 10002460,
+     "susceptible": 0,
+     "resistant": 172,
+     "parasite": 0
+    },
+    {
+     "clock": 10500280,
+     "susceptible": 0,
+     "resistant": 141,
+     "parasite": 0
+    },
+    {
+     "clock": 11000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 11500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 12000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 12500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 13000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 13500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 14000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 14500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 15000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 15502460,
+     "susceptible": 0,
+     "resistant": 172,
+     "parasite": 0
+    },
+    {
+     "clock": 16000280,
+     "susceptible": 0,
+     "resistant": 141,
+     "parasite": 0
+    },
+    {
+     "clock": 16500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 17000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 17500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 18000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 18500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 19000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 19500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 20000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    }
+   ],
+   "final": {
+    "clock": 20000280,
+    "susceptible": 0,
+    "resistant": 125,
+    "parasite": 0
+   }
+  },
+  {
+   "with_parasites": true,
+   "layout": 1,
+   "hosts": [
+    "resistant"
+   ],
+   "history": [
+    {
+     "clock": 320,
+     "susceptible": 0,
+     "resistant": 16,
+     "parasite": 0
+    },
+    {
+     "clock": 500660,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 1000560,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 1500480,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 2000380,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 2500300,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 3000200,
+     "event": "6 parasites introduced",
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 6
+    },
+    {
+     "clock": 3000200,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 6
+    },
+    {
+     "clock": 3500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 4000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 4502460,
+     "susceptible": 0,
+     "resistant": 171,
+     "parasite": 0
+    },
+    {
+     "clock": 5000280,
+     "susceptible": 0,
+     "resistant": 141,
+     "parasite": 0
+    },
+    {
+     "clock": 5500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 6000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 6500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 7000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 7500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 8000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 8500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 9000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 9500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 10002460,
+     "susceptible": 0,
+     "resistant": 172,
+     "parasite": 0
+    },
+    {
+     "clock": 10500280,
+     "susceptible": 0,
+     "resistant": 141,
+     "parasite": 0
+    },
+    {
+     "clock": 11000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 11500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 12000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 12500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 13000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 13500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 14000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 14500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 15000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 15502460,
+     "susceptible": 0,
+     "resistant": 172,
+     "parasite": 0
+    },
+    {
+     "clock": 16000280,
+     "susceptible": 0,
+     "resistant": 141,
+     "parasite": 0
+    },
+    {
+     "clock": 16500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 17000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 17500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 18000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 18500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 19000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 19500280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 20000280,
+     "susceptible": 0,
+     "resistant": 125,
+     "parasite": 0
+    }
+   ],
+   "final": {
+    "clock": 20000280,
+    "susceptible": 0,
+    "resistant": 125,
+    "parasite": 0
+   }
+  }
+ ]
+}
