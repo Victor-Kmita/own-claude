@@ -1,2 +1,3 @@
 [2026-08-19T21:25:38+00:00] 2026-08-20-threshold-flaw-k1-s2: /usr/bin/python3 -m soup run tf-k1-s2 --instructions 60000000 --seed 2 --copy-mutation 1000 --cosmic 2000 --flaw 1000 --sample-every 3000000
 [2026-08-19T21:27:04+00:00] 2026-08-20-threshold-flaw-k1-s2: ok in 86s
+[2026-08-19T21:27:10+00:00] 2026-08-20-flaw-3b-s7: /usr/bin/python3 -m soup run flaw-3b-s7 --instructions 3000000000 --seed 7 --flaw 1000 --sample-every 20000000
