@@ -181,6 +181,28 @@ the numbers every result below is measured against, and a unit test pins them.
 
 ## What happened
 
+Fifteen findings, in the order they were found. If you read one row of this
+table, make it the last column: several of these corrected an earlier answer of
+mine, and two of them corrected the instrument rather than the result.
+
+| # | what | the number |
+|---|---|---|
+| 1 | with mutation off, nothing changes, ever | 218,916 births, one genotype |
+| 2 | two housekeeping policies decide whether mutation is even needed | 0 vs 3,092 failed allocations |
+| 3 | with mutation on, an ecosystem | 164–205 genotypes alive at once |
+| 4 | descendants get cheaper by getting shorter | 410 → 401 instructions per daughter |
+| 5 | at three billion instructions, the copy loop unrolls | 216 instructions, 38 cells |
+| 6 | the faster replicator loses; its mutants are 21× worse | 239 vs 5,109 |
+| 7 | parasites, and a genotype whose CPU is captured | 45 cells, no copy loop |
+| 8 | a host that became immune, by losing the pattern parasites hunt | 87% of reproduction saved |
+| 9 | most variants are broken, most births are not | 28% vs 85% |
+| 10 | genome length follows the CPU scheduler | 57–62 cells vs 77–106 |
+| 11 | a parasite needs its whole community, not just its hosts | 58 survive vs 0 |
+| 12 | the error threshold sits where theory puts it | one mutation per genome |
+| 13 | the mutation mode I was missing doubles the rate of evolution | 30,000 vs 15,000 genotypes |
+| 14 | about a hundred distinct behaviours, however many genomes | 22–121 phenotypes |
+| 15 | evolvability is expensive | a fifth of all reproduction |
+
 ### 1. With mutation off, nothing ever happens
 
 100M instructions, no copy errors, no cosmic rays: **218,916 births, exactly one

@@ -331,8 +331,11 @@ known cost, forty million instructions each:
 | 2.2%, 1.2%, 0.2% | 50/50, no resolution |
 
 Selection here resolves differences above about 4% within forty million
-instructions and is blind to anything under 2%.  That is the tempo everything
-else in this repository runs at.
+instructions and is blind to anything under 2%.  Running the three near-neutral
+contests for ten times as long -- four hundred million instructions each --
+leaves them at 51%, 51% and 50%: the advantage is not too small to act *yet*, it
+is too small to act at all on this timescale.  That is the tempo everything else
+in this repository runs at.
 
 ## Agenda
 
