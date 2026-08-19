@@ -34,6 +34,7 @@ python3 experiments/selection.py          # how strong selection is here
 python3 experiments/robustness_arc.py     # what happens to robustness over time
 python3 -m soup run x --flaw 1000         # Tierra's third mutation mode, finding 13
 python3 experiments/coadaptation.py       # what a transplanted parasite needs
+python3 experiments/optimization_curve.py # how cheap replicators get, per run length
 python3 experiments/report.py > experiments/REPORT.md
 ```
 
@@ -770,6 +771,11 @@ so every claim came from a tool, and the tools are tested:
   births and a fidelity of zero.
 * `modal_parent` — ancestry by the route a genotype actually travels, not by
   whoever produced it first, which for a rare variant is often a freak event.
+
+Two of the sweeps overlap by accident: `flaw-0-s1` and `mut-k1-s1` are the same
+configuration reached from different directions, and they agree to the last
+digit — 387 instructions, 59 cells, 62.9 mean length, 348 generations. Free
+evidence that a run is reproducible from its parameters alone.
 
 `python3 -m unittest discover -s tests` runs 54 tests covering instruction
 semantics, the allocator, template search, write protection, the division rules,
