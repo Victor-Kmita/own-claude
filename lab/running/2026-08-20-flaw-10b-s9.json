@@ -11,5 +11,8 @@
   "seed": 9,
   "flaw": 1000,
   "sample_every": 25000000
- }
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-19T22:04:20+00:00",
+ "cores": 12
 }
