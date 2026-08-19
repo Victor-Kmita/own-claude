@@ -142,3 +142,25 @@
   2840.0M  alive= 707 types= 220  H= 5.99  size~  38.2  dom=0037tcw (21%)  foreign=4% fbreed=9% gen=16059
   2860.0M  alive= 679 types= 200  H= 5.62  size~  36.9  dom=0037tzh (19%)  foreign=2% fbreed=11% gen=16184
   2880.0M  alive= 662 types= 197  H= 5.71  size~  37.0  dom=0037vva (20%)  foreign=5% fbreed=16% gen=16300
+  2900.0M  alive= 665 types= 232  H= 5.93  size~  36.9  dom=0037amk (18%)  foreign=5% fbreed=19% gen=16412
+  2920.0M  alive= 666 types= 198  H= 5.64  size~  37.1  dom=0037bhg (22%)  foreign=2% fbreed=9% gen=16530
+  2940.0M  alive= 667 types= 218  H= 6.22  size~  37.1  dom=0037eae (12%)  foreign=3% fbreed=14% gen=16647
+  2960.0M  alive= 790 types= 218  H= 5.87  size~  37.0  dom=0037muk (14%)  foreign=4% fbreed=11% gen=16761
+  2980.0M  alive= 664 types= 218  H= 6.37  size~  36.9  dom=0037otq (10%)  foreign=2% fbreed=11% gen=16875
+  3000.0M  alive= 665 types= 228  H= 6.52  size~  37.2  dom=0037vvz (8%)  foreign=3% fbreed=14% gen=16990
+
+wrote /home/user/own-claude/experiments/results/deep-constant-s1.json  (783,225 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0037vvz   56    37    1296  0.98    replicator    239        0 0037vmn
+  0037zlo   52    37    4748  0.98    replicator    239        0 0037xtg
+  0037vmn   50    37    1976  0.97    replicator    239        0 0037qxx
+  0036vir   30    36      73  0.56 host-dependent      -        0 0037xyh
+  0037rwg   29    37    5311  0.99    replicator    239        0 0037nap
+  0037zld   19    37    1183  0.98    replicator    239        0 0037uul
+  0037uul   18    37   18337  0.98         inert      -        0 0037tms
+  0037uzf   15    37    2044  0.99    replicator    239        0 0037qtf
+  0037vgj   11    37     137  0.94    replicator    239        0 0037rwg
+  0037suq   10    37     108  0.94    replicator    239        0 0037otq
+  0037wao   10    37     523  0.96    replicator    239        0 0037uzf
+  0037xgv   10    37     132  0.98    replicator    239        0 0037nap

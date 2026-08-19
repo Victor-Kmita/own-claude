@@ -187,9 +187,14 @@ finally moved.
 
 ### 5. At three billion instructions, the copy loop unrolls
 
-The champion of a 3-billion-instruction run is `0038rdr`: **38 cells, 216
-instructions per daughter**, held by 134 of the ~640 living creatures with a
-breeding fidelity of 0.99. Against the ancestor's 64 cells and 410 instructions
+Two runs of three billion instructions each — about 18,000 generations and eight
+to nine million births apiece — reached two different answers. One compressed to
+**37 cells at 239 instructions** with the ancestor's copy loop untouched (6.46
+per cell). The other found something else.
+
+The champion of that run is `0038rdr`: **38 cells, 216 instructions per
+daughter**, held by 134 of the ~660 living creatures with a breeding fidelity of
+0.99. Against the ancestor's 64 cells and 410 instructions
 that is 1.9× the efficiency — and this time not by compression alone. Its copy
 loop is:
 
@@ -223,6 +228,10 @@ Between them, compression and unrolling: 64 cells → 38 (−41%), 6.41
 instructions per cell → 5.68 (−11%), 410 per daughter → 216. Ray's runs went
 further on both counts (80 → 22 cells, 10 → 6 per cell, 839 → 146, a 5.75×
 gain) — with five times more instructions to do it in.
+
+That only one of two runs found the unrolling is itself a replication: Ray
+reports that different runs reach different plateaus and cannot easily get past
+them, his own stopping at 22, 27 and 30 instructions.
 
 ### 6. Parasites
 
