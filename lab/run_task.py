@@ -154,7 +154,7 @@ def claim(use_git: bool) -> dict | None:
     os.makedirs(RUNNING, exist_ok=True)
     record = {k: v for k, v in task.items() if k != "_file"}
     record.update({"claimed_by": HOST, "claimed_at": now(),
-                   "cores": os.cpu_count()})
+                   "claimed_pid": os.getpid(), "cores": os.cpu_count()})
     with open(target, "w") as fh:
         json.dump(record, fh, indent=1)
     os.remove(task["_file"])
@@ -238,11 +238,95 @@ def heartbeat(use_git: bool, push: bool) -> None:
         publish(f"lab: heartbeat from {HOST}", [STATUS], use_git)
 
 
+def progress_file(task: dict) -> str | None:
+    name = (task.get("params") or {}).get("name")
+    if not name:
+        return None
+    path = os.path.join(RESULTS, f"{name}.log")
+    return path if os.path.exists(path) else None
+
+
+def stale_reason(task: dict, stale_hours: float, quiet_minutes: float) -> str | None:
+    """Why this claimed task looks abandoned, or None if it looks alive.
+
+    A worker that dies mid-task leaves its claim in lab/running/ and nobody
+    ever runs the task again.  Machines reboot and sessions end, so this has to
+    be recoverable without a human noticing.  Three signals, in order of how
+    much they prove:
+
+    1. the claiming process is gone, and it was our own machine -- decisive;
+    2. the run's log has not been written to for a long time -- strong, and it
+       works across machines once the log has been pushed;
+    3. the claim is far older than the task said it would take -- weakest, so
+       it is only used when there is no log at all.
+    """
+    claimed_at = task.get("claimed_at")
+    age_hours = None
+    if claimed_at:
+        try:
+            age_hours = (datetime.now(timezone.utc)
+                         - datetime.fromisoformat(claimed_at)).total_seconds() / 3600
+        except ValueError:
+            pass
+
+    if task.get("claimed_by") == HOST and task.get("claimed_pid"):
+        try:
+            os.kill(int(task["claimed_pid"]), 0)
+        except (ProcessLookupError, ValueError):
+            return f"claimed by this host as pid {task['claimed_pid']}, which is gone"
+        except PermissionError:
+            pass                                   # alive, owned by someone else
+
+    log = progress_file(task)
+    if log:
+        quiet = (time.time() - os.path.getmtime(log)) / 60
+        if quiet > quiet_minutes:
+            return f"no progress written for {quiet:.0f} minutes"
+        return None                                # it is writing: it is alive
+
+    if age_hours is not None:
+        budget = max(stale_hours, (task.get("expect_hours") or 0) * 3)
+        if age_hours > budget:
+            return (f"claimed {age_hours:.1f}h ago with no log at all "
+                    f"(expected {task.get('expect_hours', '?')}h)")
+    return None
+
+
+def cmd_requeue(stale_hours: float, quiet_minutes: float, use_git: bool,
+                dry_run: bool) -> None:
+    sync(use_git)
+    moved = []
+    for task in load_tasks(RUNNING):
+        reason = stale_reason(task, stale_hours, quiet_minutes)
+        if not reason:
+            continue
+        task_id = task.get("id", os.path.basename(task["_file"])[:-5])
+        print(f"{'would requeue' if dry_run else 'requeueing'} {task_id}: {reason}")
+        moved.append(task_id)
+        if dry_run:
+            continue
+        record = {k: v for k, v in task.items()
+                  if k not in ("_file", "claimed_by", "claimed_at", "claimed_pid")}
+        record["requeued_from"] = task.get("claimed_by")
+        record["requeue_count"] = task.get("requeue_count", 0) + 1
+        record["requeue_reason"] = reason
+        with open(os.path.join(QUEUE, f"{task_id}.json"), "w") as fh:
+            json.dump(record, fh, indent=1)
+        os.remove(task["_file"])
+    if moved and not dry_run:
+        publish(f"lab: requeue {len(moved)} abandoned task(s) from {HOST}",
+                [QUEUE, RUNNING], use_git)
+    if not moved:
+        print("nothing looks abandoned")
+
+
 def cmd_status() -> None:
     print(f"queued  {len(load_tasks(QUEUE))}")
     for task in load_tasks(RUNNING):
+        reason = stale_reason(task, 6.0, 90.0)
+        note = f"  ** looks abandoned: {reason}" if reason else ""
         print(f"running {task.get('id')}  claimed by {task.get('claimed_by')} "
-              f"at {task.get('claimed_at')}")
+              f"at {task.get('claimed_at')}{note}")
     done = load_tasks(DONE)
     print(f"done    {len(done)}")
     for task in done[-5:]:
@@ -250,9 +334,48 @@ def cmd_status() -> None:
               f"{task.get('seconds', 0):.0f}s")
 
 
+def supervise(args) -> None:
+    """Run several workers as children and restart any that die.
+
+    One command and one process to nohup, instead of a dozen -- which matters
+    when the account cannot reach systemd.
+    """
+    child_args = [sys.executable, os.path.abspath(__file__), "loop",
+                  "--poll", str(args.poll), "--heartbeat", str(args.heartbeat)]
+    if args.no_git:
+        child_args.append("--no-git")
+    children: list[subprocess.Popen] = []
+    print(f"[{now()}] supervising {args.jobs} workers on {os.cpu_count()} cores",
+          flush=True)
+    try:
+        while True:
+            children = [c for c in children if c.poll() is None]
+            while len(children) < args.jobs:
+                children.append(subprocess.Popen(child_args, cwd=REPO))
+                time.sleep(2)          # stagger, so they do not all claim at once
+            time.sleep(15)
+    except KeyboardInterrupt:
+        print("stopping workers", flush=True)
+        for child in children:
+            child.terminate()
+        for child in children:
+            try:
+                child.wait(timeout=30)
+            except subprocess.TimeoutExpired:
+                child.kill()
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=["once", "loop", "status"])
+    parser.add_argument("mode", choices=["once", "loop", "status", "requeue"])
+    parser.add_argument("--jobs", type=int, default=1,
+                        help="in loop mode, supervise this many workers")
+    parser.add_argument("--stale-hours", type=float, default=6.0,
+                        help="requeue: age at which a claim with no log is suspect")
+    parser.add_argument("--quiet-minutes", type=float, default=90.0,
+                        help="requeue: silence in a run's log that means it died")
+    parser.add_argument("--dry-run", action="store_true",
+                        help="requeue: say what would happen, change nothing")
     parser.add_argument("--poll", type=int, default=300,
                         help="seconds to wait when the queue is empty")
     parser.add_argument("--heartbeat", type=int, default=900,
@@ -264,6 +387,12 @@ def main() -> None:
 
     if args.mode == "status":
         cmd_status()
+        return
+    if args.mode == "requeue":
+        cmd_requeue(args.stale_hours, args.quiet_minutes, use_git, args.dry_run)
+        return
+    if args.mode == "loop" and args.jobs > 1:
+        supervise(args)
         return
     if args.mode == "once":
         if not run_one(use_git):
