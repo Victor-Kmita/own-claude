@@ -3,3 +3,7 @@ the ancestor is 64 cells at 410 instructions per daughter; 400,000,000 instructi
 challenger  cells   cost  advantage  final share             births      outcome
 --------------------------------------------------------------------------------
    0062mup     62    401      2.2%       51.2% {'ancestor': 1, 'challenger': 2}      coexist
+   0063bhk     63    405      1.2%       50.8% {'ancestor': 2, 'challenger': 2}      coexist
+   0062pqw     62    409      0.2%       50.4% {'ancestor': 0, 'challenger': 0}      coexist
+
+wrote /home/user/own-claude/experiments/results/selection-400M.json

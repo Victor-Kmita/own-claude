@@ -41,6 +41,7 @@ BUDGET = 25_000_000
 SOUP = 20_000
 PARASITES = 6
 HOSTS_EACH = 16
+MAX_SEED_CELLS = 6_000      # keep the seeded community well under the soup size
 
 
 def load_source() -> dict:
@@ -53,10 +54,20 @@ def communities(run: dict) -> dict[str, list[bytes]]:
     replicators = [row["genotype"] for row in run["census"]
                    if row["kind"] == "replicator"]
     own_host = replicators[0] if replicators else None
+    # The census as it actually stood: seven host-dependent genotypes and two
+    # replicators, in the numbers they were found in.  A parasite-rich soup is
+    # a different environment from a soup of hosts, and rebuilding only the
+    # hosts may be why the earlier reconstructions failed.
+    census_mix: list[bytes] = []
+    for row in run["census"]:
+        if row["genotype"] == PARASITE:
+            continue
+        census_mix.extend([genomes[row["genotype"]]] * max(1, row["n"] // 10))
     return {
         "ancestors": [bytes(load_ancestor())],
         "its own host": [genomes[own_host]] if own_host else [],
         "its own community": [genomes[g] for g in replicators],
+        "its whole census": census_mix,
     }
 
 
@@ -67,11 +78,14 @@ def trial(hosts: list[bytes], parasite: bytes, mutation: bool = False) -> dict:
     addr = 0
     for i in range(HOSTS_EACH):
         for genome in hosts:
+            if addr + len(genome) > MAX_SEED_CELLS:
+                break
             w.inject(list(genome), address=addr, lineage="host")
             addr += len(genome)
 
     history = []
     introduced = False
+    parasite_label = None
     next_sample = 0
     while w.clock < BUDGET and not w.extinct:
         w.step_generation()
@@ -80,7 +94,8 @@ def trial(hosts: list[bytes], parasite: bytes, mutation: bool = False) -> dict:
             placed = 0
             for start, length in list(w.memory.gaps()):
                 while length >= len(parasite) and placed < PARASITES:
-                    w.inject(list(parasite), address=start, lineage="parasite")
+                    cr = w.inject(list(parasite), address=start, lineage="parasite")
+                    parasite_label = cr.genotype
                     start += len(parasite)
                     length -= len(parasite)
                     placed += 1
@@ -88,10 +103,22 @@ def trial(hosts: list[bytes], parasite: bytes, mutation: bool = False) -> dict:
                     break
         if w.clock >= next_sample:
             counts = {"host": 0, "parasite": 0}
+            # Two different questions.  The lineage count asks whether the
+            # creatures introduced have living descendants.  The genotype count
+            # asks whether that exact genome is present at all -- which in a
+            # mutating soup it can be without any of them being descendants,
+            # because a host can mutate into it.  The second is the one that
+            # tests whether the parasite lived by being re-created.
+            same_genome = 0
             for cr in w.creatures:
-                if cr.alive and cr.lineage in counts:
+                if not cr.alive:
+                    continue
+                if cr.lineage in counts:
                     counts[cr.lineage] += 1
-            history.append({"clock": w.clock, **counts})
+                if parasite_label and cr.genotype == parasite_label:
+                    same_genome += 1
+            history.append({"clock": w.clock, **counts,
+                            "parasite_genotype": same_genome})
             next_sample += BUDGET // 10
     snap = sample(w)
     return {"history": history, "final": history[-1], "alive": snap["alive"]}
@@ -113,8 +140,12 @@ def main() -> None:
             out[f"{name} / mutation {'on' if mutation else 'off'}"] = result
             f = result["final"]
             print(f"{name:>20}: {len(hosts)} host genotype(s) -> "
-                  f"final hosts {f['host']:4d}, parasites {f['parasite']:4d}")
-            print("   " + "  ".join(f"{r['parasite']}" for r in result["history"]))
+                  f"final hosts {f['host']:4d}, parasite lineage {f['parasite']:4d}, "
+                  f"copies of its genome anywhere {f['parasite_genotype']:4d}")
+            print("   lineage : " + " ".join(f"{r['parasite']:3d}"
+                                             for r in result["history"]))
+            print("   genotype: " + " ".join(f"{r['parasite_genotype']:3d}"
+                                             for r in result["history"]))
     with open(os.path.join(RESULTS, "coadaptation.json"), "w") as fh:
         json.dump({"parasite": PARASITE, "budget": BUDGET, "results": out}, fh,
                   indent=1)

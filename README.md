@@ -28,10 +28,12 @@ python3 experiments/fragmentation.py      # the policy sweep in finding 2
 python3 experiments/viability.py          # the mutational landscape in finding 9
 python3 experiments/epidemic.py           # the resistance experiment in finding 11
 python3 experiments/mutation_rate.py      # the sweep and error threshold, finding 12
-python3 experiments/neutrality.py         # behaviours rather than genomes, finding 13
+python3 experiments/neutrality.py         # behaviours rather than genomes, finding 14
 python3 experiments/flatness.py           # survival of the flattest, finding 6
 python3 experiments/selection.py          # how strong selection is here
 python3 experiments/robustness_arc.py     # what happens to robustness over time
+python3 -m soup run x --flaw 1000         # Tierra's third mutation mode, finding 13
+python3 experiments/coadaptation.py       # what a transplanted parasite needs
 python3 experiments/report.py > experiments/REPORT.md
 ```
 
@@ -549,7 +551,32 @@ the first 200k instructions) and then dies out anyway, because the allocator
 puts those daughters in the empty part of the world where no host is within
 search range. Parasitism needs a crowd, and apparently a familiar one.
 
-This is the clearest open question the project leaves.
+**A later experiment answered most of this** (`experiments/coadaptation.py`).
+The question was why a parasite that held a fifth of its own run cannot live
+anywhere else, and the answer is that it needs its whole community, not just its
+hosts. Six copies introduced into a saturated soup, no mutation, counted as
+descendants of the ones introduced:
+
+| the community it was put into | parasite lineage after 25M instructions |
+|---|---:|
+| ancestors only | 3 |
+| its own susceptible host, alone | 0 |
+| the two replicators from its own run | 0 |
+| **its whole census — eleven genotypes, seven of them parasites** | **58** |
+
+A soup of hosts is not the environment it evolved in. A soup that is mostly
+parasites is, and only there does it hold on.
+
+Two further things fell out. With mutation switched on, the parasite's exact
+genome keeps being **re-created** from its hosts — bursts of 19, 34, 65 copies
+appear from mothers of other genotypes — and each burst dies back within a few
+million instructions. It exists there as a recurrent mutation rather than a
+lineage. And with mutation off, its lineage survives in the ancestor soup while
+containing none of its own genome: its daughters are copies of the *host*, so
+the line persists by becoming what it feeds on.
+
+What remains unexplained is narrower than before: in the run where it arose it
+bred true 85% of the time, and no reconstruction I have built reproduces that.
 
 ### 12. Mutation rate: an optimization peak, and an error threshold exactly where theory puts it
 
@@ -596,7 +623,37 @@ But the within-condition spread is 0.12 to 0.85 at the same rate — as large as
 the effect. Three seeds are not enough to say anything here, and I am not going
 to pretend otherwise.
 
-### 13. About a hundred distinct behaviours, however many genomes there are
+### 13. The mutation mode I was missing doubles the rate of evolution
+
+Tierra has three mutation modes; this world had two. The missing one is
+*flaws*: at a low rate, an instruction's result comes out off by one. It sounds
+like a footnote and is not, because the two modes here could only ever swap one
+instruction for another. A flawed `mal` asks for the wrong amount of memory and
+a flawed `movii` writes to the wrong cell — which is how a soup gets
+**insertions and deletions** at all.
+
+With both other mutation sources switched off, flaws alone take a population
+from one genotype to eight hundred in two million instructions.
+
+Switched on alongside the usual mutation, in nine runs of 60M instructions:
+
+| flaws | cheapest replicator (3 seeds) | mean genome length | genotypes explored | generations |
+|---|---|---|---:|---:|
+| off | 387, 407, 402 | 63.2, 63.0, 61.8 | ~15,000 | ~347 |
+| one instruction in 5,000 | 368, 390, 401 | 57.1, 62.5, 63.9 | ~19,600 | ~347 |
+| one instruction in 1,000 | **386, 327, 332** | 62.5, **50.9**, 59.4 | **~30,000** | ~337 |
+
+Twice as many genotypes tried in the same time, and replicators a fifth cheaper
+than the ancestor found in 60 million instructions — a level the flawless runs
+did not reach until three billion. Generation depth is unchanged, so this is not
+a matter of running faster; it is a matter of exploring a larger space.
+
+This also revises finding 5. I explained the slowness of optimization here by
+two things: a copy loop that started at the efficiency Tierra's creatures had to
+evolve, and runs a hundred times shorter than Ray's. There was a third: a whole
+class of mutation that this world could not produce.
+
+### 14. About a hundred distinct behaviours, however many genomes there are
 
 Standish measured something in Tierra that I had not thought to: gene banks of
 69,139, 87,003 and 198,982 genotypes collapsed onto **83, 86 and 158 distinct
@@ -629,7 +686,7 @@ parasite-rich world holds three times as many distinct behaviours (121 against
 mine rather than his, and a noisy estimator: this is a failure to reproduce, not
 a refutation.
 
-### 14. Evolvability is expensive
+### 15. Evolvability is expensive
 
 The same 100M instructions bought 218,916 births with mutation off and
 171,721 – 175,651 with it on: a fifth of the world's reproductive output goes on
@@ -718,6 +775,9 @@ finding 8 built by hand.
   one hand-built resistant host. It bounds nothing: a longer run, a different
   parasite, or resistance evolving in place rather than being transplanted
   could all show the sweep it failed to find.
+* The community reconstruction in finding 11 seeds census genotypes in rough
+  proportion; it does not reproduce the spatial arrangement the original soup
+  had, and spacing demonstrably matters (the `--gap` result above).
 
 ## Layout
 

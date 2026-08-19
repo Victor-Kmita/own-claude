@@ -1,18 +1,30 @@
 0045adk: 45 cells, host-dependent, held a fifth of the population in baseline-s2
 
 --- mutation off 
-           ancestors: 1 host genotype(s) -> final hosts  122, parasites    3
-   0  0  2  3  2  3  2  3  4  3  3
-        its own host: 1 host genotype(s) -> final hosts  125, parasites    0
-   0  0  0  0  0  0  0  0  0  0  0
-   its own community: 2 host genotype(s) -> final hosts  125, parasites    0
-   0  0  0  0  0  0  0  0  0  0  0
+           ancestors: 1 host genotype(s) -> final hosts  122, parasite lineage    3, copies of its genome anywhere    0
+   lineage :   0   0   2   3   2   3   2   3   4   3   3
+   genotype:   0   0   0   0   0   0   0   0   0   0   0
+        its own host: 1 host genotype(s) -> final hosts  125, parasite lineage    0, copies of its genome anywhere    0
+   lineage :   0   0   0   0   0   0   0   0   0   0   0
+   genotype:   0   0   0   0   0   0   0   0   0   0   0
+   its own community: 2 host genotype(s) -> final hosts  125, parasite lineage    0, copies of its genome anywhere    0
+   lineage :   0   0   0   0   0   0   0   0   0   0   0
+   genotype:   0   0   0   0   0   0   0   0   0   0   0
+    its whole census: 11 host genotype(s) -> final hosts   71, parasite lineage   58, copies of its genome anywhere    0
+   lineage :   0   0  67  62  46  46  44  45  57  57  58
+   genotype:   0   0  43   6   0   0   0   0   0   0   0
 --- mutation on (the parasite lineage can be re-created from its hosts)
-           ancestors: 1 host genotype(s) -> final hosts  198, parasites    0
-   0  0  2  0  0  0  0  0  0  0  0
-        its own host: 1 host genotype(s) -> final hosts  205, parasites    0
-   0  0  0  0  0  0  0  0  0  0  0
-   its own community: 2 host genotype(s) -> final hosts  156, parasites    0
-   0  0  0  0  0  0  0  0  0  0  0
+           ancestors: 1 host genotype(s) -> final hosts  198, parasite lineage    0, copies of its genome anywhere    0
+   lineage :   0   0   2   0   0   0   0   0   0   0   0
+   genotype:   0   0   0   0   0   0   0   0   0   0   0
+        its own host: 1 host genotype(s) -> final hosts  205, parasite lineage    0, copies of its genome anywhere    0
+   lineage :   0   0   0   0   0   0   0   0   0   0   0
+   genotype:   0   0  19   0   0   0   0   0   0   0   0
+   its own community: 2 host genotype(s) -> final hosts  156, parasite lineage    0, copies of its genome anywhere    0
+   lineage :   0   0   0   0   0   0   0   0   0   0   0
+   genotype:   0   0  34  35   0   9   3   7   0   0   0
+    its whole census: 11 host genotype(s) -> final hosts  132, parasite lineage    0, copies of its genome anywhere    0
+   lineage :   0   0   1   0   0   0   0   0   0   0   0
+   genotype:   0   0  65  26   0   0   0   0   0   0   0
 
 (the row of numbers is the parasite count at each sample)

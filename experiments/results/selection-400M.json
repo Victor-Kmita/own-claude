@@ -1,0 +1,42 @@
+{
+ "budget": 400000000,
+ "ancestor_cost": 410,
+ "rows": [
+  {
+   "genotype": "0062mup",
+   "size": 62,
+   "cost": 401,
+   "advantage": 0.022,
+   "share": 0.512,
+   "births": {
+    "ancestor": 1,
+    "challenger": 2
+   },
+   "outcome": "coexist"
+  },
+  {
+   "genotype": "0063bhk",
+   "size": 63,
+   "cost": 405,
+   "advantage": 0.012,
+   "share": 0.508,
+   "births": {
+    "ancestor": 2,
+    "challenger": 2
+   },
+   "outcome": "coexist"
+  },
+  {
+   "genotype": "0062pqw",
+   "size": 62,
+   "cost": 409,
+   "advantage": 0.002,
+   "share": 0.504,
+   "births": {
+    "ancestor": 0,
+    "challenger": 0
+   },
+   "outcome": "coexist"
+  }
+ ]
+}
