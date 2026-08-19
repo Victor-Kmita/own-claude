@@ -1,0 +1,18 @@
+0045adk: 45 cells, host-dependent, held a fifth of the population in baseline-s2
+
+--- mutation off 
+           ancestors: 1 host genotype(s) -> final hosts  122, parasites    3
+   0  0  2  3  2  3  2  3  4  3  3
+        its own host: 1 host genotype(s) -> final hosts  125, parasites    0
+   0  0  0  0  0  0  0  0  0  0  0
+   its own community: 2 host genotype(s) -> final hosts  125, parasites    0
+   0  0  0  0  0  0  0  0  0  0  0
+--- mutation on (the parasite lineage can be re-created from its hosts)
+           ancestors: 1 host genotype(s) -> final hosts  198, parasites    0
+   0  0  2  0  0  0  0  0  0  0  0
+        its own host: 1 host genotype(s) -> final hosts  205, parasites    0
+   0  0  0  0  0  0  0  0  0  0  0
+   its own community: 2 host genotype(s) -> final hosts  156, parasites    0
+   0  0  0  0  0  0  0  0  0  0  0
+
+(the row of numbers is the parasite count at each sample)

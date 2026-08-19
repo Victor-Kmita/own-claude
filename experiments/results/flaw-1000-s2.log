@@ -1,0 +1,36 @@
+     3.0M  alive= 460 types= 208  H= 6.21  size~  62.2  dom=0064aaa (25%)  foreign=14% fbreed=12% gen=21
+     6.0M  alive= 382 types= 196  H= 6.82  size~  62.8  dom=0064aaa (10%)  foreign=22% fbreed=25% gen=38
+     9.0M  alive= 420 types= 202  H= 6.58  size~  60.7  dom=0063abq (9%)  foreign=15% fbreed=11% gen=54
+    12.0M  alive= 398 types= 207  H= 7.01  size~  60.5  dom=0063akh (4%)  foreign=17% fbreed=19% gen=71
+    15.0M  alive= 387 types= 217  H= 7.21  size~  62.1  dom=0063akh (7%)  foreign=12% fbreed=12% gen=88
+    18.0M  alive= 411 types= 215  H= 7.12  size~  59.6  dom=0063abs (5%)  foreign=20% fbreed=21% gen=104
+    21.0M  alive= 381 types= 199  H= 6.90  size~  63.3  dom=0063aks (8%)  foreign=11% fbreed=9% gen=120
+    24.0M  alive= 382 types= 209  H= 7.12  size~  62.1  dom=0063csn (9%)  foreign=20% fbreed=27% gen=137
+    27.0M  alive= 389 types= 231  H= 7.42  size~  62.7  dom=0063csn (5%)  foreign=15% fbreed=20% gen=153
+    30.0M  alive= 388 types= 237  H= 7.44  size~  63.1  dom=0063csn (5%)  foreign=12% fbreed=15% gen=169
+    33.0M  alive= 404 types= 246  H= 7.43  size~  62.5  dom=0062cbu (7%)  foreign=12% fbreed=16% gen=186
+    36.0M  alive= 420 types= 245  H= 7.50  size~  58.7  dom=0054aal (4%)  foreign=9% fbreed=9% gen=204
+    39.0M  alive= 515 types= 247  H= 6.98  size~  52.1  dom=0053abo (10%)  foreign=20% fbreed=42% gen=223
+    42.0M  alive= 488 types= 240  H= 7.17  size~  52.4  dom=0053ady (5%)  foreign=18% fbreed=39% gen=239
+    45.0M  alive= 564 types= 291  H= 7.67  size~  49.4  dom=0053aae (3%)  foreign=32% fbreed=50% gen=256
+    48.0M  alive= 669 types= 302  H= 7.44  size~  48.1  dom=0053aae (8%)  foreign=42% fbreed=60% gen=271
+    51.0M  alive= 486 types= 258  H= 7.38  size~  51.3  dom=0053dck (5%)  foreign=19% fbreed=42% gen=288
+    54.0M  alive= 465 types= 261  H= 7.39  size~  52.4  dom=0053dtt (6%)  foreign=16% fbreed=33% gen=302
+    57.0M  alive= 574 types= 312  H= 7.82  size~  51.2  dom=0034aig (4%)  foreign=28% fbreed=44% gen=318
+    60.0M  alive= 514 types= 266  H= 7.56  size~  51.2  dom=0052dmu (4%)  foreign=23% fbreed=42% gen=336
+
+wrote /home/user/own-claude/experiments/results/flaw-1000-s2.json  (287,578 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0052dmu   21    52     220  0.99    replicator    332        3 0052cuu
+  0052cuu   17    52     292  0.94    replicator    332        3 0053eii
+  0053fps   12    53     117  0.96    replicator    340        0 0053fhm
+  0052duq   11    52      88  0.94    replicator    332        0 0051bpr
+  0051bvo   10    51      21  0.91    replicator    327        0 0052eei
+  0052dup    9    52      68  0.97    replicator    333        0 0053fsv
+  0052dmr    8    52     101  0.88    replicator    333        0 0053fih
+  0052dtt    7    52      77  0.97    replicator    333        0 0054bvl
+  0035aeh    7    35      36  0.92 host-dependent      -       33 0035aef
+  0052dzx    6    52      23  0.96    replicator    332        0 0052duq
+  0053fst    6    53      58  0.90    replicator    339        0 0053frb
+  0052ebc    6    52      20  0.95    replicator    335       25 0052cja

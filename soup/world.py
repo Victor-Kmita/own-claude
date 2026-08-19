@@ -251,6 +251,10 @@ class World:
         self.next_ray = cosmic_period
         self.deaths = 0
         self.births = 0
+        # Births per lineage, accumulated as they happen.  Counting them from
+        # the living population instead misses everything that has already been
+        # reaped, which in a soup at steady state is nearly all of it.
+        self.lineage_births: Counter = Counter()
         self.alloc_failures = 0
         self.history: list[dict] = []
         self.extinct = False
@@ -302,6 +306,8 @@ class World:
                          lineage=mother.lineage)
         self.next_cid += 1
         self.births += 1
+        if mother.lineage is not None:
+            self.lineage_births[mother.lineage] += 1
         self._pending_births.append(child)
         self.reaper.move_toward_tail(mother)
 

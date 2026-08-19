@@ -2,3 +2,4 @@ the ancestor is 64 cells at 410 instructions per daughter; 400,000,000 instructi
 
 challenger  cells   cost  advantage  final share             births      outcome
 --------------------------------------------------------------------------------
+   0062mup     62    401      2.2%       51.2% {'ancestor': 1, 'challenger': 2}      coexist

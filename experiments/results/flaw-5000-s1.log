@@ -1,0 +1,36 @@
+     3.0M  alive= 529 types= 163  H= 4.97  size~  61.3  dom=0064aaa (38%)  foreign=11% fbreed=13% gen=21
+     6.0M  alive= 437 types= 163  H= 5.96  size~  62.4  dom=0064aaa (23%)  foreign=10% fbreed=8% gen=38
+     9.0M  alive= 560 types= 207  H= 6.36  size~  63.2  dom=0064aaa (18%)  foreign=12% fbreed=15% gen=55
+    12.0M  alive= 392 types= 176  H= 6.55  size~  64.2  dom=0064aaa (8%)  foreign=14% fbreed=15% gen=72
+    15.0M  alive= 383 types= 177  H= 6.44  size~  64.1  dom=0064beu (10%)  foreign=9% fbreed=11% gen=89
+    18.0M  alive= 390 types= 169  H= 6.50  size~  63.7  dom=0064beu (14%)  foreign=10% fbreed=10% gen=106
+    21.0M  alive= 396 types= 196  H= 7.02  size~  63.4  dom=0064beu (7%)  foreign=9% fbreed=11% gen=123
+    24.0M  alive= 399 types= 180  H= 6.78  size~  62.4  dom=0064dxu (4%)  foreign=10% fbreed=11% gen=140
+    27.0M  alive= 433 types= 191  H= 6.62  size~  63.9  dom=0064beu (7%)  foreign=6% fbreed=6% gen=156
+    30.0M  alive= 427 types= 191  H= 6.49  size~  63.8  dom=0065bwu (16%)  foreign=8% fbreed=10% gen=173
+    33.0M  alive= 393 types= 191  H= 6.86  size~  63.0  dom=0065bwu (7%)  foreign=16% fbreed=24% gen=191
+    36.0M  alive= 404 types= 171  H= 6.43  size~  61.4  dom=0065ceb (9%)  foreign=14% fbreed=25% gen=209
+    39.0M  alive= 401 types= 151  H= 5.88  size~  58.2  dom=0058ave (19%)  foreign=25% fbreed=72% gen=231
+    42.0M  alive= 423 types= 169  H= 6.18  size~  57.9  dom=0058ave (11%)  foreign=23% fbreed=90% gen=249
+    45.0M  alive= 416 types= 187  H= 6.53  size~  57.4  dom=0058ave (9%)  foreign=23% fbreed=89% gen=268
+    48.0M  alive= 413 types= 198  H= 6.93  size~  55.9  dom=0058ave (6%)  foreign=20% fbreed=81% gen=287
+    51.0M  alive= 410 types= 213  H= 7.15  size~  57.4  dom=0057aig (4%)  foreign=17% fbreed=79% gen=304
+    54.0M  alive= 491 types= 233  H= 7.41  size~  57.4  dom=0058ckv (3%)  foreign=26% fbreed=75% gen=322
+    57.0M  alive= 429 types= 231  H= 7.46  size~  57.2  dom=0058esc (3%)  foreign=16% fbreed=64% gen=340
+    60.0M  alive= 427 types= 224  H= 7.40  size~  56.6  dom=0058gdj (2%)  foreign=17% fbreed=68% gen=356
+
+wrote /home/user/own-claude/experiments/results/flaw-5000-s1.json  (293,676 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0058gdj    9    58      94  0.98    replicator    375        0 0058gar
+  0058dha    8    58     256  0.99    replicator    375        0 0058ave
+  0058fvy    8    58      85  0.96    replicator    375        0 0058ewg
+  0057cdi    8    57      23  0.96    replicator    368        0 0057cae
+  0057cae    8    57      82  0.98    replicator    368        7 0056api
+  0008aba    8     8     249  0.00         inert      -       31 0064dyj
+  0058ggw    7    58      42  0.98    replicator    375        1 0057cad
+  0058euc    6    58     229  0.98    replicator    374        0 0058eox
+  0058ggi    6    58      37  0.97    replicator    374        0 0058dmg
+  0058fbt    6    58     100  0.99    replicator    374        0 0058ebe
+  0058gtw    6    58      22  0.91    replicator    374        0 0058glb
+  0058gsc    6    58      22  0.95    replicator    374       28 0058btz

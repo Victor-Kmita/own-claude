@@ -492,10 +492,7 @@ def competition(genomes: dict[str, bytes], budget: int = 20_000_000,
     # Standing population is not the whole story: a faster replicator can have
     # produced far more daughters and still hold the same number of cells, if
     # what limits the population is memory rather than CPU.
-    births = {n: 0 for n in names}
-    for cr in w.creatures:
-        if cr.lineage in births:
-            births[cr.lineage] += cr.stats.births
+    births = {n: w.lineage_births.get(n, 0) for n in names}
     # Two replicators sharing a soup are not necessarily just competing.  If one
     # of them is reaching into the other's code, that shows up here.
     foreign = {n: {"calls": 0, "reads": 0, "n": 0} for n in names}

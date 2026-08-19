@@ -1,0 +1,396 @@
+{
+ "parasite": "0045adk",
+ "budget": 25000000,
+ "results": {
+  "ancestors / mutation off": {
+   "history": [
+    {
+     "clock": 320,
+     "host": 16,
+     "parasite": 0
+    },
+    {
+     "clock": 2500300,
+     "host": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 5000920,
+     "host": 139,
+     "parasite": 2
+    },
+    {
+     "clock": 7500040,
+     "host": 122,
+     "parasite": 3
+    },
+    {
+     "clock": 10001280,
+     "host": 169,
+     "parasite": 2
+    },
+    {
+     "clock": 12500720,
+     "host": 122,
+     "parasite": 3
+    },
+    {
+     "clock": 15004460,
+     "host": 170,
+     "parasite": 2
+    },
+    {
+     "clock": 17501400,
+     "host": 123,
+     "parasite": 3
+    },
+    {
+     "clock": 20000500,
+     "host": 122,
+     "parasite": 4
+    },
+    {
+     "clock": 22502060,
+     "host": 123,
+     "parasite": 3
+    },
+    {
+     "clock": 25001180,
+     "host": 122,
+     "parasite": 3
+    }
+   ],
+   "final": {
+    "clock": 25001180,
+    "host": 122,
+    "parasite": 3
+   },
+   "alive": 125
+  },
+  "its own host / mutation off": {
+   "history": [
+    {
+     "clock": 320,
+     "host": 16,
+     "parasite": 0
+    },
+    {
+     "clock": 2501000,
+     "host": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 5000020,
+     "host": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 7500020,
+     "host": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 10002520,
+     "host": 155,
+     "parasite": 0
+    },
+    {
+     "clock": 12500020,
+     "host": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 15000020,
+     "host": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 17500020,
+     "host": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 20000020,
+     "host": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 22500020,
+     "host": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 25000020,
+     "host": 125,
+     "parasite": 0
+    }
+   ],
+   "final": {
+    "clock": 25000020,
+    "host": 125,
+    "parasite": 0
+   },
+   "alive": 125
+  },
+  "its own community / mutation off": {
+   "history": [
+    {
+     "clock": 640,
+     "host": 32,
+     "parasite": 0
+    },
+    {
+     "clock": 2501840,
+     "host": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 5000120,
+     "host": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 7500120,
+     "host": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 10000120,
+     "host": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 12500120,
+     "host": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 15000120,
+     "host": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 17500120,
+     "host": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 20000120,
+     "host": 125,
+     "parasite": 0
+    },
+    {
+     "clock": 22502620,
+     "host": 156,
+     "parasite": 0
+    },
+    {
+     "clock": 25000120,
+     "host": 125,
+     "parasite": 0
+    }
+   ],
+   "final": {
+    "clock": 25000120,
+    "host": 125,
+    "parasite": 0
+   },
+   "alive": 125
+  },
+  "ancestors / mutation on": {
+   "history": [
+    {
+     "clock": 320,
+     "host": 16,
+     "parasite": 0
+    },
+    {
+     "clock": 2500400,
+     "host": 138,
+     "parasite": 0
+    },
+    {
+     "clock": 5001620,
+     "host": 177,
+     "parasite": 2
+    },
+    {
+     "clock": 7500040,
+     "host": 147,
+     "parasite": 0
+    },
+    {
+     "clock": 10000160,
+     "host": 181,
+     "parasite": 0
+    },
+    {
+     "clock": 12501940,
+     "host": 140,
+     "parasite": 0
+    },
+    {
+     "clock": 15002740,
+     "host": 187,
+     "parasite": 0
+    },
+    {
+     "clock": 17502160,
+     "host": 130,
+     "parasite": 0
+    },
+    {
+     "clock": 20003260,
+     "host": 214,
+     "parasite": 0
+    },
+    {
+     "clock": 22502060,
+     "host": 209,
+     "parasite": 0
+    },
+    {
+     "clock": 25002620,
+     "host": 198,
+     "parasite": 0
+    }
+   ],
+   "final": {
+    "clock": 25002620,
+    "host": 198,
+    "parasite": 0
+   },
+   "alive": 198
+  },
+  "its own host / mutation on": {
+   "history": [
+    {
+     "clock": 320,
+     "host": 16,
+     "parasite": 0
+    },
+    {
+     "clock": 2502380,
+     "host": 136,
+     "parasite": 0
+    },
+    {
+     "clock": 5002500,
+     "host": 175,
+     "parasite": 0
+    },
+    {
+     "clock": 7503200,
+     "host": 170,
+     "parasite": 0
+    },
+    {
+     "clock": 10000120,
+     "host": 170,
+     "parasite": 0
+    },
+    {
+     "clock": 12500720,
+     "host": 171,
+     "parasite": 0
+    },
+    {
+     "clock": 15000640,
+     "host": 70,
+     "parasite": 0
+    },
+    {
+     "clock": 17500140,
+     "host": 184,
+     "parasite": 0
+    },
+    {
+     "clock": 20002740,
+     "host": 176,
+     "parasite": 0
+    },
+    {
+     "clock": 22500940,
+     "host": 206,
+     "parasite": 0
+    },
+    {
+     "clock": 25002880,
+     "host": 205,
+     "parasite": 0
+    }
+   ],
+   "final": {
+    "clock": 25002880,
+    "host": 205,
+    "parasite": 0
+   },
+   "alive": 205
+  },
+  "its own community / mutation on": {
+   "history": [
+    {
+     "clock": 640,
+     "host": 32,
+     "parasite": 0
+    },
+    {
+     "clock": 2501200,
+     "host": 161,
+     "parasite": 0
+    },
+    {
+     "clock": 5002020,
+     "host": 175,
+     "parasite": 0
+    },
+    {
+     "clock": 7502100,
+     "host": 155,
+     "parasite": 0
+    },
+    {
+     "clock": 10002280,
+     "host": 157,
+     "parasite": 0
+    },
+    {
+     "clock": 12501180,
+     "host": 136,
+     "parasite": 0
+    },
+    {
+     "clock": 15001100,
+     "host": 162,
+     "parasite": 0
+    },
+    {
+     "clock": 17500160,
+     "host": 163,
+     "parasite": 0
+    },
+    {
+     "clock": 20002380,
+     "host": 146,
+     "parasite": 0
+    },
+    {
+     "clock": 22501400,
+     "host": 155,
+     "parasite": 0
+    },
+    {
+     "clock": 25003080,
+     "host": 156,
+     "parasite": 0
+    }
+   ],
+   "final": {
+    "clock": 25003080,
+    "host": 156,
+    "parasite": 0
+   },
+   "alive": 156
+  }
+ }
+}
