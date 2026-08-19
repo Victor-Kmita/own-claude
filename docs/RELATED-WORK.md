@@ -249,12 +249,30 @@ the parasite-rich one holds three times as many distinct behaviours.  One seed
 pair and a phenotype definition of my own making: a failure to reproduce rather
 than a refutation.
 
-### Run length was the other missing factor
+### Run length was the other missing factor, and the prediction paid off
 
-Ray's descendants needed billions of instructions. At 400M my genomes sat at
-57–62 cells. A 3-billion-instruction run passes 42 cells at the one-billion mark
-with a single genotype holding 22% of the population, and 5,900 generations. The
-size reduction had not stopped at 400M; it had barely started.
+Ray's descendants needed billions of instructions.  At 400M my genomes sat at
+57–62 cells and not one of 33 runs had improved the copy loop.  The calibration
+said the runs were simply too short, so I ran three billion.
+
+The champion of that run, `0038rdr`, is **38 cells replicating in 216
+instructions** against the ancestor's 64 and 410 — 1.9× the efficiency, held by
+134 of about 640 creatures at fidelity 0.99, after roughly 18,000 generations.
+And this time it is not compression alone: its copy loop copies **two cells per
+iteration in ten instructions**, five per cell where the ancestor needs six.
+That is loop unrolling, the same innovation Ray reports, found here once the run
+was long enough and not before.
+
+It also moved its division to the top of the genome, so the `ret` at the end of
+the copy loop lands on the first cell and the next replication begins
+immediately; the first pass through those cells throws a harmless error.
+
+| | ancestor | this soup at 3B | Tierra at 15B |
+|---|---|---|---|
+| genome | 64 cells | 38 | 22 |
+| instructions per daughter | 410 | 216 | 146 |
+| per cell copied | 6.41 | 5.68 | 6 (from 10) |
+| efficiency gain | — | 1.9× | 5.75× |
 
 ## Agenda
 

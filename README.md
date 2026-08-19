@@ -25,10 +25,10 @@ python3 -m unittest discover -s tests     # 53 tests, no dependencies
 python3 -m soup ancestor                  # the seed organism, disassembled
 python3 -m soup run demo --instructions 20000000
 python3 experiments/fragmentation.py      # the policy sweep in finding 2
-python3 experiments/viability.py          # the mutational landscape in finding 7
-python3 experiments/epidemic.py           # the resistance experiment in finding 9
-python3 experiments/mutation_rate.py      # the sweep and error threshold, finding 10
-python3 experiments/neutrality.py         # behaviours rather than genomes, finding 11
+python3 experiments/viability.py          # the mutational landscape in finding 8
+python3 experiments/epidemic.py           # the resistance experiment in finding 10
+python3 experiments/mutation_rate.py      # the sweep and error threshold, finding 11
+python3 experiments/neutrality.py         # behaviours rather than genomes, finding 12
 python3 experiments/report.py > experiments/REPORT.md
 ```
 
@@ -165,7 +165,7 @@ ancestor — the ecology forked on the seed.
 ### 4. A shorter, cheaper replicator
 
 Every constant-slice run converges on genomes slightly shorter than the
-ancestor's 64 cells (finding 8 is about why the other condition does the
+ancestor's 64 cells (finding 9 is about why the other condition does the
 opposite), and they are faster in proportion. The cheapest self-sufficient
 replicator found by a random survey of one run's gene bank needs **389
 instructions** against the ancestor's 410 — 5% less work per daughter, at 61
@@ -176,16 +176,55 @@ The saving is almost exactly the copy-loop iterations no longer needed: about
 six instructions per cell removed. Nothing in the machine knows what a genome
 is, what length means, or that shorter is better.
 
-**And that is the only way it ever gets cheaper.** Across 33 runs — 60M to 400M
-instructions, eight mutation rates, both scheduling rules — the cost per cell
-copied stays between 6.26 and 6.56 against the ancestor's 6.41. Not one run
-improved the copy loop itself. Tierra's optimized creatures did both: they cut
-the loop from ten instructions per cell to six *and* shrank the genome, which is
-where their 5.75× came from. My loop starts at six, so only compression is
-left — and unrolling it to copy two cells per iteration would still pay (five
-instructions per cell instead of six) and has never been found.
+**Up to 400M instructions that is the only way it ever gets cheaper.** Across 33
+runs — 60M to 400M instructions, eight mutation rates, both scheduling rules —
+the cost per cell copied stays between 6.26 and 6.56 against the ancestor's
+6.41. Not one of them improved the copy loop itself; every gain was compression.
 
-### 5. Parasites
+Reading Ray's paper said why: his runs were fifteen billion instructions and
+mine were four hundred million. So I ran three billion, and the copy loop
+finally moved.
+
+### 5. At three billion instructions, the copy loop unrolls
+
+The champion of a 3-billion-instruction run is `0038rdr`: **38 cells, 216
+instructions per daughter**, held by 134 of the ~640 living creatures with a
+breeding fidelity of 0.99. Against the ancestor's 64 cells and 410 instructions
+that is 1.9× the efficiency — and this time not by compression alone. Its copy
+loop is:
+
+```
+    24  movii          ; copy a cell
+    25  decC
+    26  incA
+    27  incB
+    28  movii          ; copy the next one, without going round again
+    29  decC
+    30  incA
+    31  incB
+    32  ifz
+    33  ret
+    34  jmpb
+```
+
+Ten instructions, **two cells per iteration — five instructions per cell instead
+of six.** This is loop unrolling, the same innovation Ray reports for Tierra,
+where an evolved creature used 18 instructions to copy three cells (six per
+cell, down from ten).
+
+It found a second trick too. The `ret` at the end of the loop lands on cell 0,
+and the creature's first five instructions are `adrb`, `decC`, `movBA`,
+`divide` — so division happens at the *top* of the genome, on the way back into
+the next replication, and the loop-back costs nothing. The first pass through
+those cells, before anything has been allocated, simply throws an error and
+continues.
+
+Between them, compression and unrolling: 64 cells → 38 (−41%), 6.41
+instructions per cell → 5.68 (−11%), 410 per daughter → 216. Ray's runs went
+further on both counts (80 → 22 cells, 10 → 6 per cell, 839 → 146, a 5.75×
+gain) — with five times more instructions to do it in.
+
+### 6. Parasites
 
 In the odd seed out, the top *seven* genotypes are all host-dependent, led by
 `0045adk` at 106 of 507 creatures with a breeding fidelity of 0.85 — a lineage,
@@ -232,7 +271,7 @@ The evolved `0045adk` lost that marker too, which is what sends its `call` past
 its own body and into the host's copy loop — and turns the same truncation from
 donor into parasite.
 
-### 6. A host that became immune, and what immunity is
+### 7. A host that became immune, and what immunity is
 
 The empty column above is the interesting one. `0070aea` is a perfectly healthy
 70-cell replicator that all nine parasites in that run fail to exploit.
@@ -262,7 +301,7 @@ immune genotype that actually evolved is 10% slower than its susceptible
 neighbour (452 against 410 instructions), but that is because it is 70 cells
 long, not because it is immune.
 
-### 7. Most variants are broken; most births are not
+### 8. Most variants are broken; most births are not
 
 Take one run's entire gene bank — every distinct genome that ever appeared, most
 of them once — and culture a random sample of 150 properly:
@@ -276,7 +315,7 @@ Most *variants* cannot reproduce alone. Most *births* produce something that
 can, because the things that work are the things doing the reproducing. The gap
 between those two rows is mutational load, measured.
 
-### 8. Genome length follows the CPU scheduler
+### 9. Genome length follows the CPU scheduler
 
 Give every creature the same slice of CPU regardless of size and length should
 fall, because a shorter genome reaches `divide` sooner. Give each creature a
@@ -297,9 +336,9 @@ described in finding 2, showed nothing at all — the seed-to-seed spread swampe
 the difference. The effect was there; the noise from a broken death queue was
 larger.
 
-### 9. Immunity is worth something in a dish, but I could not show it being selected
+### 10. Immunity is worth something in a dish, but I could not show it being selected
 
-Finding 6 is an observation. The demonstration would be that immunity *spreads*
+Finding 7 is an observation. The demonstration would be that immunity *spreads*
 when there is something to resist, so: seed a soup with equal numbers of the
 ancestor and a hand-built resistant variant (copy-loop marker moved from `1100`
 to `1101`, one template corrected, **410 instructions per daughter — an exact
@@ -333,7 +372,7 @@ search range. Parasitism needs a crowd, and apparently a familiar one.
 
 This is the clearest open question the project leaves.
 
-### 10. Mutation rate: an optimization peak, and an error threshold exactly where theory puts it
+### 11. Mutation rate: an optimization peak, and an error threshold exactly where theory puts it
 
 Ray reports two things about Tierra that pull against each other: optimization
 is best "at the highest mutation rate that does not cause instability", while
@@ -378,7 +417,7 @@ But the within-condition spread is 0.12 to 0.85 at the same rate — as large as
 the effect. Three seeds are not enough to say anything here, and I am not going
 to pretend otherwise.
 
-### 11. About a hundred distinct behaviours, however many genomes there are
+### 12. About a hundred distinct behaviours, however many genomes there are
 
 Standish measured something in Tierra that I had not thought to: gene banks of
 69,139, 87,003 and 198,982 genotypes collapsed onto **83, 86 and 158 distinct
@@ -411,7 +450,7 @@ parasite-rich world holds three times as many distinct behaviours (121 against
 mine rather than his, and a noisy estimator: this is a failure to reproduce, not
 a refutation.
 
-### 12. Evolvability is expensive
+### 13. Evolvability is expensive
 
 The same 100M instructions bought 218,916 births with mutation off and
 171,721 – 175,651 with it on: a fifth of the world's reproductive output goes on
@@ -432,7 +471,7 @@ this soup. The short version:
   `0045adk`. And his decisive test is the one I arrived at independently: "not
   able to self-replicate in isolated culture".
 * **One goes further than the primary source.** Ray reports immune hosts that
-  eliminate parasites but gives no mechanism. Finding 6 gives one — the host no
+  eliminate parasites but gives no mechanism. Finding 7 gives one — the host no
   longer contains the pattern the parasite searches for — and it predicts what
   an immune Tierran host should look like: changed in the templates that *name*
   its copy procedure, not in the procedure itself.
@@ -478,7 +517,7 @@ so every claim came from a tool, and the tools are tested:
 semantics, the allocator, template search, write protection, the division rules,
 determinism under a fixed seed, the reaper's ordering, the mutagen of finding 2,
 the division-versus-reproduction distinction, and the receptor-loss immunity of
-finding 6 built by hand.
+finding 7 built by hand.
 
 ## Limitations
 
@@ -492,11 +531,11 @@ finding 6 built by hand.
   have several, and the outcome depends on which template is nearest.
 * Classification uses a fixed instruction budget; a very slow replicator would
   be filed as host-dependent or inert.
-* The ecology half of finding 10 is not supported by its own data; see the
+* The ecology half of finding 11 is not supported by its own data; see the
   paragraph that says so.
-* Findings 5 and 6 rest on one seed's ecology — the seed that produced parasites
+* Findings 6 and 7 rest on one seed's ecology — the seed that produced parasites
   at all. Two of three did not.
-* Finding 9 is a null result at 20M instructions with one parasite genotype and
+* Finding 10 is a null result at 20M instructions with one parasite genotype and
   one hand-built resistant host. It bounds nothing: a longer run, a different
   parasite, or resistance evolving in place rather than being transplanted
   could all show the sweep it failed to find.
