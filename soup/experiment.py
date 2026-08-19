@@ -181,15 +181,13 @@ def run(
             # history out periodically so that a run which is interrupted -- or
             # simply still going -- is not a total loss.
             if checkpoint_path and samples_taken % checkpoint_every == 0:
-                with open(checkpoint_path, "w") as fh:
-                    json.dump({"name": name, "checkpoint": True,
-                               "config": {"instructions": instructions,
-                                          "seed": seed, "soup_size": soup_size,
-                                          "slice_size": slice_size,
-                                          "slice_pow": slice_pow,
-                                          "copy_mutation_rate": copy_mutation_rate,
-                                          "cosmic_period": cosmic_period},
-                               "history": history}, fh)
+                write_checkpoint(checkpoint_path, name, world, history, {
+                    "instructions": instructions, "seed": seed,
+                    "soup_size": soup_size, "slice_size": slice_size,
+                    "slice_pow": slice_pow,
+                    "copy_mutation_rate": copy_mutation_rate,
+                    "cosmic_period": cosmic_period, "flaw_period": flaw_period,
+                })
             if not quiet:
                 print(f"  {row['clock']/1e6:6.1f}M  alive={row['alive']:4d} "
                       f"types={row['genotypes']:4d}  H={row['diversity']:5.2f}  "
@@ -242,6 +240,37 @@ def run(
         result["gene_bank_sample"] = sorted(
             set(result["genomes"]) - {row["genotype"] for row in result["census"]})
     return result
+
+
+def write_checkpoint(path: str, name: str, world: World, history: list[dict],
+                     config: dict, top: int = 12, bank_sample: int = 60) -> None:
+    """Write enough of a run in progress to analyse it if it never finishes.
+
+    Long runs in an ephemeral container do not always come back: two
+    ten-billion-instruction runs here were killed at three quarters of the way
+    with no message.  A checkpoint that carried only the history would leave
+    their genomes unrecoverable, so it carries the living population's commonest
+    genotypes and a sample of the gene bank as well.  Classification is left
+    out on purpose -- it costs assays, and it can be redone afterwards from the
+    genomes.
+    """
+    pop = world.population()
+    labels = [label for label, _ in pop.most_common(top)]
+    sampler = random.Random(config.get("seed", 0) * 7919 + 17)
+    bank = list(world.genebank.genome)
+    labels += sampler.sample(bank, min(bank_sample, len(bank)))
+    genomes = {label: list(world.genebank.genome[label]) for label in set(labels)}
+    with open(path, "w") as fh:
+        json.dump({
+            "name": name, "checkpoint": True, "config": config,
+            "history": history,
+            "totals_so_far": {"clock": world.clock, "births": world.births,
+                              "deaths": world.deaths,
+                              "genotypes_seen": len(world.genebank.genome),
+                              "alloc_failures": world.alloc_failures},
+            "population": dict(pop.most_common(top)),
+            "genomes": genomes,
+        }, fh)
 
 
 def save(result: dict, directory: str) -> str:
