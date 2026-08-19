@@ -13,5 +13,8 @@
   "cosmic": 500,
   "flaw": 1000,
   "sample_every": 3000000
- }
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-19T21:25:31+00:00",
+ "cores": 12
 }
