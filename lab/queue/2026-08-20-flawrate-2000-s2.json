@@ -1,0 +1,15 @@
+{
+ "id": "2026-08-20-flawrate-2000-s2",
+ "kind": "soup_run",
+ "priority": 15,
+ "created_by": "cloud",
+ "why": "flaws at one instruction in 1,000 doubled the rate of evolution; is there an optimum, or does more always compress faster until the population melts?",
+ "expect_hours": 0.35,
+ "params": {
+  "name": "flawrate-2000-s2",
+  "instructions": 1000000000,
+  "seed": 2,
+  "flaw": 2000,
+  "sample_every": 10000000
+ }
+}

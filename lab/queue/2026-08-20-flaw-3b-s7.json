@@ -1,0 +1,15 @@
+{
+ "id": "2026-08-20-flaw-3b-s7",
+ "kind": "soup_run",
+ "priority": 10,
+ "created_by": "cloud",
+ "why": "is 27 cells a floor or was it one lucky lineage? four more seeds at three billion instructions gives a distribution of plateaus instead of two points",
+ "expect_hours": 1.0,
+ "params": {
+  "name": "flaw-3b-s7",
+  "instructions": 3000000000,
+  "seed": 7,
+  "flaw": 1000,
+  "sample_every": 20000000
+ }
+}

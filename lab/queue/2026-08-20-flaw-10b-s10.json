@@ -1,0 +1,15 @@
+{
+ "id": "2026-08-20-flaw-10b-s10",
+ "kind": "soup_run",
+ "priority": 20,
+ "created_by": "cloud",
+ "why": "Ray's optimization results needed fifteen billion instructions; ten billion with flaws on is the closest this project has come to that scale. does anything happen past three billion that has not already?",
+ "expect_hours": 3.0,
+ "params": {
+  "name": "flaw-10b-s10",
+  "instructions": 10000000000,
+  "seed": 10,
+  "flaw": 1000,
+  "sample_every": 25000000
+ }
+}
