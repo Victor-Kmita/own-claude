@@ -1,0 +1,4 @@
+{"id": "test-git-path", "kind": "soup_run", "priority": 0, "created_by": "cloud",
+ "why": "verify that claim, run, commit and push all work end to end before the server relies on it",
+ "expect_hours": 0.01,
+ "params": {"name": "lab-gitcheck", "instructions": 1500000, "seed": 3, "sample_every": 1500000}}
