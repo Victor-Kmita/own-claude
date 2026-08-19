@@ -1,0 +1,24 @@
+Ingredients, checked before use:
+  susceptible  {'kind': 'replicator', 'cost': 410, 'cost_paired': None, 'divides_without_copying': False}
+  resistant    {'kind': 'replicator', 'cost': 410, 'cost_paired': None, 'divides_without_copying': False}
+  parasite vs susceptible: parasitism
+  parasite vs resistant  : none
+
+hosts=susceptible+resistant    parasites=False layout=0  final: susceptible= 110 resistant= 108 parasite=   0
+hosts=susceptible+resistant    parasites=False layout=1  final: susceptible= 108 resistant= 110 parasite=   0
+hosts=susceptible+resistant    parasites=True  layout=0  final: susceptible=  62 resistant=  57 parasite=   7
+hosts=susceptible+resistant    parasites=True  layout=1  final: susceptible=  64 resistant=  62 parasite=   0
+hosts=susceptible              parasites=True  layout=0  final: susceptible= 126 resistant=   0 parasite=   0
+hosts=susceptible              parasites=True  layout=1  final: susceptible= 126 resistant=   0 parasite=   0
+hosts=resistant                parasites=True  layout=0  final: susceptible=   0 resistant= 125 parasite=   0
+hosts=resistant                parasites=True  layout=1  final: susceptible=   0 resistant= 125 parasite=   0
+
+hosts: susceptible+resistant, without parasites:
+```
+creatures alive
+ 110.0 |       o          o          o          o
+       |       +          +          +          +
+       |        +          +          +          
+       |                                         
+
+[exited with code 0]

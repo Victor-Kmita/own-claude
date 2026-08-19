@@ -26,6 +26,7 @@ python3 -m soup ancestor                  # the seed organism, disassembled
 python3 -m soup run demo --instructions 20000000
 python3 experiments/fragmentation.py      # the policy sweep in finding 2
 python3 experiments/viability.py          # the mutational landscape in finding 7
+python3 experiments/epidemic.py           # the resistance experiment in finding 9
 python3 experiments/report.py > experiments/REPORT.md
 ```
 
@@ -285,7 +286,43 @@ described in finding 2, showed nothing at all — the seed-to-seed spread swampe
 the difference. The effect was there; the noise from a broken death queue was
 larger.
 
-### 9. Evolvability is expensive
+### 9. Immunity is worth something in a dish, but I could not show it being selected
+
+Finding 6 is an observation. The demonstration would be that immunity *spreads*
+when there is something to resist, so: seed a soup with equal numbers of the
+ancestor and a hand-built resistant variant (copy-loop marker moved from `1100`
+to `1101`, one template corrected, **410 instructions per daughter — an exact
+tie**), let it fill up, then introduce six copies of the evolved parasite. No
+mutation anywhere, so nothing changes except who reproduces.
+
+| soup | final susceptible | final resistant | final parasites |
+|---|---:|---:|---:|
+| both hosts, no parasites | 110, 108 | 108, 110 | 0, 0 |
+| both hosts, parasites introduced | 62, 64 | 57, 62 | 7, 0 |
+| susceptible only, parasites introduced | 126, 126 | — | 0, 0 |
+| resistant only, parasites introduced | — | 125, 125 | 0, 0 |
+
+(two seeding layouts per row, 20M instructions each.)
+
+The control works exactly as intended: without parasites the two hosts stay
+level, which is what an exact tie in replication cost should produce. But the
+parasite barely establishes — seven survivors in one layout, extinct in the
+other — and in a soup of nothing but susceptible hosts it dies out completely.
+The immune host gains nothing measurable.
+
+Something about the parasite does not survive transplantation. In its own run it
+held a fifth of the population; introduced into a naive one it cannot hold on at
+all. The likeliest explanation is that a parasite is co-adapted to the
+neighbourhood it evolved in — the exact templates its `call` finds, and how far
+away they sit — and a monoculture of the ancestor is a different world. Seeded
+into an *empty* soup it does reproduce (thirty daughters from eight parasites in
+the first 200k instructions) and then dies out anyway, because the allocator
+puts those daughters in the empty part of the world where no host is within
+search range. Parasitism needs a crowd, and apparently a familiar one.
+
+This is the clearest open question the project leaves.
+
+### 10. Evolvability is expensive
 
 The same 100M instructions bought 218,916 births with mutation off and
 171,721 – 175,651 with it on: a fifth of the world's reproductive output goes on
@@ -338,6 +375,10 @@ finding 6 built by hand.
   be filed as host-dependent or inert.
 * Findings 5 and 6 rest on one seed's ecology — the seed that produced parasites
   at all. Two of three did not.
+* Finding 9 is a null result at 20M instructions with one parasite genotype and
+  one hand-built resistant host. It bounds nothing: a longer run, a different
+  parasite, or resistance evolving in place rather than being transplanted
+  could all show the sweep it failed to find.
 
 ## Layout
 
@@ -368,6 +409,7 @@ python3 -m soup run long-constant-s1 --instructions 400000000 --seed 1 \
         --sample-every 4000000
 python3 experiments/fragmentation.py
 python3 experiments/viability.py
+python3 experiments/epidemic.py
 python3 experiments/report.py > experiments/REPORT.md
 
 python3 -m soup interactions experiments/results/baseline-s2.json
