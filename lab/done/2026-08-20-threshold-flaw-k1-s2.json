@@ -1,0 +1,50 @@
+{
+ "id": "2026-08-20-threshold-flaw-k1-s2",
+ "kind": "soup_run",
+ "priority": 5,
+ "created_by": "cloud",
+ "why": "with flaws on, does the error threshold still sit at one mutation per genome per replication, or does a third mutation source move it?",
+ "expect_hours": 0.02,
+ "params": {
+  "name": "tf-k1-s2",
+  "instructions": 60000000,
+  "seed": 2,
+  "copy_mutation": 1000,
+  "cosmic": 2000,
+  "flaw": 1000,
+  "sample_every": 3000000
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-19T21:25:31+00:00",
+ "cores": 12,
+ "status": "ok",
+ "host": "nexus",
+ "finished": "2026-08-19T21:27:02+00:00",
+ "seconds": 84.6,
+ "returncode": 0,
+ "produced": [
+  "experiments/results/tf-k1-s2.json"
+ ],
+ "log_tail": [
+  "    51.0M  alive= 486 types= 258  H= 7.38  size~  51.3  dom=0053dck (5%)  foreign=19% fbreed=42% gen=288",
+  "    54.0M  alive= 465 types= 261  H= 7.39  size~  52.4  dom=0053dtt (6%)  foreign=16% fbreed=33% gen=302",
+  "    57.0M  alive= 574 types= 312  H= 7.82  size~  51.2  dom=0034aig (4%)  foreign=28% fbreed=44% gen=318",
+  "    60.0M  alive= 514 types= 266  H= 7.56  size~  51.2  dom=0052dmu (4%)  foreign=23% fbreed=42% gen=336",
+  "",
+  "wrote /home/cld/own-claude/experiments/results/tf-k1-s2.json  (723,473 instructions/sec)",
+  "",
+  " genotype    n  size  births   fid          kind   cost   fcalls parent",
+  "  0052dmu   21    52     220  0.99    replicator    332        3 0052cuu",
+  "  0052cuu   17    52     292  0.94    replicator    332        3 0053eii",
+  "  0053fps   12    53     117  0.96    replicator    340        0 0053fhm",
+  "  0052duq   11    52      88  0.94    replicator    332        0 0051bpr",
+  "  0051bvo   10    51      21  0.91    replicator    327        0 0052eei",
+  "  0052dup    9    52      68  0.97    replicator    333        0 0053fsv",
+  "  0052dmr    8    52     101  0.88    replicator    333        0 0053fih",
+  "  0052dtt    7    52      77  0.97    replicator    333        0 0054bvl",
+  "  0035aeh    7    35      36  0.92 host-dependent      -       33 0035aef",
+  "  0052dzx    6    52      23  0.96    replicator    332        0 0052duq",
+  "  0053fst    6    53      58  0.90    replicator    339        0 0053frb",
+  "  0052ebc    6    52      20  0.95    replicator    335       25 0052cja"
+ ]
+}
