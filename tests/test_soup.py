@@ -259,6 +259,12 @@ class TestAncestor(unittest.TestCase):
         self.assertEqual(result["foreign_calls"], 0)
         self.assertEqual(result["foreign_reads"], 0)
 
+    def test_replication_costs_410_instructions(self):
+        # The number every evolved descendant is measured against.  It is here
+        # so that a change to the instruction set or the scheduler that makes
+        # replication cheaper or dearer cannot pass unnoticed.
+        self.assertEqual(analysis.describe(bytes(ancestor()))["cost"], 410)
+
     def test_daughter_is_an_exact_copy(self):
         code = ancestor()
         w = World(soup_size=2000, copy_mutation_rate=0.0, cosmic_period=10 ** 12,
@@ -281,15 +287,30 @@ class TestAncestor(unittest.TestCase):
         self.assertLessEqual(w.memory.load, w.reap_threshold + 0.05)
         self.assertEqual(w.population().most_common(1)[0][0], "0064aaa")
 
-    def test_variation_appears_even_with_mutation_switched_off(self):
-        # Not a bug in the mutation switch: see the test below.  A crowded soup
-        # fragments, ``mal`` starts failing, and a failed ``mal`` is a mutagen.
+    def test_two_housekeeping_policies_decide_whether_mutation_is_optional(self):
+        # Both mutation switches are off in all three worlds below.  What
+        # differs is only housekeeping, and only the third world evolves.
         code = ancestor()
-        w = World(soup_size=8000, copy_mutation_rate=0.0, cosmic_period=10 ** 12)
-        w.inject(code, address=0)
-        while w.clock < 1_000_000:
-            w.step_generation()
-        self.assertGreater(len(w.population()), 1)
+
+        def outcome(lazy, errors_kill):
+            w = World(soup_size=4000, copy_mutation_rate=0.0,
+                      cosmic_period=10 ** 18, reap_on_alloc_failure=not lazy,
+                      errors_hasten_death=errors_kill)
+            w.inject(code, address=0)
+            while w.clock < 3_000_000:
+                w.step_generation()
+            return w.alloc_failures, len(w.genebank.genome)
+
+        failures, seen = outcome(lazy=False, errors_kill=True)
+        self.assertEqual((failures, seen), (0, 1))     # reaper keeps room: no mutagen
+
+        failures, seen = outcome(lazy=True, errors_kill=True)
+        self.assertGreater(failures, 0)                # the mutagen fires
+        self.assertEqual(seen, 1)                      # ... and is reaped every time
+
+        failures, seen = outcome(lazy=True, errors_kill=False)
+        self.assertGreater(failures, 0)
+        self.assertGreater(seen, 1)                    # now it founds lineages
 
     def test_failed_allocation_makes_the_ancestor_damage_itself(self):
         # The mechanism, in isolation.  ``mal`` leaves ax alone when it fails,
@@ -322,19 +343,36 @@ class TestReaperQueue(unittest.TestCase):
     def test_errors_move_a_creature_toward_death(self):
         q, crs = self.make(3)
         q.move_toward_head(crs[2])
-        self.assertEqual([c.cid for c in q.order], [0, 2, 1])
+        self.assertEqual(q.order_cids(), [0, 2, 1])
 
     def test_reproduction_moves_a_creature_away_from_death(self):
         q, crs = self.make(3)
         q.move_toward_tail(crs[0])
-        self.assertEqual([c.cid for c in q.order], [1, 0, 2])
+        self.assertEqual(q.order_cids(), [1, 0, 2])
 
-    def test_removal_keeps_the_index_consistent(self):
-        q, crs = self.make(4)
+    def test_removal_preserves_the_order_of_everyone_else(self):
+        # The point of the linked list: taking one creature out must not
+        # teleport the youngest to the front of the death queue.
+        q, crs = self.make(5)
         q.remove(crs[1])
+        self.assertEqual(q.order_cids(), [0, 2, 3, 4])
+        q.remove(crs[0])
+        self.assertEqual(q.order_cids(), [2, 3, 4])
+        self.assertIs(q.head(), crs[2])
         self.assertEqual(len(q), 3)
-        for c in q.order:
-            self.assertIs(q.order[q.pos[c.cid]], c)
+
+    def test_moving_at_the_ends_is_a_no_op(self):
+        q, crs = self.make(3)
+        q.move_toward_head(crs[0])
+        q.move_toward_tail(crs[2])
+        self.assertEqual(q.order_cids(), [0, 1, 2])
+
+    def test_append_after_removals_still_lands_at_the_tail(self):
+        q, crs = self.make(3)
+        q.remove(crs[2])
+        extra = Creature(9, 900, 10)
+        q.append(extra)
+        self.assertEqual(q.order_cids(), [0, 1, 9])
 
 
 class TestGeneBank(unittest.TestCase):
@@ -379,6 +417,20 @@ class TestAnalysis(unittest.TestCase):
     def test_truncated_fragment_is_inert(self):
         fragment = bytes(ancestor()[:11])
         self.assertEqual(analysis.classify(fragment), "inert")
+
+    def test_dividing_is_not_the_same_as_reproducing(self):
+        # Asks for the smallest legal block, scribbles in half of it, divides.
+        # It reproduces *something* in a few dozen instructions, but never
+        # itself -- and a classifier that counts divisions rather than copies
+        # would rank this junk above every real replicator in the soup.
+        junk = assemble("zero " + "incC " * 8 + "mal movBA "
+                        + "movii incB " * 5 + "divide")
+        result = analysis.isolation_assay(bytes(junk))
+        self.assertTrue(result["divided"])
+        self.assertFalse(result["self_sufficient"])
+        what = analysis.describe(bytes(junk))
+        self.assertNotEqual(what["kind"], "replicator")
+        self.assertTrue(what["divides_without_copying"])
 
     def test_genome_diff_reports_substitutions_and_length(self):
         a = bytes([1, 2, 3])

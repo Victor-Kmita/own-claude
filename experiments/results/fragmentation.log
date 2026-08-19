@@ -1,0 +1,29 @@
+Mechanism, one creature, no room to allocate:
+  END marker before: [1, 1, 1, 0]   after one failed mal: [1, 1, 1, 1]   errors: 7
+
+Sweep: 5,000,000 instructions per cell, mutation off throughout.
+
+    reaper  errors kill    soup  alive   births  mal fails  per birth  genotypes  mean size
+-------------------------------------------------------------------------------------------
+ on demand         True    2000     12    11355          0       0.00          1       64.0
+ on demand         True    4000     25    10927          0       0.00          1       64.0
+ on demand         True    8000     50    10910          0       0.00          1       64.0
+ on demand         True   16000    100    10767          0       0.00          1       64.0
+ on demand         True   60000    457    10979          0       0.00          1       64.0
+ on demand        False    2000     12    11355          0       0.00          1       64.0
+ on demand        False    4000     25    10927          0       0.00          1       64.0
+ on demand        False    8000     50    10910          0       0.00          1       64.0
+ on demand        False   16000    100    10767          0       0.00          1       64.0
+ on demand        False   60000    457    10979          0       0.00          1       64.0
+      lazy         True    2000     14     9306       1982       0.21          1       64.0
+      lazy         True    4000     30     9296        905       0.10          1       64.0
+      lazy         True    8000     71     9387        600       0.06          1       64.0
+      lazy         True   16000    101     8789        212       0.02          1       64.0
+      lazy         True   60000    523     9118        858       0.09          1       64.0
+      lazy        False    2000     15     8603         50       0.01          2       64.0
+      lazy        False    4000     28     8849       2910       0.33          3       64.0
+      lazy        False    8000     59     8964       3092       0.34          1       64.0
+      lazy        False   16000    140     8291       1503       0.18          1       64.0
+      lazy        False   60000    374     8063        989       0.12          2       64.0
+
+wrote /home/user/own-claude/experiments/results/fragmentation.json

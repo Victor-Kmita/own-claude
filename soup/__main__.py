@@ -22,6 +22,7 @@ def cmd_run(args) -> None:
         cosmic_period=(args.cosmic if args.cosmic else 10 ** 18),
         sample_every=args.sample_every, reap_threshold=args.reap_threshold,
         search_limit=args.search_limit,
+        reap_on_alloc_failure=not args.lazy_reaper,
     )
     path = experiment.save(result, args.out)
     print(f"\nwrote {path}  ({result['instructions_per_sec']:,} instructions/sec)")
@@ -123,6 +124,31 @@ def cmd_interactions(args) -> None:
     print("M = both;  . = the guest does not reproduce beside this host")
 
 
+def cmd_resistance(args) -> None:
+    with open(args.result) as fh:
+        result = json.load(fh)
+    genomes = {k: bytes(v) for k, v in result["genomes"].items()}
+    genomes["ancestor"] = bytes(experiment.load_ancestor())
+    kinds = {row["genotype"]: row["kind"] for row in result["census"]}
+    hosts = [g for g, k in kinds.items() if k == "replicator"] + ["ancestor"]
+    parasites = args.parasites or [
+        g for g, k in kinds.items()
+        if k in ("host-dependent", "self-assisted", "parasite")]
+    print(f"{'host':>10} {'size':>5} {'births alone':>13} {'births infected':>16} "
+          f"{'parasite births':>16} {'captured':>9}")
+    for h in hosts:
+        rows = [analysis.susceptibility(genomes[h], genomes[p], budget=args.budget)
+                for p in parasites]
+        alone = analysis.solo_rate(genomes[h], budget=args.budget)
+        infected = sum(r["host_births"] for r in rows) / len(rows)
+        stolen = sum(r["parasite_births"] for r in rows) / len(rows)
+        share = sum(r["captured_share"] for r in rows) / len(rows)
+        print(f"{h:>10} {len(genomes[h]):>5} {alone:>13} {infected:>16.1f} "
+              f"{stolen:>16.1f} {share:>9.1%}")
+    print(f"\nmean over {len(parasites)} parasites, "
+          f"{args.budget:,} instructions per pairing")
+
+
 def cmd_ancestor(args) -> None:
     code = experiment.load_ancestor()
     print(f"; ancestor, {len(code)} instructions")
@@ -150,6 +176,9 @@ def main(argv=None) -> None:
     r.add_argument("--sample-every", type=int, default=1_000_000)
     r.add_argument("--reap-threshold", type=float, default=0.8)
     r.add_argument("--search-limit", type=int, default=1024)
+    r.add_argument("--lazy-reaper", action="store_true",
+                   help="do not reap when an allocation fails; the soup then "
+                        "sits full and mal failures become a mutagen")
     r.add_argument("--out", default=RESULTS)
     r.set_defaults(func=cmd_run)
 
@@ -185,6 +214,12 @@ def main(argv=None) -> None:
     m = sub.add_parser("interactions", help="cross dependents against replicators")
     m.add_argument("result")
     m.set_defaults(func=cmd_interactions)
+
+    x = sub.add_parser("resistance", help="how exploitable is each host")
+    x.add_argument("result")
+    x.add_argument("--budget", type=int, default=200_000)
+    x.add_argument("--parasites", nargs="*")
+    x.set_defaults(func=cmd_resistance)
 
     n = sub.add_parser("ancestor", help="print the ancestor listing")
     n.set_defaults(func=cmd_ancestor)

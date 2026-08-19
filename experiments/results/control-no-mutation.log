@@ -1,105 +1,94 @@
-     1.0M  alive= 478 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-     2.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-     3.0M  alive= 430 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-     4.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-     5.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-     6.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+     1.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+     2.0M  alive= 394 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+     3.0M  alive= 503 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+     4.0M  alive= 535 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+     5.0M  alive= 457 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+     6.0M  alive= 391 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
      7.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-     8.0M  alive= 598 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+     8.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
      9.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     10.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     11.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     12.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    13.0M  alive= 395 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    13.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     14.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    15.0M  alive= 566 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    16.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    17.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    18.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    19.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    20.0M  alive= 452 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    15.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    16.0M  alive= 394 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    17.0M  alive= 503 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    18.0M  alive= 535 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    19.0M  alive= 457 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    20.0M  alive= 391 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     21.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    22.0M  alive= 462 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    22.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     23.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     24.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     25.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     26.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    27.0M  alive= 547 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    27.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     28.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    29.0M  alive= 430 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    30.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    31.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    32.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    33.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    34.0M  alive= 552 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    35.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    36.0M  alive= 376 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    29.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    30.0M  alive= 394 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    31.0M  alive= 503 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    32.0M  alive= 618 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    33.0M  alive= 457 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    34.0M  alive= 391 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    35.0M  alive= 376 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    36.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     37.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     38.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    39.0M  alive= 383 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    39.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     40.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    41.0M  alive= 552 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    41.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     42.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     43.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    44.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    45.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    46.0M  alive= 418 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    47.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    48.0M  alive= 576 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    49.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    44.0M  alive= 394 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    45.0M  alive= 503 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    46.0M  alive= 618 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    47.0M  alive= 535 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    48.0M  alive= 391 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    49.0M  alive= 376 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     50.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     51.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     52.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    53.0M  alive= 477 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    53.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     54.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    55.0M  alive= 381 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    55.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     56.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     57.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    58.0M  alive= 376 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    59.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    60.0M  alive= 570 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    61.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    62.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    63.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    58.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    59.0M  alive= 503 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    60.0M  alive= 618 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    61.0M  alive= 535 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    62.0M  alive= 391 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    63.0M  alive= 376 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     64.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    65.0M  alive= 479 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    65.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     66.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    67.0M  alive= 484 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    67.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     68.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     69.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    70.0M  alive= 376 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    70.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     71.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    72.0M  alive= 558 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    73.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    74.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    75.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    76.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    77.0M  alive= 395 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    72.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    73.0M  alive= 503 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    74.0M  alive= 618 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    75.0M  alive= 535 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    76.0M  alive= 391 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    77.0M  alive= 376 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     78.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    79.0M  alive= 484 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    79.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     80.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     81.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    82.0M  alive= 376 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    82.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     83.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    84.0M  alive= 557 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    84.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     85.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     86.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    87.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    88.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    89.0M  alive= 449 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    90.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    91.0M  alive= 410 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    87.0M  alive= 503 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    88.0M  alive= 618 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    89.0M  alive= 535 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    90.0M  alive= 457 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
+    91.0M  alive= 376 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     92.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
     93.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    94.0M  alive= 376 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    95.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    96.0M  alive= 545 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    97.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    98.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-    99.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-   100.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%
-
-wrote /home/user/own-claude/experiments/results/control-no-mutation.json  (1,111,446 instructions/sec)
-
- genotype    n  size  births   fid          kind   cost   fcalls parent
-  0064aaa  375    64  240206  1.00    replicator    420        0 None
+    94.0M  alive= 375 types=   1  H= 0.00  size~  64.0  dom=0064aaa (100%)  foreign=0% fbreed=0%

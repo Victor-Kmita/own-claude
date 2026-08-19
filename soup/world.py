@@ -32,45 +32,96 @@ class ReaperQueue:
     each time it successfully divides.  Age therefore matters, but competence
     matters more -- exactly the property that lets a better replicator displace
     an older, sloppier one without any explicit fitness function.
+
+    It is a doubly linked list rather than a list of creatures, because every
+    operation the reaper needs is a splice: remove from the middle when
+    something dies, swap with a neighbour on an error or a division, pop the
+    head when the soup is full.  An array-backed version that filled the hole by
+    moving the last element would take the *youngest* creature in the world and
+    put it at the front of the death queue every time anything died, which is
+    not a small distortion of who gets to live.
     """
 
+    __slots__ = ("head_node", "tail_node", "nodes")
+
     def __init__(self):
-        self.order: list[Creature] = []
-        self.pos: dict[int, int] = {}
+        self.head_node = None          # [creature, prev, next]
+        self.tail_node = None
+        self.nodes: dict[int, list] = {}
 
     def __len__(self) -> int:
-        return len(self.order)
+        return len(self.nodes)
 
     def append(self, cr: Creature) -> None:
-        self.pos[cr.cid] = len(self.order)
-        self.order.append(cr)
+        node = [cr, self.tail_node, None]
+        if self.tail_node is None:
+            self.head_node = node
+        else:
+            self.tail_node[2] = node
+        self.tail_node = node
+        self.nodes[cr.cid] = node
 
-    def _swap(self, i: int, j: int) -> None:
-        a, b = self.order[i], self.order[j]
-        self.order[i], self.order[j] = b, a
-        self.pos[a.cid], self.pos[b.cid] = j, i
+    def _unlink(self, node) -> None:
+        prev, nxt = node[1], node[2]
+        if prev is None:
+            self.head_node = nxt
+        else:
+            prev[2] = nxt
+        if nxt is None:
+            self.tail_node = prev
+        else:
+            nxt[1] = prev
+
+    def _link_after(self, node, prev) -> None:
+        nxt = prev[2] if prev is not None else self.head_node
+        node[1], node[2] = prev, nxt
+        if prev is None:
+            self.head_node = node
+        else:
+            prev[2] = node
+        if nxt is None:
+            self.tail_node = node
+        else:
+            nxt[1] = node
 
     def move_toward_head(self, cr: Creature) -> None:
-        i = self.pos.get(cr.cid)
-        if i is not None and i > 0:
-            self._swap(i, i - 1)
+        node = self.nodes.get(cr.cid)
+        if node is None or node[1] is None:
+            return
+        before = node[1][1]
+        self._unlink(node)
+        self._link_after(node, before)
 
     def move_toward_tail(self, cr: Creature) -> None:
-        i = self.pos.get(cr.cid)
-        if i is not None and i < len(self.order) - 1:
-            self._swap(i, i + 1)
+        node = self.nodes.get(cr.cid)
+        if node is None or node[2] is None:
+            return
+        after = node[2]
+        self._unlink(node)
+        self._link_after(node, after)
 
     def remove(self, cr: Creature) -> None:
-        i = self.pos.pop(cr.cid, None)
-        if i is None:
-            return
-        last = self.order.pop()
-        if last.cid != cr.cid:
-            self.order[i] = last
-            self.pos[last.cid] = i
+        node = self.nodes.pop(cr.cid, None)
+        if node is not None:
+            self._unlink(node)
 
     def head(self) -> Creature | None:
-        return self.order[0] if self.order else None
+        return self.head_node[0] if self.head_node else None
+
+    def next_after(self, cr: Creature) -> Creature | None:
+        node = self.nodes.get(cr.cid)
+        if node is None or node[2] is None:
+            return None
+        return node[2][0]
+
+    def order_cids(self) -> list[int]:
+        """Front-to-back order; for tests and debugging."""
+        out = []
+        node = self.head_node
+        while node is not None:
+            out.append(node[0].cid)
+            node = node[2]
+        return out
 
 
 class GeneBank:
@@ -159,6 +210,8 @@ class World:
         max_daughter_size: int = 1024,
         mutate_only_live: bool = False,
         filler: int = 0,
+        reap_on_alloc_failure: bool = True,
+        errors_hasten_death: bool = True,
     ):
         self.soup_size = soup_size
         self.filler = filler
@@ -174,6 +227,15 @@ class World:
         self.min_daughter_size = min_daughter_size
         self.max_daughter_size = max_daughter_size
         self.mutate_only_live = mutate_only_live
+        # Whether a creature that cannot allocate triggers the reaper.  With it
+        # off, the soup sits permanently full and ``mal`` fails routinely --
+        # which turns out to be a mutation source in its own right.  See
+        # experiments/fragmentation.py.
+        self.reap_on_alloc_failure = reap_on_alloc_failure
+        # Whether making an error moves a creature one place toward the reaper.
+        # This is the only thing in the world that resembles quality control,
+        # and switching it off is the cleanest way to ask what it is doing.
+        self.errors_hasten_death = errors_hasten_death
 
         self.creatures: list[Creature] = []
         self.reaper = ReaperQueue()
@@ -252,6 +314,38 @@ class World:
                 break
             self.kill(victim)
 
+    def make_room(self, size: int, requester: Creature | None = None,
+                  max_kills: int = 8) -> int | None:
+        """Kill from the head of the reaper queue until an allocation fits.
+
+        Reaping once per scheduler pass is not enough on its own: every creature
+        holding a daughter block occupies twice its own length, so a soup at the
+        threshold before a pass is comfortably over it by the end.  The moment a
+        creature cannot allocate is exactly the moment the reaper exists for, so
+        that is when it runs.
+
+        The kill count is capped.  Without a cap a single mutant asking for the
+        largest legal block would be able to clear a large part of the soup on
+        every failed attempt -- a weapon, not a resource limit.  With the cap, a
+        request that still cannot be met after ``max_kills`` deaths simply
+        fails, which is what fragmentation looks like from inside a creature.
+        """
+        if not self.reap_on_alloc_failure:
+            return None
+        for _ in range(max_kills):
+            if len(self.reaper) <= 1:
+                break
+            victim = self.reaper.head()
+            if victim is requester:
+                victim = self.reaper.next_after(victim)
+            if victim is None:
+                break
+            self.kill(victim)
+            addr = self.memory.allocate(size)
+            if addr is not None:
+                return addr
+        return None
+
     # -- mutation ----------------------------------------------------------
     def cosmic_ray(self) -> None:
         if self.mutate_only_live and self.memory.blocks:
@@ -281,7 +375,7 @@ class World:
             before_errors = cr.stats.errors
             n = run_slice(self, cr, self.slice_for(cr))
             self.clock += n
-            if cr.stats.errors > before_errors:
+            if self.errors_hasten_death and cr.stats.errors > before_errors:
                 self.reaper.move_toward_head(cr)
             if self.clock >= self.next_ray:
                 self.cosmic_ray()

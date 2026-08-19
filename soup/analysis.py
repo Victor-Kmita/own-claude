@@ -30,6 +30,12 @@ def isolation_assay(genome: bytes, budget: int = 500_000, soup_size: int = 4000,
     from?  A genotype that fails the first test and passes the second is a
     parasite whose host happens to be its own species -- which is exactly what a
     creature that lost half of its own copy loop looks like.
+
+    Reproduction here means an **exact copy**, not merely a successful
+    ``divide``.  The distinction is not pedantic: a damaged creature can ask for
+    the smallest legal block, scribble in half of it and divide, producing an
+    eight-cell fragment in eighty instructions.  Counting that as reproduction
+    makes junk look like the fittest thing in the soup.
     """
     # The sterile medium is filled with ``zero`` instructions, not with the
     # default nop0.  A soup of nop0 is not empty at all -- it is an endless
@@ -38,20 +44,31 @@ def isolation_assay(genome: bytes, budget: int = 500_000, soup_size: int = 4000,
     # the strength of the petri dish.  ``zero`` is inert and carries no
     # template bits, so every successful search in the assay must have found
     # the creature's own code (or, with copies=2, its neighbour's).
-    w = World(soup_size=soup_size, copy_mutation_rate=0.0,
+    # slice_size=1 so that the reported cost is an exact instruction count
+    # rather than a multiple of the scheduler's quantum.  With one or two
+    # creatures in the dish the quantum has no other effect.
+    w = World(soup_size=soup_size, copy_mutation_rate=0.0, slice_size=1,
               cosmic_period=10 ** 12, seed=12345, filler=OPCODE["zero"])
     crs = []
     for i in range(copies):
         crs.append(w.inject(list(genome), address=i * (len(genome) + 200)))
+    label = crs[0].genotype
+    seeded = w.genebank.births[label]
+    divided_at = None
     while w.clock < budget and w.alive_count() > 0:
         w.step_generation()
-        if w.births:
+        if divided_at is None and w.births:
+            divided_at = w.clock
+        if w.genebank.births[label] > seeded:      # an exact copy exists
             break
     first = crs[0]
+    copied = w.genebank.births[label] > seeded
     return {
-        "self_sufficient": w.births > 0,
+        "self_sufficient": copied,
+        "divided": divided_at is not None,
+        "instructions": w.clock if copied else None,
+        "instructions_to_first_division": divided_at,
         "births": w.births,
-        "instructions": w.clock,
         "errors": first.stats.errors,
         "foreign_calls": first.stats.foreign_calls,
         "foreign_reads": first.stats.foreign_reads,
@@ -83,13 +100,17 @@ def describe(genome: bytes, budget: int = 500_000) -> dict:
     alone = isolation_assay(genome, budget=budget, copies=1)
     if alone["self_sufficient"]:
         return {"kind": "replicator", "cost": alone["instructions"],
-                "cost_paired": None}
+                "cost_paired": None, "divides_without_copying": False}
     pair = isolation_assay(genome, budget=budget, copies=2)
     if pair["self_sufficient"]:
         return {"kind": "self-assisted", "cost": None,
-                "cost_paired": pair["instructions"]}
+                "cost_paired": pair["instructions"],
+                "divides_without_copying": False}
     kind = "host-dependent" if _has_reproductive_machinery(genome) else "inert"
-    return {"kind": kind, "cost": None, "cost_paired": None}
+    # It divides, but what comes out is not it.  Worth recording separately:
+    # these are the creatures that fill a census with eight-cell fragments.
+    return {"kind": kind, "cost": None, "cost_paired": None,
+            "divides_without_copying": bool(alone["divided"] or pair["divided"])}
 
 
 def classify(genome: bytes, budget: int = 500_000) -> str:
@@ -98,7 +119,8 @@ def classify(genome: bytes, budget: int = 500_000) -> str:
 
 
 def coculture_assay(guest: bytes, host: bytes, budget: int = 500_000,
-                    soup_size: int = 6000, gap: int = 0) -> dict:
+                    soup_size: int = 6000, gap: int = 0,
+                    stop_at_first: bool = True) -> dict:
     """Koch's postulates for a digital parasite.
 
     Put one guest next to one host in a sterile soup and count who divides.
@@ -131,7 +153,7 @@ def coculture_assay(guest: bytes, host: bytes, budget: int = 500_000,
             w.step_generation()
             for c in crs:
                 births[c.cid] = c.stats.births
-            if births[crs[0].cid] > 0:
+            if stop_at_first and births[crs[0].cid] > 0:
                 break
         guest_cr = crs[0]
         # Whose genome ended up in the daughter?  This is the question that
@@ -145,7 +167,9 @@ def coculture_assay(guest: bytes, host: bytes, budget: int = 500_000,
         guest_label = crs[0].genotype
         host_label = crs[1].genotype if len(crs) > 1 else None
         produced = Counter()
+        by_parent_genotype = Counter()
         for (child, parent), n in w.genebank.parent_births.items():
+            by_parent_genotype[parent] += n
             if parent == guest_label:
                 produced["self" if child == guest_label else
                          "host" if child == host_label else "other"] += n
@@ -156,6 +180,15 @@ def coculture_assay(guest: bytes, host: bytes, budget: int = 500_000,
             "instructions": w.clock,
             "host_births": crs[1].stats.births if len(crs) > 1 else None,
             "offspring": produced,
+            # Genotype-level totals: every individual of that genotype, not just
+            # the one that was seeded.  Comparing a seeded individual's births
+            # with a whole genotype's is the kind of mistake that makes a host
+            # look six times less fertile than the parasite living on it.
+            "guest_genotype_births": by_parent_genotype.get(guest_label, 0),
+            "host_genotype_births": (by_parent_genotype.get(host_label, 0)
+                                     if host_label and host_label != guest_label
+                                     else None),
+            "population": Counter(c.genotype for c in w.creatures if c.alive),
         }
 
     return {
@@ -326,3 +359,33 @@ def trace_summary(rows: list[dict], collapse: bool = True) -> str:
                    f"cx={r['cx']:<6} daughter={r['daughter']}")
         i += 1
     return "\n".join(out)
+
+
+def solo_rate(genome: bytes, budget: int = 200_000) -> int:
+    """Births by the whole genotype, seeded alone, in a fixed instruction budget."""
+    return coculture_assay(genome, genome, budget=budget,
+                           stop_at_first=False)["alone"]["guest_genotype_births"]
+
+
+def susceptibility(host: bytes, parasite: bytes, budget: int = 200_000) -> dict:
+    """How much reproduction does one host hand to one parasite?
+
+    Both are placed packed together and left to run for a fixed number of
+    instructions -- no early exit -- so the numbers are rates, not times.  The
+    question this is built for: are evolved replicators any less exploitable
+    than the ancestor they descend from, or does the soup never get around to
+    defending itself?
+    """
+    out = coculture_assay(parasite, host, budget=budget,
+                          stop_at_first=False)["with_host"]
+    parasite_births = out["guest_genotype_births"]
+    host_births = out["host_genotype_births"] or 0
+    total = parasite_births + host_births
+    return {
+        "parasite_births": parasite_births,
+        "host_births": host_births,
+        "captured_share": round(parasite_births / total, 3) if total else 0.0,
+        "parasite_alive": out["population"].get(
+            next(iter(k for k in out["population"] if True), None), 0),
+        "instructions": out["instructions"],
+    }

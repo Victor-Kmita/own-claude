@@ -99,6 +99,7 @@ def census(world: World, top: int = 12, assay_budget: int = 400_000) -> list[dic
             "kind": what["kind"],
             "cost": what["cost"],
             "cost_paired": what["cost_paired"],
+            "divides_without_copying": what["divides_without_copying"],
             "mean_foreign_calls": round(sum(c.stats.foreign_calls for c in crs) / len(crs), 1),
             "mean_foreign_reads": round(sum(c.stats.foreign_reads for c in crs) / len(crs), 1),
             "mean_errors": round(sum(c.stats.errors for c in crs) / len(crs), 1),
@@ -139,6 +140,7 @@ def run(
     cosmic_period: int = 2000,
     reap_threshold: float = 0.8,
     search_limit: int = 1024,
+    reap_on_alloc_failure: bool = True,
     quiet: bool = False,
     ancestor_path: str = ANCESTOR,
 ) -> dict:
@@ -147,6 +149,7 @@ def run(
         soup_size=soup_size, seed=seed, slice_size=slice_size, slice_pow=slice_pow,
         copy_mutation_rate=copy_mutation_rate, cosmic_period=cosmic_period,
         reap_threshold=reap_threshold, search_limit=search_limit,
+        reap_on_alloc_failure=reap_on_alloc_failure,
     )
     world.inject(code, address=0)
 
@@ -174,6 +177,7 @@ def run(
             "slice_size": slice_size, "slice_pow": slice_pow,
             "copy_mutation_rate": copy_mutation_rate, "cosmic_period": cosmic_period,
             "reap_threshold": reap_threshold, "search_limit": search_limit,
+            "reap_on_alloc_failure": reap_on_alloc_failure,
             "ancestor_size": len(code),
         },
         "extinct": world.extinct,
