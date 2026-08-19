@@ -645,7 +645,8 @@
    "divides_without_copying": false,
    "mean_foreign_calls": 174949.4,
    "mean_foreign_reads": 15.9,
-   "mean_errors": 79511.5
+   "mean_errors": 79511.5,
+   "cost_per_cell": null
   },
   {
    "genotype": "0064aae",
@@ -662,7 +663,8 @@
    "divides_without_copying": false,
    "mean_foreign_calls": 121344.0,
    "mean_foreign_reads": 10.0,
-   "mean_errors": 94676.0
+   "mean_errors": 94676.0,
+   "cost_per_cell": null
   },
   {
    "genotype": "0064aag",
@@ -679,7 +681,8 @@
    "divides_without_copying": false,
    "mean_foreign_calls": 127475.0,
    "mean_foreign_reads": 0.0,
-   "mean_errors": 86512.0
+   "mean_errors": 86512.0,
+   "cost_per_cell": null
   },
   {
    "genotype": "0064aai",
@@ -696,7 +699,8 @@
    "divides_without_copying": false,
    "mean_foreign_calls": 122276.0,
    "mean_foreign_reads": 1481.0,
-   "mean_errors": 94110.0
+   "mean_errors": 94110.0,
+   "cost_per_cell": null
   },
   {
    "genotype": "0064aas",
@@ -713,7 +717,8 @@
    "divides_without_copying": false,
    "mean_foreign_calls": 207095.0,
    "mean_foreign_reads": 331.0,
-   "mean_errors": 80926.0
+   "mean_errors": 80926.0,
+   "cost_per_cell": null
   },
   {
    "genotype": "0062aac",
@@ -730,7 +735,8 @@
    "divides_without_copying": false,
    "mean_foreign_calls": 106713.0,
    "mean_foreign_reads": 22.0,
-   "mean_errors": 81263.0
+   "mean_errors": 81263.0,
+   "cost_per_cell": null
   },
   {
    "genotype": "0064abk",
@@ -747,7 +753,8 @@
    "divides_without_copying": false,
    "mean_foreign_calls": 106952.0,
    "mean_foreign_reads": 42.0,
-   "mean_errors": 82293.0
+   "mean_errors": 82293.0,
+   "cost_per_cell": null
   },
   {
    "genotype": "0064abl",
@@ -764,7 +771,8 @@
    "divides_without_copying": false,
    "mean_foreign_calls": 88689.0,
    "mean_foreign_reads": 98.0,
-   "mean_errors": 82617.0
+   "mean_errors": 82617.0,
+   "cost_per_cell": 6.41
   },
   {
    "genotype": "0071aaa",
@@ -781,7 +789,8 @@
    "divides_without_copying": false,
    "mean_foreign_calls": 110730.0,
    "mean_foreign_reads": 89.0,
-   "mean_errors": 90707.0
+   "mean_errors": 90707.0,
+   "cost_per_cell": null
   },
   {
    "genotype": "0072aac",
@@ -798,7 +807,8 @@
    "divides_without_copying": false,
    "mean_foreign_calls": 148598.0,
    "mean_foreign_reads": 53.0,
-   "mean_errors": 73960.0
+   "mean_errors": 73960.0,
+   "cost_per_cell": null
   },
   {
    "genotype": "0016aad",
@@ -815,7 +825,8 @@
    "divides_without_copying": false,
    "mean_foreign_calls": 160638.0,
    "mean_foreign_reads": 0.0,
-   "mean_errors": 69815.0
+   "mean_errors": 69815.0,
+   "cost_per_cell": null
   },
   {
    "genotype": "0120aac",
@@ -832,7 +843,8 @@
    "divides_without_copying": false,
    "mean_foreign_calls": 167267.0,
    "mean_foreign_reads": 388.0,
-   "mean_errors": 72247.0
+   "mean_errors": 72247.0,
+   "cost_per_cell": null
   }
  ],
  "lineage_of_dominant": [
@@ -11913,5 +11925,6 @@
   "0260aab",
   "0413aaa",
   "0623aab"
- ]
+ ],
+ "classifier": "exact-copy"
 }

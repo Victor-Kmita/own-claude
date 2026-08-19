@@ -27,6 +27,8 @@ python3 -m soup run demo --instructions 20000000
 python3 experiments/fragmentation.py      # the policy sweep in finding 2
 python3 experiments/viability.py          # the mutational landscape in finding 7
 python3 experiments/epidemic.py           # the resistance experiment in finding 9
+python3 experiments/mutation_rate.py      # the sweep and error threshold, finding 10
+python3 experiments/neutrality.py         # behaviours rather than genomes, finding 11
 python3 experiments/report.py > experiments/REPORT.md
 ```
 
@@ -173,6 +175,15 @@ breeding fidelity above 0.9.
 The saving is almost exactly the copy-loop iterations no longer needed: about
 six instructions per cell removed. Nothing in the machine knows what a genome
 is, what length means, or that shorter is better.
+
+**And that is the only way it ever gets cheaper.** Across 33 runs — 60M to 400M
+instructions, eight mutation rates, both scheduling rules — the cost per cell
+copied stays between 6.26 and 6.56 against the ancestor's 6.41. Not one run
+improved the copy loop itself. Tierra's optimized creatures did both: they cut
+the loop from ten instructions per cell to six *and* shrank the genome, which is
+where their 5.75× came from. My loop starts at six, so only compression is
+left — and unrolling it to copy two cells per iteration would still pay (five
+instructions per cell instead of six) and has never been found.
 
 ### 5. Parasites
 
@@ -521,6 +532,9 @@ python3 -m soup run long-constant-s1 --instructions 400000000 --seed 1 \
 python3 experiments/fragmentation.py
 python3 experiments/viability.py
 python3 experiments/epidemic.py
+python3 experiments/mutation_rate.py
+python3 experiments/neutrality.py
+python3 experiments/reclassify.py         # redo the assays after a classifier change
 python3 experiments/report.py > experiments/REPORT.md
 
 python3 -m soup interactions experiments/results/baseline-s2.json
