@@ -114,6 +114,21 @@ class GeneBank:
         self.parent_births[(label, parent)] += 1
         return label
 
+    def modal_parent(self, label: str) -> str | None:
+        """The genotype that most often gives birth to this one.
+
+        ``origin`` records who produced a genotype the very first time, which
+        for a rare variant can be a freak event -- an eight-cell fragment that
+        wandered into a neighbour's body once and came out with a daughter.  The
+        modal parent is the route that actually carries the genotype, and it is
+        what an ancestry chain should be built from.
+        """
+        best, best_n = None, 0
+        for (child, parent), n in self.parent_births.items():
+            if child == label and parent != label and parent is not None and n > best_n:
+                best, best_n = parent, n
+        return best
+
     def fidelity(self, label: str) -> float:
         """Fraction of this genotype's births that came from its own kind.
 

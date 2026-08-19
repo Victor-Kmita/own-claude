@@ -344,6 +344,14 @@ class TestGeneBank(unittest.TestCase):
         self.assertEqual(gb.name(b"\x01\x03", 0, None), "0002aab")
         self.assertEqual(gb.name(b"\x01\x02", 0, None), "0002aaa")
 
+    def test_modal_parent_is_the_usual_route_not_the_first_one(self):
+        gb = GeneBank()
+        gb.name(b"\x01\x02", 0, "0008aaa")        # freak first appearance
+        for _ in range(5):
+            gb.name(b"\x01\x02", 0, "0064aaa")    # the route it actually travels
+        self.assertEqual(gb.origin["0002aaa"], "0008aaa")
+        self.assertEqual(gb.modal_parent("0002aaa"), "0064aaa")
+
     def test_fidelity_separates_lineages_from_accidents(self):
         gb = GeneBank()
         for _ in range(10):

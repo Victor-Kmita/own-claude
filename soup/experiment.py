@@ -94,6 +94,7 @@ def census(world: World, top: int = 12, assay_budget: int = 400_000) -> list[dic
             "births": world.genebank.births[label],
             "fidelity": round(world.genebank.fidelity(label), 3),
             "parent": world.genebank.origin.get(label),
+            "modal_parent": world.genebank.modal_parent(label),
             "first_seen": world.genebank.first_seen.get(label),
             "kind": what["kind"],
             "cost": what["cost"],
@@ -105,13 +106,19 @@ def census(world: World, top: int = 12, assay_budget: int = 400_000) -> list[dic
     return rows
 
 
-def lineage(world: World, label: str, limit: int = 40) -> list[str]:
-    """Walk the chain of first-appearance parents back toward the ancestor."""
+def lineage(world: World, label: str, limit: int = 40, modal: bool = True) -> list[str]:
+    """Walk back toward the ancestor, one parent at a time.
+
+    With ``modal`` (the default) each step takes the genotype that most often
+    produced this one, which is the route the lineage actually travelled.  The
+    alternative walks ``origin``, i.e. whoever happened to produce it first.
+    """
     chain = [label]
     seen = {label}
     cur = label
     for _ in range(limit):
-        parent = world.genebank.origin.get(cur)
+        parent = (world.genebank.modal_parent(cur) if modal
+                  else world.genebank.origin.get(cur))
         if parent is None or parent in seen:
             break
         chain.append(parent)
@@ -180,9 +187,12 @@ def run(
         "history": history,
         "census": census(world),
     }
-    result["lineage_of_dominant"] = (
-        lineage(world, result["census"][0]["genotype"]) if result["census"] else []
-    )
+    if result["census"]:
+        top = result["census"][0]["genotype"]
+        result["lineage_of_dominant"] = lineage(world, top)
+        result["lineage_of_dominant_first_seen"] = lineage(world, top, modal=False)
+    else:
+        result["lineage_of_dominant"] = []
     result["genomes"] = {
         row["genotype"]: list(world.genebank.genome[row["genotype"]])
         for row in result["census"]
