@@ -2890,7 +2890,9 @@
    "mean_foreign_calls": 0.4,
    "mean_foreign_reads": 6.6,
    "mean_errors": 0.0,
-   "cost_per_cell": 6.41
+   "cost_per_cell": 6.41,
+   "repeats": true,
+   "second_copy_cost": 410
   },
   {
    "genotype": "0045ajd",
@@ -2926,7 +2928,9 @@
    "mean_foreign_calls": 7.6,
    "mean_foreign_reads": 7.3,
    "mean_errors": 0.1,
-   "cost_per_cell": 6.46
+   "cost_per_cell": 6.46,
+   "repeats": true,
+   "second_copy_cost": 452
   },
   {
    "genotype": "0045afu",

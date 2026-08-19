@@ -692,9 +692,26 @@ ancestor, by contrast, produces a daughter every 407 instructions indefinitely.
 One-shot reproduction is not a defect. In a soup at steady state every creature
 needs exactly one surviving child on average, and a creature that produces it
 fast and then dies fast frees the memory its child needs. That genotype held a
-fifth of its population and recorded 143,670 births. But it is a different
-animal from a sustained replicator, and my metric could not tell them apart
-until I looked. `describe()` now reports whether a replicator can do it twice,
+fifth of its population and recorded 143,670 births.
+
+But it only works where everyone does it. Put the two champions of the two flaw
+runs in one soup — the 27-cell one-shot against the 37-cell repeater, twelve of
+each, no mutation:
+
+```
+        one-shot 27   repeater 37
+  0.0M           12            12
+  8.0M           22           203
+ 40.0M           17           205
+births       10,056       141,741
+```
+
+The repeater takes fourteen times the births and holds the soup; the one-shot
+survives as a minority and never recovers. So the cheapest genome this world has
+produced is not the fittest — it dominates its own run because its whole
+population had lost the ability to go round again, and a single lineage that
+kept it would walk in and take over. My metric could not tell the two apart
+until I looked; `describe()` now reports whether a replicator can do it twice,
 and the optimization table has a column for it.
 
 This also revises finding 5. I explained the slowness of optimization here by
