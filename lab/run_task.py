@@ -418,4 +418,8 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except BrokenPipeError:
+        # `run_task.py status | head` is a normal thing to type.
+        os._exit(0)
