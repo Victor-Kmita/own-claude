@@ -1,0 +1,88 @@
+{
+ "rows": [
+  {
+   "k": 0.25,
+   "copy": 4000,
+   "cosmic": 8000,
+   "alive": 462,
+   "generations": 0,
+   "types_seen": 3302,
+   "diversity": 4.98,
+   "mean_len": 62.2,
+   "best_cost": 387,
+   "best_len": 60,
+   "foreign": 0.62,
+   "extinct": false
+  },
+  {
+   "k": 0.5,
+   "copy": 2000,
+   "cosmic": 4000,
+   "alive": 396,
+   "generations": 0,
+   "types_seen": 7609,
+   "diversity": 6.58,
+   "mean_len": 62.5,
+   "best_cost": 384,
+   "best_len": 59,
+   "foreign": 0.3,
+   "extinct": false
+  },
+  {
+   "k": 1.0,
+   "copy": 1000,
+   "cosmic": 2000,
+   "alive": 393,
+   "generations": 0,
+   "types_seen": 15311,
+   "diversity": 7.02,
+   "mean_len": 63.2,
+   "best_cost": 387,
+   "best_len": 59,
+   "foreign": 0.09,
+   "extinct": false
+  },
+  {
+   "k": 2.0,
+   "copy": 500,
+   "cosmic": 1000,
+   "alive": 395,
+   "generations": 0,
+   "types_seen": 27026,
+   "diversity": 7.46,
+   "mean_len": 62.4,
+   "best_cost": 403,
+   "best_len": 63,
+   "foreign": 0.15,
+   "extinct": false
+  },
+  {
+   "k": 4.0,
+   "copy": 250,
+   "cosmic": 500,
+   "alive": 393,
+   "generations": 0,
+   "types_seen": 40715,
+   "diversity": 8.06,
+   "mean_len": 64.7,
+   "best_cost": 413,
+   "best_len": 64,
+   "foreign": 0.15,
+   "extinct": false
+  },
+  {
+   "k": 8.0,
+   "copy": 125,
+   "cosmic": 250,
+   "alive": 426,
+   "generations": 0,
+   "types_seen": 38452,
+   "diversity": 8.12,
+   "mean_len": 63.9,
+   "best_cost": 379,
+   "best_len": 59,
+   "foreign": 0.16,
+   "extinct": false
+  }
+ ]
+}

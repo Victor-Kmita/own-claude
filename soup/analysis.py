@@ -120,7 +120,7 @@ def classify(genome: bytes, budget: int = 500_000) -> str:
 
 def coculture_assay(guest: bytes, host: bytes, budget: int = 500_000,
                     soup_size: int = 6000, gap: int = 0,
-                    stop_at_first: bool = True) -> dict:
+                    stop_at_first: bool = True, flank: bool = False) -> dict:
     """Koch's postulates for a digital parasite.
 
     Put one guest next to one host in a sterile soup and count who divides.
@@ -128,6 +128,14 @@ def coculture_assay(guest: bytes, host: bytes, budget: int = 500_000,
     when the host is present, and the reproduction is achieved by executing code
     that lies outside the guest's own genome, then the guest is living off the
     host -- not by analogy, but in the plain mechanical sense.
+
+    ``flank`` puts a host on *each* side of the guest instead of one beside it.
+    That is the arrangement Ray used to demonstrate immunity in Tierra -- a
+    parasite "flanked on each side with one individual" of the immune genotype
+    was eliminated, while the same parasite beside the ancestor coexisted with
+    it indefinitely.  It matters because a template search runs outward in both
+    directions: a guest with one host on one side and empty medium on the other
+    is in a different world from one surrounded.
 
     ``gap`` is the number of empty cells between the two genomes, and it is not
     a detail.  A template search takes the *nearest* match, so a parasite whose
@@ -140,7 +148,7 @@ def coculture_assay(guest: bytes, host: bytes, budget: int = 500_000,
 
     guest_like, host_like = guest, host
 
-    def trial(genomes):
+    def trial(genomes, guest_index: int = 0):
         w = World(soup_size=soup_size, copy_mutation_rate=0.0,
                   cosmic_period=10 ** 12, seed=999, filler=OPCODE["zero"])
         crs = []
@@ -148,6 +156,7 @@ def coculture_assay(guest: bytes, host: bytes, budget: int = 500_000,
         for g in genomes:
             crs.append(w.inject(list(g), address=addr))
             addr += len(g) + gap
+        crs = [crs[guest_index]] + [c for i, c in enumerate(crs) if i != guest_index]
         births = {c.cid: 0 for c in crs}
         while w.clock < budget:
             w.step_generation()
@@ -191,8 +200,9 @@ def coculture_assay(guest: bytes, host: bytes, budget: int = 500_000,
             "population": Counter(c.genotype for c in w.creatures if c.alive),
         }
 
+    with_host = [host, guest, host] if flank else [guest, host]
     return {
-        "with_host": trial([guest, host]),
+        "with_host": trial(with_host, guest_index=1 if flank else 0),
         "alone": trial([guest]),
         "with_own_kind": trial([guest, guest]),
     }
@@ -201,11 +211,18 @@ def coculture_assay(guest: bytes, host: bytes, budget: int = 500_000,
 def interaction(guest: bytes, host: bytes, budget: int = 500_000) -> str:
     """What one genotype does to another when they are neighbours.
 
-    ``parasitism``  the guest reproduces *itself* using the host's code.
+    ``independent`` the guest reproduces on its own; the neighbour is beside
+                    the point.  Checked first, because a self-sufficient
+                    replicator standing next to anything still makes copies of
+                    itself, and calling that parasitism would be nonsense.
+    ``parasitism``  the guest reproduces *itself*, and only when the host is
+                    there to be used.
     ``hijacked``    the guest reproduces the *host*: its CPU has been captured.
     ``mixed``       both happen.
     ``none``        the guest does not reproduce next to this host.
     """
+    if isolation_assay(guest, budget=budget, copies=1)["self_sufficient"]:
+        return "independent"
     out = coculture_assay(guest, host, budget=budget)["with_host"]["offspring"]
     self_copies, host_copies = out.get("self", 0), out.get("host", 0)
     if self_copies and host_copies:
@@ -389,3 +406,22 @@ def susceptibility(host: bytes, parasite: bytes, budget: int = 200_000) -> dict:
             next(iter(k for k in out["population"] if True), None), 0),
         "instructions": out["instructions"],
     }
+
+
+def phenotype_signature(genome: bytes, panel: list[bytes], budget: int = 200_000):
+    """What a genome *does*, as opposed to what it is.
+
+    Standish (2004) found that Tierra's phylogenies contained far fewer
+    behaviours than genotypes -- tens of thousands of distinct genomes collapsed
+    onto fewer than two hundred distinct phenotypes -- and that the way to tell
+    two genotypes apart is to put each one through the same set of encounters
+    and compare the outcomes.  This does that: the signature is what the genome
+    is when cultured alone, what a daughter costs it, and what happens beside
+    each reference organism in the panel.
+
+    Two genotypes with the same signature are neutral variants of each other as
+    far as anything in this world can tell.
+    """
+    what = describe(genome, budget=budget)
+    encounters = tuple(interaction(genome, ref, budget=budget) for ref in panel)
+    return (what["kind"], what["cost"], what["divides_without_copying"]) + encounters

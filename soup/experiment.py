@@ -12,6 +12,7 @@ from __future__ import annotations
 import json
 import math
 import os
+import random
 import time
 from collections import Counter
 
@@ -52,6 +53,11 @@ def sample(world: World) -> dict:
     breeders = [c for c in living if c.stats.births > 0]
     foreign_breeders = [c for c in breeders if c.stats.foreign_calls > 0]
     dominant, dominant_n = pop.most_common(1)[0] if pop else ("-", 0)
+    # Generation depth.  Reviews of digital-evolution methodology ask for this
+    # explicitly: an evolution experiment is only worth reading if the
+    # population has actually been through enough generations for selection to
+    # act, and instructions executed is not a proxy anyone can interpret.
+    gens = [c.generation for c in living]
     return {
         "clock": world.clock,
         "alive": len(living),
@@ -61,6 +67,8 @@ def sample(world: World) -> dict:
         "median_size": sorted(sizes)[len(sizes) // 2] if sizes else 0,
         "min_size": min(sizes) if sizes else 0,
         "max_size": max(sizes) if sizes else 0,
+        "mean_generation": round(sum(gens) / len(gens), 1) if gens else 0,
+        "max_generation": max(gens) if gens else 0,
         "load": round(world.memory.load, 3),
         "births": world.births,
         "deaths": world.deaths,
@@ -142,6 +150,7 @@ def run(
     search_limit: int = 1024,
     reap_on_alloc_failure: bool = True,
     quiet: bool = False,
+    genome_sample: int = 150,
     ancestor_path: str = ANCESTOR,
 ) -> dict:
     code = load_ancestor(ancestor_path)
@@ -167,7 +176,8 @@ def run(
                       f"types={row['genotypes']:4d}  H={row['diversity']:5.2f}  "
                       f"size~{row['mean_size']:6.1f}  dom={row['dominant']} "
                       f"({row['dominant_share']:.0%})  foreign={row['foreign_exec_share']:.0%}"
-                      f" fbreed={row['foreign_breeder_share']:.0%}")
+                      f" fbreed={row['foreign_breeder_share']:.0%}"
+                      f" gen={row['mean_generation']:.0f}")
 
     elapsed = time.time() - started
     result = {
@@ -201,6 +211,16 @@ def run(
         row["genotype"]: list(world.genebank.genome[row["genotype"]])
         for row in result["census"]
     }
+    # A random sample of the whole gene bank, not just the winners.  The census
+    # only ever shows what survived; questions about the mutational landscape
+    # and about how many genotypes share a phenotype need the rest of it.
+    labels = list(world.genebank.genome)
+    if labels:
+        sampler = random.Random(seed * 7919 + 13)
+        for label in sampler.sample(labels, min(genome_sample, len(labels))):
+            result["genomes"].setdefault(label, list(world.genebank.genome[label]))
+        result["gene_bank_sample"] = sorted(
+            set(result["genomes"]) - {row["genotype"] for row in result["census"]})
     return result
 
 
