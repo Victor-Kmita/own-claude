@@ -2,3 +2,34 @@ Mutational neighbourhoods -- every single-bit mutant, cultured alone:
 
   flat 0037vvz      37 cells, costs  239: 32% of mutants still replicate, 24% are unchanged in cost, and the survivors average 239.2
   sharp 0038rdr     38 cells, costs  216: 30% of mutants still replicate, 17% are unchanged in cost, and the survivors average 5109.4
+  ancestor          64 cells, costs  410: 34% of mutants still replicate, 25% are unchanged in cost, and the survivors average 416.3
+
+Competition, twelve of each, 60,000,000 instructions.  Counted by
+lineage -- descendants of each seeded creature -- because the exact
+genotypes dissolve within a few million instructions once noise is on.
+The last two columns are what the survivors have become.
+
+    cosmic ray every  seed    flat   sharp  flat /cell  sharp /cell
+                   0     1     109     104        6.46         5.68
+          20,000,000     1     117      96        6.46         5.68
+           5,000,000     1     115      98        6.46         5.68
+           5,000,000     2     119      94        6.46         5.68
+           5,000,000     3     111     102        6.46         5.68
+           2,000,000     1     163      83        6.46         5.68
+           2,000,000     2     146      68        6.46         5.68
+           2,000,000     3     113     100        6.46         5.68
+             800,000     1     216       0        6.46         None
+             800,000     2     216       0        6.46         None
+             800,000     3     216       0        6.46         None
+             200,000     1     216       0        6.46         None
+             200,000     2     216       0        6.46         None
+             200,000     3     405       0        6.46         None
+              20,000     1      11     207        6.36        95.05
+               2,000     1      38     173        5.98         5.68
+
+With no noise the two sit in a periodic orbit and neither wins.  From
+one ray per five million instructions down to one per two hundred
+thousand, the flatter and slower lineage wins, and at the bottom of that
+window the faster one goes extinct in every seed.  Below 200,000 the
+comparison stops being about the innovation: lineages persist as clouds
+of damaged creatures, and the cost per cell of the survivors says so.

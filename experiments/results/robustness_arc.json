@@ -1,0 +1,82 @@
+{
+ "rows": [
+  {
+   "champion": "ancestor",
+   "instructions": 0,
+   "cells": 64,
+   "parent_cost": 410,
+   "mutants": 320,
+   "still_replicate": 109,
+   "fraction_viable": 0.341,
+   "fraction_neutral": 0.247,
+   "fraction_within_10pc": 0.312,
+   "mean_cost_of_survivors": 416.3,
+   "median_cost_of_survivors": 410
+  },
+  {
+   "champion": "0062ftk (baseline-s1)",
+   "instructions": 100000000,
+   "cells": 62,
+   "parent_cost": 402,
+   "mutants": 310,
+   "still_replicate": 132,
+   "fraction_viable": 0.426,
+   "fraction_neutral": 0.352,
+   "fraction_within_10pc": 0.397,
+   "mean_cost_of_survivors": 705.7,
+   "median_cost_of_survivors": 402
+  },
+  {
+   "champion": "0057fln (long-constant-s1)",
+   "instructions": 400000000,
+   "cells": 57,
+   "parent_cost": 373,
+   "mutants": 285,
+   "still_replicate": 120,
+   "fraction_viable": 0.421,
+   "fraction_neutral": 0.351,
+   "fraction_within_10pc": 0.396,
+   "mean_cost_of_survivors": 1370.9,
+   "median_cost_of_survivors": 373
+  },
+  {
+   "champion": "0053abg (mut-k8-s3)",
+   "instructions": 60000000,
+   "cells": 53,
+   "parent_cost": 346,
+   "mutants": 265,
+   "still_replicate": 120,
+   "fraction_viable": 0.453,
+   "fraction_neutral": 0.415,
+   "fraction_within_10pc": 0.449,
+   "mean_cost_of_survivors": 769.1,
+   "median_cost_of_survivors": 346
+  },
+  {
+   "champion": "0037vvz (deep-constant-s1)",
+   "instructions": 3000000000,
+   "cells": 37,
+   "parent_cost": 239,
+   "mutants": 185,
+   "still_replicate": 60,
+   "fraction_viable": 0.324,
+   "fraction_neutral": 0.243,
+   "fraction_within_10pc": 0.324,
+   "mean_cost_of_survivors": 239.2,
+   "median_cost_of_survivors": 239
+  },
+  {
+   "champion": "0038rdr (deep-constant-s2)",
+   "instructions": 3000000000,
+   "cells": 38,
+   "parent_cost": 216,
+   "mutants": 190,
+   "still_replicate": 58,
+   "fraction_viable": 0.305,
+   "fraction_neutral": 0.174,
+   "fraction_within_10pc": 0.226,
+   "mean_cost_of_survivors": 5109.4,
+   "median_cost_of_survivors": 216
+  }
+ ]
+}

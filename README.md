@@ -31,6 +31,7 @@ python3 experiments/mutation_rate.py      # the sweep and error threshold, findi
 python3 experiments/neutrality.py         # behaviours rather than genomes, finding 13
 python3 experiments/flatness.py           # survival of the flattest, finding 6
 python3 experiments/selection.py          # how strong selection is here
+python3 experiments/robustness_arc.py     # what happens to robustness over time
 python3 experiments/report.py > experiments/REPORT.md
 ```
 
@@ -374,6 +375,33 @@ innovation. I have no established explanation for that regime; the plausible one
 is that two effects scale differently — exposure to damage per replication rises
 with how long a replication takes, while fragility depends on where the genome
 sits — but I have not tested it.
+
+**So is robustness itself under selection?** Measure the same neighbourhood for
+the best replicator each run produced, ordered by how long the run was
+(`python3 experiments/robustness_arc.py`):
+
+| champion | run | cells | cost | mutants that still replicate | of all mutants, within 10% of the parent's cost | median cost of survivors |
+|---|---:|---:|---:|---:|---:|---:|
+| ancestor | — | 64 | 410 | 34% | 31% | 410 |
+| `0062ftk` | 100M | 62 | 402 | 43% | **40%** | 402 |
+| `0057fln` | 400M | 57 | 373 | 42% | **40%** | 373 |
+| `0053abg` | 60M at 8× mutation | 53 | 346 | 45% | **45%** | 346 |
+| `0037vvz` | 3B | 37 | 239 | 32% | 32% | 239 |
+| `0038rdr` | 3B | 38 | 216 | 30% | **23%** | 216 |
+
+Two movements. Early evolution **buys** robustness: the fraction of all
+single-bit mutants that still replicate at within 10% of the parent's cost rises
+from 31% to 40%, and the flattest genome of the lot came out of the run at eight
+times the standard mutation rate — which is exactly where quasispecies theory
+says flatness should be selected hardest.
+
+Then deep compression **spends** it. The two 3-billion-instruction champions,
+compressed to 37 and 38 cells, are back down to 32% and 23%. Squeezing a genome
+removes the slack that made mutations survivable.
+
+The median survivor tells the other half of the story: for every genome here it
+is *exactly the parent's cost*. The typical viable mutant is free; it is the
+tail that differs, and for the unrolled replicator that tail averages 5,109.
 
 ### 7. Parasites
 
@@ -727,6 +755,7 @@ python3 experiments/mutation_rate.py
 python3 experiments/neutrality.py
 python3 experiments/flatness.py
 python3 experiments/selection.py
+python3 experiments/robustness_arc.py
 python3 experiments/reclassify.py         # redo the assays after a classifier change
 python3 experiments/report.py > experiments/REPORT.md
 

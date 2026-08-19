@@ -1,0 +1,463 @@
+{
+ "budget": 60000000,
+ "robustness": {
+  "flat 0037vvz": {
+   "cells": 37,
+   "parent_cost": 239,
+   "mutants": 185,
+   "still_replicate": 60,
+   "fraction_viable": 0.324,
+   "fraction_neutral": 0.243,
+   "mean_cost_of_survivors": 239.2
+  },
+  "sharp 0038rdr": {
+   "cells": 38,
+   "parent_cost": 216,
+   "mutants": 190,
+   "still_replicate": 58,
+   "fraction_viable": 0.305,
+   "fraction_neutral": 0.174,
+   "mean_cost_of_survivors": 5109.4
+  },
+  "ancestor": {
+   "cells": 64,
+   "parent_cost": 410,
+   "mutants": 320,
+   "still_replicate": 109,
+   "fraction_viable": 0.341,
+   "fraction_neutral": 0.247,
+   "mean_cost_of_survivors": 416.3
+  }
+ },
+ "gradient": [
+  {
+   "cosmic_period": null,
+   "seed": 1,
+   "flat": 109,
+   "sharp": 104,
+   "winner": "flat",
+   "births": {
+    "flat": 0,
+    "sharp": 1
+   },
+   "flat_survivors": {
+    "alive": 109,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 6.46
+   },
+   "sharp_survivors": {
+    "alive": 104,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 5.68
+   }
+  },
+  {
+   "cosmic_period": 20000000,
+   "seed": 1,
+   "flat": 117,
+   "sharp": 96,
+   "winner": "flat",
+   "births": {
+    "flat": 0,
+    "sharp": 1
+   },
+   "flat_survivors": {
+    "alive": 117,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 6.46
+   },
+   "sharp_survivors": {
+    "alive": 96,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 5.68
+   }
+  },
+  {
+   "cosmic_period": 5000000,
+   "seed": 1,
+   "flat": 115,
+   "sharp": 98,
+   "winner": "flat",
+   "births": {
+    "flat": 0,
+    "sharp": 1
+   },
+   "flat_survivors": {
+    "alive": 115,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 6.46
+   },
+   "sharp_survivors": {
+    "alive": 98,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 5.68
+   }
+  },
+  {
+   "cosmic_period": 5000000,
+   "seed": 2,
+   "flat": 119,
+   "sharp": 94,
+   "winner": "flat",
+   "births": {
+    "flat": 0,
+    "sharp": 1
+   },
+   "flat_survivors": {
+    "alive": 119,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 6.46
+   },
+   "sharp_survivors": {
+    "alive": 94,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 5.68
+   }
+  },
+  {
+   "cosmic_period": 5000000,
+   "seed": 3,
+   "flat": 111,
+   "sharp": 102,
+   "winner": "flat",
+   "births": {
+    "flat": 0,
+    "sharp": 1
+   },
+   "flat_survivors": {
+    "alive": 111,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 6.46
+   },
+   "sharp_survivors": {
+    "alive": 102,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 5.68
+   }
+  },
+  {
+   "cosmic_period": 2000000,
+   "seed": 1,
+   "flat": 163,
+   "sharp": 83,
+   "winner": "flat",
+   "births": {
+    "flat": 129,
+    "sharp": 1
+   },
+   "flat_survivors": {
+    "alive": 163,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 6.46
+   },
+   "sharp_survivors": {
+    "alive": 83,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 5.68
+   }
+  },
+  {
+   "cosmic_period": 2000000,
+   "seed": 2,
+   "flat": 146,
+   "sharp": 68,
+   "winner": "flat",
+   "births": {
+    "flat": 1,
+    "sharp": 0
+   },
+   "flat_survivors": {
+    "alive": 146,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 6.46
+   },
+   "sharp_survivors": {
+    "alive": 68,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 5.68
+   }
+  },
+  {
+   "cosmic_period": 2000000,
+   "seed": 3,
+   "flat": 113,
+   "sharp": 100,
+   "winner": "flat",
+   "births": {
+    "flat": 0,
+    "sharp": 1
+   },
+   "flat_survivors": {
+    "alive": 113,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 6.46
+   },
+   "sharp_survivors": {
+    "alive": 100,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 5.68
+   }
+  },
+  {
+   "cosmic_period": 800000,
+   "seed": 1,
+   "flat": 216,
+   "sharp": 0,
+   "winner": "flat",
+   "births": {
+    "flat": 1,
+    "sharp": 0
+   },
+   "flat_survivors": {
+    "alive": 216,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 6.46
+   },
+   "sharp_survivors": {
+    "alive": 0
+   }
+  },
+  {
+   "cosmic_period": 800000,
+   "seed": 2,
+   "flat": 216,
+   "sharp": 0,
+   "winner": "flat",
+   "births": {
+    "flat": 0,
+    "sharp": 0
+   },
+   "flat_survivors": {
+    "alive": 216,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 6.46
+   },
+   "sharp_survivors": {
+    "alive": 0
+   }
+  },
+  {
+   "cosmic_period": 800000,
+   "seed": 3,
+   "flat": 216,
+   "sharp": 0,
+   "winner": "flat",
+   "births": {
+    "flat": 0,
+    "sharp": 0
+   },
+   "flat_survivors": {
+    "alive": 216,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 6.46
+   },
+   "sharp_survivors": {
+    "alive": 0
+   }
+  },
+  {
+   "cosmic_period": 200000,
+   "seed": 1,
+   "flat": 216,
+   "sharp": 0,
+   "winner": "flat",
+   "births": {
+    "flat": 0,
+    "sharp": 0
+   },
+   "flat_survivors": {
+    "alive": 216,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 6.46
+   },
+   "sharp_survivors": {
+    "alive": 0
+   }
+  },
+  {
+   "cosmic_period": 200000,
+   "seed": 2,
+   "flat": 216,
+   "sharp": 0,
+   "winner": "flat",
+   "births": {
+    "flat": 6,
+    "sharp": 0
+   },
+   "flat_survivors": {
+    "alive": 216,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 6.46
+   },
+   "sharp_survivors": {
+    "alive": 0
+   }
+  },
+  {
+   "cosmic_period": 200000,
+   "seed": 3,
+   "flat": 405,
+   "sharp": 0,
+   "winner": "flat",
+   "births": {
+    "flat": 217,
+    "sharp": 0
+   },
+   "flat_survivors": {
+    "alive": 405,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 6.46
+   },
+   "sharp_survivors": {
+    "alive": 0
+   }
+  },
+  {
+   "cosmic_period": 20000,
+   "seed": 1,
+   "flat": 11,
+   "sharp": 207,
+   "winner": "sharp",
+   "births": {
+    "flat": 0,
+    "sharp": 21
+   },
+   "flat_survivors": {
+    "alive": 11,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 6.36
+   },
+   "sharp_survivors": {
+    "alive": 207,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 95.05
+   }
+  },
+  {
+   "cosmic_period": 2000,
+   "seed": 1,
+   "flat": 38,
+   "sharp": 173,
+   "winner": "sharp",
+   "births": {
+    "flat": 8,
+    "sharp": 14
+   },
+   "flat_survivors": {
+    "alive": 38,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 8
+    },
+    "replicator_share": 1.0,
+    "mean_cost_per_cell": 5.98
+   },
+   "sharp_survivors": {
+    "alive": 173,
+    "sampled": 8,
+    "kinds": {
+     "replicator": 7,
+     "host-dependent": 1
+    },
+    "replicator_share": 0.88,
+    "mean_cost_per_cell": 5.68
+   }
+  }
+ ]
+}

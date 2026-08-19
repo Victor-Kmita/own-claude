@@ -303,6 +303,21 @@ faster lineage becomes numerous again while its members' cost per cell rises
 from 5.68 to 95, so they are descendants in name only.  I have no established
 explanation for that tail.
 
+### Robustness is under selection, and compression spends it
+
+Measuring the mutational neighbourhood of the best replicator from runs of
+increasing length gives a second, independent line of evidence for the same
+thing.  The fraction of single-bit mutants that still replicate at within 10% of
+the parent's cost rises from 31% for the hand-written ancestor to 40% after a
+hundred million instructions, and reaches 45% in the run at eight times the
+standard mutation rate -- the condition under which quasispecies theory says
+flatness should be selected hardest.
+
+The two three-billion-instruction champions, compressed to 37 and 38 cells, fall
+back to 32% and 23%.  Compression removes the slack that made mutations
+survivable, which is a trade-off Ray's paper does not discuss and which may bear
+on why his runs plateaued at 22 to 30 instructions rather than going further.
+
 ### How strong is selection here at all
 
 A companion measurement, since the flatness result depends on knowing what a 10%

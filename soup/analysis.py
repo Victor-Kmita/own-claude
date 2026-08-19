@@ -570,7 +570,10 @@ def robustness(genome: bytes, budget: int = 150_000) -> dict:
     common -- survival of the flattest, in Wilke's phrase.
 
     Returns the fraction that still self-replicate, the fraction that are
-    exactly as cheap as the parent, and the mean cost of the survivors.
+    exactly as cheap as the parent, and both the mean and the median cost of
+    the survivors -- the mean because a few catastrophically slow survivors say
+    something real about the shape of the neighbourhood, the median because
+    otherwise they say all of it.
     """
     parent = describe(genome, budget=budget)
     survivors, neutral, costs = 0, 0, []
@@ -586,6 +589,8 @@ def robustness(genome: bytes, budget: int = 150_000) -> dict:
                 costs.append(what["cost"])
                 if what["cost"] == parent["cost"] and len(mutant) == len(genome):
                     neutral += 1
+    near = sum(1 for c in costs if parent["cost"] and c <= parent["cost"] * 1.1)
+    ordered = sorted(costs)
     return {
         "cells": len(genome),
         "parent_cost": parent["cost"],
@@ -593,5 +598,7 @@ def robustness(genome: bytes, budget: int = 150_000) -> dict:
         "still_replicate": survivors,
         "fraction_viable": round(survivors / total, 3) if total else 0.0,
         "fraction_neutral": round(neutral / total, 3) if total else 0.0,
+        "fraction_within_10pc": round(near / total, 3) if total else 0.0,
         "mean_cost_of_survivors": round(sum(costs) / len(costs), 1) if costs else None,
+        "median_cost_of_survivors": (ordered[len(ordered) // 2] if ordered else None),
     }

@@ -1,0 +1,10 @@
+                        champion     run  cells   cost  viable  neutral  within 10%  median     mean
+----------------------------------------------------------------------------------------------------
+                        ancestor      0M     64    410     34%      25%         31%     410    416.3
+           0062ftk (baseline-s1)    100M     62    402     43%      35%         40%     402    705.7
+      0057fln (long-constant-s1)    400M     57    373     42%      35%         40%     373   1370.9
+             0053abg (mut-k8-s3)     60M     53    346     45%      42%         45%     346    769.1
+      0037vvz (deep-constant-s1)   3000M     37    239     32%      24%         32%     239    239.2
+      0038rdr (deep-constant-s2)   3000M     38    216     30%      17%         23%     216   5109.4
+
+wrote /home/user/own-claude/experiments/results/robustness_arc.json
