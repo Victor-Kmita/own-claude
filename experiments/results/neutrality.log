@@ -8,3 +8,14 @@ seed 2: 14,347 genotypes seen, 70 sampled -> 25 phenotypes (2.8 genotypes per ph
      11  ('host-dependent', None, False, 'none', 'none')
      10  ('host-dependent', None, True, 'other', 'other')
       5  ('replicator', 412, False, 'independent', 'independent')
+seed 3: 15,483 genotypes seen, 70 sampled -> 29 phenotypes (2.41 genotypes per phenotype); parasitism indicator 6%
+     11  ('host-dependent', None, True, 'other', 'other')
+     11  ('host-dependent', None, False, 'none', 'none')
+     10  ('host-dependent', None, False, 'other', 'other')
+      6  ('host-dependent', None, False, 'hijacked', 'hijacked')
+
+parasite-rich seed 2 (25% foreign breeders): 2.8 genotypes per phenotype
+quieter seeds: 2.69 (seed 1, 12%), 2.41 (seed 3, 6%)
+
+Standish predicts the parasite-rich world shows the LEAST neutrality (fewest genotypes per phenotype).
+wrote /home/user/own-claude/experiments/results/neutrality.json

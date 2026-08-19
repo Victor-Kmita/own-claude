@@ -43,6 +43,25 @@ SEEDS = (1, 2, 3)
 RESULTS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
 
 
+def chao1(counts: Counter) -> float:
+    """Estimate how many phenotypes exist, from how many were seen once or twice.
+
+    A sample of seventy genotypes cannot count the phenotypes in a gene bank of
+    fifteen thousand, but the shape of the sample says something about what was
+    missed: if many phenotypes turned up exactly once, there are probably more
+    out there that turned up not at all.  This is the standard Chao1 estimator
+    from ecology, used here for exactly the job it was designed for, and it is
+    what makes a number comparable with Standish's counts over whole Tierra
+    gene banks.
+    """
+    observed = len(counts)
+    f1 = sum(1 for n in counts.values() if n == 1)
+    f2 = sum(1 for n in counts.values() if n == 2)
+    if f2 == 0:
+        return round(observed + f1 * (f1 - 1) / 2, 1)
+    return round(observed + f1 * f1 / (2 * f2), 1)
+
+
 def panel() -> list[bytes]:
     """Reference organisms every sampled genome is put next to."""
     anc = load_ancestor()
@@ -82,14 +101,16 @@ def from_saved(paths: list[str], refs: list[bytes], limit: int = 70) -> list[dic
         h = r["history"][-1]
         rows.append({
             "run": r["name"], "sampled": len(chosen), "phenotypes": len(sigs),
+            "phenotypes_estimated": chao1(sigs),
             "genotypes_per_phenotype": round(len(chosen) / len(sigs), 2),
             "foreign_breeder_share": h["foreign_breeder_share"],
             "genotypes_seen": r["totals"]["genotypes_seen"],
             "mean_generation": h.get("mean_generation", 0),
         })
         print(f"{r['name']}: {len(chosen)} sampled -> {len(sigs)} phenotypes "
-              f"({rows[-1]['genotypes_per_phenotype']} per phenotype); "
-              f"parasitism indicator {h['foreign_breeder_share']:.0%}; "
+              f"(Chao1 estimate {rows[-1]['phenotypes_estimated']} in the whole "
+              f"bank of {r['totals']['genotypes_seen']:,}); "
+              f"parasitism {h['foreign_breeder_share']:.0%}; "
               f"generations {rows[-1]['mean_generation']:.0f}")
     return rows
 
@@ -118,6 +139,7 @@ def main() -> None:
             "genotypes_seen": len(labels),
             "sampled": len(chosen),
             "phenotypes": len(signatures),
+            "phenotypes_estimated": chao1(signatures),
             "genotypes_per_phenotype": round(len(chosen) / len(signatures), 2),
             "foreign_breeder_share": snap["foreign_breeder_share"],
             "alive": snap["alive"],

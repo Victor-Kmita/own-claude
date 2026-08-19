@@ -228,6 +228,27 @@ Unrolling would still pay here — copying two cells per iteration would cost fi
 instructions per cell rather than six — and nothing has found it in 60M
 instructions.
 
+### Standish's neutrality result, half reproduced
+
+Standish counted phenotypes rather than genotypes and found Tierra gene banks of
+69k–199k genotypes collapsing onto 83, 86 and 158 behaviours.  Measuring the
+same thing here — a phenotype being what a genome does alone and beside two
+reference organisms, with the total estimated from a sample of seventy by the
+Chao1 estimator — gives 22 to 121 behaviours in banks of 282 to 4,423 genotypes.
+
+**The order of magnitude agrees**: both systems support something like a hundred
+distinguishable behaviours regardless of how many genomes pass through.  That is
+the most direct quantitative agreement between this soup and Tierra that I have
+found, and it was not aimed at.
+
+**His explanation does not reproduce.**  Parasites needing a host in range should
+suppress neutrality, so a parasite-rich world should show fewer genotypes per
+phenotype.  Two runs at the same mutation rate differing only in seed, at 10%
+and 67% parasitism, give 2.9 and 3.0 genotypes per phenotype — no effect — and
+the parasite-rich one holds three times as many distinct behaviours.  One seed
+pair and a phenotype definition of my own making: a failure to reproduce rather
+than a refutation.
+
 ### Run length was the other missing factor
 
 Ray's descendants needed billions of instructions. At 400M my genomes sat at
@@ -241,7 +262,7 @@ size reduction had not stopped at 400M; it had barely started.
 |---|---|---|
 | runs of billions of instructions | Ray's optimization result needed 15B | 2 × 3B, in progress; already down to 42 cells at 1B |
 | mutation-rate sweep with replicates | tests both of Ray's claims, locates the error threshold | done, 24 runs |
-| phenotype signatures, not genotype counts | Standish: ~100k genotypes → ~100 phenotypes | in progress |
+| phenotype signatures, not genotype counts | Standish: ~100k genotypes → ~100 phenotypes | done; order of magnitude agrees, his mechanism does not reproduce |
 | report generation depth | the review's criterion for a credible experiment | now recorded in every sample |
 | flanked co-culture | Ray demonstrated immunity with hosts on both sides | implemented |
 | instruction flaws as a third mutation mode | Tierra has it, I do not | not started |

@@ -1,0 +1,163 @@
+{
+ "budget": 60000000,
+ "sample": 70,
+ "assay_budget": 120000,
+ "rows": [
+  {
+   "seed": 1,
+   "genotypes_seen": 15311,
+   "sampled": 70,
+   "phenotypes": 26,
+   "genotypes_per_phenotype": 2.69,
+   "foreign_breeder_share": 0.115,
+   "alive": 393,
+   "mean_generation": 348.5,
+   "commonest": [
+    [
+     [
+      "host-dependent",
+      null,
+      true,
+      "other",
+      "other"
+     ],
+     18
+    ],
+    [
+     [
+      "host-dependent",
+      null,
+      false,
+      "hijacked",
+      "hijacked"
+     ],
+     11
+    ],
+    [
+     [
+      "host-dependent",
+      null,
+      false,
+      "none",
+      "none"
+     ],
+     10
+    ],
+    [
+     [
+      "host-dependent",
+      null,
+      false,
+      "other",
+      "other"
+     ],
+     4
+    ]
+   ]
+  },
+  {
+   "seed": 2,
+   "genotypes_seen": 14347,
+   "sampled": 70,
+   "phenotypes": 25,
+   "genotypes_per_phenotype": 2.8,
+   "foreign_breeder_share": 0.253,
+   "alive": 383,
+   "mean_generation": 346.3,
+   "commonest": [
+    [
+     [
+      "host-dependent",
+      null,
+      false,
+      "hijacked",
+      "hijacked"
+     ],
+     13
+    ],
+    [
+     [
+      "host-dependent",
+      null,
+      false,
+      "none",
+      "none"
+     ],
+     11
+    ],
+    [
+     [
+      "host-dependent",
+      null,
+      true,
+      "other",
+      "other"
+     ],
+     10
+    ],
+    [
+     [
+      "replicator",
+      412,
+      false,
+      "independent",
+      "independent"
+     ],
+     5
+    ]
+   ]
+  },
+  {
+   "seed": 3,
+   "genotypes_seen": 15483,
+   "sampled": 70,
+   "phenotypes": 29,
+   "genotypes_per_phenotype": 2.41,
+   "foreign_breeder_share": 0.058,
+   "alive": 406,
+   "mean_generation": 346.2,
+   "commonest": [
+    [
+     [
+      "host-dependent",
+      null,
+      true,
+      "other",
+      "other"
+     ],
+     11
+    ],
+    [
+     [
+      "host-dependent",
+      null,
+      false,
+      "none",
+      "none"
+     ],
+     11
+    ],
+    [
+     [
+      "host-dependent",
+      null,
+      false,
+      "other",
+      "other"
+     ],
+     10
+    ],
+    [
+     [
+      "host-dependent",
+      null,
+      false,
+      "hijacked",
+      "hijacked"
+     ],
+     6
+    ]
+   ]
+  }
+ ]
+}

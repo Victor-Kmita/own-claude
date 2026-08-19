@@ -352,13 +352,14 @@ instructions against the ancestor's 410 — a 16% saving. Ray's claim holds here
 
 **The error threshold is where theory says it should be.** Between µ = 0.51 and
 µ = 1.02 — one mutation per genome per replication — the population stops being a
-population. At k=16 the census contains no self-sufficient replicator at all,
-every genotype's breeding fidelity is zero, and **132 distinct genotypes are
-alive among 133 creatures**: no two individuals are alike, because nothing
-copies itself accurately enough to found a lineage. Generation depth collapses
-from ~250 to 10. The soup does not go extinct — it persists as a churn of
-fragments running each other's code, with 100% of reproduction happening through
-foreign execution.
+population. At k=16 the only self-sufficient replicators left anywhere in the
+three censuses are the unmodified ancestor and one-mutation variants of it, each
+down to a single individual; everything evolution had built is gone. One of the
+runs has **132 distinct genotypes alive among 133 creatures** — no two
+individuals alike, because nothing copies itself accurately enough to found a
+lineage. Generation depth collapses from ~250 to 10, and 100% of reproduction
+happens through foreign execution. The soup does not go extinct; it persists as
+a churn of fragments running each other's code.
 
 **The ecology claim I cannot support.** Averaged over seeds the parasite
 indicator is highest at the lowest rates, which is the direction Ray describes.
@@ -366,7 +367,40 @@ But the within-condition spread is 0.12 to 0.85 at the same rate — as large as
 the effect. Three seeds are not enough to say anything here, and I am not going
 to pretend otherwise.
 
-### 11. Evolvability is expensive
+### 11. About a hundred distinct behaviours, however many genomes there are
+
+Standish measured something in Tierra that I had not thought to: gene banks of
+69,139, 87,003 and 198,982 genotypes collapsed onto **83, 86 and 158 distinct
+phenotypes**. Counting genomes, as I had been doing, badly overstates how much
+variety a soup contains.
+
+The same measurement here defines a phenotype as what a genome *does* — what it
+becomes cultured alone, what a daughter costs it, and what happens beside each
+of two reference organisms — and estimates the total from a sample of 70 with
+the Chao1 estimator out of field ecology:
+
+| run | parasitism | phenotypes in 70 genotypes | estimated in the whole bank | bank size |
+|---|---:|---:|---:|---:|
+| k=0.25, seed 3 | 10% | 24 | 41 | 3,445 |
+| k=0.25, seed 2 | 67% | 23 | 121 | 4,423 |
+| k=16, seed 1 | 100% | 17 | 32 | 767 |
+| k=32, seed 1 | 100% | 16 | 22 | 282 |
+
+**The order of magnitude matches Tierra.** Both systems support something like
+a hundred distinguishable behaviours, even though the gene banks differ
+thirtyfold in size. Roughly three genotypes share every phenotype in my sample.
+
+Standish's explanation for Tierra's missing neutrality — parasites need a host
+in range, so neutral variants without one fail to replicate — makes a
+prediction: the parasite-rich world should show *less* neutrality. Two runs at
+the same mutation rate, differing only in seed, one at 10% parasitism and one at
+67%, show 2.9 and 3.0 genotypes per phenotype. No effect. If anything the
+parasite-rich world holds three times as many distinct behaviours (121 against
+41), which points the other way. One seed pair, a phenotype definition that is
+mine rather than his, and a noisy estimator: this is a failure to reproduce, not
+a refutation.
+
+### 12. Evolvability is expensive
 
 The same 100M instructions bought 218,916 births with mutation off and
 171,721 – 175,651 with it on: a fifth of the world's reproductive output goes on

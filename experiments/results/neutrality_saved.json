@@ -1,0 +1,45 @@
+{
+ "assay_budget": 120000,
+ "rows": [
+  {
+   "run": "mut-k0.25-s3",
+   "sampled": 70,
+   "phenotypes": 24,
+   "phenotypes_estimated": 40.9,
+   "genotypes_per_phenotype": 2.92,
+   "foreign_breeder_share": 0.104,
+   "genotypes_seen": 3445,
+   "mean_generation": 364.7
+  },
+  {
+   "run": "mut-k0.25-s2",
+   "sampled": 70,
+   "phenotypes": 23,
+   "phenotypes_estimated": 121.0,
+   "genotypes_per_phenotype": 3.04,
+   "foreign_breeder_share": 0.669,
+   "genotypes_seen": 4423,
+   "mean_generation": 364.1
+  },
+  {
+   "run": "mut-k16-s1",
+   "sampled": 70,
+   "phenotypes": 17,
+   "phenotypes_estimated": 32.0,
+   "genotypes_per_phenotype": 4.12,
+   "foreign_breeder_share": 1.0,
+   "genotypes_seen": 767,
+   "mean_generation": 15.5
+  },
+  {
+   "run": "mut-k32-s1",
+   "sampled": 70,
+   "phenotypes": 16,
+   "phenotypes_estimated": 22.0,
+   "genotypes_per_phenotype": 4.38,
+   "foreign_breeder_share": 1.0,
+   "genotypes_seen": 282,
+   "mean_generation": 4.4
+  }
+ ]
+}
