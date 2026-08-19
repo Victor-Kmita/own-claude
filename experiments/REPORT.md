@@ -21,6 +21,8 @@ The ancestor is 64 instructions long.  Every mutating run is averaged over its l
 | control-no-mutation | 0.0       | 1    | -     | 100M   | 64.0      | 1           | 0.0         | 412   | 0.0              | 218916  | 1          |
 | deep-constant-s1    | 0.0       | 1    | -     | 3000M  | 38.6      | 219         | 6.19        | 655   | 0.1              | 7863010 | 342955     |
 | deep-constant-s2    | 0.0       | 2    | -     | 3000M  | 38.0      | 147         | 5.13        | 735   | 0.05             | 9043325 | 217508     |
+| deep-flaw-s1        | 0.0       | 1    | 1000  | 1500M  | 37.2      | 237         | 5.98        | 720   | 0.03             | 4053792 | 263905     |
+| deep-flaw-s2        | 0.0       | 2    | 1000  | 1500M  | 27.0      | 232         | 5.64        | 1052  | 0.08             | 4970269 | 262468     |
 | flaw-0-s1           | 0.0       | 1    | -     | 60M    | 63.2      | 193         | 7.02        | 426   | 0.09             | 105901  | 15311      |
 | flaw-0-s2           | 0.0       | 2    | -     | 60M    | 63.0      | 150         | 5.93        | 421   | 0.15             | 105563  | 14347      |
 | flaw-0-s3           | 0.0       | 3    | -     | 60M    | 61.8      | 172         | 6.6         | 401   | 0.09             | 105153  | 15483      |
@@ -193,24 +195,24 @@ These are three billion.
 ```
 cells
  64.3 |   o                                                                        
-      |ooo                                                                         
-      |                                                                            
-      |     oooooooooooooooo                                                       
-      |  o o ooo        oooo                                                       
-      |                                                                            
+      |++o                                                                         
+      |+                                                                           
+      |    ooooooooooooooooo                                                       
+      |  ++                o                                                       
       |                     o                                                      
- 50.9 |   oo                                                                       
-      |                                                                            
+      |   ++                                                                       
+ 48.1 |                                                                            
       |                      o                                                     
-      |                      oo                                                    
-      |                                                                            
-      |                       o                                                    
-      |                        oooooooooooooooooooooooooo                          
- 37.4 |                         o                        oooooooooooooooooooooooooo
+      |     ++++              o                                                    
+      |                       oo                                                   
+      |         +++++++++++++  oooooooooooooooooooooooooo                  oo      
+      |                                                  oooooooooooooooooooooooooo
+      |                     +                                                      
+ 31.9 |                      ++++++++++++++++++++++++++++++++++++++++++++++++++++++
       +----------------------------------------------------------------------------
        0                                                              3,000,009,720
                                   instructions executed
-       o constant CPU slice (n=2)
+       o constant CPU slice (n=2)   + instruction flaws, one in 1,000 (n=2)
 ```
 
 ### Generation depth
@@ -224,17 +226,17 @@ generations
           |                                                 oooooo                     
           |                                            ooooo                           
   8,862.7 |                                      oooooo                                
-          |                                 oooooo                                     
-          |                            oooooo                                          
-          |                      oooooo                                                
-          |                 oooooo                                                     
-          |           oooooo                                                           
-          |      oooooo                                                                
-      0.0 |oooooo                                                                      
+          |                                 oooooo                                 ++++
+          |                            oooooo                          ++++++++++++    
+          |                      oooooo                    ++++++++++++                
+          |                 oooooo             ++++++++++++                            
+          |           oooooo       ++++++++++++                                        
+          |      oooooo++++++++++++                                                    
+      0.0 |++++++++++++                                                                
           +----------------------------------------------------------------------------
            0                                                              3,000,009,720
                                       instructions executed
-           o constant CPU slice (n=2)
+           o constant CPU slice (n=2)   + instruction flaws, one in 1,000 (n=2)
 ```
 
 ## Housekeeping policy as an evolutionary force (all mutation switched off)
@@ -423,6 +425,62 @@ Genome lengths alive at the end:
 40 | █ 28
 42 | █ 1
 46 | █ 1
+```
+
+## Final census: deep-flaw-s1
+
+| genotype | alive | size | births | fidelity | kind           | cost | foreign calls | first parent |
+|----------|-------|------|--------|----------|----------------|------|---------------|--------------|
+| 0037dtd  | 191   | 37   | 6265   | 0.974    | replicator     | 240  | 0.0           | 0037xyc      |
+| 0037nhj  | 155   | 37   | 9653   | 0.971    | replicator     | 240  | 0.1           | 0037ijt      |
+| 0037ehy  | 28    | 37   | 2880   | 0.967    | replicator     | 240  | 0.0           | 0037xyc      |
+| 0037qiy  | 23    | 37   | 806    | 0.948    | replicator     | 240  | 0.0           | 0037lyx      |
+| 0037gss  | 22    | 37   | 1548   | 0.963    | replicator     | 240  | 0.0           | 0037dtd      |
+| 0037jdm  | 22    | 37   | 731    | 0.932    | replicator     | 240  | 0.0           | 0037zth      |
+| 0037egj  | 20    | 37   | 1606   | 0.927    | replicator     | 240  | 0.0           | 0037xyc      |
+| 0037hgi  | 15    | 37   | 299    | 0.926    | replicator     | 240  | 0.0           | 0037dtd      |
+| 0037iub  | 15    | 37   | 247    | 0.899    | replicator     | 240  | 0.0           | 0037nhj      |
+| 0037xyc  | 13    | 37   | 10713  | 0.967    | replicator     | 240  | 0.0           | 0037xtn      |
+| 0037enr  | 8     | 37   | 325    | 0.809    | replicator     | 240  | 0.0           | 0037eif      |
+| 0037ojm  | 7     | 37   | 161    | 0.764    | host-dependent | -    | 0.0           | 0037dep      |
+
+Genome lengths alive at the end:
+
+```
+35 | █ 12
+36 | ██ 43
+37 | ████████████████████████████████████████ 729
+38 | ███ 69
+39 | █ 18
+40 | █ 7
+```
+
+## Final census: deep-flaw-s2
+
+| genotype | alive | size | births | fidelity | kind           | cost | foreign calls | first parent |
+|----------|-------|------|--------|----------|----------------|------|---------------|--------------|
+| 0027jrl  | 185   | 27   | 32666  | 0.96     | inert          | -    | 0.0           | 0027mme      |
+| 0027lbt  | 88    | 27   | 99571  | 0.966    | self-assisted  | -    | 0.0           | 0029jqd      |
+| 0027ivn  | 73    | 27   | 232453 | 0.966    | host-dependent | -    | 0.0           | 0027lbt      |
+| 0027kym  | 67    | 27   | 181940 | 0.968    | host-dependent | -    | 0.0           | 0027njh      |
+| 0027iyi  | 48    | 27   | 96111  | 0.962    | host-dependent | -    | 0.1           | 0027ttc      |
+| 0027lcw  | 41    | 27   | 143670 | 0.967    | replicator     | 178  | 0.0           | 0027cyt      |
+| 0027ntn  | 35    | 27   | 35315  | 0.958    | replicator     | 180  | 0.4           | 0027bny      |
+| 0027evh  | 24    | 27   | 7306   | 0.867    | host-dependent | -    | 0.0           | 0027uvc      |
+| 0027bqt  | 18    | 27   | 6049   | 0.862    | host-dependent | -    | 0.0           | 0025cqt      |
+| 0027jcz  | 12    | 27   | 46818  | 0.963    | host-dependent | -    | 0.0           | 0027mme      |
+| 0027cyt  | 11    | 27   | 3512   | 0.856    | replicator     | 178  | 0.0           | 0027ciq      |
+| 0027kdc  | 10    | 27   | 186096 | 0.965    | host-dependent | -    | 0.0           | 0027kcl      |
+
+Genome lengths alive at the end:
+
+```
+25 | █ 11
+26 | █ 22
+27 | ████████████████████████████████████████ 825
+28 | ██ 44
+29 | █ 34
+30 | █ 2
 ```
 
 ## Final census: flaw-0-s1
@@ -825,7 +883,7 @@ Genome lengths alive at the end:
 | 0074jde  | 17    | 74   | 43     | 0.977    | replicator     | 475  | 0.0           | 0072cgk      |
 | 0074jcq  | 15    | 74   | 41     | 0.951    | replicator     | 475  | 1.5           | 0074isq      |
 | 0074jca  | 13    | 74   | 39     | 0.949    | replicator     | 477  | 0.0           | 0074ikg      |
-| 0078bxt  | 9     | 78   | 34     | 0.971    | replicator     | 1492 | 0.1           | 0074ivg      |
+| 0078bxt  | 9     | 78   | 34     | 0.971    | replicator     | 993  | 0.1           | 0074ivg      |
 | 0072ccx  | 9     | 72   | 137    | 0.978    | replicator     | 461  | 0.0           | 0072cbe      |
 | 0074htq  | 9     | 74   | 701    | 0.984    | replicator     | 475  | 0.0           | 0074hex      |
 | 0078byh  | 6     | 78   | 9      | 0.778    | host-dependent | -    | 0.0           | 0078bye      |

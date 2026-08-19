@@ -646,7 +646,9 @@
    "mean_foreign_calls": 0.0,
    "mean_foreign_reads": 0.0,
    "mean_errors": 14.8,
-   "cost_per_cell": 6.53
+   "cost_per_cell": 6.53,
+   "repeats": true,
+   "second_copy_cost": 345
   },
   {
    "genotype": "0054afb",
@@ -664,7 +666,9 @@
    "mean_foreign_calls": 0.0,
    "mean_foreign_reads": 0.0,
    "mean_errors": 3.6,
-   "cost_per_cell": 6.54
+   "cost_per_cell": 6.54,
+   "repeats": true,
+   "second_copy_cost": 352
   },
   {
    "genotype": "0057gmy",
@@ -682,7 +686,9 @@
    "mean_foreign_calls": 0.0,
    "mean_foreign_reads": 0.0,
    "mean_errors": 6.0,
-   "cost_per_cell": 6.44
+   "cost_per_cell": 6.44,
+   "repeats": true,
+   "second_copy_cost": 367
   },
   {
    "genotype": "0059imr",
@@ -700,7 +706,9 @@
    "mean_foreign_calls": 0.0,
    "mean_foreign_reads": 0.0,
    "mean_errors": 2.0,
-   "cost_per_cell": 6.46
+   "cost_per_cell": 6.46,
+   "repeats": true,
+   "second_copy_cost": 380
   },
   {
    "genotype": "0061edd",
@@ -718,7 +726,9 @@
    "mean_foreign_calls": 0.0,
    "mean_foreign_reads": 0.0,
    "mean_errors": 8.0,
-   "cost_per_cell": 6.46
+   "cost_per_cell": 6.46,
+   "repeats": true,
+   "second_copy_cost": 390
   },
   {
    "genotype": "0058lfs",
@@ -736,7 +746,9 @@
    "mean_foreign_calls": 0.0,
    "mean_foreign_reads": 0.0,
    "mean_errors": 2.0,
-   "cost_per_cell": 6.47
+   "cost_per_cell": 6.47,
+   "repeats": true,
+   "second_copy_cost": 375
   },
   {
    "genotype": "0064cek",
@@ -754,7 +766,9 @@
    "mean_foreign_calls": 0.0,
    "mean_foreign_reads": 1.0,
    "mean_errors": 40.7,
-   "cost_per_cell": 6.42
+   "cost_per_cell": 6.42,
+   "repeats": true,
+   "second_copy_cost": 410
   },
   {
    "genotype": "0053acj",
@@ -772,7 +786,9 @@
    "mean_foreign_calls": 0.0,
    "mean_foreign_reads": 0.0,
    "mean_errors": 4.0,
-   "cost_per_cell": 6.53
+   "cost_per_cell": 6.53,
+   "repeats": true,
+   "second_copy_cost": 345
   },
   {
    "genotype": "0059imt",
@@ -790,7 +806,9 @@
    "mean_foreign_calls": 0.0,
    "mean_foreign_reads": 19.7,
    "mean_errors": 5.7,
-   "cost_per_cell": 6.46
+   "cost_per_cell": 6.46,
+   "repeats": true,
+   "second_copy_cost": 380
   },
   {
    "genotype": "0058lft",
@@ -808,7 +826,9 @@
    "mean_foreign_calls": 0.0,
    "mean_foreign_reads": 0.0,
    "mean_errors": 7.0,
-   "cost_per_cell": 6.45
+   "cost_per_cell": 6.45,
+   "repeats": true,
+   "second_copy_cost": 371
   },
   {
    "genotype": "0058lgo",
@@ -826,7 +846,9 @@
    "mean_foreign_calls": 0.0,
    "mean_foreign_reads": 0.3,
    "mean_errors": 12.3,
-   "cost_per_cell": 6.45
+   "cost_per_cell": 6.45,
+   "repeats": true,
+   "second_copy_cost": 371
   },
   {
    "genotype": "0061edi",
@@ -844,7 +866,9 @@
    "mean_foreign_calls": 0.0,
    "mean_foreign_reads": 0.0,
    "mean_errors": 6.7,
-   "cost_per_cell": 6.46
+   "cost_per_cell": 6.46,
+   "repeats": true,
+   "second_copy_cost": 394
   }
  ],
  "lineage_of_dominant": [

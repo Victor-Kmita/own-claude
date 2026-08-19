@@ -731,7 +731,7 @@
    "first_seen": 27080,
    "kind": "self-assisted",
    "cost": null,
-   "cost_paired": 870,
+   "cost_paired": 435,
    "divides_without_copying": false,
    "mean_foreign_calls": 106713.0,
    "mean_foreign_reads": 22.0,
@@ -772,7 +772,9 @@
    "mean_foreign_calls": 88689.0,
    "mean_foreign_reads": 98.0,
    "mean_errors": 82617.0,
-   "cost_per_cell": 6.41
+   "cost_per_cell": 6.41,
+   "repeats": false,
+   "second_copy_cost": null
   },
   {
    "genotype": "0071aaa",
