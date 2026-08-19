@@ -177,6 +177,15 @@ Mechanism: END marker before: [1, 1, 1, 0]   after one failed mal: [1, 1, 1, 1] 
 | lazy      | False               | 16000      | 140   | 8291   | 1503         | 0.181     | 1              | 64.0      |
 | lazy      | False               | 60000      | 374   | 8063   | 989          | 0.123     | 2              | 64.01     |
 
+Deeper look: soup of 4,000 cells, 20,000,000 instructions.
+
+| reaper    | errors hasten death | mal failures | genotypes seen | mean size | max size |
+|-----------|---------------------|--------------|----------------|-----------|----------|
+| on demand | True                | 0            | 1              | 64.0      | 64       |
+| on demand | False               | 0            | 1              | 64.0      | 64       |
+| lazy      | True                | 3565         | 1              | 64.0      | 64       |
+| lazy      | False               | 11182        | 3              | 64.0      | 64       |
+
 ## Final census: baseline-s1
 
 | genotype | alive | size | births | fidelity | kind       | cost | foreign calls | first parent |

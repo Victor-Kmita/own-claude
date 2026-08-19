@@ -124,7 +124,10 @@ that look like implementation detail:
 | only once per pass | no | 50 – 3,092 | **2 – 3** |
 
 (Five soup sizes per row, 5M instructions each, both mutation switches off
-throughout; the full table is in `experiments/REPORT.md`.)
+throughout.  Run for four times as long in the soup where the effect is
+strongest, the last row reaches 11,182 failures and three genotypes while the
+row above it reaches 3,565 failures and stays a monoculture.  Full tables in
+`experiments/REPORT.md`.)
 
 A reaper that runs the moment an allocation fails keeps room available, and the
 mutagen never fires at all. With a lazy reaper the soup sits permanently full —
@@ -158,8 +161,9 @@ ancestor — the ecology forked on the seed.
 
 ### 4. A shorter, cheaper replicator
 
-Every mutating run converges on genomes slightly shorter than the ancestor's 64
-cells, and they are faster in proportion. The cheapest self-sufficient
+Every constant-slice run converges on genomes slightly shorter than the
+ancestor's 64 cells (finding 8 is about why the other condition does the
+opposite), and they are faster in proportion. The cheapest self-sufficient
 replicator found by a random survey of one run's gene bank needs **389
 instructions** against the ancestor's 410 — 5% less work per daughter, at 61
 cells — and the ones that dominate censuses sit at 401–411 instructions with
@@ -171,12 +175,15 @@ is, what length means, or that shorter is better.
 
 ### 5. Parasites
 
-In the third seed the top *seven* genotypes are all host-dependent, led by
+In the odd seed out, the top *seven* genotypes are all host-dependent, led by
 `0045adk` at 106 of 507 creatures with a breeding fidelity of 0.85 — a lineage,
-not an accident. It is the ancestor truncated to 45 cells: the entire copy
-procedure is gone, and with it the `1100` marker that names it. Its `call`
-therefore searches outward, finds a *neighbour's* copy loop, runs it with its
-own registers, and what comes out is a copy of itself.
+not an accident.
+
+It is recognisably the ancestor's main body, shifted two cells along by a
+lengthened START marker and truncated at 45: the entire copy procedure is gone,
+and with it the only occurrence of `1100` in its genome. Its `call` still seeks
+`1100`. The search therefore leaves its own body, finds a *neighbour's* copy
+loop, runs it with its own registers — and what comes out is a copy of itself.
 
 Distinguishing that from its opposite takes an experiment, not a reading of the
 genome. Each genotype is cultured alone in a sterile medium — filled with a

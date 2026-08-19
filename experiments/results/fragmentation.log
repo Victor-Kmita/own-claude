@@ -24,3 +24,14 @@ Sweep: 5,000,000 instructions per cell, mutation off throughout.
       lazy        False    4000     28     8849       2910       0.33          3       64.0
       lazy        False    8000     59     8964       3092       0.34          1       64.0
       lazy        False   16000    140     8291       1503       0.18          1       64.0
+      lazy        False   60000    374     8063        989       0.12          2       64.0
+
+Deeper look: soup of 4,000 cells, 20,000,000 instructions, still no mutation.
+
+    reaper  errors kill  mal fails  genotypes  mean size  max size
+ on demand         True          0          1       64.0        64
+ on demand        False          0          1       64.0        64
+      lazy         True       3565          1       64.0        64
+      lazy        False      11182          3       64.0        64
+
+wrote /home/user/own-claude/experiments/results/fragmentation.json
