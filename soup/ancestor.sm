@@ -1,0 +1,43 @@
+; ancestor -- 62 instructions, hand written, self replicating.
+;
+; The whole program is one loop: work out where I begin and end, ask for that
+; much memory, copy myself into it, split it off, repeat.  Nothing in here names
+; an address; every reference is a template search, which is why a mutated
+; descendant of a different length still works.
+
+start:  .t 1111             ; START marker
+        adrb .t 0000        ; ax <- my own start   (search backward for 1111)
+        pushA
+        adrf .t 0001        ; ax <- my END marker  (search forward for 1110)
+        popB                ; bx <- my start
+        subCAB              ; cx <- end - start
+        incC                ; ... plus the four cells of the END marker
+        incC
+        incC
+        incC                ; cx = my length
+        pushB               ; keep my start
+        pushC               ; keep my length
+        mal                 ; ax <- daughter block of cx cells
+        pushA
+        popB                ; bx <- daughter
+        popC                ; cx <- length
+        popA                ; ax <- my start
+        call .t 0011        ; copy loop (search for 1100)
+        divide              ; daughter becomes an independent creature
+        jmpb .t 0000        ; and again, forever
+        zero                ; never executed: it exists to break the nop run, so
+                            ; that the template above cannot merge with the one
+                            ; below into a single unreadable run
+
+copy:   .t 1100             ; copy procedure: ax=source bx=dest cx=count
+loop:   .t 1010
+        movii               ; dest[bx] <- source[ax]
+        decC
+        incA
+        incB
+        ifz                 ; when the count hits zero, fall into ret
+        ret
+        jmpb .t 0101        ; otherwise round again (search for 1010)
+        zero                ; separator again
+
+end:    .t 1110             ; END marker
