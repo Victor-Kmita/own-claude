@@ -1,88 +1,268 @@
 {
- "rows": [
+ "rates": [
   {
    "k": 0.25,
-   "copy": 4000,
-   "cosmic": 8000,
-   "alive": 462,
-   "generations": 0,
-   "types_seen": 3302,
-   "diversity": 4.98,
-   "mean_len": 62.2,
+   "copy_error_per": 4000,
+   "runs": [
+    {
+     "seed": 1,
+     "best_cost": 387,
+     "mean_len": 62.2,
+     "diversity": 4.98,
+     "foreign": 0.62,
+     "types_seen": 3302,
+     "alive": 462,
+     "generations": 371.8,
+     "extinct": false
+    },
+    {
+     "seed": 2,
+     "best_cost": 399,
+     "mean_len": 50.1,
+     "diversity": 4.4,
+     "foreign": 0.85,
+     "types_seen": 4423,
+     "alive": 385,
+     "generations": 364.1,
+     "extinct": false
+    },
+    {
+     "seed": 3,
+     "best_cost": 406,
+     "mean_len": 63.3,
+     "diversity": 5.0,
+     "foreign": 0.12,
+     "types_seen": 3445,
+     "alive": 380,
+     "generations": 364.7,
+     "extinct": false
+    }
+   ],
    "best_cost": 387,
-   "best_len": 60,
-   "foreign": 0.62,
-   "extinct": false
+   "mean_foreign": 0.53,
+   "mean_diversity": 4.79,
+   "mean_generations": 367,
+   "extinctions": 0
   },
   {
    "k": 0.5,
-   "copy": 2000,
-   "cosmic": 4000,
-   "alive": 396,
-   "generations": 0,
-   "types_seen": 7609,
-   "diversity": 6.58,
-   "mean_len": 62.5,
-   "best_cost": 384,
-   "best_len": 59,
-   "foreign": 0.3,
-   "extinct": false
+   "copy_error_per": 2000,
+   "runs": [
+    {
+     "seed": 1,
+     "best_cost": 384,
+     "mean_len": 62.5,
+     "diversity": 6.58,
+     "foreign": 0.3,
+     "types_seen": 7609,
+     "alive": 396,
+     "generations": 356.8,
+     "extinct": false
+    },
+    {
+     "seed": 2,
+     "best_cost": 392,
+     "mean_len": 63.0,
+     "diversity": 5.96,
+     "foreign": 0.25,
+     "types_seen": 6799,
+     "alive": 384,
+     "generations": 360.2,
+     "extinct": false
+    },
+    {
+     "seed": 3,
+     "best_cost": 378,
+     "mean_len": 59.2,
+     "diversity": 4.56,
+     "foreign": 0.74,
+     "types_seen": 6583,
+     "alive": 697,
+     "generations": 361.7,
+     "extinct": false
+    }
+   ],
+   "best_cost": 378,
+   "mean_foreign": 0.43,
+   "mean_diversity": 5.7,
+   "mean_generations": 360,
+   "extinctions": 0
   },
   {
    "k": 1.0,
-   "copy": 1000,
-   "cosmic": 2000,
-   "alive": 393,
-   "generations": 0,
-   "types_seen": 15311,
-   "diversity": 7.02,
-   "mean_len": 63.2,
+   "copy_error_per": 1000,
+   "runs": [
+    {
+     "seed": 1,
+     "best_cost": 387,
+     "mean_len": 63.2,
+     "diversity": 7.02,
+     "foreign": 0.09,
+     "types_seen": 15311,
+     "alive": 393,
+     "generations": 348.5,
+     "extinct": false
+    },
+    {
+     "seed": 2,
+     "best_cost": 407,
+     "mean_len": 63.0,
+     "diversity": 5.93,
+     "foreign": 0.15,
+     "types_seen": 14347,
+     "alive": 383,
+     "generations": 346.3,
+     "extinct": false
+    },
+    {
+     "seed": 3,
+     "best_cost": 402,
+     "mean_len": 61.8,
+     "diversity": 6.6,
+     "foreign": 0.09,
+     "types_seen": 15483,
+     "alive": 406,
+     "generations": 346.2,
+     "extinct": false
+    }
+   ],
    "best_cost": 387,
-   "best_len": 59,
-   "foreign": 0.09,
-   "extinct": false
+   "mean_foreign": 0.11,
+   "mean_diversity": 6.52,
+   "mean_generations": 347,
+   "extinctions": 0
   },
   {
    "k": 2.0,
-   "copy": 500,
-   "cosmic": 1000,
-   "alive": 395,
-   "generations": 0,
-   "types_seen": 27026,
-   "diversity": 7.46,
-   "mean_len": 62.4,
-   "best_cost": 403,
-   "best_len": 63,
-   "foreign": 0.15,
-   "extinct": false
+   "copy_error_per": 500,
+   "runs": [
+    {
+     "seed": 1,
+     "best_cost": 403,
+     "mean_len": 62.4,
+     "diversity": 7.46,
+     "foreign": 0.15,
+     "types_seen": 27026,
+     "alive": 395,
+     "generations": 329.3,
+     "extinct": false
+    },
+    {
+     "seed": 2,
+     "best_cost": 408,
+     "mean_len": 63.2,
+     "diversity": 7.2,
+     "foreign": 0.07,
+     "types_seen": 27837,
+     "alive": 388,
+     "generations": 314.3,
+     "extinct": false
+    },
+    {
+     "seed": 3,
+     "best_cost": 394,
+     "mean_len": 62.1,
+     "diversity": 6.41,
+     "foreign": 0.14,
+     "types_seen": 24394,
+     "alive": 388,
+     "generations": 313.7,
+     "extinct": false
+    }
+   ],
+   "best_cost": 394,
+   "mean_foreign": 0.12,
+   "mean_diversity": 7.02,
+   "mean_generations": 319,
+   "extinctions": 0
   },
   {
    "k": 4.0,
-   "copy": 250,
-   "cosmic": 500,
-   "alive": 393,
-   "generations": 0,
-   "types_seen": 40715,
-   "diversity": 8.06,
-   "mean_len": 64.7,
-   "best_cost": 413,
-   "best_len": 64,
-   "foreign": 0.15,
-   "extinct": false
+   "copy_error_per": 250,
+   "runs": [
+    {
+     "seed": 1,
+     "best_cost": 413,
+     "mean_len": 64.7,
+     "diversity": 8.06,
+     "foreign": 0.15,
+     "types_seen": 40715,
+     "alive": 393,
+     "generations": 285.0,
+     "extinct": false
+    },
+    {
+     "seed": 2,
+     "best_cost": null,
+     "mean_len": 33.6,
+     "diversity": 7.24,
+     "foreign": 1.0,
+     "types_seen": 15183,
+     "alive": 160,
+     "generations": 117.5,
+     "extinct": false
+    },
+    {
+     "seed": 3,
+     "best_cost": 403,
+     "mean_len": 63.2,
+     "diversity": 7.95,
+     "foreign": 0.1,
+     "types_seen": 41064,
+     "alive": 402,
+     "generations": 287.9,
+     "extinct": false
+    }
+   ],
+   "best_cost": 403,
+   "mean_foreign": 0.42,
+   "mean_diversity": 7.75,
+   "mean_generations": 230,
+   "extinctions": 0
   },
   {
    "k": 8.0,
-   "copy": 125,
-   "cosmic": 250,
-   "alive": 426,
-   "generations": 0,
-   "types_seen": 38452,
-   "diversity": 8.12,
-   "mean_len": 63.9,
-   "best_cost": 379,
-   "best_len": 59,
-   "foreign": 0.16,
-   "extinct": false
+   "copy_error_per": 125,
+   "runs": [
+    {
+     "seed": 1,
+     "best_cost": 379,
+     "mean_len": 63.9,
+     "diversity": 8.12,
+     "foreign": 0.16,
+     "types_seen": 38452,
+     "alive": 426,
+     "generations": 261.5,
+     "extinct": false
+    },
+    {
+     "seed": 2,
+     "best_cost": 365,
+     "mean_len": 55.7,
+     "diversity": 8.38,
+     "foreign": 0.78,
+     "types_seen": 34485,
+     "alive": 519,
+     "generations": 212.7,
+     "extinct": false
+    },
+    {
+     "seed": 3,
+     "best_cost": 346,
+     "mean_len": 61.5,
+     "diversity": 8.26,
+     "foreign": 0.12,
+     "types_seen": 42672,
+     "alive": 423,
+     "generations": 254.2,
+     "extinct": false
+    }
+   ],
+   "best_cost": 346,
+   "mean_foreign": 0.35,
+   "mean_diversity": 8.25,
+   "mean_generations": 243,
+   "extinctions": 0
   }
  ]
 }

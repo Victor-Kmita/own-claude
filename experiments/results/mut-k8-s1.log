@@ -6,3 +6,31 @@
     18.0M  alive= 367 types= 309  H= 8.13  size~  69.9  dom=0062bje (2%)  foreign=30% fbreed=32% gen=78
     21.0M  alive= 355 types= 299  H= 8.10  size~  68.2  dom=0065bll (1%)  foreign=26% fbreed=31% gen=92
     24.0M  alive= 400 types= 339  H= 8.30  size~  61.1  dom=0029aan (1%)  foreign=32% fbreed=47% gen=105
+    27.0M  alive= 377 types= 308  H= 8.12  size~  63.6  dom=0060axf (2%)  foreign=42% fbreed=58% gen=116
+    30.0M  alive= 380 types= 319  H= 8.18  size~  68.0  dom=0009acx (2%)  foreign=36% fbreed=48% gen=129
+    33.0M  alive= 372 types= 323  H= 8.21  size~  65.4  dom=0062dar (2%)  foreign=34% fbreed=45% gen=142
+    36.0M  alive= 394 types= 294  H= 7.82  size~  62.0  dom=0062dlt (6%)  foreign=20% fbreed=27% gen=152
+    39.0M  alive= 394 types= 338  H= 8.28  size~  62.5  dom=0008ais (2%)  foreign=21% fbreed=16% gen=164
+    42.0M  alive= 394 types= 309  H= 8.07  size~  62.8  dom=0009adg (2%)  foreign=26% fbreed=24% gen=176
+    45.0M  alive= 375 types= 297  H= 7.97  size~  63.3  dom=0061fhd (4%)  foreign=20% fbreed=16% gen=189
+    48.0M  alive= 386 types= 318  H= 8.12  size~  64.8  dom=0061gcn (3%)  foreign=15% fbreed=14% gen=203
+    51.0M  alive= 366 types= 308  H= 8.15  size~  66.0  dom=0060dfx (2%)  foreign=21% fbreed=20% gen=217
+    54.0M  alive= 393 types= 308  H= 8.10  size~  66.1  dom=0059bis (2%)  foreign=16% fbreed=11% gen=230
+    57.0M  alive= 358 types= 304  H= 8.14  size~  63.1  dom=0059cex (1%)  foreign=16% fbreed=16% gen=246
+    60.0M  alive= 426 types= 352  H= 8.33  size~  60.9  dom=0059dlp (2%)  foreign=11% fbreed=10% gen=262
+
+wrote /home/user/own-claude/experiments/results/mut-k8-s1.json  (107,935 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0059dlp    8    59      23  0.61    replicator    379        0 0059djj
+  0015abv    6    15       6  0.00         inert      -       15 0059dxv
+  0060gie    4    60      15  0.93    replicator    385        0 0060gdt
+  0059cyz    3    59      14  0.86    replicator    379        0 0015abr
+  0059dyb    3    59       3  0.67    replicator    379        0 0059dwa
+  0058aoo    3    58      10  0.80 host-dependent      -        0 0059csf
+  0058apt    3    58       6  0.83 host-dependent      -        0 0058aoo
+  0059dud    3    59       7  0.14    replicator    379        0 0060gie
+  0060gmu    3    60       5  0.80    replicator    385        0 0059drt
+  0060gmd    3    60       5  0.80    replicator    385        0 0060gie
+  0059duu    3    59       5  0.80    replicator    379        0 0059dks
+  0059dwt    3    59       4  0.75    replicator    379        0 0059dqc

@@ -6,3 +6,31 @@
     18.0M  alive= 382 types= 100  H= 4.29  size~  63.9  dom=0064aaa (43%)  foreign=3% fbreed=8% gen=113
     21.0M  alive= 394 types=  92  H= 4.12  size~  62.9  dom=0064aaa (44%)  foreign=5% fbreed=4% gen=131
     24.0M  alive= 385 types=  96  H= 4.59  size~  63.3  dom=0064aaa (34%)  foreign=5% fbreed=10% gen=149
+    27.0M  alive= 390 types= 102  H= 4.76  size~  62.2  dom=0064aaa (34%)  foreign=8% fbreed=23% gen=167
+    30.0M  alive= 384 types= 103  H= 5.10  size~  63.1  dom=0064aaa (29%)  foreign=12% fbreed=56% gen=185
+    33.0M  alive= 430 types= 125  H= 5.35  size~  63.3  dom=0064aaa (30%)  foreign=5% fbreed=11% gen=203
+    36.0M  alive= 426 types= 113  H= 5.62  size~  61.6  dom=0064aaa (13%)  foreign=32% fbreed=74% gen=222
+    39.0M  alive= 420 types= 102  H= 5.39  size~  57.9  dom=0061aac (14%)  foreign=40% fbreed=87% gen=242
+    42.0M  alive= 595 types= 114  H= 4.21  size~  43.0  dom=0033aaa (45%)  foreign=60% fbreed=96% gen=262
+    45.0M  alive= 622 types= 129  H= 4.77  size~  40.3  dom=0033aaa (28%)  foreign=76% fbreed=98% gen=279
+    48.0M  alive= 594 types= 104  H= 4.43  size~  40.0  dom=0034aai (24%)  foreign=80% fbreed=94% gen=296
+    51.0M  alive= 520 types=  67  H= 3.58  size~  42.6  dom=0034aai (36%)  foreign=67% fbreed=94% gen=312
+    54.0M  alive= 445 types=  76  H= 4.53  size~  56.2  dom=0062abu (25%)  foreign=42% fbreed=77% gen=329
+    57.0M  alive= 399 types=  91  H= 4.79  size~  63.8  dom=0062abu (28%)  foreign=31% fbreed=66% gen=346
+    60.0M  alive= 385 types=  97  H= 4.49  size~  65.1  dom=0062abu (39%)  foreign=27% fbreed=67% gen=364
+
+wrote /home/user/own-claude/experiments/results/mut-k0.25-s2.json  (101,271 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0062abu  150    62    5249  0.96    replicator    399        2 0061adi
+  0075aag   26    75    1090  0.93    replicator    487        0 0034aai
+  0062aeh   21    62     462  0.96    replicator    399        2 0062abu
+  0065abo   19    65    1247  0.96    replicator    418        0 0061ase
+  0062afz   13    62     622  0.96    replicator    399        0 0062abu
+  0076aae    7    76     120  0.94    replicator    493        0 0034aai
+  0062afc    5    62     141  0.94    replicator    399        0 0034aai
+  0069aar    4    69      45  0.93    replicator    447        0 0069aaq
+  0069aak    4    69      90  0.96    replicator    442        0 0065abt
+  0062agd    4    62     125  0.95    replicator    399        0 0034aad
+  0062adj    4    62      69  0.94    replicator    399        0 0062abu
+  0062aii    3    62      64  0.95    replicator    403        9 0062abu

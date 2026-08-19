@@ -6,3 +6,31 @@
     18.0M  alive= 380 types= 114  H= 4.81  size~  63.3  dom=0064aaa (38%)  foreign=10% fbreed=23% gen=111
     21.0M  alive= 384 types= 112  H= 4.89  size~  63.9  dom=0064aaa (35%)  foreign=7% fbreed=10% gen=129
     24.0M  alive= 379 types= 118  H= 5.00  size~  63.7  dom=0064aaa (28%)  foreign=7% fbreed=11% gen=146
+    27.0M  alive= 390 types= 127  H= 5.70  size~  62.5  dom=0064biu (15%)  foreign=7% fbreed=14% gen=163
+    30.0M  alive= 480 types= 135  H= 5.73  size~  64.0  dom=0064biu (16%)  foreign=5% fbreed=7% gen=181
+    33.0M  alive= 393 types= 132  H= 5.67  size~  63.6  dom=0064biu (18%)  foreign=6% fbreed=17% gen=199
+    36.0M  alive= 386 types= 126  H= 5.73  size~  63.4  dom=0064biu (14%)  foreign=6% fbreed=20% gen=216
+    39.0M  alive= 388 types= 133  H= 6.04  size~  63.4  dom=0063aeq (8%)  foreign=10% fbreed=21% gen=234
+    42.0M  alive= 400 types= 130  H= 5.93  size~  62.9  dom=0063ang (12%)  foreign=8% fbreed=19% gen=251
+    45.0M  alive= 518 types= 166  H= 6.41  size~  62.4  dom=0063ang (11%)  foreign=14% fbreed=25% gen=269
+    48.0M  alive= 403 types= 157  H= 6.61  size~  62.8  dom=0063ang (7%)  foreign=14% fbreed=41% gen=286
+    51.0M  alive= 396 types= 157  H= 6.77  size~  62.2  dom=0063ang (5%)  foreign=15% fbreed=44% gen=304
+    54.0M  alive= 400 types= 167  H= 6.88  size~  61.6  dom=0063ang (4%)  foreign=14% fbreed=33% gen=322
+    57.0M  alive= 410 types= 161  H= 6.78  size~  62.7  dom=0063bvj (4%)  foreign=10% fbreed=25% gen=339
+    60.0M  alive= 396 types= 149  H= 6.72  size~  62.5  dom=0059aam (4%)  foreign=10% fbreed=25% gen=357
+
+wrote /home/user/own-claude/experiments/results/mut-k0.5-s1.json  (108,331 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0059aam   16    59     383  0.98    replicator    384        0 0008aba
+  0063bhk   14    63     504  0.98    replicator    405        0 0063ang
+  0063ain   12    63    2064  0.98    replicator    407        0 0063ahx
+  0061aer   12    61     427  0.98    replicator    394        0 0063bfo
+  0063ars   11    63     574  0.97    replicator    405        0 0064egv
+  0064brr   10    64     602  0.98    replicator    410        0 0064aqc
+  0061aio   10    61     102  0.96    replicator    394        0 0061aer
+  0062alu    9    62     408  0.98    replicator    403        0 0062aex
+  0063bvj    9    63     388  0.96    replicator    405        0 0063bbh
+  0063bbx    8    63     611  0.98    replicator    405        0 0063awh
+  0063byt    7    63     245  0.97    replicator    407        0 0063bed
+  0063ahx    7    63     129  0.97    replicator    407       13 0064did

@@ -4,3 +4,33 @@
     12.0M  alive= 422 types= 306  H= 8.02  size~  62.2  dom=0064dpm (2%)  foreign=28% fbreed=28% gen=59
     15.0M  alive= 459 types= 311  H= 7.92  size~  57.8  dom=0033abz (3%)  foreign=36% fbreed=38% gen=74
     18.0M  alive= 398 types= 209  H= 6.89  size~  39.2  dom=0032aax (8%)  foreign=76% fbreed=80% gen=87
+    21.0M  alive= 329 types= 178  H= 6.58  size~  33.8  dom=0033aim (14%)  foreign=88% fbreed=95% gen=98
+    24.0M  alive= 711 types= 270  H= 6.46  size~  34.1  dom=0032bdo (12%)  foreign=85% fbreed=98% gen=108
+    27.0M  alive= 619 types= 588  H= 9.12  size~  32.2  dom=0034ahz (2%)  foreign=91% fbreed=100% gen=117
+    30.0M  alive= 205 types= 178  H= 7.32  size~  32.5  dom=0033bbt (4%)  foreign=93% fbreed=100% gen=118
+    33.0M  alive= 205 types= 178  H= 7.32  size~  32.6  dom=0033bbt (4%)  foreign=95% fbreed=96% gen=118
+    36.0M  alive= 215 types= 188  H= 7.41  size~  31.8  dom=0033bbt (4%)  foreign=97% fbreed=96% gen=118
+    39.0M  alive= 207 types= 181  H= 7.35  size~  31.7  dom=0033bbt (4%)  foreign=98% fbreed=96% gen=118
+    42.0M  alive= 207 types= 181  H= 7.35  size~  31.7  dom=0033bbt (4%)  foreign=100% fbreed=100% gen=118
+    45.0M  alive= 214 types= 185  H= 7.38  size~  31.3  dom=0033bbt (4%)  foreign=98% fbreed=100% gen=118
+    48.0M  alive= 197 types= 176  H= 7.36  size~  32.6  dom=0032bwc (2%)  foreign=98% fbreed=100% gen=118
+    51.0M  alive= 163 types= 150  H= 7.16  size~  33.0  dom=0032bwc (2%)  foreign=98% fbreed=100% gen=118
+    54.0M  alive= 159 types= 147  H= 7.13  size~  34.1  dom=0032bwc (2%)  foreign=99% fbreed=100% gen=118
+    57.0M  alive= 159 types= 147  H= 7.13  size~  34.1  dom=0032bwc (2%)  foreign=99% fbreed=100% gen=118
+    60.0M  alive= 160 types= 148  H= 7.14  size~  38.1  dom=0032bwc (2%)  foreign=99% fbreed=100% gen=118
+
+wrote /home/user/own-claude/experiments/results/mut-k4-s2.json  (98,755 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0032bwc    4    32       8  0.50 host-dependent      -    33625 0032bji
+  0033bbt    4    33      59  0.63 host-dependent      -    35704 0033api
+  0031akn    3    31       3  0.33 host-dependent      -    36031 0032dcd
+  0032bkw    2    32      31  0.74 host-dependent      -    47708 0033acz
+  0032dcq    2    32       2  0.00         inert      -    43144 0032cdn
+  0034ahz    2    34     129  0.64 host-dependent      -    20021 0034ahk
+  0017aat    2    17       3  0.00 host-dependent      -    25115 0032dfm
+  0032ctu    1    32       1  0.00 host-dependent      -    39417 0032buj
+  0032ctv    1    32       1  0.00 host-dependent      -    34042 0032bur
+  0032cua    1    32       1  0.00 host-dependent      -    20859 0032bzu
+  0032cux    1    32       1  0.00         inert      -    20867 0032cke
+  0032cuy    1    32       1  0.00 host-dependent      -    18102 0032ckl

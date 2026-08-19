@@ -6,3 +6,31 @@
     18.0M  alive= 391 types= 152  H= 6.36  size~  62.4  dom=0064ajh (7%)  foreign=12% fbreed=21% gen=108
     21.0M  alive= 438 types= 166  H= 6.59  size~  62.6  dom=0064abg (7%)  foreign=8% fbreed=10% gen=125
     24.0M  alive= 382 types= 159  H= 6.69  size~  63.1  dom=0064abg (6%)  foreign=9% fbreed=8% gen=143
+    27.0M  alive= 385 types= 177  H= 6.74  size~  62.8  dom=0064euh (5%)  foreign=8% fbreed=9% gen=160
+    30.0M  alive= 387 types= 151  H= 6.16  size~  62.4  dom=0064cuy (10%)  foreign=9% fbreed=15% gen=177
+    33.0M  alive= 400 types= 155  H= 6.40  size~  60.7  dom=0064frc (7%)  foreign=13% fbreed=15% gen=194
+    36.0M  alive= 630 types= 182  H= 5.76  size~  63.4  dom=0064frc (16%)  foreign=5% fbreed=6% gen=210
+    39.0M  alive= 433 types= 178  H= 6.47  size~  63.7  dom=0064frc (10%)  foreign=3% fbreed=2% gen=228
+    42.0M  alive= 396 types= 177  H= 6.82  size~  63.9  dom=0064hby (5%)  foreign=4% fbreed=4% gen=245
+    45.0M  alive= 396 types= 180  H= 6.94  size~  63.6  dom=0064jmk (4%)  foreign=5% fbreed=3% gen=263
+    48.0M  alive= 388 types= 168  H= 6.78  size~  63.3  dom=0064gzf (5%)  foreign=7% fbreed=8% gen=280
+    51.0M  alive= 442 types= 209  H= 7.19  size~  63.3  dom=0064lgj (3%)  foreign=4% fbreed=6% gen=297
+    54.0M  alive= 562 types= 220  H= 7.09  size~  63.3  dom=0063boo (6%)  foreign=5% fbreed=6% gen=314
+    57.0M  alive= 405 types= 204  H= 7.24  size~  61.8  dom=0064lgj (4%)  foreign=13% fbreed=26% gen=331
+    60.0M  alive= 393 types= 192  H= 7.07  size~  62.9  dom=0062big (5%)  foreign=6% fbreed=12% gen=348
+
+wrote /home/user/own-claude/experiments/results/mut-k1-s1.json  (102,546 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0062big   19    62     366  0.96    replicator    402        0 0063boo
+  0062bfu   14    62     334  0.98    replicator    402        0 0064mnq
+  0064myz   11    64      95  0.98    replicator    417        0 0064lgj
+  0064mgh   10    64     361  0.98    replicator    417        0 0062bci
+  0059aav   10    59     372  0.97    replicator    387        0 0062axy
+  0059acx    9    59     130  0.94    replicator    387        0 0059aav
+  0064kpz    8    64     600  0.99    replicator    414        0 0064irq
+  0063cdc    8    63      53  0.94    replicator    408        0 0063cbo
+  0064nbe    7    64     127  0.98    replicator    414        0 0064hby
+  0065arf    6    65      37  0.97    replicator    420        0 0063ccn
+  0064lgj    6    64     734  0.98    replicator    417        0 0064imd
+  0063bye    6    63      82  0.94    replicator    408        0 0063bwc

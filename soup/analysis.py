@@ -93,23 +93,29 @@ def describe(genome: bytes, budget: int = 500_000) -> dict:
                        truncated fragment that other creatures keep emitting.
 
     ``cost`` is the number of instructions the creature spent to produce its
-    first daughter when alone.  For the ancestor that is 420, and it is the
-    number to beat: every instruction saved is a slice of CPU that goes into
-    reproducing instead of bookkeeping.
+    first daughter when alone; for the ancestor it is 410.  ``cost_per_cell``
+    divides that by genome length, and the two together say *how* a descendant
+    got cheaper.  A creature that is cheaper only because it is shorter keeps
+    the ancestor's 6.4 instructions per cell; one that has found a better copy
+    loop -- unrolling it, as Tierra's optimized creatures did -- comes in below
+    that.  Ray's ancestor sat at 10.2 per cell and his best descendants reached
+    6; mine starts where his finished, so shrinking is the only lever left
+    unless a genuinely new loop appears.
     """
     alone = isolation_assay(genome, budget=budget, copies=1)
     if alone["self_sufficient"]:
         return {"kind": "replicator", "cost": alone["instructions"],
+                "cost_per_cell": round(alone["instructions"] / len(genome), 2),
                 "cost_paired": None, "divides_without_copying": False}
     pair = isolation_assay(genome, budget=budget, copies=2)
     if pair["self_sufficient"]:
-        return {"kind": "self-assisted", "cost": None,
+        return {"kind": "self-assisted", "cost": None, "cost_per_cell": None,
                 "cost_paired": pair["instructions"],
                 "divides_without_copying": False}
     kind = "host-dependent" if _has_reproductive_machinery(genome) else "inert"
     # It divides, but what comes out is not it.  Worth recording separately:
     # these are the creatures that fill a census with eight-cell fragments.
-    return {"kind": kind, "cost": None, "cost_paired": None,
+    return {"kind": kind, "cost": None, "cost_per_cell": None, "cost_paired": None,
             "divides_without_copying": bool(alone["divided"] or pair["divided"])}
 
 

@@ -6,3 +6,31 @@
     18.0M  alive= 378 types= 109  H= 4.63  size~  64.2  dom=0064aaa (40%)  foreign=9% fbreed=22% gen=111
     21.0M  alive= 434 types= 122  H= 4.95  size~  62.6  dom=0064aaa (37%)  foreign=9% fbreed=10% gen=129
     24.0M  alive= 378 types= 114  H= 4.40  size~  64.2  dom=0064aaa (44%)  foreign=7% fbreed=14% gen=147
+    27.0M  alive= 382 types= 102  H= 4.50  size~  63.8  dom=0064aaa (41%)  foreign=7% fbreed=16% gen=164
+    30.0M  alive= 373 types= 101  H= 4.41  size~  63.3  dom=0064aaa (43%)  foreign=7% fbreed=17% gen=182
+    33.0M  alive= 490 types= 124  H= 4.68  size~  63.9  dom=0064aaa (40%)  foreign=6% fbreed=13% gen=200
+    36.0M  alive= 438 types= 115  H= 4.93  size~  63.3  dom=0064aaa (32%)  foreign=6% fbreed=5% gen=218
+    39.0M  alive= 512 types= 135  H= 4.95  size~  62.1  dom=0064aaa (36%)  foreign=4% fbreed=5% gen=236
+    42.0M  alive= 444 types= 145  H= 5.89  size~  63.0  dom=0064aaa (18%)  foreign=8% fbreed=10% gen=253
+    45.0M  alive= 377 types= 134  H= 5.58  size~  63.7  dom=0064aaa (17%)  foreign=6% fbreed=14% gen=271
+    48.0M  alive= 385 types= 139  H= 5.89  size~  63.0  dom=0064dbc (11%)  foreign=8% fbreed=26% gen=289
+    51.0M  alive= 383 types= 132  H= 5.77  size~  62.9  dom=0064aaa (12%)  foreign=11% fbreed=19% gen=307
+    54.0M  alive= 382 types= 138  H= 6.11  size~  63.3  dom=0064aaa (10%)  foreign=12% fbreed=26% gen=324
+    57.0M  alive= 383 types= 138  H= 6.25  size~  63.3  dom=0064aaa (11%)  foreign=11% fbreed=29% gen=342
+    60.0M  alive= 384 types= 134  H= 6.23  size~  61.9  dom=0064aaa (10%)  foreign=19% fbreed=48% gen=360
+
+wrote /home/user/own-claude/experiments/results/mut-k0.5-s2.json  (105,214 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0064aaa   39    64   40338  0.99    replicator    410        1 None
+  0064aje   20    64     903  0.98    replicator    410        2 0064aaa
+  0064exs   17    64     567  0.99    replicator    410        0 0064euk
+  0064dbc   16    64    2554  0.99    replicator    410        0 0064byz
+  0064fkb   15    64     754  0.99    replicator    411        0 0064dik
+  0062aiq   12    62     366  0.99    replicator    398        3 0064fbb
+  0064eyt   10    64     127  0.98    replicator    411        0 0064dik
+  0064exx    9    64     307  0.99    replicator    411        0 0064ayh
+  0061aht    8    61     136  0.97    replicator    392        0 0061afh
+  0064geb    7    64      32  0.97    replicator    411        0 0064fnb
+  0064ayh    6    64    1944  0.98    replicator    411        0 0064aaa
+  0061afh    6    61     387  0.98    replicator    392        0 0061aeg

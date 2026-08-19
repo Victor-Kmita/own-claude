@@ -5,3 +5,32 @@
     15.0M  alive= 411 types= 290  H= 7.88  size~  64.1  dom=0064eww (3%)  foreign=22% fbreed=24% gen=75
     18.0M  alive= 396 types= 277  H= 7.88  size~  63.0  dom=0063cfo (2%)  foreign=19% fbreed=19% gen=88
     21.0M  alive= 408 types= 297  H= 7.96  size~  61.7  dom=0063dak (2%)  foreign=15% fbreed=12% gen=100
+    24.0M  alive= 433 types= 294  H= 7.83  size~  58.9  dom=0037aah (2%)  foreign=28% fbreed=28% gen=114
+    27.0M  alive= 413 types= 301  H= 7.99  size~  63.2  dom=0062bqm (4%)  foreign=20% fbreed=18% gen=127
+    30.0M  alive= 468 types= 332  H= 8.10  size~  62.5  dom=0034aeo (2%)  foreign=16% fbreed=12% gen=142
+    33.0M  alive= 450 types= 317  H= 8.04  size~  63.8  dom=0063ifg (2%)  foreign=9% fbreed=9% gen=156
+    36.0M  alive= 387 types= 292  H= 8.03  size~  63.9  dom=0063jmm (2%)  foreign=11% fbreed=13% gen=171
+    39.0M  alive= 403 types= 299  H= 8.04  size~  62.8  dom=0063lja (2%)  foreign=17% fbreed=19% gen=184
+    42.0M  alive= 388 types= 297  H= 8.02  size~  64.5  dom=0063mwg (3%)  foreign=9% fbreed=8% gen=198
+    45.0M  alive= 391 types= 288  H= 7.97  size~  62.7  dom=0063omp (2%)  foreign=12% fbreed=11% gen=213
+    48.0M  alive= 398 types= 287  H= 7.92  size~  62.8  dom=0063qpt (2%)  foreign=14% fbreed=14% gen=228
+    51.0M  alive= 384 types= 304  H= 8.10  size~  63.9  dom=0063qzc (2%)  foreign=11% fbreed=14% gen=243
+    54.0M  alive= 395 types= 292  H= 7.97  size~  63.0  dom=0065cfs (2%)  foreign=13% fbreed=9% gen=258
+    57.0M  alive= 404 types= 284  H= 7.86  size~  62.5  dom=0063woa (2%)  foreign=7% fbreed=5% gen=273
+    60.0M  alive= 402 types= 274  H= 7.84  size~  63.0  dom=0063xua (3%)  foreign=6% fbreed=7% gen=288
+
+wrote /home/user/own-claude/experiments/results/mut-k4-s3.json  (104,244 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0063xua   12    63      28  0.96    replicator    404        0 0063wzx
+  0063xff    7    63      42  0.93    replicator    405        2 0063xae
+  0063uya    6    63      61  0.98    replicator    404        0 0063upb
+  0063xqf    6    63      18  0.94    replicator    404        0 0063wkl
+  0063xrq    5    63      16  0.88    replicator    405        0 0063xff
+  0063xul    5    63      19  0.90    replicator    405        0 0063wej
+  0063yix    4    63       5  0.60    replicator    405        1 0063ycm
+  0063xoa    4    63      18  0.89    replicator    410        0 0063wxw
+  0062hyq    4    62      10  0.70    replicator    403        0 0062hvr
+  0063xie    4    63      23  0.96    replicator    405        0 0063xfa
+  0063xzz    4    63       8  0.88    replicator    406        0 0063xwx
+  0063xlv    4    63      18  0.89    replicator    405        0 0063xja

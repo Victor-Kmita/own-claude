@@ -4,3 +4,33 @@
     12.0M  alive= 369 types= 241  H= 7.57  size~  62.0  dom=0063axv (3%)  foreign=30% fbreed=33% gen=60
     15.0M  alive= 386 types= 262  H= 7.68  size~  63.5  dom=0063cpq (4%)  foreign=32% fbreed=38% gen=75
     18.0M  alive= 367 types= 247  H= 7.59  size~  60.1  dom=0063dnh (3%)  foreign=29% fbreed=36% gen=88
+    21.0M  alive= 380 types= 262  H= 7.66  size~  62.6  dom=0063dna (4%)  foreign=16% fbreed=14% gen=102
+    24.0M  alive= 408 types= 268  H= 7.69  size~  62.2  dom=0062cdg (5%)  foreign=10% fbreed=6% gen=117
+    27.0M  alive= 399 types= 266  H= 7.79  size~  63.6  dom=0062eis (3%)  foreign=6% fbreed=6% gen=131
+    30.0M  alive= 393 types= 275  H= 7.85  size~  62.1  dom=0064fct (3%)  foreign=14% fbreed=16% gen=145
+    33.0M  alive= 405 types= 283  H= 7.91  size~  63.1  dom=0062fxm (2%)  foreign=12% fbreed=12% gen=159
+    36.0M  alive= 460 types= 325  H= 8.09  size~  62.6  dom=0062fif (2%)  foreign=10% fbreed=11% gen=173
+    39.0M  alive= 351 types= 258  H= 7.79  size~  63.4  dom=0065bog (3%)  foreign=16% fbreed=20% gen=187
+    42.0M  alive= 386 types= 288  H= 7.92  size~  65.3  dom=0065cyk (3%)  foreign=10% fbreed=14% gen=198
+    45.0M  alive= 420 types= 312  H= 8.08  size~  65.2  dom=0065cla (3%)  foreign=17% fbreed=15% gen=213
+    48.0M  alive= 390 types= 273  H= 7.79  size~  64.7  dom=0065gri (5%)  foreign=17% fbreed=20% gen=226
+    51.0M  alive= 420 types= 323  H= 8.18  size~  63.9  dom=0064igh (2%)  foreign=14% fbreed=8% gen=242
+    54.0M  alive= 397 types= 297  H= 8.01  size~  64.1  dom=0065jpl (2%)  foreign=16% fbreed=19% gen=256
+    57.0M  alive= 498 types= 364  H= 8.31  size~  65.0  dom=0064kgz (2%)  foreign=12% fbreed=13% gen=270
+    60.0M  alive= 393 types= 307  H= 8.13  size~  64.6  dom=0064lxg (1%)  foreign=14% fbreed=15% gen=285
+
+wrote /home/user/own-claude/experiments/results/mut-k4-s1.json  (103,163 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0064lxg    5    64      20  0.90    replicator    413        0 0064kmk
+  0062ivs    5    62       7  0.14 host-dependent      -        0 0064mll
+  0064kmk    4    64      74  0.85    replicator    413        0 0064kko
+  0064lxj    4    64      13  0.85    replicator    413        0 0064lbz
+  0064mhc    4    64      13  0.85    replicator    413        0 0064mad
+  0065llb    4    65       5  0.60    replicator    420        0 0065lgw
+  0064mky    3    64       5  0.80    replicator    413        0 0064lbz
+  0064mni    3    64       4  0.75    replicator    413        0 0064lsz
+  0064mbo    3    64       9  0.89    replicator    413        0 0064lxi
+  0064mnr    3    64       4  0.75    replicator    413        0 0064mlb
+  0065lfm    3    65      12  0.92    replicator    419        0 0065lev
+  0064mlk    3    64       6  0.83    replicator    413        0 0064mjc

@@ -6,3 +6,31 @@
     18.0M  alive= 398 types= 335  H= 8.26  size~  66.3  dom=0059ahc (2%)  foreign=18% fbreed=15% gen=72
     21.0M  alive= 429 types= 368  H= 8.42  size~  62.7  dom=0059cia (1%)  foreign=24% fbreed=26% gen=85
     24.0M  alive= 414 types= 356  H= 8.37  size~  64.1  dom=0059dcs (1%)  foreign=22% fbreed=16% gen=97
+    27.0M  alive= 414 types= 351  H= 8.34  size~  63.7  dom=0058bbb (1%)  foreign=19% fbreed=22% gen=108
+    30.0M  alive= 414 types= 342  H= 8.29  size~  62.1  dom=0058cmi (1%)  foreign=18% fbreed=13% gen=120
+    33.0M  alive= 443 types= 360  H= 8.36  size~  61.6  dom=0056aee (1%)  foreign=19% fbreed=17% gen=133
+    36.0M  alive= 430 types= 368  H= 8.41  size~  60.4  dom=0056asn (1%)  foreign=13% fbreed=16% gen=146
+    39.0M  alive= 419 types= 352  H= 8.35  size~  62.0  dom=0057bbo (1%)  foreign=10% fbreed=8% gen=159
+    42.0M  alive= 354 types= 304  H= 8.15  size~  62.4  dom=0056btb (1%)  foreign=9% fbreed=11% gen=172
+    45.0M  alive= 410 types= 341  H= 8.27  size~  60.1  dom=0057cem (2%)  foreign=13% fbreed=13% gen=187
+    48.0M  alive= 431 types= 347  H= 8.26  size~  59.3  dom=0058hiv (3%)  foreign=13% fbreed=10% gen=200
+    51.0M  alive= 445 types= 365  H= 8.35  size~  59.7  dom=0066bmj (2%)  foreign=12% fbreed=16% gen=215
+    54.0M  alive= 437 types= 354  H= 8.24  size~  60.0  dom=0058juw (5%)  foreign=11% fbreed=14% gen=228
+    57.0M  alive= 395 types= 318  H= 8.14  size~  66.2  dom=0056cro (2%)  foreign=11% fbreed=7% gen=240
+    60.0M  alive= 423 types= 360  H= 8.38  size~  62.8  dom=0053abg (1%)  foreign=12% fbreed=10% gen=254
+
+wrote /home/user/own-claude/experiments/results/mut-k8-s3.json  (107,080 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0053abg    5    53      23  0.91    replicator    346        0 0053abd
+  0054afb    5    54       6  0.83    replicator    353        0 0054aeu
+  0057gmy    4    57       5  0.80    replicator    367        0 0057glz
+  0059imr    4    59       4  0.50    replicator    381        0 0059imf
+  0061edd    4    61       4  0.50    replicator    394        0 0061ecm
+  0058lfs    4    58       5  0.60    replicator    375        0 0076aev
+  0064cek    3    64       3  0.33    replicator    411        0 0061ecs
+  0053acj    3    53       5  0.80    replicator    346        0 0045ajm
+  0059imt    3    59       3  0.67    replicator    381        0 0059imi
+  0058lft    3    58       4  0.75    replicator    374        0 0058leo
+  0058lgo    3    58       3  0.67    replicator    374        0 0058lfy
+  0061edi    3    61       3  0.00    replicator    394        0 0061ecj

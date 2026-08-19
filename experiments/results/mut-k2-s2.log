@@ -5,3 +5,32 @@
     15.0M  alive= 385 types= 181  H= 6.26  size~  62.6  dom=0064dsy (13%)  foreign=10% fbreed=8% gen=84
     18.0M  alive= 399 types= 204  H= 6.92  size~  62.4  dom=0064dsy (8%)  foreign=12% fbreed=14% gen=101
     21.0M  alive= 393 types= 232  H= 7.24  size~  63.9  dom=0064fim (8%)  foreign=14% fbreed=15% gen=117
+    24.0M  alive= 389 types= 217  H= 6.83  size~  63.4  dom=0064fim (14%)  foreign=8% fbreed=8% gen=132
+    27.0M  alive= 394 types= 199  H= 6.66  size~  62.2  dom=0064fim (14%)  foreign=9% fbreed=15% gen=147
+    30.0M  alive= 390 types= 203  H= 6.88  size~  62.6  dom=0064fim (6%)  foreign=6% fbreed=10% gen=164
+    33.0M  alive= 531 types= 278  H= 7.62  size~  62.4  dom=0064jwt (4%)  foreign=11% fbreed=12% gen=180
+    36.0M  alive= 390 types= 234  H= 7.29  size~  63.1  dom=0064jqv (8%)  foreign=9% fbreed=14% gen=195
+    39.0M  alive= 389 types= 212  H= 7.21  size~  63.0  dom=0064jqv (6%)  foreign=5% fbreed=5% gen=211
+    42.0M  alive= 393 types= 225  H= 7.14  size~  64.3  dom=0064ntw (11%)  foreign=7% fbreed=11% gen=227
+    45.0M  alive= 413 types= 235  H= 7.41  size~  63.4  dom=0064nux (4%)  foreign=5% fbreed=6% gen=242
+    48.0M  alive= 414 types= 228  H= 7.26  size~  60.0  dom=0064qbp (4%)  foreign=11% fbreed=7% gen=253
+    51.0M  alive= 391 types= 228  H= 7.12  size~  64.4  dom=0065bpb (10%)  foreign=4% fbreed=7% gen=268
+    54.0M  alive= 395 types= 237  H= 7.39  size~  63.5  dom=0064qbp (8%)  foreign=7% fbreed=9% gen=284
+    57.0M  alive= 398 types= 233  H= 7.02  size~  62.9  dom=0064qbp (14%)  foreign=5% fbreed=2% gen=299
+    60.0M  alive= 388 types= 204  H= 7.03  size~  63.5  dom=0064qbp (8%)  foreign=4% fbreed=4% gen=314
+
+wrote /home/user/own-claude/experiments/results/mut-k2-s2.json  (107,215 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0064qbp   30    64    1340  0.98    replicator    415        0 0064pzj
+  0063fdm   19    63      90  0.90    replicator    409        0 0063exx
+  0064siy   14    64      89  0.97    replicator    415        0 0064qbp
+  0064stk   12    64     143  0.99    replicator    415        0 0064qbp
+  0064rmz    7    64     198  0.97    replicator    415        0 0064qbp
+  0064tbg    6    64      76  0.97    replicator    415        0 0064qbp
+  0064shk    6    64     161  0.97    replicator    415        0 0064ryc
+  0064tug    5    64      49  0.96    replicator    415        0 0064rmz
+  0064ucx    5    64      24  0.92    replicator    415        0 0064ubl
+  0063fej    5    63      13  0.92    replicator    408        0 0063fbj
+  0063fct    5    63      25  0.84    replicator    409        0 0064txp
+  0010aab    5    10     631  0.00         inert      -       29 0064atf

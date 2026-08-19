@@ -6,3 +6,31 @@
     18.0M  alive= 381 types=  77  H= 3.00  size~  63.9  dom=0064aaa (65%)  foreign=3% fbreed=6% gen=113
     21.0M  alive= 381 types=  86  H= 3.32  size~  63.9  dom=0064aaa (61%)  foreign=3% fbreed=7% gen=131
     24.0M  alive= 377 types=  92  H= 3.56  size~  64.0  dom=0064aaa (57%)  foreign=3% fbreed=12% gen=148
+    27.0M  alive= 379 types=  83  H= 3.58  size~  63.8  dom=0064aaa (56%)  foreign=9% fbreed=30% gen=166
+    30.0M  alive= 389 types=  71  H= 3.36  size~  63.2  dom=0064aaa (56%)  foreign=7% fbreed=38% gen=185
+    33.0M  alive= 564 types=  95  H= 3.82  size~  63.6  dom=0064aaa (51%)  foreign=6% fbreed=13% gen=203
+    36.0M  alive= 401 types=  92  H= 4.33  size~  63.6  dom=0064aaa (42%)  foreign=10% fbreed=31% gen=221
+    39.0M  alive= 381 types=  86  H= 4.44  size~  63.3  dom=0064aaa (38%)  foreign=14% fbreed=49% gen=240
+    42.0M  alive= 387 types=  90  H= 4.80  size~  63.4  dom=0064aaa (28%)  foreign=18% fbreed=56% gen=258
+    45.0M  alive= 440 types=  92  H= 5.02  size~  62.8  dom=0064aaa (18%)  foreign=22% fbreed=50% gen=276
+    48.0M  alive= 409 types= 105  H= 5.43  size~  62.8  dom=0064aaa (15%)  foreign=17% fbreed=38% gen=294
+    51.0M  alive= 393 types= 100  H= 5.41  size~  62.4  dom=0062abm (12%)  foreign=19% fbreed=48% gen=314
+    54.0M  alive= 598 types= 115  H= 4.87  size~  60.4  dom=0062alx (26%)  foreign=44% fbreed=84% gen=334
+    57.0M  alive= 393 types= 108  H= 4.59  size~  62.0  dom=0062alx (31%)  foreign=16% fbreed=76% gen=353
+    60.0M  alive= 462 types= 111  H= 4.72  size~  61.7  dom=0062alx (26%)  foreign=23% fbreed=83% gen=372
+
+wrote /home/user/own-claude/experiments/results/mut-k0.25-s1.json  (107,946 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0062alx  120    62    4362  1.00    replicator    399        0 0062ady
+  0062abm   97    62    6025  1.00    replicator    398        0 0062abj
+  0061adf   18    61     622  1.00    replicator    393        0 0062aow
+  0061aeb   16    61     335  0.99    replicator    397        0 0061adf
+  0061abg   15    61     782  0.99    replicator    390        0 0062acs
+  0062azp   12    62     124  0.99    replicator    399        0 0062alx
+  0062ady    7    62    2351  0.99    replicator    399        0 0062abm
+  0060abf    7    60      25  0.92    replicator    387        0 0061aga
+  0062apk    6    62     265  0.99    replicator    399        0 0061adh
+  0062abx    6    62    2920  0.99    replicator    398        0 0062abm
+  0062aqq    4    62      12  0.75 host-dependent      -       32 0062alx
+  0062avx    4    62      45  0.96    replicator    398        0 0062abm

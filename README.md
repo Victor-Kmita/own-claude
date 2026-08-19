@@ -329,6 +329,36 @@ The same 100M instructions bought 218,916 births with mutation off and
 variants that do not work. The noise that produced everything above is also the
 reason the population is a fifth less productive.
 
+## How this compares with what was already known
+
+I built the machine before reading the literature, which is the wrong order.
+[`docs/RELATED-WORK.md`](docs/RELATED-WORK.md) is the correction: an independent
+read of Ray's Tierra paper, Standish on neutrality, the Avida results and a 2021
+review of digital evolution, with a parameter-by-parameter calibration against
+this soup. The short version:
+
+* **Two findings here replicate Tierra directly.** Ray's parasite `0045aaa`
+  arises from a size miscalculation that truncates the daughter before the copy
+  procedure — the same mechanism, and by coincidence the same length, as my
+  `0045adk`. And his decisive test is the one I arrived at independently: "not
+  able to self-replicate in isolated culture".
+* **One goes further than the primary source.** Ray reports immune hosts that
+  eliminate parasites but gives no mechanism. Finding 6 gives one — the host no
+  longer contains the pattern the parasite searches for — and it predicts what
+  an immune Tierran host should look like: changed in the templates that *name*
+  its copy procedure, not in the procedure itself.
+* **One result is far weaker than his, and I know why.** Ray's creatures went
+  from 80 instructions and 839 per daughter to 22 and 146 — a 5.75× gain. Mine
+  went from 64 and 410 to 59–62 and 379–401, a few percent. Most of his gain
+  came from evolving a copy loop that uses six instructions per cell instead of
+  ten; **my hand-written loop already uses 6.4**, so the biggest prize in his
+  world does not exist in mine. His runs were also 15 billion instructions
+  against my 400 million.
+* **My diversity numbers are not comparable to his.** Standish showed that
+  ~100,000 Tierra genotypes collapse onto ~100 distinct *phenotypes*. I count
+  exact genomes, so my "164–205 genotypes alive" is an upper bound on something
+  he measured properly. Measuring it the right way is implemented and running.
+
 ## How the claims here were checked
 
 Reading an evolved genome is a good way to convince yourself of something false,
@@ -383,6 +413,7 @@ finding 6 built by hand.
 ## Layout
 
 ```
+docs/RELATED-WORK.md what the published work established, and how this compares
 soup/isa.py          the 32 opcodes and what a template is
 soup/asm.py          assembler and disassembler
 soup/vm.py           soup memory, allocator, CPU, the interpreter

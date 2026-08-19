@@ -5,3 +5,32 @@
     15.0M  alive= 395 types= 197  H= 6.69  size~  61.8  dom=0064ajd (15%)  foreign=13% fbreed=10% gen=86
     18.0M  alive= 397 types= 210  H= 7.02  size~  62.8  dom=0064ajd (8%)  foreign=19% fbreed=17% gen=103
     21.0M  alive= 399 types= 214  H= 7.32  size~  63.0  dom=0064dtk (3%)  foreign=22% fbreed=26% gen=119
+    24.0M  alive= 538 types= 254  H= 7.30  size~  61.6  dom=0063bzs (5%)  foreign=18% fbreed=22% gen=134
+    27.0M  alive= 402 types= 236  H= 7.41  size~  63.7  dom=0063caz (4%)  foreign=21% fbreed=26% gen=150
+    30.0M  alive= 397 types= 239  H= 7.49  size~  61.6  dom=0063cty (4%)  foreign=19% fbreed=25% gen=166
+    33.0M  alive= 398 types= 205  H= 7.12  size~  63.0  dom=0063dgs (5%)  foreign=15% fbreed=24% gen=184
+    36.0M  alive= 405 types= 220  H= 7.27  size~  62.5  dom=0063gcb (5%)  foreign=23% fbreed=37% gen=200
+    39.0M  alive= 411 types= 222  H= 7.30  size~  61.7  dom=0063gzc (4%)  foreign=23% fbreed=31% gen=217
+    42.0M  alive= 444 types= 252  H= 7.53  size~  63.1  dom=0063ewm (4%)  foreign=6% fbreed=8% gen=233
+    45.0M  alive= 410 types= 230  H= 7.42  size~  61.9  dom=0063ewm (3%)  foreign=17% fbreed=23% gen=249
+    48.0M  alive= 405 types= 223  H= 7.30  size~  62.0  dom=0063gzc (4%)  foreign=15% fbreed=16% gen=265
+    51.0M  alive= 400 types= 232  H= 7.44  size~  61.5  dom=0063gzc (4%)  foreign=16% fbreed=21% gen=280
+    54.0M  alive= 406 types= 249  H= 7.58  size~  62.5  dom=0063kcy (4%)  foreign=12% fbreed=14% gen=297
+    57.0M  alive= 397 types= 220  H= 7.36  size~  62.8  dom=0063kcy (4%)  foreign=12% fbreed=15% gen=313
+    60.0M  alive= 395 types= 242  H= 7.59  size~  62.9  dom=0063nhr (3%)  foreign=9% fbreed=8% gen=329
+
+wrote /home/user/own-claude/experiments/results/mut-k2-s1.json  (102,353 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0063nhr   12    63     112  0.98    replicator    405        0 0063mzq
+  0063nzn    8    63     100  0.88    replicator    403        0 0063lwx
+  0063hkz    7    63     206  0.97    replicator    405        0 0063hej
+  0063oti    7    63      22  0.73    replicator    408        0 0063mvm
+  0063ooj    6    63      26  0.92    replicator    405        0 0063nmq
+  0039aap    6    39      11  0.91 host-dependent      -       32 0040aat
+  0064jcr    5    64     112  0.98    replicator    411        0 0064jbt
+  0063oqp    5    63      39  0.74    replicator    409        0 0063nar
+  0063ogp    5    63      23  0.87    replicator    406        0 0063oan
+  0063pak    5    63       9  0.67    replicator    406        0 0063nhr
+  0063oqb    5    63      26  0.96    replicator    405        0 0063hkz
+  0063mvm    4    63     209  0.96    replicator    408        0 0063mac

@@ -5,3 +5,32 @@
     15.0M  alive= 235 types= 192  H= 7.42  size~  72.0  dom=0072agk (3%)  foreign=29% fbreed=34% gen=67
     18.0M  alive= 461 types= 389  H= 8.41  size~  62.6  dom=0060ajm (3%)  foreign=40% fbreed=53% gen=80
     21.0M  alive= 415 types= 344  H= 8.23  size~  64.1  dom=0062beg (2%)  foreign=30% fbreed=28% gen=92
+    24.0M  alive= 459 types= 377  H= 8.30  size~  61.0  dom=0030acs (4%)  foreign=43% fbreed=51% gen=103
+    27.0M  alive= 459 types= 377  H= 8.39  size~  62.1  dom=0061cvr (2%)  foreign=29% fbreed=25% gen=113
+    30.0M  alive= 404 types= 358  H= 8.38  size~  65.7  dom=0060cgv (2%)  foreign=32% fbreed=32% gen=123
+    33.0M  alive= 417 types= 346  H= 8.26  size~  64.5  dom=0060cpn (3%)  foreign=32% fbreed=38% gen=133
+    36.0M  alive= 437 types= 367  H= 8.37  size~  63.0  dom=0060dau (3%)  foreign=37% fbreed=49% gen=145
+    39.0M  alive= 506 types= 397  H= 8.42  size~  56.8  dom=0008afi (2%)  foreign=44% fbreed=53% gen=154
+    42.0M  alive= 488 types= 411  H= 8.55  size~  55.8  dom=0056avb (1%)  foreign=63% fbreed=77% gen=163
+    45.0M  alive= 516 types= 395  H= 8.31  size~  57.2  dom=0056bpl (4%)  foreign=61% fbreed=80% gen=170
+    48.0M  alive= 445 types= 347  H= 8.15  size~  58.2  dom=0062dsd (5%)  foreign=48% fbreed=62% gen=178
+    51.0M  alive= 552 types= 401  H= 8.27  size~  49.5  dom=0008ago (3%)  foreign=67% fbreed=86% gen=190
+    54.0M  alive= 546 types= 426  H= 8.47  size~  52.7  dom=0010acc (3%)  foreign=70% fbreed=82% gen=196
+    57.0M  alive= 477 types= 385  H= 8.38  size~  59.3  dom=0056fso (3%)  foreign=65% fbreed=82% gen=204
+    60.0M  alive= 519 types= 430  H= 8.53  size~  56.8  dom=0066bfa (3%)  foreign=61% fbreed=80% gen=213
+
+wrote /home/user/own-claude/experiments/results/mut-k8-s2.json  (102,654 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0066bfa   16    66      16  0.12    replicator    490        2 0052aig
+  0058dfs    6    58       7  0.71    replicator    378       38 0058des
+  0008aac    6     8       8  0.00         inert      -       44 0009aaa
+  0066bga    6    66       6  0.00    replicator    425        1 0046ahd
+  0056gxe    5    56       5  0.60    replicator    419        7 0056gsg
+  0056gte    5    56       7  0.86    replicator    365       12 0056gnm
+  0056gnp    5    56       8  0.88    replicator    365       17 0056gbk
+  0058dfi    4    58       5  0.60    replicator    378        7 0058del
+  0056gub    4    56       6  0.83    replicator    365        4 0056gry
+  0028aif    4    28       4  0.00         inert      -       51 0044ady
+  0056gyv    4    56       4  0.50    replicator    365        2 0056gnz
+  0058dfk    3    58       4  0.75    replicator    378        0 0058dds

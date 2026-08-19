@@ -6,3 +6,31 @@
     18.0M  alive= 381 types=  98  H= 4.22  size~  63.9  dom=0064aaa (45%)  foreign=6% fbreed=12% gen=111
     21.0M  alive= 385 types=  94  H= 4.46  size~  63.7  dom=0064aaa (39%)  foreign=8% fbreed=24% gen=128
     24.0M  alive= 386 types= 109  H= 5.08  size~  62.7  dom=0064aaa (31%)  foreign=9% fbreed=27% gen=146
+    27.0M  alive= 503 types= 124  H= 5.55  size~  63.6  dom=0064aaa (24%)  foreign=9% fbreed=15% gen=164
+    30.0M  alive= 497 types= 133  H= 5.95  size~  63.6  dom=0064aaa (13%)  foreign=5% fbreed=10% gen=182
+    33.0M  alive= 386 types= 127  H= 5.87  size~  63.3  dom=0062ajr (10%)  foreign=5% fbreed=10% gen=200
+    36.0M  alive= 442 types= 132  H= 5.87  size~  61.7  dom=0062ajr (17%)  foreign=8% fbreed=12% gen=218
+    39.0M  alive= 409 types= 128  H= 6.00  size~  62.5  dom=0062aag (8%)  foreign=8% fbreed=15% gen=236
+    42.0M  alive= 414 types= 128  H= 6.07  size~  61.2  dom=0062aag (10%)  foreign=12% fbreed=22% gen=254
+    45.0M  alive= 412 types= 124  H= 4.59  size~  60.4  dom=0059aas (43%)  foreign=23% fbreed=68% gen=273
+    48.0M  alive= 418 types=  93  H= 3.08  size~  58.6  dom=0059aas (65%)  foreign=25% fbreed=93% gen=291
+    51.0M  alive= 420 types=  98  H= 3.79  size~  58.0  dom=0059aas (54%)  foreign=19% fbreed=81% gen=308
+    54.0M  alive= 416 types= 127  H= 4.57  size~  58.7  dom=0059aas (43%)  foreign=20% fbreed=89% gen=326
+    57.0M  alive= 416 types= 129  H= 4.97  size~  59.2  dom=0059aas (36%)  foreign=21% fbreed=79% gen=344
+    60.0M  alive= 697 types= 126  H= 4.84  size~  58.5  dom=0059aas (31%)  foreign=44% fbreed=86% gen=362
+
+wrote /home/user/own-claude/experiments/results/mut-k0.5-s3.json  (104,503 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0059aas  213    59   15705  0.99    replicator    378        1 0059aar
+  0059acg   65    59    1004  0.98    replicator    378        0 0059aas
+  0059aki   55    59    1399  0.99    replicator    378        0 0059aas
+  0059anb   21    59     361  0.98    replicator    378        0 0059aas
+  0059akw   21    59     216  0.98    replicator    378        0 0059aas
+  0059bjd   20    59      79  0.99    replicator    378        0 0059acg
+  0059bgv   18    59      66  0.97    replicator    378        3 0059acg
+  0059axj   16    59     172  0.98    replicator    378        0 0059aki
+  0059adw   15    59     105  0.95    replicator    378        1 0062bsh
+  0058afm   12    58      85  0.99 host-dependent      -       34 0058ade
+  0059ayv   10    59     216  0.98    replicator    378        1 0058adz
+  0059adh   10    59     139  0.94    replicator    378        0 0059aas

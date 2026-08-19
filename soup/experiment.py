@@ -106,6 +106,7 @@ def census(world: World, top: int = 12, assay_budget: int = 400_000) -> list[dic
             "first_seen": world.genebank.first_seen.get(label),
             "kind": what["kind"],
             "cost": what["cost"],
+            "cost_per_cell": what["cost_per_cell"],
             "cost_paired": what["cost_paired"],
             "divides_without_copying": what["divides_without_copying"],
             "mean_foreign_calls": round(sum(c.stats.foreign_calls for c in crs) / len(crs), 1),

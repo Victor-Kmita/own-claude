@@ -5,3 +5,32 @@
     15.0M  alive= 379 types= 198  H= 6.84  size~  63.0  dom=0064dcg (8%)  foreign=20% fbreed=22% gen=84
     18.0M  alive= 395 types= 175  H= 6.19  size~  62.6  dom=0064ctp (14%)  foreign=17% fbreed=20% gen=99
     21.0M  alive= 559 types= 254  H= 6.75  size~  63.3  dom=0064fuy (10%)  foreign=9% fbreed=7% gen=114
+    24.0M  alive= 389 types= 192  H= 6.47  size~  62.1  dom=0064hto (13%)  foreign=19% fbreed=22% gen=129
+    27.0M  alive= 379 types= 157  H= 5.85  size~  62.3  dom=0064hto (21%)  foreign=13% fbreed=14% gen=145
+    30.0M  alive= 402 types= 193  H= 6.66  size~  60.7  dom=0064hto (10%)  foreign=16% fbreed=25% gen=160
+    33.0M  alive= 563 types= 219  H= 6.35  size~  63.3  dom=0064lli (17%)  foreign=9% fbreed=9% gen=176
+    36.0M  alive= 387 types= 187  H= 6.26  size~  62.2  dom=0064hto (22%)  foreign=9% fbreed=4% gen=192
+    39.0M  alive= 378 types= 173  H= 6.20  size~  64.3  dom=0064hto (16%)  foreign=6% fbreed=8% gen=206
+    42.0M  alive= 383 types= 162  H= 6.20  size~  61.5  dom=0064jhl (17%)  foreign=11% fbreed=16% gen=223
+    45.0M  alive= 385 types= 187  H= 6.71  size~  61.8  dom=0064pwu (9%)  foreign=11% fbreed=8% gen=238
+    48.0M  alive= 357 types= 195  H= 6.87  size~  64.0  dom=0064izn (11%)  foreign=10% fbreed=17% gen=253
+    51.0M  alive= 384 types= 164  H= 5.90  size~  62.3  dom=0064rpj (18%)  foreign=10% fbreed=16% gen=269
+    54.0M  alive= 523 types= 219  H= 6.40  size~  62.5  dom=0064rpj (19%)  foreign=8% fbreed=7% gen=284
+    57.0M  alive= 387 types= 188  H= 6.51  size~  61.8  dom=0064rpj (13%)  foreign=13% fbreed=15% gen=299
+    60.0M  alive= 388 types= 174  H= 6.27  size~  61.0  dom=0064wbb (18%)  foreign=15% fbreed=18% gen=314
+
+wrote /home/user/own-claude/experiments/results/mut-k2-s3.json  (104,492 instructions/sec)
+
+ genotype    n  size  births   fid          kind   cost   fcalls parent
+  0064wbb   68    64     353  0.98    replicator    412        0 0064ujk
+  0064vun   23    64      93  0.90    replicator    415        0 0064vjj
+  0064wnb   16    64      60  0.98    replicator    412        0 0064vsx
+  0008aaa   15     8    1315  0.02         inert      -       52 0064aan
+  0064rgx   10    64     361  0.98    replicator    412        0 0064izn
+  0061bbh    9    61      22  0.64    replicator    394        0 0064wbb
+  0064vsx    7    64      58  0.97    replicator    412        0 0064umm
+  0064wuz    7    64      22  0.86    replicator    412        0 0064wbb
+  0064wwo    6    64      14  0.86    replicator    412        0 0064vsx
+  0009aaa    6     9     369  0.00         inert      -       55 0064add
+  0064wyh    5    64      10  0.90    replicator    412        0 0064vsx
+  0064wyn    4    64       6  0.67    replicator    411        0 0064acu
