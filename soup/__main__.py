@@ -15,6 +15,7 @@ RESULTS = os.path.join(REPO, "experiments", "results")
 
 
 def cmd_run(args) -> None:
+    os.makedirs(args.out, exist_ok=True)
     result = experiment.run(
         name=args.name, instructions=args.instructions, seed=args.seed,
         soup_size=args.soup, slice_size=args.slice_size, slice_pow=args.slice_pow,
@@ -23,6 +24,7 @@ def cmd_run(args) -> None:
         sample_every=args.sample_every, reap_threshold=args.reap_threshold,
         search_limit=args.search_limit,
         reap_on_alloc_failure=not args.lazy_reaper,
+        checkpoint_path=os.path.join(args.out, f"{args.name}.checkpoint.json"),
     )
     path = experiment.save(result, args.out)
     print(f"\nwrote {path}  ({result['instructions_per_sec']:,} instructions/sec)")

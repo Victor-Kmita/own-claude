@@ -152,6 +152,8 @@ def run(
     reap_on_alloc_failure: bool = True,
     quiet: bool = False,
     genome_sample: int = 150,
+    checkpoint_every: int = 25,
+    checkpoint_path: str | None = None,
     ancestor_path: str = ANCESTOR,
 ) -> dict:
     code = load_ancestor(ancestor_path)
@@ -166,12 +168,27 @@ def run(
     started = time.time()
     history = [sample(world)]
     next_sample = sample_every
+    samples_taken = 0
     while world.clock < instructions and not world.extinct:
         world.step_generation()
         if world.clock >= next_sample:
             row = sample(world)
             history.append(row)
             next_sample += sample_every
+            samples_taken += 1
+            # A run measured in billions of instructions takes hours.  Write the
+            # history out periodically so that a run which is interrupted -- or
+            # simply still going -- is not a total loss.
+            if checkpoint_path and samples_taken % checkpoint_every == 0:
+                with open(checkpoint_path, "w") as fh:
+                    json.dump({"name": name, "checkpoint": True,
+                               "config": {"instructions": instructions,
+                                          "seed": seed, "soup_size": soup_size,
+                                          "slice_size": slice_size,
+                                          "slice_pow": slice_pow,
+                                          "copy_mutation_rate": copy_mutation_rate,
+                                          "cosmic_period": cosmic_period},
+                               "history": history}, fh)
             if not quiet:
                 print(f"  {row['clock']/1e6:6.1f}M  alive={row['alive']:4d} "
                       f"types={row['genotypes']:4d}  H={row['diversity']:5.2f}  "

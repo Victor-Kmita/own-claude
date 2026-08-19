@@ -37,61 +37,142 @@ second on one core.
 
 ## The machine
 
-**A saturated instruction set.** There are exactly 32 opcodes and all 32 are
-defined, so every possible bit pattern is a legal instruction. A mutation
-produces a *different program*, never a crash. This is the precondition for
-everything else.
+Full reference in [`docs/MACHINE.md`](docs/MACHINE.md), including all 32
+instructions. The five things you need to read the rest of this page:
 
-**No absolute addresses.** Nothing can name a location numerically. Control
-flow and self-inspection work by *template matching*: an addressing instruction
-is followed by a run of `nop0`/`nop1`, and the machine searches outward from the
-instruction pointer for the complementary run. A creature that changes length
-still finds its own parts. It can also find *someone else's* parts, because the
-search does not stop at the boundary of a creature — and that is the crack
-through which the whole ecology comes in.
+**A creature is a block of memory plus a tiny CPU state.** Four 32-bit
+registers `ax bx cx dx`, a ten-slot stack, an instruction pointer, and the
+address and length of the block it owns. Between asking for a daughter block and
+splitting it off, it owns a second block too. That is the whole of it — no
+flags, no variables, no immediate operands.
 
-**Asymmetric protection.** Reads and jumps go anywhere; writes only land in a
-creature's own genome or in the daughter block it has allocated. One creature
-can *use* another's code without being able to corrupt it.
+**A saturated instruction set.** Exactly 32 opcodes, all 32 defined, so every
+possible bit pattern is a legal instruction. A mutation produces a *different
+program*, never a crash. Without this, evolution would have nothing to work on:
+most mutations would kill the machine rather than change the creature.
+
+**No addresses anywhere — locations are named by pattern.** This is the idea the
+whole world rests on, so here it is concretely. Two instructions, `nop0` and
+`nop1`, do nothing when executed; a run of them is a *template*, a bit pattern
+sitting in the code. An instruction that needs an address is followed by a
+template, and the machine searches outward from that point for the
+**complementary** pattern — `0` matches `1`:
+
+```
+address:   100  101  102  103  104   ...   119   120  121  122  123
+content:  nop1 nop1 nop1 nop1 adrb   ...  adrf  nop0 nop0 nop0 nop1
+          └──── the pattern ────┘          └── template 0001 ──┘
+                1111
+
+the adrf at 119 reads the template 0001 that follows it,
+complements it to 1110, searches forward for those four cells,
+and puts the address of the match into ax.
+```
+
+So `adrb .t 0000` means "search backward for `1111`", and `call .t 0011` means
+"search for `1100` and call whatever follows it". Three consequences, and every
+result on this page comes from one of them:
+
+* a creature that gains or loses cells still finds its own parts, because
+  nothing is addressed numerically — this is what makes the genome *evolvable*;
+* the search does not stop at the edge of a creature, so a creature that has
+  lost its own copy loop finds its **neighbour's** — this is where parasites
+  come from;
+* a host that changes the pattern naming its copy loop becomes invisible to a
+  parasite hunting the old one — this is where immunity comes from.
+
+**Asymmetric protection.** Reads, searches and jumps go anywhere in the soup.
+Writes only land in a creature's own genome or in its daughter block. One
+creature can *use* another's code without being able to corrupt it.
 
 **Three pressures and nothing else.** The scheduler hands every living creature
-a slice of CPU. When the soup fills past 80%, or when an allocation fails, the
-reaper kills from the head of a queue that creatures climb by making errors and
-descend by reproducing. Cosmic rays flip bits anywhere; the copy instruction
-occasionally miscopies. There is no fitness function in the code.
+a slice of instructions in turn. When the soup fills past 80%, or when an
+allocation fails, the reaper kills from the head of a queue that creatures climb
+by making errors and descend by reproducing. Cosmic rays flip bits anywhere; the
+copy instruction occasionally miscopies. There is no fitness function in the
+code.
 
 ## The ancestor
 
 Sixty-four instructions, written by hand, and the only thing ever placed in the
-soup:
+soup. It does one thing in a loop: work out where it begins and ends, ask for
+that much memory, copy itself into it, split the copy off, repeat.
+
+**Phase 1, measure yourself.** There is no number 64 anywhere in the genome. The
+creature finds two patterns and subtracts their addresses, every single time:
 
 ```
-start:  .t 1111             ; START marker
-        adrb .t 0000        ; ax <- my own start   (search backward for 1111)
-        pushA
-        adrf .t 0001        ; ax <- my END marker  (search forward for 1110)
-        popB                ; bx <- my start
-        subCAB              ; cx <- end - start
-        incC incC incC incC ; cx = my length
-        pushB pushC
-        mal                 ; ax <- a daughter block of cx cells
-        pushA popB popC popA
-        call .t 0011        ; copy loop (search for 1100)
-        divide              ; the daughter becomes an independent creature
-        jmpb .t 0000        ; and again, forever
-copy:   .t 1100
-loop:   .t 1010
-        movii               ; dest[bx] <- source[ax]
-        decC incA incB
-        ifz                 ; when the count hits zero, fall into ret
+start:  .t 1111             ; a marker: not code, a pattern to be found
+        adrb .t 0000        ; search backward for 1111 -> ax = my first cell
+        pushA               ;   keep it
+        adrf .t 0001        ; search forward for 1110 -> ax = my END marker
+        popB                ; bx = my start
+        subCAB              ; cx = ax - bx, the distance between the markers
+        incC incC incC incC ; plus the four cells of the END marker = my length
+```
+
+That is why a mutated descendant of a different length still works: it measures
+whatever it has become.
+
+**Phase 2, ask for room.** `mal` allocates `cx` cells and reports the address in
+`ax`. The three pushes and three pops that follow just load the copy loop's
+arguments — source in `ax`, destination in `bx`, count in `cx`:
+
+```
+        pushB pushC         ; stack: [start, length]
+        mal                 ; ax = where the daughter will live
+        pushA               ; stack: [start, length, daughter]
+        popB popC popA      ; bx = daughter, cx = length, ax = start
+```
+
+**Phase 3, copy.** `movii` copies one cell from `[ax]` to `[bx]`; the rest of the
+loop advances the pointers and counts down:
+
+```
+        call .t 0011        ; search for 1100 -- the copy procedure
+...
+copy:   .t 1100             ; the procedure's name
+loop:   .t 1010             ; the loop's name
+        movii               ; daughter[bx] = self[ax]
+        decC incA incB      ; one fewer to go, advance both pointers
+        ifz                 ; when the count hits zero, fall through to ret
         ret
-        jmpb .t 0101
-end:    .t 1110
+        jmpb .t 0101        ; otherwise search backward for 1010 and go round
+end:    .t 1110             ; the marker phase 1 looks for
 ```
 
-It divides in **410 instructions** with zero errors, without reading or
-executing a single cell outside itself. That number is the baseline every
-descendant below is measured against, and a unit test pins it.
+Six instructions per cell copied — the number every evolved descendant here is
+measured against. And note that the copy procedure is reached by *searching for
+a pattern*: a creature whose own copy loop is damaged will find a neighbour's
+and run it. Parasitism was not designed in; it is what this addressing scheme
+does when a genome is broken.
+
+**Phase 4, divide and repeat.**
+
+```
+        divide              ; the daughter becomes an independent creature
+        jmpb .t 0000        ; search backward for 1111 -- back to phase 1
+```
+
+Running it, with the copy loop folded into a single line (`python3 -m soup
+trace`):
+
+```
+      4  adrb     ax=0      bx=0      cx=4      daughter=None     found itself at 0
+     10  adrf     ax=60     bx=0      cx=4      daughter=None     END marker at 60
+     16  subCAB   ax=60     bx=0      cx=60     daughter=None     60 = 60 - 0
+     20  incC     ax=60     bx=0      cx=64     daughter=None     its true length
+     23  mal      ax=64     bx=0      cx=64     daughter=(64, 64) 64 cells at 64
+     27  popA     ax=0      bx=64     cx=64     daughter=(64, 64) source, dest, count
+     28  call     ax=0      bx=64     cx=64     daughter=(64, 64) into the copy loop
+        ↺ 63 iterations of the loop at 48..54 (6 instructions each), cx 64 -> 2
+     53  ret      ax=64     bx=128    cx=0      daughter=(64, 64) all 64 copied
+*    33  divide   ax=64     bx=128    cx=0      daughter=None     a new creature
+```
+
+**410 instructions** from start to daughter, 407 for every replication after
+that, zero errors, and not one cell read or executed outside itself. Those are
+the numbers every result below is measured against, and a unit test pins them.
 
 ## What happened
 
@@ -552,6 +633,7 @@ finding 7 built by hand.
 ## Layout
 
 ```
+docs/MACHINE.md      the virtual CPU in full: state, templates, all 32 opcodes
 docs/RELATED-WORK.md what the published work established, and how this compares
 soup/isa.py          the 32 opcodes and what a template is
 soup/asm.py          assembler and disassembler
