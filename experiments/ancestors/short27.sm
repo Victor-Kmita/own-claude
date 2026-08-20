@@ -1,0 +1,34 @@
+; short27 -- evolved, not written.  From flaw-3b-s6, genotype 0027gkm.
+; champion of a flawed three-billion run: the shortest replicator this world has produced, and it repeats.
+; 178 instructions per daughter, 27 cells, 6.59 per cell, repeats=True.
+;
+; Kept so a run can be started from it instead of from the hand-written
+; ancestor.  Nobody wrote these templates; read them as artefacts.
+
+        .t 1
+        divide
+        adrb    ; seeks 1
+        .t 0
+        pushC
+        pushA
+        adrf    ; seeks 1
+        .t 0
+        popB
+        subCAB
+        incC
+        incC
+        pushB
+        pushB
+        mal
+        movBA
+        popA
+        .t 0
+        decC
+        movii
+        incA
+        incB
+        ifz
+        divide
+        jmpb    ; seeks 0
+        .t 1
+        jmpb

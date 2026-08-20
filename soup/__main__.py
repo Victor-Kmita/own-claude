@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 
 from . import analysis, experiment
@@ -12,6 +13,24 @@ from .asm import assemble, disassemble
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RESULTS = os.path.join(REPO, "experiments", "results")
+ANCESTORS = os.path.join(REPO, "experiments", "ancestors")
+
+
+def ancestor_path(name: str | None) -> str:
+    """Resolve --ancestor to a file in experiments/ancestors, and nowhere else.
+
+    A bare name, not a path: the task queue in ``lab/`` passes this straight
+    through from a file written by the other agent, and a queue that can name
+    any file on disk is a queue that can read any file on disk.
+    """
+    if not name:
+        return experiment.ANCESTOR
+    if not re.fullmatch(r"[A-Za-z0-9_-]+", name):
+        raise SystemExit(f"bad ancestor name {name!r}: letters, digits, - and _ only")
+    path = os.path.join(ANCESTORS, f"{name}.sm")
+    if not os.path.exists(path):
+        raise SystemExit(f"no such ancestor: {path}")
+    return path
 
 
 def cmd_run(args) -> None:
@@ -24,6 +43,7 @@ def cmd_run(args) -> None:
         sample_every=args.sample_every, reap_threshold=args.reap_threshold,
         search_limit=args.search_limit,
         reap_on_alloc_failure=not args.lazy_reaper, flaw_period=args.flaw,
+        ancestor_path=ancestor_path(args.ancestor),
         checkpoint_path=os.path.join(args.out, f"{args.name}.checkpoint.json"),
     )
     path = experiment.save(result, args.out)
@@ -175,6 +195,9 @@ def main(argv=None) -> None:
                    help="one copy error per N cells copied; 0 disables")
     r.add_argument("--cosmic", type=int, default=2000,
                    help="one random bit flip per N instructions executed")
+    r.add_argument("--ancestor", default=None,
+                   help="start from an evolved genome in experiments/ancestors "
+                        "instead of the hand-written ancestor, by name")
     r.add_argument("--sample-every", type=int, default=1_000_000)
     r.add_argument("--reap-threshold", type=float, default=0.8)
     r.add_argument("--search-limit", type=int, default=1024)

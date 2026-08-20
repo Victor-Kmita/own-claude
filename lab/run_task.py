@@ -47,6 +47,9 @@ SOUP_PARAMS = {
     "reap_threshold": (float, "--reap-threshold"),
     "search_limit": (int, "--search-limit"),
     "lazy_reaper": (bool, "--lazy-reaper"),
+    # A bare name, checked again on the other side: soup resolves it inside
+    # experiments/ancestors/ and refuses anything with a path in it.
+    "ancestor": (str, "--ancestor"),
 }
 
 
@@ -120,6 +123,11 @@ def command_for(task: dict) -> list[str]:
             if want is bool:
                 if value:
                     argv.append(flag)
+                continue
+            if want is str:
+                if not isinstance(value, str) or not NAME_RE.match(value):
+                    raise ValueError(f"{key} must be a plain name, got {value!r}")
+                argv += [flag, value]
                 continue
             if not isinstance(value, (int, float)) or isinstance(value, bool):
                 raise ValueError(f"{key} must be a number, got {value!r}")

@@ -971,6 +971,55 @@ because it had given up going round twice. Three of the four 27-cell champions
 repeat, at the same 178 instructions per daughter. The one-shot was a property
 of that lineage, not of the length.
 
+**What twenty-seven cells actually look like.** The whole organism, disassembled
+from `flaw-3b-s6` and kept in `experiments/ancestors/short27.sm`:
+
+```
+        .t 1                 ; head marker
+        divide               ; with no daughter yet this is an error, and it
+                             ; costs one -- the loop below wraps into it
+        adrb    ; seeks 1    ; ax <- my own start
+        .t 0
+        pushC
+        pushA
+        adrf    ; seeks 1    ; ax <- my end
+        .t 0
+        popB
+        subCAB               ; cx <- my length
+        incC
+        incC
+        pushB
+        pushB
+        mal                  ; ask for cx cells
+        movBA
+        popA
+        .t 0
+
+        decC                 ; --- the copy loop, and the whole life cycle ---
+        movii                ; daughter[bx] <- me[ax]
+        incA
+        incB
+        ifz                  ; when the counter reaches zero...
+        divide               ; ...let the daughter go, on this same iteration
+        jmpb    ; seeks 0    ; and round again, forever
+        .t 1
+        jmpb
+```
+
+The last block is the entire copy loop and the entire life cycle at once. The
+hand-written ancestor keeps them apart: a `copy` subroutine that copies until
+the counter runs out and returns, and an outer loop that calls it, divides, and
+jumps back. This creature has fused the two. `ifz / divide` sits *inside* the
+copy loop, so the division happens on the iteration where the counter hits zero
+and the loop simply continues into the next daughter. There is no subroutine, no
+`call`, no `ret`, and no outer loop — the four-instruction driver of the
+ancestor and the `call`/`ret` pair have all been deleted, and what is left runs
+straight into itself forever.
+
+The templates are down to one bit. The ancestor searches for four-bit patterns
+because I wrote it to be readable; a one-bit template is found sooner and costs
+fewer cells to store, and nothing in this world rewards legibility.
+
 **And the two mutation regimes reach the floor by different routes.** Compare
 the best of the flawless three-billion runs against the best of the flawed ones:
 

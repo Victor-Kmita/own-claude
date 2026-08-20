@@ -1,0 +1,42 @@
+; unrolled38 -- evolved, not written.  From deep-constant-s2, genotype 0038rdr.
+; champion of the flawless three-billion run: this world's only unrolled copy loop.
+; 216 instructions per daughter, 38 cells, 5.68 per cell, repeats=True.
+;
+; Kept so a run can be started from it instead of from the hand-written
+; ancestor.  Nobody wrote these templates; read them as artefacts.
+
+        .t 1
+        adrb    ; seeks 1
+        .t 0
+        decC
+        movBA
+        divide
+        adrf    ; seeks 01
+        .t 10
+        pushC
+        subCAB
+        incC
+        incC
+        pushB
+        incC
+        pushC
+        pushB
+        mal
+        pushA
+        popB
+        popA
+        popD
+        .t 10
+        movii
+        decC
+        incA
+        incB
+        movii
+        decC
+        incA
+        incB
+        ifz
+        ret
+        jmpb    ; seeks 10
+        .t 01
+        movii
