@@ -15,5 +15,8 @@
  "cores": 12,
  "requeued_from": "nexus",
  "requeue_count": 1,
- "requeue_reason": "worker killed during git cleanup"
+ "requeue_reason": "worker killed during git cleanup",
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-20T04:47:11+00:00",
+ "claimed_pid": 4015829
 }
