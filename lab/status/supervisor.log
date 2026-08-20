@@ -11,3 +11,4 @@
 [2026-08-20T04:43:27+00:00] 2026-08-20-load-lo-a-s1: /usr/bin/python3 -m soup run load-lo-a-s1 --instructions 60000000 --seed 1 --flaw 2000 --copy-mutation 250 --cosmic 500 --sample-every 3000000
 [2026-08-20T04:44:47+00:00] 2026-08-20-load-hi-a-s2: ok in 96s
 [2026-08-20T04:44:50+00:00] 2026-08-20-load-hi-a-s3: ok in 98s
+[2026-08-20T04:44:54+00:00] 2026-08-20-load-hi-a-s1: ok in 105s
