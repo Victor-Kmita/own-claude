@@ -1,0 +1,53 @@
+{
+ "id": "2026-08-20-cross-c1000-r167-s3",
+ "kind": "soup_run",
+ "priority": 10,
+ "created_by": "cloud",
+ "why": "every run in this repository so far has had copy_mutation_rate * cosmic_period = 2.000 exactly, so the two noise sources have never been separated and the error threshold cannot be attributed to either. this crosses them: copy 1/1000 against cosmic 1/167, flaws off, three seeds per cell",
+ "expect_hours": 0.05,
+ "params": {
+  "name": "cross-c1000-r167-s3",
+  "instructions": 60000000,
+  "seed": 3,
+  "copy_mutation": 1000,
+  "cosmic": 167,
+  "flaw": 0,
+  "sample_every": 3000000
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-20T05:24:34+00:00",
+ "claimed_pid": 4016077,
+ "cores": 12,
+ "status": "ok",
+ "host": "nexus",
+ "finished": "2026-08-20T05:26:18+00:00",
+ "seconds": 102.0,
+ "returncode": 0,
+ "produced": [
+  "experiments/results/cross-c1000-r167-s2.json",
+  "experiments/results/cross-c1000-r167-s3.json",
+  "experiments/results/cross-c1000-r2000-s1.json"
+ ],
+ "log_tail": [
+  "    51.0M  alive= 395 types= 309  H= 7.99  size~  67.8  dom=0061jul (5%)  foreign=15% fbreed=19% gen=204",
+  "    54.0M  alive= 331 types= 266  H= 7.87  size~  72.2  dom=0065cgs (2%)  foreign=20% fbreed=26% gen=216",
+  "    57.0M  alive= 385 types= 322  H= 8.21  size~  64.6  dom=0063grx (1%)  foreign=20% fbreed=26% gen=231",
+  "    60.0M  alive= 393 types= 322  H= 8.17  size~  66.4  dom=0061mgz (2%)  foreign=20% fbreed=17% gen=246",
+  "",
+  "wrote /home/cld/own-claude/experiments/results/cross-c1000-r167-s3.json  (634,569 instructions/sec)",
+  "",
+  " genotype    n  size  births   fid          kind   cost   fcalls parent",
+  "  0061mgz    8    61      18  0.72    replicator    393        0 0061mey",
+  "  0061mjf    7    61      14  0.93    replicator    393        0 0061mbn",
+  "  0061mhx    6    61      14  0.93    replicator    393        0 0061lqr",
+  "  0061mny    4    61       4  0.75    replicator    393        0 0061mgz",
+  "  0061mof    4    61       4  0.50    replicator    394        0 0061mkl",
+  "  0061mnt    4    61       5  0.00 host-dependent      -        0 0061mkh",
+  "  0065crb    3    65       4  0.75    replicator    426        0 0065cqu",
+  "  0062cnj    3    62       5  0.60 self-assisted      -        0 0064dcw",
+  "  0063gzn    3    63       5  0.80    replicator    409        0 0063gxz",
+  "  0061mot    3    61       3  0.67 host-dependent      -        0 0061mmd",
+  "  0061mmq    3    61       5  0.80    replicator    389        4 0061mjj",
+  "  0061mnv    3    61       4  0.75    replicator    454        0 0061mks"
+ ]
+}
