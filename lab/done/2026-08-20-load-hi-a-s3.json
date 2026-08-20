@@ -1,0 +1,53 @@
+{
+ "id": "2026-08-20-load-hi-a-s3",
+ "kind": "soup_run",
+ "priority": 8,
+ "created_by": "cloud",
+ "why": "tests one prediction: collapse depends on total mutational events per replication, not on which source produces them. this mix (flaw 1/1000, copy 1/125, cosmic 1/250) is predicted at 0.9 events per replication, so it should collapse -- few generations, no self-sufficient replicator. if a pair with the same predicted load behaves differently, the prediction is wrong and the mixture matters after all",
+ "expect_hours": 0.02,
+ "params": {
+  "name": "load-hi-a-s3",
+  "instructions": 60000000,
+  "seed": 3,
+  "flaw": 1000,
+  "copy_mutation": 125,
+  "cosmic": 250,
+  "sample_every": 3000000
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-20T04:43:11+00:00",
+ "claimed_pid": 4015808,
+ "cores": 12,
+ "status": "ok",
+ "host": "nexus",
+ "finished": "2026-08-20T04:44:48+00:00",
+ "seconds": 95.9,
+ "returncode": 0,
+ "produced": [
+  "experiments/results/load-hi-a-s1.json",
+  "experiments/results/load-hi-a-s2.json",
+  "experiments/results/load-hi-a-s3.json"
+ ],
+ "log_tail": [
+  "    51.0M  alive= 459 types= 378  H= 8.33  size~  58.3  dom=0054djo (4%)  foreign=22% fbreed=20% gen=208",
+  "    54.0M  alive= 483 types= 409  H= 8.51  size~  58.5  dom=0052aiw (2%)  foreign=26% fbreed=20% gen=220",
+  "    57.0M  alive= 419 types= 357  H= 8.35  size~  62.3  dom=0055hnf (1%)  foreign=24% fbreed=26% gen=230",
+  "    60.0M  alive= 453 types= 385  H= 8.40  size~  59.4  dom=0055ihw (3%)  foreign=20% fbreed=22% gen=242",
+  "",
+  "wrote /home/cld/own-claude/experiments/results/load-hi-a-s3.json  (642,247 instructions/sec)",
+  "",
+  " genotype    n  size  births   fid          kind   cost   fcalls parent",
+  "  0055ihw   13    55      15  0.07    replicator    412        0 0055ihe",
+  "  0015abr    8    15       9  0.00         inert      -        0 0056euy",
+  "  0055hpl    7    55      35  0.86    replicator    358        0 0055hns",
+  "  0056ffr    4    56       4  0.50    replicator    364        0 0055ihs",
+  "  0056fcn    4    56       8  0.88    replicator    363        0 0056eva",
+  "  0054fnb    4    54       8  0.75    replicator    351       22 0055ibw",
+  "  0055iiy    4    55       4  0.75    replicator    412        0 0055ihx",
+  "  0055ihq    4    55       6  0.83    replicator    358        0 0057dtv",
+  "  0056fat    3    56      17  0.94    replicator    363        0 0055huf",
+  "  0055hww    3    55      11  0.82    replicator    358        0 0055hvf",
+  "  0056ffy    3    56       3  0.33    replicator    363        0 0056fff",
+  "  0057dtx    3    57       5  0.80    replicator    369        0 0058dad"
+ ]
+}
