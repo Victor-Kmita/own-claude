@@ -205,7 +205,7 @@ mine, and two of them corrected the instrument rather than the result.
 | 14 | about a hundred distinct behaviours, however many genomes | 22–121 phenotypes |
 | 15 | evolvability is expensive | a fifth of all reproduction |
 | 16 | a flaw kills the daughter, a copy error edits her; only edits count | 2% vs 29% still work |
-| 17 | four independent seeds stop at the same length | 27 cells, 178 instructions |
+| 17 | four seeds stop at the same length; shorter and better exists one deletion away | 27 cells, and 9 of 13 shorter variants win |
 
 ### 1. With mutation off, nothing ever happens
 
@@ -963,7 +963,7 @@ sources together, so its threshold — one mutation per genome per replication �
 is a threshold on their sum, and the cross above says the sum is the right thing
 to have measured. It was the right answer for a reason I had not established.
 
-### 17. Twenty-seven cells, four times over
+### 17. Twenty-seven cells, four times over — and it is not a floor
 
 Finding 13 ended with a 27-cell replicator and an open question: was that a
 floor, or one lineage getting lucky in one seed? The compute server ran four
@@ -979,12 +979,22 @@ more seeds to three billion instructions and two to ten billion.
 | 10 billion, seed 9 | 34 | 219 | 6.44 | no |
 | 10 billion, seed 10 | **27** | 181 | 6.70 | **yes** |
 
-**Twenty-seven cells, four times, from four independent seeds — and ten billion
+**Twenty-seven cells, four times, from four independent seeds, and ten billion
 instructions did not go below it.** The four genomes are not the same genome:
-they differ in eight to thirteen of their twenty-seven positions. Put through
-the phenotype panel of finding 14 they come out as the same organism anyway —
-an independent replicator costing 178 to 181 instructions, dependent on nobody.
-Four separate searches arrived at one design.
+they differ in eight to thirteen of their twenty-seven positions. Disassembled
+they are plainly the same program: two template searches to find their own ends,
+the same length arithmetic, one `mal`, and the same four-instruction copy loop
+closed by `ifz`. What differs is the register plumbing around it and whether the
+loop exits through `ret` or straight into `divide`. Put through the phenotype
+panel of finding 14 they are indistinguishable — independent replicators, 178 to
+181 instructions, dependent on nobody. Four separate searches arrived at one
+design.
+
+The size histogram says the same thing about the population and not just its
+champion: at the end of the ten-billion run 798 of the 911 living creatures are
+exactly 27 cells, and the six commonest lengths — which cover 903 of them — are
+25 through 29 plus a stray 31. The tail below 27 is there in every deep run and
+never grows.
 
 It also answers the worry from finding 13 that the short creature was only short
 because it had given up going round twice. Three of the four 27-cell champions
@@ -1040,6 +1050,66 @@ The templates are down to one bit. The ancestor searches for four-bit patterns
 because I wrote it to be readable; a one-bit template is found sooner and costs
 fewer cells to store, and nothing in this world rewards legibility.
 
+**I wrote "twenty-seven is the floor" and then went looking for the floor.**
+It is not one. Delete any single cell from each of the four 27-cell champions
+and culture the result: eight to eleven of the twenty-seven deletions still
+replicate, and thirteen of those still replicate *twice* — real repeating
+organisms of 26 cells, costing 171 to 174 instructions instead of 178 to 181.
+Keep going greedily and the deletions run all the way down to 18 cells at 116
+instructions, though everything below 26 is a one-shot.
+
+So a cheaper 26-cell repeater exists one mutation from where every one of these
+runs stopped. Three explanations were available and two of them are wrong.
+
+*Is it reachable?* Yes, easily. The mutation spectrum (`experiments/`, measured
+the same way as finding 16) says flaws produce a clean interior deletion in
+about 0.6% of births, and the gene banks agree: a 150-genotype sample of the
+ten-billion run's bank contains four 26-cell genotypes and three 25-cell ones.
+The soup makes them constantly.
+
+*Is it beaten?* Mostly not. Thirteen head-to-heads, each 26-cell variant against
+the exact 27-cell champion it was deleted from, twelve of each, background noise
+on: **the 27-cell parent wins four of thirteen.** Two of the losses are total —
+451 to 0, 394 to 1. The shorter creature is usually the better competitor as well
+as the cheaper one.
+
+*Is it more fragile?* A little, and not reliably. In eight pairs measured, the
+26-cell variant has the smaller viable one-mutation neighbourhood in six — 0.254
+to 0.346 against the parents' 0.304 to 0.341. That is a real tendency and far too
+small to explain a difference that four runs never crossed in ten billion
+instructions.
+
+**What is actually going on is that length here does not descend, it freezes.**
+Read the trajectories rather than the endpoints:
+
+| | 0.5B | 1B | 2B | 3B | 5B | 7B | 10B |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 10 billion, seed 10 | 48.8 | 40.8 | 37.0 | **27.1** | 27.2 | 27.2 | **27.1** |
+| 10 billion, seed 9 | 33.9 | 34.1 | 34.1 | 34.0 | 34.1 | 34.0 | **34.3** |
+
+Seed 9 reached 34 cells in its first half-billion instructions and then sat
+there, to two decimal places, for the next nine and a half billion — while
+26-cell and 25-cell genotypes kept appearing in its gene bank and dying. Seed 10
+did the same thing at 27. The steps between plateaus are quick; the plateaus are
+enormous.
+
+That changes what the number means. **Twenty-seven is not the shortest genome
+this world can hold. It is where four of seven searches happened to stop, and
+they stopped somewhere the population is not obviously trapped.** The honest
+version of this finding is that four independent runs converged on the same
+27-cell design and none went below it — and that the reason is not that shorter
+is worse, because shorter is cheaper, mostly wins in a dish, and is produced
+every few thousand births.
+
+My best guess is the one thing these assays cannot test: a variant in the real
+soup arrives as one individual among nine hundred and has to invade a population
+of near-relatives that are all producing similar variants of their own, while
+the head-to-head hands it twelve copies and one clean opponent. If that is
+right, the plateaus are a population-genetics effect rather than anything about
+the genomes. Twelve runs starting from `short27.sm` itself are on the compute
+server now; if length drops below 27 when the whole population starts there, the
+plateau is about invasion and not about the design.
+
 **And the two mutation regimes reach the floor by different routes.** Compare
 the best of the flawless three-billion runs against the best of the flawed ones:
 
@@ -1058,7 +1128,8 @@ both at once, and the creature that does — 27 cells at 5.7 per cell, about 155
 instructions — has not appeared in any run here.
 
 Ray's Tierra bottomed out at 22, 27 and 30 cells. This world reaches the middle
-of that range and stops.
+of that range and stops — and now I know that stopping is not the same as
+bottoming out, which raises the obvious question about his numbers too.
 
 ## How this compares with what was already known
 
@@ -1135,9 +1206,11 @@ identical.
 
 * One ancestor, one instruction set. Nothing here shows the results are general
   rather than particular to this 64-cell program.
-* The longest finished runs are 10 billion instructions. Genome length has
-  stopped falling by then (finding 17) but the population is still churning:
-  diversity, dominance and the census turn over continuously.
+* The longest finished runs are 10 billion instructions. Genome length stops
+  falling long before that, but finding 17 shows the plateau is not a limit:
+  shorter, cheaper, competitive variants exist one mutation away and keep being
+  produced. Any statement here of the form "this world reaches N cells" is a
+  statement about the search, not about what the world can hold.
 * A genotype is exact genome identity, so one silent bit flip is a new species.
   Read the diversity numbers with that in mind.
 * The interaction matrix tests one guest against one host. Real neighbourhoods
