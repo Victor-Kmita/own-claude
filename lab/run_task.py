@@ -17,6 +17,7 @@ the other agent's commits.  See lab/PROTOCOL.md.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -180,8 +181,22 @@ def log_path_for(task: dict) -> str:
     return os.path.join(RESULTS, f"{name}.log")
 
 
+def own_digest() -> str:
+    """Hash of this file, so a worker can notice it has been rewritten.
+
+    Workers are long-lived processes started once with ``loop``.  When the
+    other agent adds a parameter or fixes a bug here, a worker that keeps
+    running the version it loaded at startup will refuse the new tasks and
+    look, from the other side, like a mystery: the queue file is right, the
+    code in the repository is right, and the task is rejected anyway.  That
+    happened once and cost twelve runs, so the loop now restarts itself.
+    """
+    with open(os.path.abspath(__file__), "rb") as fh:
+        return hashlib.sha256(fh.read()).hexdigest()
+
+
 def finish(task: dict, status: str, started: float, proc: subprocess.CompletedProcess | None,
-           before: set[str], use_git: bool) -> None:
+           before: set[str], use_git: bool, note: str = "") -> None:
     task_id = task.get("id", "task")
     produced = sorted(set(os.listdir(RESULTS)) - before) if os.path.isdir(RESULTS) else []
     tail = []
@@ -197,6 +212,8 @@ def finish(task: dict, status: str, started: float, proc: subprocess.CompletedPr
         "produced": [f"experiments/results/{p}" for p in produced],
         "log_tail": tail,
     })
+    if note:
+        record["note"] = note
     os.makedirs(DONE, exist_ok=True)
     with open(os.path.join(DONE, f"{task_id}.json"), "w") as fh:
         json.dump(record, fh, indent=1)
@@ -215,7 +232,7 @@ def run_one(use_git: bool) -> bool:
         argv = command_for(task)
     except ValueError as exc:
         print(f"refusing {task_id}: {exc}", file=sys.stderr)
-        finish(task, "refused", time.time(), None, set(), use_git)
+        finish(task, "refused", time.time(), None, set(), use_git, note=str(exc))
         return True
     before = set(os.listdir(RESULTS)) if os.path.isdir(RESULTS) else set()
     print(f"[{now()}] {task_id}: {' '.join(argv)}", flush=True)
@@ -424,8 +441,14 @@ def main() -> None:
         return
 
     last_beat = 0.0
+    started_as = own_digest()
     while True:
         try:
+            if own_digest() != started_as:
+                print(f"[{now()}] run_task.py has changed; restarting on the new "
+                      f"version", flush=True)
+                os.execv(sys.executable,
+                         [sys.executable, os.path.abspath(__file__)] + sys.argv[1:])
             worked = run_one(use_git)
             if time.time() - last_beat > args.heartbeat:
                 heartbeat(use_git, push=True)

@@ -1,0 +1,19 @@
+{
+ "id": "2026-08-20-from-short27-flaw0-s2",
+ "kind": "soup_run",
+ "priority": 12,
+ "created_by": "cloud",
+ "why": "finding 17 says the two mutation regimes reach the floor by different routes -- without flaws the copy loop unrolls to 5.68 per cell and the genome stays at 38, with flaws the genome falls to 27 and the loop never improves. this starts a run from the champion of one route and applies the other, to see whether the two gains can be combined or whether each excludes the other",
+ "expect_hours": 0.6,
+ "params": {
+  "name": "from-short27-flaw0-s2",
+  "instructions": 1000000000,
+  "seed": 2,
+  "ancestor": "short27",
+  "flaw": 0,
+  "sample_every": 10000000
+ },
+ "requeued_from": "nexus",
+ "requeue_count": 1,
+ "requeue_reason": "refused by a worker running an older run_task.py; the ancestor parameter was added in the same commit as the task"
+}
