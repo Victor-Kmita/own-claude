@@ -1,0 +1,53 @@
+{
+ "id": "2026-08-20-cross-c83-r167-s2",
+ "kind": "soup_run",
+ "priority": 10,
+ "created_by": "cloud",
+ "why": "every run in this repository so far has had copy_mutation_rate * cosmic_period = 2.000 exactly, so the two noise sources have never been separated and the error threshold cannot be attributed to either. this crosses them: copy 1/83 against cosmic 1/167, flaws off, three seeds per cell",
+ "expect_hours": 0.05,
+ "params": {
+  "name": "cross-c83-r167-s2",
+  "instructions": 60000000,
+  "seed": 2,
+  "copy_mutation": 83,
+  "cosmic": 167,
+  "flaw": 0,
+  "sample_every": 3000000
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-20T05:26:59+00:00",
+ "claimed_pid": 4015712,
+ "cores": 12,
+ "status": "ok",
+ "host": "nexus",
+ "finished": "2026-08-20T05:28:27+00:00",
+ "seconds": 86.5,
+ "returncode": 0,
+ "produced": [
+  "experiments/results/cross-c1000-r2000-s3.json",
+  "experiments/results/cross-c83-r167-s1.json",
+  "experiments/results/cross-c83-r167-s2.json"
+ ],
+ "log_tail": [
+  "    51.0M  alive=  79 types=  74  H= 6.16  size~ 113.7  dom=0022aaa (4%)  foreign=100% fbreed=100% gen=15",
+  "    54.0M  alive=  79 types=  74  H= 6.16  size~ 113.7  dom=0022aaa (4%)  foreign=100% fbreed=100% gen=15",
+  "    57.0M  alive=  79 types=  74  H= 6.16  size~ 113.7  dom=0022aaa (4%)  foreign=100% fbreed=100% gen=15",
+  "    60.0M  alive=  79 types=  74  H= 6.16  size~ 113.7  dom=0022aaa (4%)  foreign=100% fbreed=100% gen=15",
+  "",
+  "wrote /home/cld/own-claude/experiments/results/cross-c83-r167-s2.json  (945,317 instructions/sec)",
+  "",
+  " genotype    n  size  births   fid          kind   cost   fcalls parent",
+  "  0022aaa    3    22       6  0.00         inert      -   206868 0065ace",
+  "  0022aah    3    22       4  0.00         inert      -   293451 0064amt",
+  "  0008aas    2     8       4  0.00         inert      -   233062 0127aai",
+  "  0095aai    1    95       1  0.00 host-dependent      -   182557 0065abo",
+  "  0066adq    1    66       1  0.00 host-dependent      -   129339 0066adi",
+  "  0063aee    1    63       1  0.00 host-dependent      -   232329 0064ane",
+  "  0090aaa    1    90       1  0.00 host-dependent      -   172943 0067aab",
+  "  0048aae    1    48       1  0.00         inert      -   150262 0095aai",
+  "  0108aac    1   108       1  0.00 host-dependent      -   222516 0062aak",
+  "  0067aae    1    67       1  0.00 host-dependent      -   159407 0063adt",
+  "  0065ace    1    65       7  0.86    replicator    421   150554 0065abq",
+  "  0064anu    1    64       1  0.00 host-dependent      -   232453 0064amt"
+ ]
+}
