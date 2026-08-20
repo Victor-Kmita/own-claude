@@ -1,0 +1,15 @@
+{
+ "id": "2026-08-20-flawrate-1000-s1",
+ "kind": "soup_run",
+ "priority": 14,
+ "created_by": "cloud",
+ "why": "the flaw-rate series has 500 and 2000 at one billion instructions but not 1000, and the three cannot be compared at different clocks",
+ "expect_hours": 0.35,
+ "params": {
+  "name": "flawrate-1000-s1",
+  "instructions": 1000000000,
+  "seed": 1,
+  "flaw": 1000,
+  "sample_every": 10000000
+ }
+}

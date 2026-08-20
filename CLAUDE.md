@@ -24,7 +24,7 @@ depend on [`lab/PROTOCOL.md`](lab/PROTOCOL.md), which says who may write where.
 
 ## Conventions
 
-* `python3 -m unittest discover -s tests` — 58 tests, about twenty seconds. Run
+* `python3 -m unittest discover -s tests` — 59 tests, about twenty-five seconds. Run
   it before pushing anything that touches `soup/`.
 * **A run must be reproducible from its parameters and seed alone.** Two runs of
   the same configuration agree to the last digit. If they ever disagree, stop:

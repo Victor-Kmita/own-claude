@@ -741,6 +741,38 @@ kept it would walk in and take over. My metric could not tell the two apart
 until I looked; `describe()` now reports whether a replicator can do it twice,
 and the optimization table has a column for it.
 
+**Is there a best flaw rate?** If one flaw in 1,000 is better than none, more
+should be better still, up to the point where the population melts. The compute
+server ran the series out to a billion instructions each — two seeds per rate,
+everything else identical, the flawless runs read off the same clock in the
+three-billion runs of finding 5:
+
+| flaws | genotypes alive | generations | births | mean genome length |
+|---|---:|---:|---:|---:|
+| off | 225, 167 | 5704, 5638 | 2.13M, 1.97M | 42.0, 36.0 |
+| one in 2,000 | 197, 207 | 5598, 5588 | 2.84M, 2.69M | 32.0, 37.1 |
+| one in 1,000 | 275, 269 | 5448, 5333 | 2.64M, 3.10M | 37.2, **27.0** |
+| one in 500 | 259, 311 | 5162, 5044 | 2.49M, 2.29M | 37.3, 39.1 |
+
+Two of the four columns move monotonically and in opposite directions. Standing
+diversity climbs with the flaw rate — 196 genotypes alive on average with flaws
+off, 285 at one in 500 — and generation depth falls, 5,671 down to 5,103. More
+flaws means more of the soup is being tried at any moment and less of it is
+descended from anything that worked; births rise at the same time, so the extra
+throughput is going into offspring that are dead ends.
+
+The column I care about most does not move at all. Mean genome length spreads
+further *within* a rate than *between* rates: at one in 1,000 the two seeds sit
+at 37.2 and 27.0, which is the whole range covered by every other condition put
+together. **Two seeds cannot pick an optimum here, and I am not going to
+pretend otherwise.** The 27-cell run of finding 13 is one lineage getting lucky
+in one seed, not evidence that one flaw in 1,000 is the setting that produces
+27-cell creatures. Four more seeds at three billion instructions are running to
+settle that; whichever way they come out, the honest reading of this table today
+is that the flaw rate buys exploration and pays for it in depth, and that its
+effect on how short a genome gets is smaller than the difference between two
+seeds.
+
 This also revises finding 5. I explained the slowness of optimization here by
 two things: a copy loop that started at the efficiency Tierra's creatures had to
 evolve, and runs a hundred times shorter than Ray's. There was a third: a whole
@@ -847,18 +879,22 @@ configuration reached from different directions, and they agree to the last
 digit — 387 instructions, 59 cells, 62.9 mean length, 348 generations. Free
 evidence that a run is reproducible from its parameters alone.
 
-`python3 -m unittest discover -s tests` runs 54 tests covering instruction
+`python3 -m unittest discover -s tests` runs 59 tests covering instruction
 semantics, the allocator, template search, write protection, the division rules,
 determinism under a fixed seed, the reaper's ordering, the mutagen of finding 2,
 the division-versus-reproduction distinction, and the receptor-loss immunity of
-finding 8 built by hand.
+finding 8 built by hand. One of them exists because of the flaw-rate table:
+reading a run's state off the clock of a longer run is only fair if measuring
+the world does not disturb it, so a test samples the same world at two different
+intervals and requires the shared snapshots and the final totals to be
+identical.
 
 ## Limitations
 
 * One ancestor, one instruction set. Nothing here shows the results are general
   rather than particular to this 64-cell program.
-* The longest runs are 400M instructions and the population is still churning at
-  the end. Nothing has converged.
+* The longest finished runs are 3 billion instructions and the population is
+  still churning at the end. Nothing has converged.
 * A genotype is exact genome identity, so one silent bit flip is a new species.
   Read the diversity numbers with that in mind.
 * The interaction matrix tests one guest against one host. Real neighbourhoods

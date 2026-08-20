@@ -445,6 +445,38 @@ class TestDeterminism(unittest.TestCase):
     def test_same_seed_same_world(self):
         self.assertEqual(self.run_once(), self.run_once())
 
+    def test_measuring_the_world_does_not_change_it(self):
+        """Sampling more often must not move the trajectory.
+
+        Whole comparisons in the README read one run's state off the clock of a
+        longer run -- the flawless rows of finding 13 come from the
+        three-billion runs at their one-billion mark.  That is only legitimate
+        if taking a snapshot costs the world nothing, so it is a test rather
+        than an assumption.
+        """
+        from soup.experiment import sample
+
+        def trajectory(every):
+            w = World(soup_size=6000, seed=42, copy_mutation_rate=1 / 800,
+                      cosmic_period=1500, flaw_period=1000)
+            w.inject(ancestor(), address=0)
+            history, due = [sample(w)], every
+            while w.clock < 400_000:
+                w.step_generation()
+                if w.clock >= due:
+                    history.append(sample(w))
+                    due += every
+            return history, (w.births, w.deaths, sorted(w.population().items()))
+
+        dense, end_dense = trajectory(25_000)
+        sparse, end_sparse = trajectory(100_000)
+        self.assertEqual(end_dense, end_sparse)
+        by_clock = {h["clock"]: h for h in dense}
+        shared = [h for h in sparse if h["clock"] in by_clock]
+        self.assertGreater(len(shared), 1)
+        for h in shared:
+            self.assertEqual(by_clock[h["clock"]], h)
+
 
 class TestAnalysis(unittest.TestCase):
     def test_truncated_fragment_is_inert(self):
