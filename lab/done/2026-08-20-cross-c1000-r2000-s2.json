@@ -1,0 +1,53 @@
+{
+ "id": "2026-08-20-cross-c1000-r2000-s2",
+ "kind": "soup_run",
+ "priority": 10,
+ "created_by": "cloud",
+ "why": "every run in this repository so far has had copy_mutation_rate * cosmic_period = 2.000 exactly, so the two noise sources have never been separated and the error threshold cannot be attributed to either. this crosses them: copy 1/1000 against cosmic 1/2000, flaws off, three seeds per cell",
+ "expect_hours": 0.05,
+ "params": {
+  "name": "cross-c1000-r2000-s2",
+  "instructions": 60000000,
+  "seed": 2,
+  "copy_mutation": 1000,
+  "cosmic": 2000,
+  "flaw": 0,
+  "sample_every": 3000000
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-20T05:24:55+00:00",
+ "claimed_pid": 4015712,
+ "cores": 12,
+ "status": "ok",
+ "host": "nexus",
+ "finished": "2026-08-20T05:26:55+00:00",
+ "seconds": 118.5,
+ "returncode": 0,
+ "produced": [
+  "experiments/results/cross-c1000-r167-s3.json",
+  "experiments/results/cross-c1000-r2000-s1.json",
+  "experiments/results/cross-c1000-r2000-s2.json"
+ ],
+ "log_tail": [
+  "    51.0M  alive= 384 types= 172  H= 6.55  size~  63.3  dom=0064bgz (10%)  foreign=7% fbreed=16% gen=296",
+  "    54.0M  alive= 608 types= 175  H= 5.93  size~  64.1  dom=0064kdk (20%)  foreign=10% fbreed=18% gen=312",
+  "    57.0M  alive= 367 types= 137  H= 5.49  size~  63.8  dom=0064kyf (19%)  foreign=6% fbreed=13% gen=329",
+  "    60.0M  alive= 383 types= 137  H= 6.04  size~  62.6  dom=0064kyf (10%)  foreign=12% fbreed=25% gen=346",
+  "",
+  "wrote /home/cld/own-claude/experiments/results/cross-c1000-r2000-s2.json  (507,066 instructions/sec)",
+  "",
+  " genotype    n  size  births   fid          kind   cost   fcalls parent",
+  "  0064kyf   38    64    1531  0.99    replicator    418        2 0064evr",
+  "  0064kdk   33    64    2453  0.98    replicator    414        0 0064jpi",
+  "  0064lyp   27    64     515  0.98    replicator    414        0 0064kdk",
+  "  0064mde   19    64     290  0.98    replicator    418        0 0064kyf",
+  "  0064mnd   16    64     145  0.98    replicator    418        4 0064kyf",
+  "  0064lui   10    64     304  0.98    replicator    414        0 0064kdk",
+  "  0064mcj    9    64      79  0.94    replicator    418        0 0064kyf",
+  "  0063bmz    8    63     127  0.94    replicator    407        0 0063bby",
+  "  0063bpl    8    63      48  0.98    replicator    408        0 0063bmo",
+  "  0064mut    6    64      51  0.94    replicator    414        0 0064mse",
+  "  0064mtf    5    64      63  0.97    replicator    418        0 0064lir",
+  "  0063boq    5    63      25  0.96    replicator    409        0 0064mkj"
+ ]
+}
