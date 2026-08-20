@@ -1,18 +1,17 @@
 {
  "host": "nexus",
- "time": "2026-08-20T22:43:08+00:00",
+ "time": "2026-08-20T22:43:17+00:00",
  "cores": 12,
  "load": [
-  6.5380859375,
-  7.96044921875,
-  8.4638671875
+  6.1474609375,
+  7.82958984375,
+  8.41552734375
  ],
  "queued": 0,
  "running": [
   "2026-08-20-from-short27r-flaw0-s2",
   "2026-08-20-from-unrolled38-flaw0-s1",
   "2026-08-20-from-unrolled38-flaw0-s2",
-  "2026-08-20-from-unrolled38-flaw0-s3",
   "2026-08-20-from-unrolled38-flaw1000-s1",
   "2026-08-20-from-unrolled38-flaw1000-s3"
  ],
