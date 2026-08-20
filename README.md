@@ -183,7 +183,7 @@ the numbers every result below is measured against, and a unit test pins them.
 
 ## What happened
 
-Sixteen findings, in the order they were found. If you read one row of this
+Seventeen findings, in the order they were found. If you read one row of this
 table, make it the last column: several of these corrected an earlier answer of
 mine, and two of them corrected the instrument rather than the result.
 
@@ -204,7 +204,8 @@ mine, and two of them corrected the instrument rather than the result.
 | 13 | the mutation mode I was missing doubles the rate of evolution | 64 → 27 cells |
 | 14 | about a hundred distinct behaviours, however many genomes | 22–121 phenotypes |
 | 15 | evolvability is expensive | a fifth of all reproduction |
-| 16 | a flaw kills the daughter, a copy error edits her | 2% vs 29% still work |
+| 16 | a flaw kills the daughter, a copy error edits her; only edits count | 2% vs 29% still work |
+| 17 | four independent seeds stop at the same length | 27 cells, 178 instructions |
 
 ### 1. With mutation off, nothing ever happens
 
@@ -715,6 +716,8 @@ runs of 1.5 billion instructions with flaws on, against the earlier ones without
 
 Half the instructions, and one of the two seeds went to 27 cells — below
 anything the flawless runs reached. Ray's Tierra plateaued at 22, 27 and 30.
+Four more seeds and two ten-billion runs later, 27 turns out to be where this
+world stops; that is finding 17.
 
 **But read that last column.** My headline number all along has been the cost of
 a creature's *first* daughter, and the 27-cell champion makes exactly one. It
@@ -824,7 +827,7 @@ The same 100M instructions bought 218,916 births with mutation off and
 variants that do not work. The noise that produced everything above is also the
 reason the population is a fifth less productive.
 
-### 16. A prediction, killed, and what it was missing
+### 16. A prediction, killed, and the half of it that survived
 
 Finding 12 put an error threshold at about one mutation per genome per
 replication, and finding 13 added a third mutation source. Together they make a
@@ -908,7 +911,85 @@ and I carried the same coupling into the design above without noticing. So this
 experiment shows that flaws are cheap and that the other two sources are what
 matter, and it cannot say which of *those two* does the damage. Neither can
 finding 12. Twelve runs crossing copy 1/1000 against 1/83 with cosmic 1/2000
-against 1/167, flaws off, are queued to separate them.
+against 1/167, flaws off, separated them.
+
+**The twelve runs came back, and the answer is that neither source does it
+alone.** Copy errors crossed against cosmic rays, flaws off, three seeds per
+cell, 60M instructions each; the number is the generation depth reached, which
+is what collapse destroys:
+
+| | cosmic 1 in 2,000 | cosmic 1 in 167 |
+|---|---|---|
+| **copy 1 in 1,000** | 350, 353, 354 | 252, 193, 252 |
+| **copy 1 in 83** | 270, 274, 270 | **15, 22, 15** |
+
+Twelve times the copy error rate, on its own, costs about a quarter of the
+generation depth and nothing else: mean genome length still falls to 60 cells,
+the census still fills with working replicators. Twelve times the cosmic ray
+rate, on its own, costs about the same. Both at once and the world stops
+evolving in the first fifty million instructions, with genomes bloating to 102,
+114 and 108 cells.
+
+So the original prediction was half right, and the half that was wrong is the
+one I could not have guessed. **Load does add up across sources — but only
+across sources that edit.** Copy errors and cosmic rays both leave a working
+daughter carrying a changed genome, and their loads sum toward one threshold.
+Flaws leave a corpse. A corpse costs the population a birth and carries no
+information forward, so no amount of it moves the threshold, which is why
+`hi-b` could carry 0.82 flaws per replication and not notice.
+
+That also settles what finding 12 measured. Its sweep moved both editing
+sources together, so its threshold — one mutation per genome per replication —
+is a threshold on their sum, and the cross above says the sum is the right thing
+to have measured. It was the right answer for a reason I had not established.
+
+### 17. Twenty-seven cells, four times over
+
+Finding 13 ended with a 27-cell replicator and an open question: was that a
+floor, or one lineage getting lucky in one seed? The compute server ran four
+more seeds to three billion instructions and two to ten billion.
+
+| run | length | cost | per cell | can it do it twice? |
+|---|---:|---:|---:|---|
+| 1.5 billion, seed 2 | **27** | 178 | 6.59 | no |
+| 3 billion, seed 5 | **27** | 180 | 6.67 | **yes** |
+| 3 billion, seed 6 | **27** | 178 | 6.59 | **yes** |
+| 3 billion, seed 7 | 32 | 207 | 6.47 | yes |
+| 3 billion, seed 8 | 35 | 226 | 6.46 | no |
+| 10 billion, seed 9 | 34 | 219 | 6.44 | no |
+| 10 billion, seed 10 | **27** | 181 | 6.70 | **yes** |
+
+**Twenty-seven cells, four times, from four independent seeds — and ten billion
+instructions did not go below it.** The four genomes are not the same genome:
+they differ in eight to thirteen of their twenty-seven positions. Put through
+the phenotype panel of finding 14 they come out as the same organism anyway —
+an independent replicator costing 178 to 181 instructions, dependent on nobody.
+Four separate searches arrived at one design.
+
+It also answers the worry from finding 13 that the short creature was only short
+because it had given up going round twice. Three of the four 27-cell champions
+repeat, at the same 178 instructions per daughter. The one-shot was a property
+of that lineage, not of the length.
+
+**And the two mutation regimes reach the floor by different routes.** Compare
+the best of the flawless three-billion runs against the best of the flawed ones:
+
+| | length | cost | per cell |
+|---|---:|---:|---:|
+| no flaws, 3 billion, seed 2 | 38 | 216 | **5.68** |
+| flaws, 3 billion, seed 6 | **27** | **178** | 6.59 |
+
+The flawless run found a *better copy loop* — 5.68 instructions per cell against
+the ancestor's 6.41, which is the unrolling of finding 5. The flawed runs never
+find it. What they do instead is throw cells away: every flaw champion sits at
+6.4 to 6.7 per cell, exactly where the ancestor sits, and gets its cheapness
+entirely from being short. Insertions and deletions are good at deleting and bad
+at inventing; substitutions are the other way round. Neither regime has yet done
+both at once, and the creature that does — 27 cells at 5.7 per cell, about 155
+instructions — has not appeared in any run here.
+
+Ray's Tierra bottomed out at 22, 27 and 30 cells. This world reaches the middle
+of that range and stops.
 
 ## How this compares with what was already known
 
@@ -985,8 +1066,9 @@ identical.
 
 * One ancestor, one instruction set. Nothing here shows the results are general
   rather than particular to this 64-cell program.
-* The longest finished runs are 3 billion instructions and the population is
-  still churning at the end. Nothing has converged.
+* The longest finished runs are 10 billion instructions. Genome length has
+  stopped falling by then (finding 17) but the population is still churning:
+  diversity, dominance and the census turn over continuously.
 * A genotype is exact genome identity, so one silent bit flip is a new species.
   Read the diversity numbers with that in mind.
 * The interaction matrix tests one guest against one host. Real neighbourhoods
@@ -995,11 +1077,12 @@ identical.
   be filed as host-dependent or inert.
 * The ecology half of finding 12 is not supported by its own data; see the
   paragraph that says so.
-* Copy errors and cosmic rays have never been varied independently here: every
-  run ever done has `copy_mutation_rate × cosmic_period = 2.000`. Wherever this
-  document says a result is about the mutation rate, it is about those two
-  together. Finding 16 explains how that happened and the runs that separate
-  them are queued.
+* Copy errors and cosmic rays were never varied independently until finding 16:
+  every run before that has `copy_mutation_rate × cosmic_period = 2.000`.
+  Wherever this document says a result is about the mutation rate — finding 12
+  above all — it is about those two together. The cross that separates them says
+  the sum is the right quantity, but only the twelve runs of finding 16 were
+  designed to show it.
 * Findings 7 and 8 rest on one seed's ecology — the seed that produced parasites
   at all. Two of three did not.
 * Finding 11 is a null result at 20M instructions with one parasite genotype and
