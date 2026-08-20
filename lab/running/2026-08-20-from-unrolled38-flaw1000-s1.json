@@ -8,6 +8,15 @@
  "params": {
   "name": "from-unrolled38-flaw1000-s1",
   "script": "route_cross.py",
-  "argv": ["unrolled38", 1000, 1, 1000000000]
- }
+  "argv": [
+   "unrolled38",
+   1000,
+   1,
+   1000000000
+  ]
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-20T22:09:57+00:00",
+ "claimed_pid": 4015788,
+ "cores": 12
 }
