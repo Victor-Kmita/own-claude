@@ -872,13 +872,17 @@ condition:
 
 | source | events per replication | daughter differs | cells changed | **daughter still replicates** |
 |---|---:|---:|---:|---:|
-| copy 1/1000 | 0.07 | 7% | 1.0 | **36%** |
-| copy 1/125 | 0.52 | 38% | 1.3 | **29%** |
-| copy 1/83 | 0.71 | 50% | 1.4 | **29%** |
-| flaws 1/2000 | 0.23 | 14% | 26.2 | **5%** |
-| flaws 1/1000 | 0.37 | 23% | 23.6 | **1%** |
-| flaws 1/500 | 0.70 | 42% | 22.2 | **4%** |
-| flaws 1/250 | 1.14 | 62% | 28.0 | **2%** |
+| copy 1/1000 | 0.07 | 7% | 1.0 | **10/28 = 36%** |
+| copy 1/125 | 0.52 | 38% | 1.3 | **44/152 = 29%** |
+| copy 1/83 | 0.71 | 50% | 1.4 | **58/200 = 29%** |
+| flaws 1/2000 | 0.23 | 14% | 26.2 | **3/56 = 5%** |
+| flaws 1/1000 | 0.37 | 23% | 23.6 | **1/92 = 1%** |
+| flaws 1/500 | 0.70 | 42% | 22.2 | **7/168 = 4%** |
+| flaws 1/250 | 1.14 | 62% | 28.0 | **5/247 = 2%** |
+
+The last column is a proportion of the altered daughters, so its denominators
+are small in the low-rate rows; the 95% intervals are 22–36% for the three copy
+conditions and 0–11% for the four flaw conditions, which do not overlap.
 
 Per event the two sources are about equally likely to produce an altered
 daughter — 0.6 to 0.7 either way. What differs is what the alteration *is*. A
@@ -930,13 +934,29 @@ rate, on its own, costs about the same. Both at once and the world stops
 evolving in the first fifty million instructions, with genomes bloating to 102,
 114 and 108 cells.
 
+Collapse here means what the word should mean, not merely a slower world. In
+the healthy corner all twelve census entries are self-sufficient replicators,
+already optimized to 387–407 instructions. In the collapsed corner the census is
+eleven or twelve pieces of debris — inert fragments and host-dependent
+leftovers — with at most one replicator among them, and that one still at the
+ancestor's 414 to 421 instructions. The population is no longer holding a
+working program.
+
 So the original prediction was half right, and the half that was wrong is the
-one I could not have guessed. **Load does add up across sources — but only
-across sources that edit.** Copy errors and cosmic rays both leave a working
-daughter carrying a changed genome, and their loads sum toward one threshold.
-Flaws leave a corpse. A corpse costs the population a birth and carries no
-information forward, so no amount of it moves the threshold, which is why
-`hi-b` could carry 0.82 flaws per replication and not notice.
+one I could not have guessed. **The two sources that edit share a budget; the
+one that kills does not draw on it.** Copy errors and cosmic rays both leave a
+working daughter carrying a changed genome, and either one alone at twelve times
+its usual rate is survivable while the two together are not. Flaws leave a
+corpse. A corpse costs the population a birth and carries no information
+forward, so no amount of it moves the threshold, which is why `hi-b` could carry
+0.82 flaws per replication and not notice.
+
+What this design cannot tell you is the *shape* of that shared budget. A 2×2
+with one level of each is consistent with loads that simply add and a threshold
+somewhere between one source's worth and two, and equally consistent with the
+two interacting — a genome already carrying copy errors being more easily
+finished off by a ray. Separating those needs a dose–response grid, not four
+corners.
 
 That also settles what finding 12 measured. Its sweep moved both editing
 sources together, so its threshold — one mutation per genome per replication —
