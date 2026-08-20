@@ -12,5 +12,9 @@
   "ancestor": "short27",
   "flaw": 0,
   "sample_every": 10000000
- }
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-20T20:00:35+00:00",
+ "claimed_pid": 4015808,
+ "cores": 12
 }
