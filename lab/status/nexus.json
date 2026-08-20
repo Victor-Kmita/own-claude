@@ -1,17 +1,16 @@
 {
  "host": "nexus",
- "time": "2026-08-20T22:12:29+00:00",
+ "time": "2026-08-20T22:15:57+00:00",
  "cores": 12,
  "load": [
-  9.91259765625,
-  8.49169921875,
-  7.46435546875
+  10.02294921875,
+  9.26611328125,
+  7.98779296875
  ],
- "queued": 1,
+ "queued": 0,
  "running": [
   "2026-08-20-from-short27r-flaw0-s1",
   "2026-08-20-from-short27r-flaw0-s2",
-  "2026-08-20-from-short27r-flaw0-s3",
   "2026-08-20-from-short27r-flaw1000-s1",
   "2026-08-20-from-short27r-flaw1000-s2",
   "2026-08-20-from-short27r-flaw1000-s3",
@@ -19,8 +18,9 @@
   "2026-08-20-from-unrolled38-flaw0-s2",
   "2026-08-20-from-unrolled38-flaw0-s3",
   "2026-08-20-from-unrolled38-flaw1000-s1",
-  "2026-08-20-from-unrolled38-flaw1000-s2"
+  "2026-08-20-from-unrolled38-flaw1000-s2",
+  "2026-08-20-from-unrolled38-flaw1000-s3"
  ],
- "done": 76,
+ "done": 77,
  "progress": {}
 }
