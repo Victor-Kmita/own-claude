@@ -31,6 +31,8 @@ python3 experiments/mutation_rate.py      # the sweep and error threshold, findi
 python3 experiments/neutrality.py         # behaviours rather than genomes, finding 14
 python3 experiments/flatness.py           # survival of the flattest, finding 6
 python3 experiments/heritability.py       # what one mutation event is worth, finding 16
+python3 experiments/spectrum.py           # what kinds of daughter mutation makes, finding 17
+python3 experiments/deletion_floor.py     # is the plateau a floor? finding 17
 python3 experiments/selection.py          # how strong selection is here
 python3 experiments/robustness_arc.py     # what happens to robustness over time
 python3 -m soup run x --flaw 1000         # Tierra's third mutation mode, finding 13
@@ -1061,9 +1063,12 @@ instructions, though everything below 26 is a one-shot.
 So a cheaper 26-cell repeater exists one mutation from where every one of these
 runs stopped. Three explanations were available and two of them are wrong.
 
-*Is it reachable?* Yes, easily. The mutation spectrum (`experiments/`, measured
-the same way as finding 16) says flaws produce a clean interior deletion in
-about 0.6% of births, and the gene banks agree: a 150-genotype sample of the
+*Is it reachable?* Yes, easily. `experiments/spectrum.py` classifies fifteen
+hundred daughters against the mothers that made them, one mutation source at a
+time. Under flaws, 0.6% of births are a clean interior deletion — and 51% are a
+same-length scramble, 0.6% a clean truncation, 0.9% the mother plus a tail.
+Copy errors and cosmic rays never change a genome's length at all, which is
+finding 13's claim about flaws, measured. The gene banks agree: a 150-genotype sample of the
 ten-billion run's bank contains four 26-cell genotypes and three 25-cell ones.
 The soup makes them constantly.
 
