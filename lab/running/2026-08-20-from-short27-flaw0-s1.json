@@ -15,5 +15,9 @@
  },
  "requeued_from": "nexus",
  "requeue_count": 1,
- "requeue_reason": "refused by a worker running an older run_task.py; the ancestor parameter was added in the same commit as the task"
+ "requeue_reason": "refused by a worker running an older run_task.py; the ancestor parameter was added in the same commit as the task",
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-20T21:21:42+00:00",
+ "claimed_pid": 4016077,
+ "cores": 12
 }
