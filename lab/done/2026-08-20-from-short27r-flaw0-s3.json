@@ -1,0 +1,61 @@
+{
+ "id": "2026-08-20-from-short27r-flaw0-s3",
+ "kind": "experiment",
+ "priority": 11,
+ "created_by": "cloud",
+ "why": "the first attempt at this seeded the soup from short27.sm, which finding 18 then showed to be a one-shot that costs its own population 1,573 instructions per birth -- so those runs measured a jam, not a route. short27r.sm is the genuine 27-cell repeater at 219 per birth. same question: can the shrinking route and the loop-unrolling route be combined, or does each exclude the other",
+ "expect_hours": 0.6,
+ "params": {
+  "name": "from-short27r-flaw0-s3",
+  "script": "route_cross.py",
+  "argv": [
+   "short27r",
+   0,
+   3,
+   1000000000
+  ]
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-20T22:01:41+00:00",
+ "claimed_pid": 4015808,
+ "cores": 12,
+ "status": "ok",
+ "host": "nexus",
+ "finished": "2026-08-20T22:15:55+00:00",
+ "seconds": 852.2,
+ "returncode": 0,
+ "produced": [
+  "experiments/results/from-short27-flaw0-s2.json",
+  "experiments/results/from-short27r-flaw0-s1.checkpoint.json",
+  "experiments/results/from-short27r-flaw0-s2.checkpoint.json",
+  "experiments/results/from-short27r-flaw0-s3.checkpoint.json",
+  "experiments/results/from-short27r-flaw0-s3.json",
+  "experiments/results/from-short27r-flaw1000-s1.checkpoint.json",
+  "experiments/results/from-short27r-flaw1000-s2.checkpoint.json",
+  "experiments/results/from-short27r-flaw1000-s3.checkpoint.json",
+  "experiments/results/from-unrolled38-flaw1000-s2.json",
+  "experiments/results/from-unrolled38-flaw1000-s3.json"
+ ],
+ "log_tail": [
+  "   830.0M  alive=1444 types= 199  H= 5.59  size~  29.9  dom=0027fji (14%)  foreign=10% fbreed=8% gen=1839",
+  "   840.0M  alive=1441 types= 245  H= 6.16  size~  29.9  dom=0029gvy (12%)  foreign=11% fbreed=10% gen=1854",
+  "   850.0M  alive=1517 types= 215  H= 5.06  size~  29.2  dom=0027fmr (33%)  foreign=8% fbreed=7% gen=1854",
+  "   860.0M  alive=1514 types= 222  H= 4.87  size~  28.8  dom=0027fmr (24%)  foreign=10% fbreed=9% gen=1865",
+  "   870.0M  alive=1540 types= 233  H= 5.61  size~  28.9  dom=0029gyh (15%)  foreign=12% fbreed=11% gen=1884",
+  "   880.0M  alive=1463 types= 213  H= 5.64  size~  29.4  dom=0029gyh (19%)  foreign=9% fbreed=8% gen=1910",
+  "   890.0M  alive=1450 types= 246  H= 5.45  size~  29.0  dom=0026avi (20%)  foreign=10% fbreed=9% gen=1921",
+  "   900.0M  alive=1112 types= 186  H= 5.26  size~  29.0  dom=0026avi (23%)  foreign=7% fbreed=6% gen=1945",
+  "   910.0M  alive=1471 types= 225  H= 5.15  size~  29.5  dom=0029gyh (23%)  foreign=9% fbreed=8% gen=1965",
+  "   920.0M  alive=1483 types= 263  H= 6.12  size~  29.4  dom=0029gyh (15%)  foreign=10% fbreed=8% gen=1984",
+  "   930.0M  alive=1213 types= 187  H= 5.94  size~  29.9  dom=0029gyh (8%)  foreign=7% fbreed=6% gen=2014",
+  "   940.0M  alive=1399 types= 267  H= 6.01  size~  29.4  dom=0029gwd (11%)  foreign=9% fbreed=8% gen=2024",
+  "   950.0M  alive=1511 types= 253  H= 6.04  size~  28.7  dom=0029gyh (9%)  foreign=11% fbreed=9% gen=2045",
+  "   960.0M  alive=1464 types= 225  H= 5.86  size~  28.9  dom=0029hss (12%)  foreign=10% fbreed=9% gen=2074",
+  "   970.0M  alive=1379 types= 196  H= 5.90  size~  29.8  dom=0029gwd (7%)  foreign=8% fbreed=6% gen=2105",
+  "   980.0M  alive=1507 types= 244  H= 6.03  size~  29.5  dom=0029imw (12%)  foreign=10% fbreed=8% gen=2136",
+  "   990.0M  alive=1139 types= 209  H= 6.03  size~  31.1  dom=0029imw (12%)  foreign=8% fbreed=6% gen=2152",
+  "  1000.0M  alive=1405 types= 219  H= 5.92  size~  31.2  dom=0029hss (15%)  foreign=10% fbreed=9% gen=2168",
+  "",
+  "wrote /home/cld/own-claude/experiments/results/from-short27r-flaw0-s3.json  (1,185,992 instructions/sec)"
+ ]
+}
