@@ -1,9 +1,12 @@
 ; short27 -- evolved, not written.  From flaw-3b-s6, genotype 0027gkm.
-; champion of a flawed three-billion run: the shortest replicator this world has produced, and it repeats.
-; 178 instructions per daughter, 27 cells, 6.59 per cell, repeats=True.
+; 27 cells, 178 instructions for its first daughter -- and that is all it makes.
+; It then falls out of its own copy loop and grinds through hundreds of errors
+; before it can start again, so a population of it spends 1,573 instructions per
+; birth where the ancestor spends 468.  Kept because the contrast with
+; short27r.sm is finding 18: same length, same solo cost, eight times the price.
 ;
-; Kept so a run can be started from it instead of from the hand-written
-; ancestor.  Nobody wrote these templates; read them as artefacts.
+; An earlier version of this header said repeats=True.  That was the assay
+; counting the genotype's births rather than the mother's; see the test.
 
         .t 1
         divide

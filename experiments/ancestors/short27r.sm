@@ -1,0 +1,36 @@
+; short27r -- evolved, not written.  From flaw-3b-s5, genotype 0027zyz.
+; The best creature this world has produced.  27 cells; 180 instructions
+; for its first daughter alone, and 218.9 per birth in a
+; population of its own kind, against the hand-written ancestor's 468.
+; It goes round again: repeats=True, second daughter 178.
+;
+; Its twin from seed 6 is in short27.sm -- same length, same solo cost, and a
+; one-shot that costs 1,573 per birth in company.  The pair is finding 18.
+
+        .t 1
+        divide
+        adrb    ; seeks 1
+        .t 0
+        pushA
+        adrf    ; seeks 1
+        .t 0
+        incA
+        popB
+        subCAB
+        incC
+        pushB
+        adrb
+        mal
+        pushA
+        popB
+        popA
+        .t 0
+        movii
+        decC
+        incA
+        incB
+        ifz
+        ret
+        jmpb    ; seeks 0
+        .t 1
+        popA
