@@ -1,0 +1,52 @@
+{
+ "id": "2026-08-20-load-hi-a-s1",
+ "kind": "soup_run",
+ "priority": 8,
+ "created_by": "cloud",
+ "why": "tests one prediction: collapse depends on total mutational events per replication, not on which source produces them. this mix (flaw 1/1000, copy 1/125, cosmic 1/250) is predicted at 0.9 events per replication, so it should collapse -- few generations, no self-sufficient replicator. if a pair with the same predicted load behaves differently, the prediction is wrong and the mixture matters after all",
+ "expect_hours": 0.02,
+ "params": {
+  "name": "load-hi-a-s1",
+  "instructions": 60000000,
+  "seed": 1,
+  "flaw": 1000,
+  "copy_mutation": 125,
+  "cosmic": 250,
+  "sample_every": 3000000
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-20T04:43:07+00:00",
+ "claimed_pid": 4015712,
+ "cores": 12,
+ "status": "ok",
+ "host": "nexus",
+ "finished": "2026-08-20T04:44:47+00:00",
+ "seconds": 98.3,
+ "returncode": 0,
+ "produced": [
+  "experiments/results/load-hi-a-s1.json",
+  "experiments/results/load-hi-a-s2.json"
+ ],
+ "log_tail": [
+  "    51.0M  alive=  78 types=  77  H= 6.26  size~ 102.8  dom=0009abn (3%)  foreign=97% fbreed=100% gen=41",
+  "    54.0M  alive=  78 types=  77  H= 6.26  size~ 102.8  dom=0009abn (3%)  foreign=97% fbreed=100% gen=41",
+  "    57.0M  alive=  78 types=  77  H= 6.26  size~ 102.8  dom=0009abn (3%)  foreign=97% fbreed=100% gen=41",
+  "    60.0M  alive=  79 types=  78  H= 6.28  size~ 102.6  dom=0009abn (2%)  foreign=98% fbreed=100% gen=41",
+  "",
+  "wrote /home/cld/own-claude/experiments/results/load-hi-a-s1.json  (765,229 instructions/sec)",
+  "",
+  " genotype    n  size  births   fid          kind   cost   fcalls parent",
+  "  0009abn    2     9       8  0.12         inert      -    81785 0023aay",
+  "  0008afk    1     8       3  0.00         inert      -   160564 0016aaz",
+  "  0012abk    1    12       1  0.00         inert      -    91614 0016aaz",
+  "  0012abm    1    12       1  0.00         inert      -   111394 0019abr",
+  "  0013abc    1    13       1  0.00         inert      -   152997 0009abg",
+  "  0019aca    1    19       1  0.00         inert      -    80504 0052aac",
+  "  0015aci    1    15       1  0.00         inert      -    69229 0015aat",
+  "  0022aam    1    22       1  0.00         inert      -    79411 0015aaw",
+  "  0015acl    1    15       1  0.00         inert      -    87261 0019abb",
+  "  0019acb    1    19       1  0.00         inert      -   110384 0017aam",
+  "  0008afp    1     8      10  0.00         inert      -    81597 0065alc",
+  "  0009abu    1     9       1  0.00         inert      -    58503 0016aau"
+ ]
+}
