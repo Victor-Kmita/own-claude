@@ -1,0 +1,12 @@
+[2026-08-20T04:43:05+00:00] supervising 10 workers on 12 cores
+[2026-08-20T04:43:09+00:00] 2026-08-20-load-hi-a-s1: /usr/bin/python3 -m soup run load-hi-a-s1 --instructions 60000000 --seed 1 --flaw 1000 --copy-mutation 125 --cosmic 250 --sample-every 3000000
+[2026-08-20T04:43:10+00:00] 2026-08-20-load-hi-a-s2: /usr/bin/python3 -m soup run load-hi-a-s2 --instructions 60000000 --seed 2 --flaw 1000 --copy-mutation 125 --cosmic 250 --sample-every 3000000
+[2026-08-20T04:43:13+00:00] 2026-08-20-load-hi-a-s3: /usr/bin/python3 -m soup run load-hi-a-s3 --instructions 60000000 --seed 3 --flaw 1000 --copy-mutation 125 --cosmic 250 --sample-every 3000000
+[2026-08-20T04:43:15+00:00] 2026-08-20-load-hi-b-s1: /usr/bin/python3 -m soup run load-hi-b-s1 --instructions 60000000 --seed 1 --flaw 500 --copy-mutation 250 --cosmic 500 --sample-every 3000000
+[2026-08-20T04:43:17+00:00] 2026-08-20-load-hi-b-s2: /usr/bin/python3 -m soup run load-hi-b-s2 --instructions 60000000 --seed 2 --flaw 500 --copy-mutation 250 --cosmic 500 --sample-every 3000000
+[2026-08-20T04:43:18+00:00] 2026-08-20-load-hi-b-s3: /usr/bin/python3 -m soup run load-hi-b-s3 --instructions 60000000 --seed 3 --flaw 500 --copy-mutation 250 --cosmic 500 --sample-every 3000000
+[2026-08-20T04:43:21+00:00] 2026-08-20-load-hi-c-s1: /usr/bin/python3 -m soup run load-hi-c-s1 --instructions 60000000 --seed 1 --flaw 2000 --copy-mutation 83 --cosmic 167 --sample-every 3000000
+[2026-08-20T04:43:23+00:00] 2026-08-20-load-hi-c-s2: /usr/bin/python3 -m soup run load-hi-c-s2 --instructions 60000000 --seed 2 --flaw 2000 --copy-mutation 83 --cosmic 167 --sample-every 3000000
+[2026-08-20T04:43:24+00:00] 2026-08-20-load-hi-c-s3: /usr/bin/python3 -m soup run load-hi-c-s3 --instructions 60000000 --seed 3 --flaw 2000 --copy-mutation 83 --cosmic 167 --sample-every 3000000
+[2026-08-20T04:43:27+00:00] 2026-08-20-load-lo-a-s1: /usr/bin/python3 -m soup run load-lo-a-s1 --instructions 60000000 --seed 1 --flaw 2000 --copy-mutation 250 --cosmic 500 --sample-every 3000000
+[2026-08-20T04:44:47+00:00] 2026-08-20-load-hi-a-s2: ok in 96s
