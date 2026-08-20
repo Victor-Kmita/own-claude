@@ -492,6 +492,35 @@ class TestAnalysis(unittest.TestCase):
         self.assertTrue(what["repeats"])
         self.assertEqual(what["second_copy_cost"], 407)
 
+    def test_repeating_is_the_mothers_own_second_daughter(self):
+        # The trap this replaced: the assay counted births *of the genotype*,
+        # so a creature that divided once and stopped scored as a repeater the
+        # moment its daughter divided.  The 27-cell champion of finding 17 is
+        # exactly that creature -- one daughter, then a long error loop -- and
+        # it was filed as a repeater for a day because of it.
+        short27 = os.path.join(os.path.dirname(os.path.dirname(
+            os.path.abspath(__file__))), "experiments", "ancestors", "short27.sm")
+        with open(short27) as fh:
+            genome = bytes(assemble(fh.read()))
+        alone = analysis.isolation_assay(genome, copies=1)
+        self.assertTrue(alone["self_sufficient"])
+        self.assertFalse(alone["repeats"])
+        self.assertIsNone(alone["second_copy_cost"])
+
+    def test_a_daughter_costs_a_population_what_it_costs_alone(self):
+        # ...unless it does not, which is the whole point of measuring it.  The
+        # ancestor's population cost is within a fifth of its solo cost; the
+        # 27-cell champion's is eight times its solo cost, because the solo
+        # number is the price of its first daughter and nothing else.
+        here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        with open(os.path.join(here, "experiments", "ancestors", "short27.sm")) as fh:
+            short = bytes(assemble(fh.read()))
+        anc = bytes(ancestor())
+        self.assertLess(analysis.sustained_cost(anc)["instructions_per_birth"],
+                        1.5 * analysis.describe(anc)["cost"])
+        self.assertGreater(analysis.sustained_cost(short)["instructions_per_birth"],
+                           4 * analysis.describe(short)["cost"])
+
     def test_dividing_is_not_the_same_as_reproducing(self):
         # Asks for the smallest legal block, scribbles in half of it, divides.
         # It reproduces *something* in a few dozen instructions, but never

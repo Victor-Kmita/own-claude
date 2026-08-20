@@ -62,11 +62,15 @@ def isolation_assay(genome: bytes, budget: int = 500_000, soup_size: int = 4000,
     copy_costs: list[int] = []
     spent = 0
     while w.clock < budget and w.alive_count() > 0:
-        before_copies = w.genebank.births[label]
+        # The mother's own births, not the genotype's.  Counting the genotype
+        # made every creature whose daughter could divide once look as though
+        # the *mother* had gone round twice, which is a different claim and the
+        # one finding 13 and finding 17 were reading off this field.
+        before = first.stats.births
         w.step_generation()
         if divided_at is None and w.births:
             divided_at = w.clock
-        if w.genebank.births[label] > before_copies:
+        if first.stats.births > before:
             copy_costs.append(first.stats.instructions - spent)
             spent = first.stats.instructions
             if len(copy_costs) >= 2:      # enough to know whether it repeats
@@ -134,6 +138,46 @@ def describe(genome: bytes, budget: int = 500_000) -> dict:
     # these are the creatures that fill a census with eight-cell fragments.
     return {"kind": kind, "cost": None, "cost_per_cell": None, "cost_paired": None,
             "divides_without_copying": bool(alone["divided"] or pair["divided"])}
+
+
+def sustained_cost(genome: bytes, copies: int = 16, clock: int = 400_000,
+                   soup_size: int = 60_000, gap: int = 0) -> dict:
+    """What a daughter costs a *population* of this genome, not a lone creature.
+
+    :func:`describe` cultures one creature alone and reports what its first
+    daughter cost.  That is the number this project has quoted as "cost" from
+    the beginning, and for the ancestor it is honest: put sixty ancestors in a
+    soup and the world spends about the same per birth as one ancestor alone.
+
+    It is not honest for every genome.  The 27-cell champion of finding 17
+    reports 178 instructions alone and needs between 900 and 6,000 in a
+    population, because after its first daughter it wanders out of its own
+    copy loop and has to fall back through its own code to start again,
+    accumulating hundreds of errors on the way.  Alone, with the whole soup
+    empty, that costs it little; in company it costs it everything.
+
+    So: place ``copies`` of the genome, run the world with mutation off, and
+    return the world clock divided by the births it bought, together with the
+    errors each creature accumulated.  Mutation is off so that this measures
+    the genome and not its descendants.
+    """
+    world = World(soup_size=soup_size, seed=1, copy_mutation_rate=0.0,
+                  cosmic_period=10 ** 18)
+    step = len(genome) + gap
+    for i in range(copies):
+        world.inject(genome, address=(i * step) % soup_size)
+    while world.clock < clock and not world.extinct:
+        world.step_generation()
+    living = [c for c in world.creatures if c.alive]
+    births = world.births
+    return {
+        "copies": copies,
+        "births": births,
+        "instructions_per_birth": round(world.clock / births, 1) if births else None,
+        "errors_per_creature": round(sum(c.stats.errors for c in living)
+                                     / len(living), 1) if living else None,
+        "alive": len(living),
+    }
 
 
 def classify(genome: bytes, budget: int = 500_000) -> str:
