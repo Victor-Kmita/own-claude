@@ -1,0 +1,53 @@
+{
+ "id": "2026-08-20-cross-c83-r2000-s3",
+ "kind": "soup_run",
+ "priority": 10,
+ "created_by": "cloud",
+ "why": "every run in this repository so far has had copy_mutation_rate * cosmic_period = 2.000 exactly, so the two noise sources have never been separated and the error threshold cannot be attributed to either. this crosses them: copy 1/83 against cosmic 1/2000, flaws off, three seeds per cell",
+ "expect_hours": 0.05,
+ "params": {
+  "name": "cross-c83-r2000-s3",
+  "instructions": 60000000,
+  "seed": 3,
+  "copy_mutation": 83,
+  "cosmic": 2000,
+  "flaw": 0,
+  "sample_every": 3000000
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-20T05:30:10+00:00",
+ "claimed_pid": 4015712,
+ "cores": 12,
+ "status": "ok",
+ "host": "nexus",
+ "finished": "2026-08-20T05:32:04+00:00",
+ "seconds": 111.8,
+ "returncode": 0,
+ "produced": [
+  "experiments/results/cross-c83-r2000-s1.json",
+  "experiments/results/cross-c83-r2000-s3.json",
+  "experiments/results/flawrate-300-s1.json"
+ ],
+ "log_tail": [
+  "    51.0M  alive= 414 types= 334  H= 8.20  size~  62.3  dom=0062lkl (4%)  foreign=13% fbreed=9% gen=225",
+  "    54.0M  alive= 399 types= 334  H= 8.25  size~  62.5  dom=0063pqu (2%)  foreign=12% fbreed=7% gen=238",
+  "    57.0M  alive= 407 types= 337  H= 8.27  size~  63.5  dom=0062mxc (2%)  foreign=11% fbreed=10% gen=251",
+  "    60.0M  alive= 413 types= 327  H= 8.16  size~  63.3  dom=0062nvi (3%)  foreign=10% fbreed=10% gen=266",
+  "",
+  "wrote /home/cld/own-claude/experiments/results/cross-c83-r2000-s3.json  (538,300 instructions/sec)",
+  "",
+  " genotype    n  size  births   fid          kind   cost   fcalls parent",
+  "  0062nvi   11    62      79  0.79    replicator    401        0 0062nsa",
+  "  0062ovq    5    62      21  0.95    replicator    401        0 0062orl",
+  "  0062phf    5    62      11  0.91    replicator    401        0 0062nuv",
+  "  0062pra    5    62       7  0.86    replicator    401        0 0062pnm",
+  "  0064moz    5    64      11  0.36    replicator    413        0 0063tce",
+  "  0063tbm    4    63       7  0.86    replicator    407        0 0063sut",
+  "  0062oje    4    62      20  0.85    replicator    401        0 0062nvi",
+  "  0062nuv    4    62      39  0.97    replicator    401        0 0062npz",
+  "  0063syq    4    63       9  0.89    replicator    408        0 0062pfs",
+  "  0062pjj    3    62       8  0.88    replicator    401        5 0062oyv",
+  "  0062psx    3    62       4  0.75    replicator    401        0 0062peb",
+  "  0062plq    3    62       6  0.67    replicator    401        0 0062phk"
+ ]
+}
