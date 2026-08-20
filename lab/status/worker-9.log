@@ -1,7 +1,0 @@
-[2026-08-19T21:25:45+00:00] 2026-08-20-threshold-flaw-k4-s2: /usr/bin/python3 -m soup run tf-k4-s2 --instructions 60000000 --seed 2 --copy-mutation 250 --cosmic 500 --flaw 1000 --sample-every 3000000
-[2026-08-19T21:27:48+00:00] 2026-08-20-threshold-flaw-k4-s2: ok in 123s
-[2026-08-19T21:27:54+00:00] 2026-08-20-flawrate-500-s1: /usr/bin/python3 -m soup run flawrate-500-s1 --instructions 1000000000 --seed 1 --flaw 500 --sample-every 10000000
-could not push after 5 attempts; the commit is local
-[2026-08-19T22:03:13+00:00] 2026-08-20-flawrate-500-s1: ok in 2120s
-could not push after 5 attempts; the commit is local
-could not push after 5 attempts; the commit is local

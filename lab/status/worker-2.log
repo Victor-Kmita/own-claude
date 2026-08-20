@@ -1,3 +1,0 @@
-[2026-08-19T21:25:33+00:00] 2026-08-20-threshold-flaw-k4-s1: /usr/bin/python3 -m soup run tf-k4-s1 --instructions 60000000 --seed 1 --copy-mutation 250 --cosmic 500 --flaw 1000 --sample-every 3000000
-[2026-08-19T21:27:33+00:00] 2026-08-20-threshold-flaw-k4-s1: ok in 120s
-[2026-08-19T21:27:38+00:00] 2026-08-20-flawrate-2000-s2: /usr/bin/python3 -m soup run flawrate-2000-s2 --instructions 1000000000 --seed 2 --flaw 2000 --sample-every 10000000
