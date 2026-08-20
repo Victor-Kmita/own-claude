@@ -17,5 +17,9 @@
  },
  "requeued_from": "nexus",
  "requeue_count": 1,
- "requeue_reason": "the soup_run form was refused by a worker running an older run_task.py, and would be refused again; this is the same run sent as a script, which that worker accepts"
+ "requeue_reason": "the soup_run form was refused by a worker running an older run_task.py, and would be refused again; this is the same run sent as a script, which that worker accepts",
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-20T21:27:17+00:00",
+ "claimed_pid": 4016077,
+ "cores": 12
 }
