@@ -1,0 +1,51 @@
+{
+ "id": "2026-08-20-cross-c83-r2000-s2",
+ "kind": "soup_run",
+ "priority": 10,
+ "created_by": "cloud",
+ "why": "every run in this repository so far has had copy_mutation_rate * cosmic_period = 2.000 exactly, so the two noise sources have never been separated and the error threshold cannot be attributed to either. this crosses them: copy 1/83 against cosmic 1/2000, flaws off, three seeds per cell",
+ "expect_hours": 0.05,
+ "params": {
+  "name": "cross-c83-r2000-s2",
+  "instructions": 60000000,
+  "seed": 2,
+  "copy_mutation": 83,
+  "cosmic": 2000,
+  "flaw": 0,
+  "sample_every": 3000000
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-20T05:28:31+00:00",
+ "claimed_pid": 4015712,
+ "cores": 12,
+ "status": "ok",
+ "host": "nexus",
+ "finished": "2026-08-20T05:30:08+00:00",
+ "seconds": 95.3,
+ "returncode": 0,
+ "produced": [
+  "experiments/results/cross-c83-r2000-s2.json"
+ ],
+ "log_tail": [
+  "    51.0M  alive= 442 types= 324  H= 7.93  size~  54.1  dom=0008aev (6%)  foreign=26% fbreed=23% gen=229",
+  "    54.0M  alive= 391 types= 318  H= 8.17  size~  60.5  dom=0060snq (2%)  foreign=12% fbreed=11% gen=242",
+  "    57.0M  alive= 406 types= 325  H= 8.18  size~  60.9  dom=0060svv (2%)  foreign=8% fbreed=12% gen=254",
+  "    60.0M  alive= 424 types= 337  H= 8.28  size~  60.5  dom=0060vkj (1%)  foreign=11% fbreed=12% gen=268",
+  "",
+  "wrote /home/cld/own-claude/experiments/results/cross-c83-r2000-s2.json  (644,724 instructions/sec)",
+  "",
+  " genotype    n  size  births   fid          kind   cost   fcalls parent",
+  "  0060vkj    5    60      13  0.85    replicator    392        0 0060svv",
+  "  0060uts    4    60      30  0.97    replicator    392        0 0060ukl",
+  "  0060usf    4    60      21  0.86    replicator    392        0 0060tim",
+  "  0061att    4    61      37  0.00         inert      -       22 0061atl",
+  "  0059czj    4    59       7  0.71    replicator    386        0 0060vxm",
+  "  0061stv    3    61      13  0.85    replicator    398        0 0061smz",
+  "  0060vuf    3    60       8  0.75    replicator    392        0 0061tdd",
+  "  0061tfg    3    61       9  0.89    replicator    394        0 0061swh",
+  "  0061tjp    3    61       4  0.75    replicator    398        0 0061sso",
+  "  0061thy    3    61       5  0.80    replicator    399        0 0061skj",
+  "  0060vzm    3    60       6  0.83    replicator    392        0 0060vvu",
+  "  0061tei    3    61       9  0.89    replicator    398        0 0061sob"
+ ]
+}
