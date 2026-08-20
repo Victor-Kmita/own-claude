@@ -1,0 +1,51 @@
+{
+ "id": "2026-08-20-load-hi-a-s2",
+ "kind": "soup_run",
+ "priority": 8,
+ "created_by": "cloud",
+ "why": "tests one prediction: collapse depends on total mutational events per replication, not on which source produces them. this mix (flaw 1/1000, copy 1/125, cosmic 1/250) is predicted at 0.9 events per replication, so it should collapse -- few generations, no self-sufficient replicator. if a pair with the same predicted load behaves differently, the prediction is wrong and the mixture matters after all",
+ "expect_hours": 0.02,
+ "params": {
+  "name": "load-hi-a-s2",
+  "instructions": 60000000,
+  "seed": 2,
+  "flaw": 1000,
+  "copy_mutation": 125,
+  "cosmic": 250,
+  "sample_every": 3000000
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-20T04:43:09+00:00",
+ "claimed_pid": 4015788,
+ "cores": 12,
+ "status": "ok",
+ "host": "nexus",
+ "finished": "2026-08-20T04:44:40+00:00",
+ "seconds": 89.3,
+ "returncode": 0,
+ "produced": [
+  "experiments/results/load-hi-a-s2.json"
+ ],
+ "log_tail": [
+  "    51.0M  alive= 423 types= 339  H= 8.10  size~  63.9  dom=0060cdm (5%)  foreign=33% fbreed=43% gen=186",
+  "    54.0M  alive= 431 types= 349  H= 8.10  size~  63.7  dom=0062dww (7%)  foreign=28% fbreed=35% gen=197",
+  "    57.0M  alive= 416 types= 356  H= 8.31  size~  64.7  dom=0060ctq (3%)  foreign=33% fbreed=42% gen=210",
+  "    60.0M  alive= 407 types= 356  H= 8.36  size~  67.8  dom=0061duc (2%)  foreign=53% fbreed=65% gen=221",
+  "",
+  "wrote /home/cld/own-claude/experiments/results/load-hi-a-s2.json  (736,592 instructions/sec)",
+  "",
+  " genotype    n  size  births   fid          kind   cost   fcalls parent",
+  "  0061duc    6    61      10  0.90    replicator    394        0 0061dtg",
+  "  0060dlo    5    60       6  0.83    replicator    387       27 0060dix",
+  "  0029adn    4    29       5  0.00         inert      -      141 0059bqq",
+  "  0060dlz    4    60       4  0.75    replicator    387       23 0060dku",
+  "  0059cmz    4    59       6  0.83    replicator    383        3 0059cev",
+  "  0063dyq    3    63       3  0.67    replicator    405        1 0063dyl",
+  "  0059cnl    3    59       4  0.75    replicator    382      124 0059cjw",
+  "  0057ain    3    57       3  0.67 host-dependent      -        0 0059cnu",
+  "  0059cou    3    59       3  0.67    replicator    380       28 0059cnw",
+  "  0061duo    3    61       5  0.80    replicator    399        0 0061duk",
+  "  0059cim    3    59       4  0.50    replicator    383       14 0059cev",
+  "  0044ado    3    44       3  0.00 host-dependent      -      147 0059cnr"
+ ]
+}
