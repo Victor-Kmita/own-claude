@@ -30,6 +30,7 @@ python3 experiments/epidemic.py           # the resistance experiment in finding
 python3 experiments/mutation_rate.py      # the sweep and error threshold, finding 12
 python3 experiments/neutrality.py         # behaviours rather than genomes, finding 14
 python3 experiments/flatness.py           # survival of the flattest, finding 6
+python3 experiments/heritability.py       # what one mutation event is worth, finding 16
 python3 experiments/selection.py          # how strong selection is here
 python3 experiments/robustness_arc.py     # what happens to robustness over time
 python3 -m soup run x --flaw 1000         # Tierra's third mutation mode, finding 13
@@ -182,7 +183,7 @@ the numbers every result below is measured against, and a unit test pins them.
 
 ## What happened
 
-Fifteen findings, in the order they were found. If you read one row of this
+Sixteen findings, in the order they were found. If you read one row of this
 table, make it the last column: several of these corrected an earlier answer of
 mine, and two of them corrected the instrument rather than the result.
 
@@ -203,6 +204,7 @@ mine, and two of them corrected the instrument rather than the result.
 | 13 | the mutation mode I was missing doubles the rate of evolution | 64 → 27 cells |
 | 14 | about a hundred distinct behaviours, however many genomes | 22–121 phenotypes |
 | 15 | evolvability is expensive | a fifth of all reproduction |
+| 16 | a flaw kills the daughter, a copy error edits her | 2% vs 29% still work |
 
 ### 1. With mutation off, nothing ever happens
 
@@ -610,7 +612,11 @@ expectation — above about one mutation per genome per replication a population
 can no longer hold onto its information and melts.
 
 Twenty-four runs, eight rates, three seeds each, 60M instructions apiece. Both
-of this world's mutation rates are multiplied by the same factor *k*, so k=1 is
+of this world's mutation rates are multiplied by the same factor *k* — which is
+the flaw in this experiment, found much later and written up as finding 16: copy
+errors and cosmic rays move together in every run in this repository, so the
+threshold below is a threshold on the two of them jointly and this experiment
+cannot say which one carries it. With that said, k=1 is
 the standard setting and µ is the resulting mutations per 64-cell genome per
 replication:
 
@@ -818,6 +824,92 @@ The same 100M instructions bought 218,916 births with mutation off and
 variants that do not work. The noise that produced everything above is also the
 reason the population is a fifth less productive.
 
+### 16. A prediction, killed, and what it was missing
+
+Finding 12 put an error threshold at about one mutation per genome per
+replication, and finding 13 added a third mutation source. Together they make a
+prediction sharp enough to be wrong: **collapse should depend on the total number
+of mutational events per replication and not on which source produces them.**
+Mix the three sources any way you like; hold the sum fixed; the population
+should not care.
+
+Eighteen runs of 60M instructions, six conditions, three seeds each. The ledger
+was built on the ancestor: a copy error rate of *r* costs 64*r* events per
+replication because a daughter is 64 cells, and a flaw rate of one in *f* costs
+410/*f* because a replication takes 410 instructions.
+
+| | copy errors | flaws | predicted events | generations reached (3 seeds) |
+|---|---|---|---:|---|
+| lo-c | 0.06 | 0.41 | 0.47 | 343, 343, 345 |
+| lo-a | 0.26 | 0.21 | 0.47 | 301, 288, 287 |
+| lo-b | 0.38 | 0.10 | 0.48 | 279, 274, 274 |
+| **hi-b** | **0.26** | **0.82** | **1.08** | **282, 274, 280** |
+| hi-a | 0.51 | 0.41 | 0.92 | 49, 227, 251 |
+| hi-c | 0.77 | 0.21 | 0.98 | 16, 34, 32 |
+
+The three low conditions agree with each other and with the prediction. The
+three high ones destroy it. `hi-b` carries the largest predicted load of any
+condition here and is indistinguishable from the healthy ones — 274 to 282
+generations, mean genome length falling to 44–54 cells, the ordinary picture of
+a working soup. `hi-c` carries *less* predicted load and is wrecked: 16 to 34
+generations, and mean genome length climbing to 85, 124 and 157 cells instead of
+falling. That upward drift is the signature of a population that can no longer
+hold a working genome together.
+
+Sort the same six conditions by the copy-error column alone and the table
+becomes monotone. Sort by the flaw column and it is not: the healthiest
+condition in the set has the most flaws, and the worst has half as many as the
+best.
+
+**So a flaw and a copy error are not worth the same, and I measured the
+exchange rate.** `experiments/heritability.py` puts one ancestor alone in a
+small soup with a single mutation source switched on, runs it to its first
+daughter, and compares the daughter with the mother. 400 replications per
+condition:
+
+| source | events per replication | daughter differs | cells changed | **daughter still replicates** |
+|---|---:|---:|---:|---:|
+| copy 1/1000 | 0.07 | 7% | 1.0 | **36%** |
+| copy 1/125 | 0.52 | 38% | 1.3 | **29%** |
+| copy 1/83 | 0.71 | 50% | 1.4 | **29%** |
+| flaws 1/2000 | 0.23 | 14% | 26.2 | **5%** |
+| flaws 1/1000 | 0.37 | 23% | 23.6 | **1%** |
+| flaws 1/500 | 0.70 | 42% | 22.2 | **4%** |
+| flaws 1/250 | 1.14 | 62% | 28.0 | **2%** |
+
+Per event the two sources are about equally likely to produce an altered
+daughter — 0.6 to 0.7 either way. What differs is what the alteration *is*. A
+copy error changes one cell and the daughter still works about three times in
+ten. A flaw displaces a write and the daughter comes out with twenty-odd cells
+wrong; it works about one time in thirty.
+
+That is the whole difference. **A flaw kills the daughter; a copy error edits
+her.** Only the second one accumulates. A lethal mutation is a cost in
+throughput — which is exactly what finding 13's table shows flaws buying, more
+births and fewer generations — but it leaves the surviving lineage as faithful
+as it was. An edit stays in the population and its descendants drift further.
+The error threshold is a threshold on *heritable* load, and multiplying each
+source's events by the fraction of altered daughters that still work puts every
+healthy condition here below 0.1 and every damaged one above it.
+
+**And now the part I got wrong before any of this.** Sorting those six
+conditions by copy error rate orders them correctly — but so does sorting them
+by cosmic ray rate, because in this repository the two have never been
+independent. Every run ever done here, including all of finding 12, was
+configured with
+
+```
+copy_mutation_rate × cosmic_period = 2.000
+```
+
+exactly, in all eleven distinct settings that have ever been used. I built the
+sweep of finding 12 by scaling one knob called "mutation rate" that moved both,
+and I carried the same coupling into the design above without noticing. So this
+experiment shows that flaws are cheap and that the other two sources are what
+matter, and it cannot say which of *those two* does the damage. Neither can
+finding 12. Twelve runs crossing copy 1/1000 against 1/83 with cosmic 1/2000
+against 1/167, flaws off, are queued to separate them.
+
 ## How this compares with what was already known
 
 I built the machine before reading the literature, which is the wrong order.
@@ -903,6 +995,11 @@ identical.
   be filed as host-dependent or inert.
 * The ecology half of finding 12 is not supported by its own data; see the
   paragraph that says so.
+* Copy errors and cosmic rays have never been varied independently here: every
+  run ever done has `copy_mutation_rate × cosmic_period = 2.000`. Wherever this
+  document says a result is about the mutation rate, it is about those two
+  together. Finding 16 explains how that happened and the runs that separate
+  them are queued.
 * Findings 7 and 8 rest on one seed's ecology — the seed that produced parasites
   at all. Two of three did not.
 * Finding 11 is a null result at 20M instructions with one parasite genotype and

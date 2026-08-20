@@ -34,7 +34,13 @@ cloud.
    add in the same commit.
 3. **Always `git pull --rebase` before pushing**, and retry on failure. Two
    commits that touch different files rebase cleanly; that is the whole reason
-   for rule 1.
+   for rule 1. One exception has actually happened: when the worker claims
+   every queued task, `lab/queue/` empties, and git reads the whole thing as a
+   rename of `queue → running` — so a new task added on the other side is
+   rebased *into* `lab/running/`, i.e. silently marked as claimed by nobody.
+   Each directory now holds a `.gitkeep` so it never disappears. If the
+   conflict shows up anyway, the resolution is always the same: the file
+   belongs wherever its author put it.
 4. **Claiming is a commit.** A worker claims a task by moving it into
    `lab/running/` and pushing. If the push is rejected and the task has
    disappeared after rebasing, somebody else took it — skip it, do not run it.

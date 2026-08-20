@@ -129,7 +129,7 @@ class ExecStats:
     """Counters the world uses to decide who dies and what to report."""
 
     __slots__ = ("instructions", "errors", "births", "foreign_reads",
-                 "foreign_calls", "writes", "flaws")
+                 "foreign_calls", "writes", "flaws", "copy_errors")
 
     def __init__(self):
         self.instructions = 0
@@ -139,6 +139,7 @@ class ExecStats:
         self.foreign_calls = 0
         self.writes = 0
         self.flaws = 0
+        self.copy_errors = 0
 
 
 class Creature:
@@ -287,6 +288,7 @@ def run_slice(world, cr: "Creature", budget: int) -> int:
                 val = soup[src]
                 if copy_mut and rng.random() < copy_mut:
                     val ^= 1 << rng.randrange(5)
+                    st.copy_errors += 1
                 soup[dst] = val
                 st.writes += 1
                 if (src - start) % N >= csize:

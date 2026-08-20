@@ -1,0 +1,17 @@
+{
+ "id": "2026-08-20-cross-c1000-r167-s3",
+ "kind": "soup_run",
+ "priority": 10,
+ "created_by": "cloud",
+ "why": "every run in this repository so far has had copy_mutation_rate * cosmic_period = 2.000 exactly, so the two noise sources have never been separated and the error threshold cannot be attributed to either. this crosses them: copy 1/1000 against cosmic 1/167, flaws off, three seeds per cell",
+ "expect_hours": 0.05,
+ "params": {
+  "name": "cross-c1000-r167-s3",
+  "instructions": 60000000,
+  "seed": 3,
+  "copy_mutation": 1000,
+  "cosmic": 167,
+  "flaw": 0,
+  "sample_every": 3000000
+ }
+}
