@@ -52,6 +52,11 @@ cloud.
 
 ## Task format
 
+A `soup_run` names parameters, never a command line. `params.ancestor` is the
+one string parameter: it names a file in `experiments/ancestors/` and is checked
+against `[A-Za-z0-9_-]+` on both sides, so a task cannot point the simulator at
+an arbitrary file. Everything else is a number or a flag.
+
 ```json
 {
   "id": "2026-08-20-deep-flaw-10b-s5",
