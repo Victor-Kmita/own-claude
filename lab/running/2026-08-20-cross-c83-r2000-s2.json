@@ -13,5 +13,9 @@
   "cosmic": 2000,
   "flaw": 0,
   "sample_every": 3000000
- }
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-20T05:28:31+00:00",
+ "claimed_pid": 4015712,
+ "cores": 12
 }
