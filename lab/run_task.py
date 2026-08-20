@@ -167,13 +167,20 @@ def claim(use_git: bool) -> dict | None:
     return record
 
 
+def log_path_for(task: dict) -> str:
+    name = (task.get("params") or {}).get("name") or task.get("id", "task")
+    return os.path.join(RESULTS, f"{name}.log")
+
+
 def finish(task: dict, status: str, started: float, proc: subprocess.CompletedProcess | None,
            before: set[str], use_git: bool) -> None:
     task_id = task.get("id", "task")
     produced = sorted(set(os.listdir(RESULTS)) - before) if os.path.isdir(RESULTS) else []
     tail = []
-    if proc is not None:
-        tail = (proc.stdout or "").splitlines()[-20:]
+    log = log_path_for(task)
+    if os.path.exists(log):
+        with open(log, errors="replace") as fh:
+            tail = fh.read().splitlines()[-20:]
     record = {k: v for k, v in task.items() if k != "_file"}
     record.update({
         "status": status, "host": HOST, "cores": os.cpu_count(),
@@ -205,8 +212,16 @@ def run_one(use_git: bool) -> bool:
     before = set(os.listdir(RESULTS)) if os.path.isdir(RESULTS) else set()
     print(f"[{now()}] {task_id}: {' '.join(argv)}", flush=True)
     started = time.time()
+    # Stream the child's output to a file instead of holding it in memory.  A
+    # three-hour run that shows nothing until it finishes is a run nobody can
+    # tell apart from a dead one -- and if it is killed, everything it printed
+    # is lost.  With a file, the heartbeat can carry its last line, and a
+    # partial log survives.
+    os.makedirs(RESULTS, exist_ok=True)
     try:
-        proc = subprocess.run(argv, cwd=REPO, capture_output=True, text=True)
+        with open(log_path_for(task), "w") as log:
+            proc = subprocess.run(argv, cwd=REPO, stdout=log,
+                                  stderr=subprocess.STDOUT, text=True)
         status = "ok" if proc.returncode == 0 else "failed"
     except KeyboardInterrupt:
         finish(task, "interrupted", started, None, before, use_git)
