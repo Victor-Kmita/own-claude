@@ -183,9 +183,15 @@ trace`):
 that, zero errors, and not one cell read or executed outside itself. Those are
 the numbers every result below is measured against, and a unit test pins them.
 
+One caveat, found late and worth carrying while you read: that 410 is measured
+with the creature alone in an empty dish. For the ancestor it is honest — a
+population of ancestors spends 468 instructions per birth, a fifth more — but
+for some evolved descendants the solo figure is off by a factor of a hundred.
+Wherever a cost appears below, finding 18 is the reason to check which one it is.
+
 ## What happened
 
-Seventeen findings, in the order they were found. If you read one row of this
+Eighteen findings, in the order they were found. If you read one row of this
 table, make it the last column: several of these corrected an earlier answer of
 mine, and two of them corrected the instrument rather than the result.
 
@@ -208,6 +214,7 @@ mine, and two of them corrected the instrument rather than the result.
 | 15 | evolvability is expensive | a fifth of all reproduction |
 | 16 | a flaw kills the daughter, a copy error edits her; only edits count | 2% vs 29% still work |
 | 17 | four seeds stop at the same length; shorter and better exists one deletion away | 27 cells, and 9 of 13 shorter variants win |
+| 18 | the cost of a daughter alone is not its cost in a population | 178 alone, 1,573 in company |
 
 ### 1. With mutation off, nothing ever happens
 
@@ -971,15 +978,20 @@ Finding 13 ended with a 27-cell replicator and an open question: was that a
 floor, or one lineage getting lucky in one seed? The compute server ran four
 more seeds to three billion instructions and two to ten billion.
 
-| run | length | cost | per cell | can it do it twice? |
+| run | length | cost alone | in a population | does it go round again? |
 |---|---:|---:|---:|---|
-| 1.5 billion, seed 2 | **27** | 178 | 6.59 | no |
-| 3 billion, seed 5 | **27** | 180 | 6.67 | **yes** |
-| 3 billion, seed 6 | **27** | 178 | 6.59 | **yes** |
-| 3 billion, seed 7 | 32 | 207 | 6.47 | yes |
-| 3 billion, seed 8 | 35 | 226 | 6.46 | no |
-| 10 billion, seed 9 | 34 | 219 | 6.44 | no |
-| 10 billion, seed 10 | **27** | 181 | 6.70 | **yes** |
+| 1.5 billion, seed 2 | **27** | 178 | 1,687 | no |
+| **3 billion, seed 5** | **27** | 180 | **219** | **yes** |
+| 3 billion, seed 6 | **27** | 178 | 1,573 | no |
+| 3 billion, seed 7 | 32 | 207 | **235** | **yes** |
+| 3 billion, seed 8 | 35 | 226 | 1,802 | no |
+| 10 billion, seed 9 | 34 | 219 | 23,566 | no |
+| **10 billion, seed 10** | **27** | 181 | **238** | **yes** |
+
+The last two columns arrived a day after the rest of this finding and changed
+it; both are finding 18. The short version is that four of these seven champions
+make one daughter and then thrash, so their solo cost is not what they cost, and
+the two columns agree exactly on which four.
 
 **Twenty-seven cells, four times, from four independent seeds, and ten billion
 instructions did not go below it.** The four genomes are not the same genome:
@@ -998,10 +1010,15 @@ exactly 27 cells, and the six commonest lengths — which cover 903 of them — 
 25 through 29 plus a stray 31. The tail below 27 is there in every deep run and
 never grows.
 
-It also answers the worry from finding 13 that the short creature was only short
-because it had given up going round twice. Three of the four 27-cell champions
-repeat, at the same 178 instructions per daughter. The one-shot was a property
-of that lineage, not of the length.
+**It does not rescue finding 13's worry, which I briefly thought it had.** For a
+few hours this section said three of the four 27-cell champions go round again,
+so the one-shot strategy was that lineage's and not the length's. That was the
+`repeats` flag counting the wrong births — finding 18 — and with the flag fixed
+the score is two of four. Seeds 5 and 10 found a genuine repeating 27-cell
+creature; seeds 2 and 6 found one-shots at the same length and the same solo
+cost. So the length does not force the strategy, and neither does it come free
+with it: both exist at 27 cells and they cost their populations 219 and 1,573
+instructions per birth respectively.
 
 **What twenty-seven cells actually look like.** The whole organism, disassembled
 from `flaw-3b-s6` and kept in `experiments/ancestors/short27.sm`:
@@ -1118,23 +1135,93 @@ plateau is about invasion and not about the design.
 **And the two mutation regimes reach the floor by different routes.** Compare
 the best of the flawless three-billion runs against the best of the flawed ones:
 
-| | length | cost | per cell |
+| | length | per cell, alone | in a population |
 |---|---:|---:|---:|
-| no flaws, 3 billion, seed 2 | 38 | 216 | **5.68** |
-| flaws, 3 billion, seed 6 | **27** | **178** | 6.59 |
+| no flaws, 3 billion, seed 2 | 38 | **5.68** | 261 |
+| flaws, 3 billion, seed 5 | **27** | 6.67 | **219** |
 
 The flawless run found a *better copy loop* — 5.68 instructions per cell against
 the ancestor's 6.41, which is the unrolling of finding 5. The flawed runs never
 find it. What they do instead is throw cells away: every flaw champion sits at
 6.4 to 6.7 per cell, exactly where the ancestor sits, and gets its cheapness
 entirely from being short. Insertions and deletions are good at deleting and bad
-at inventing; substitutions are the other way round. Neither regime has yet done
-both at once, and the creature that does — 27 cells at 5.7 per cell, about 155
+at inventing; substitutions are the other way round. Neither regime has done both
+at once, and the creature that does — 27 cells at 5.7 per cell, about 155
 instructions — has not appeared in any run here.
+
+Which route is ahead depends on which number you read, and the population column
+is the one that decides: the short creature costs its own kind 219 instructions
+per birth and the unrolled one 261. A better loop over 38 cells loses to an
+ordinary loop over 27.
 
 Ray's Tierra bottomed out at 22, 27 and 30 cells. This world reaches the middle
 of that range and stops — and now I know that stopping is not the same as
 bottoming out, which raises the obvious question about his numbers too.
+
+### 18. What a daughter costs a population, which is not what it costs alone
+
+Every "cost" in this document until now came from `describe()`: put one creature
+alone in a sterile dish, run it until it produces a daughter, count the
+instructions. The ancestor is 410. Finding 17's champion is 178. That number has
+been the headline of findings 4, 5, 13 and 17.
+
+Checking finding 17 broke it. Starting a run from the 27-cell champion produced
+a soup that made **110 births in a billion instructions** — the ancestor makes
+two and a half million. So I measured the obvious thing, which I should have
+measured a month ago: place sixteen copies of a genome in a soup, switch
+mutation off, run, and divide the world clock by the births it bought.
+
+| champion | cells | alone | **in a population** | errors per creature |
+|---|---:|---:|---:|---:|
+| the hand-written ancestor | 64 | 410 | **468** | 0 |
+| 3B, no flaws, seed 1 | 37 | 239 | **245** | 0 |
+| 3B, no flaws, seed 2 — the unrolled loop | 38 | 216 | **261** | 1 |
+| **3B, flaws, seed 5** | **27** | **180** | **219** | 2 |
+| 3B, flaws, seed 7 | 32 | 207 | **235** | 0 |
+| 10B, flaws, seed 10 | 27 | 181 | **238** | 2 |
+| 1.5B, flaws, seed 2 | 27 | 178 | **1,687** | 233 |
+| 3B, flaws, seed 6 | 27 | 178 | **1,573** | 219 |
+| 3B, flaws, seed 8 | 35 | 226 | **1,802** | 213 |
+| 10B, flaws, seed 9 | 34 | 219 | **23,566** | 1,990 |
+
+**Two creatures of exactly the same length, with solo costs of 180 and 178,
+differ eightfold in what they actually cost.** Both are in
+`experiments/ancestors/`: `short27r.sm` is the first, `short27.sm` the second.
+
+The split is not random, and it is the same split as the `repeats` column. The
+five champions whose solo cost transfers are the five that make a second
+daughter; the four that cost seven to a hundred times more are the four that
+make exactly one and then thrash. A one-shot's solo cost is the price of its
+first daughter and nothing else, and after that daughter it falls out of its own
+copy loop and grinds through hundreds of errors before it can start again. Alone
+in an empty dish that is cheap. In a population it is the entire cost.
+
+**And `repeats` was itself wrong until this morning.** The assay counted births
+*of the genotype*, so the moment a creature's daughter divided, the mother was
+recorded as having gone round twice. Every one-shot in this world has a daughter
+that divides once — that is what a one-shot is — so the field said `True` for
+almost everything. It now counts the mother's own births, and it agrees with the
+population measure on all nine champions: exactly the repeaters transfer.
+
+Two consequences for what is written above.
+
+**The best creature this world has produced is the 27-cell champion of seed 5**,
+at 219 instructions per birth against the ancestor's 468. That is a real
+halving, and it is not the same creature I have been quoting: the one I quoted,
+and turned into `short27.sm`, and started twelve runs from, is a one-shot that
+costs its own population 1,573.
+
+**The two evolutionary routes of finding 17 are not equal after all.** By solo
+cost the unrolled 38-cell creature (216) and the short 27-cell one (178) looked
+like two ways of arriving at the same place. By population cost the shrinking
+route wins outright: 219 against 261, and a 32-cell creature from a third seed
+comes in at 235, also below the unrolled one. Unrolling the copy loop buys less
+than it appears to, because the loop is not where the time goes.
+
+**What is still not measured** is what a genome costs in the mixed, mutating
+soup it evolved in, as opposed to a clean population of its own kind. That is a
+third number, and the gap between the second and the third is where parasitism
+and template collision live.
 
 ## How this compares with what was already known
 
@@ -1222,6 +1309,9 @@ identical.
   have several, and the outcome depends on which template is nearest.
 * Classification uses a fixed instruction budget; a very slow replicator would
   be filed as host-dependent or inert.
+* Costs quoted as a single number are solo costs unless they say otherwise, and
+  finding 18 shows those can be an order of magnitude optimistic. The population
+  cost exists for the nine deep-run champions and for nothing else yet.
 * The ecology half of finding 12 is not supported by its own data; see the
   paragraph that says so.
 * Copy errors and cosmic rays were never varied independently until finding 16:
