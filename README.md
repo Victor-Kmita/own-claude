@@ -191,7 +191,7 @@ Wherever a cost appears below, finding 18 is the reason to check which one it is
 
 ## What happened
 
-Eighteen findings, in the order they were found. If you read one row of this
+Nineteen findings, in the order they were found. If you read one row of this
 table, make it the last column: several of these corrected an earlier answer of
 mine, and two of them corrected the instrument rather than the result.
 
@@ -215,6 +215,7 @@ mine, and two of them corrected the instrument rather than the result.
 | 16 | a flaw kills the daughter, a copy error edits her; only edits count | 2% vs 29% still work |
 | 17 | four seeds stop at the same length; shorter and better exists one deletion away | 27 cells, and 9 of 13 shorter variants win |
 | 18 | the cost of a daughter alone is not its cost in a population | 178 alone, 1,573 in company |
+| 19 | both evolved endpoints are frozen; only one of them is an optimum | 38.0 cells after a billion more |
 
 ### 1. With mutation off, nothing ever happens
 
@@ -1128,9 +1129,9 @@ soup arrives as one individual among nine hundred and has to invade a population
 of near-relatives that are all producing similar variants of their own, while
 the head-to-head hands it twelve copies and one clean opponent. If that is
 right, the plateaus are a population-genetics effect rather than anything about
-the genomes. Twelve runs starting from `short27.sm` itself are on the compute
-server now; if length drops below 27 when the whole population starts there, the
-plateau is about invasion and not about the design.
+the genomes. Twelve runs starting from the champions themselves have since
+come back and they are finding 19: nothing moves, in either direction, for a
+billion instructions.
 
 **And the two mutation regimes reach the floor by different routes.** Compare
 the best of the flawless three-billion runs against the best of the flawed ones:
@@ -1222,6 +1223,57 @@ than it appears to, because the loop is not where the time goes.
 soup it evolved in, as opposed to a clean population of its own kind. That is a
 third number, and the gap between the second and the third is where parasitism
 and template collision live.
+
+### 19. Both endpoints are frozen, for two different reasons
+
+Finding 17 left a question with a clean experimental answer: the flawless runs
+unroll the copy loop and stop at 38 cells, the flawed runs shrink to 27 and never
+unroll, so what happens if you hand each route the other one's mutation regime?
+
+Twelve runs of a billion instructions each, started from the two champions in
+`experiments/ancestors/` instead of from the hand-written ancestor:
+
+| started from | flaws | mean length after 1B | best in the census | births |
+|---|---|---:|---|---:|
+| `unrolled38` (38 cells) | off | 38.0, 38.0, 38.0 | 38 cells, 215–218 | 3.6M |
+| `unrolled38` (38 cells) | **on** | 38.0, 37.9, 38.0 | 38 cells, 216 | 3.2M |
+| `short27r` (27 cells) | off | 27.1, 27.1, 31.2 | 27 cells, 178–180 | 3.7M |
+| `short27r` (27 cells) | **on** | 27.1, 27.2, 26.9 | 27 cells, 177–180 | 3.7M |
+
+**Nothing moves.** Not by one cell, in any of the twelve. The same billion
+instructions applied to the 64-cell ancestor takes it down to somewhere between
+27 and 42 cells; applied to either evolved champion it changes the mean genome
+length by less than a tenth of a cell. These are not way-stations, they are
+attractors, and a billion instructions of the other regime does not shift them.
+
+But the two are frozen for opposite reasons, and one deletion each is enough to
+show it. Take every single-cell deletion of both champions and culture it:
+
+| | deletions that still replicate | that still go round again | best of them |
+|---|---:|---:|---|
+| `unrolled38`, 38 cells, 261 per birth | **2 of 38** | 2 | 359 alone, **407** per birth — much worse |
+| `short27r`, 27 cells, 219 per birth | **9 of 27** | 5 | 171 alone — cheaper than its parent |
+
+The 38-cell creature sits on a genuine local optimum: almost nothing one
+deletion away survives at all, the two that do are half as fast, and both lose
+their head-to-head 214 to nothing. Its plateau is the ordinary kind — it is
+there because there is nowhere better to go.
+
+The 27-cell creature's plateau is the strange kind. A third of its deletions
+work, five of them repeat, they are cheaper, most of them win a head-to-head
+against it (finding 17), and the soup manufactures them continuously — and it
+sits at 27 cells for ten billion instructions anyway. Whatever holds it there is
+not the shape of the fitness landscape around it.
+
+Two five-billion runs from `unrolled38` with flaws on are queued to ask whether
+its plateau is absolute or merely slow.
+
+That is where this stands. The most likely remaining explanation for the 27-cell
+plateau is the one none of these assays can reach: a variant in the real soup arrives as one
+individual among nine hundred near-relatives that are producing variants of
+their own, while every assay here hands it twelve clean copies and one clean
+opponent. If that is right, the number this world converges on says more about
+invasion under mutation pressure than about what a short program can do.
 
 ## How this compares with what was already known
 
