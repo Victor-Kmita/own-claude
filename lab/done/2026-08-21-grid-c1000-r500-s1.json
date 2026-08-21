@@ -1,0 +1,53 @@
+{
+ "id": "2026-08-21-grid-c1000-r500-s1",
+ "kind": "soup_run",
+ "priority": 9,
+ "created_by": "cloud",
+ "why": "finding 16 says copy errors and cosmic rays share one budget but a 2x2 at one level cannot say whether the two simply add or interact. this is the dose-response grid: three copy rates crossed with three cosmic rates, flaws off, two seeds each",
+ "expect_hours": 0.06,
+ "params": {
+  "name": "grid-c1000-r500-s1",
+  "instructions": 60000000,
+  "seed": 1,
+  "copy_mutation": 1000,
+  "cosmic": 500,
+  "flaw": 0,
+  "sample_every": 3000000
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-21T20:03:07+00:00",
+ "claimed_pid": 4015712,
+ "cores": 12,
+ "status": "ok",
+ "host": "nexus",
+ "finished": "2026-08-21T20:04:24+00:00",
+ "seconds": 75.2,
+ "returncode": 0,
+ "produced": [
+  "experiments/results/grid-c1000-r2000-s1.json",
+  "experiments/results/grid-c1000-r2000-s2.json",
+  "experiments/results/grid-c1000-r500-s1.json"
+ ],
+ "log_tail": [
+  "    51.0M  alive= 437 types= 282  H= 7.73  size~  63.4  dom=0064upf (6%)  foreign=8% fbreed=8% gen=254",
+  "    54.0M  alive= 394 types= 238  H= 7.50  size~  62.8  dom=0064upf (4%)  foreign=10% fbreed=12% gen=266",
+  "    57.0M  alive= 408 types= 270  H= 7.78  size~  62.8  dom=0064syx (2%)  foreign=10% fbreed=12% gen=280",
+  "    60.0M  alive= 424 types= 266  H= 7.71  size~  61.5  dom=0064vyz (3%)  foreign=14% fbreed=8% gen=293",
+  "",
+  "wrote /home/cld/own-claude/experiments/results/grid-c1000-r500-s1.json  (834,501 instructions/sec)",
+  "",
+  " genotype    n  size  births   fid          kind   cost   fcalls parent",
+  "  0064vyz   12    64     160  0.90    replicator    415        0 0064rnt",
+  "  0064ygn   10    64      28  0.93    replicator    418        0 0064yat",
+  "  0064wpp    9    64     143  0.96    replicator    417        0 0064vvt",
+  "  0064wyt    8    64      74  0.99    replicator    415        0 0066bgx",
+  "  0065cak    7    65      67  0.97    replicator    419        0 0065byu",
+  "  0065ciw    6    65      19  0.90    replicator    419       11 0065ccn",
+  "  0008aen    6     8       6  0.00         inert      -       26 0062dcn",
+  "  0063egg    5    63      47  0.89    replicator    411        0 0063ecu",
+  "  0064xyt    5    64      35  0.86    replicator    415        0 0064xul",
+  "  0063ejr    5    63      21  0.91    replicator    412        2 0063ejg",
+  "  0009aae    5     9     728  0.01         inert      -       28 0064abu",
+  "  0010aab    5    10     413  0.01         inert      -       16 0064ffb"
+ ]
+}
