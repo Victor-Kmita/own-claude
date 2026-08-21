@@ -1,0 +1,52 @@
+{
+ "id": "2026-08-21-grid-c1000-r167-s1",
+ "kind": "soup_run",
+ "priority": 9,
+ "created_by": "cloud",
+ "why": "finding 16 says copy errors and cosmic rays share one budget but a 2x2 at one level cannot say whether the two simply add or interact. this is the dose-response grid: three copy rates crossed with three cosmic rates, flaws off, two seeds each",
+ "expect_hours": 0.06,
+ "params": {
+  "name": "grid-c1000-r167-s1",
+  "instructions": 60000000,
+  "seed": 1,
+  "copy_mutation": 1000,
+  "cosmic": 167,
+  "flaw": 0,
+  "sample_every": 3000000
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-21T20:00:36+00:00",
+ "claimed_pid": 4016077,
+ "cores": 12,
+ "status": "ok",
+ "host": "nexus",
+ "finished": "2026-08-21T20:02:06+00:00",
+ "seconds": 87.8,
+ "returncode": 0,
+ "produced": [
+  "experiments/results/grid-c1000-r167-s1.json",
+  "experiments/results/grid-c1000-r167-s2.json"
+ ],
+ "log_tail": [
+  "    51.0M  alive= 457 types= 351  H= 8.23  size~  57.4  dom=0058bkv (2%)  foreign=44% fbreed=48% gen=210",
+  "    54.0M  alive= 412 types= 339  H= 8.26  size~  60.1  dom=0061dyl (2%)  foreign=28% fbreed=22% gen=222",
+  "    57.0M  alive= 418 types= 336  H= 8.21  size~  62.3  dom=0059bka (2%)  foreign=41% fbreed=46% gen=233",
+  "    60.0M  alive= 334 types= 271  H= 7.82  size~  64.3  dom=0008afr (5%)  foreign=30% fbreed=38% gen=247",
+  "",
+  "wrote /home/cld/own-claude/experiments/results/grid-c1000-r167-s1.json  (852,632 instructions/sec)",
+  "",
+  " genotype    n  size  births   fid          kind   cost   fcalls parent",
+  "  0008afr   16     8      17  0.00         inert      -       24 0059blb",
+  "  0059bwf   12    59      13  0.00 host-dependent      -        8 0029act",
+  "  0059bup    4    59      11  0.73    replicator    382        0 0069awy",
+  "  0008agg    4     8       4  0.00         inert      -        4 0061ehp",
+  "  0059bwk    3    59       3  0.33    replicator    438        1 0060ckp",
+  "  0057bst    3    57       4  0.75 self-assisted      -       39 0073aln",
+  "  0061egy    3    61       5  0.60 self-assisted      -        0 0057bra",
+  "  0057bng    3    57      92  0.38 self-assisted      -        0 0060cik",
+  "  0057bta    3    57       4  0.50 self-assisted      -        0 0063fbv",
+  "  0059bvq    2    59       3  0.67    replicator    380        6 0059bnh",
+  "  0061ehi    2    61       2  0.50 self-assisted      -        0 0088adr",
+  "  0074ahe    2    74       2  0.50 self-assisted      -        0 0057bng"
+ ]
+}
