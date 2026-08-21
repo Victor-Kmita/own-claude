@@ -1,0 +1,51 @@
+{
+ "id": "2026-08-21-grid-c1000-r167-s2",
+ "kind": "soup_run",
+ "priority": 9,
+ "created_by": "cloud",
+ "why": "finding 16 says copy errors and cosmic rays share one budget but a 2x2 at one level cannot say whether the two simply add or interact. this is the dose-response grid: three copy rates crossed with three cosmic rates, flaws off, two seeds each",
+ "expect_hours": 0.06,
+ "params": {
+  "name": "grid-c1000-r167-s2",
+  "instructions": 60000000,
+  "seed": 2,
+  "copy_mutation": 1000,
+  "cosmic": 167,
+  "flaw": 0,
+  "sample_every": 3000000
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-21T20:00:54+00:00",
+ "claimed_pid": 4015850,
+ "cores": 12,
+ "status": "ok",
+ "host": "nexus",
+ "finished": "2026-08-21T20:02:04+00:00",
+ "seconds": 67.9,
+ "returncode": 0,
+ "produced": [
+  "experiments/results/grid-c1000-r167-s2.json"
+ ],
+ "log_tail": [
+  "    51.0M  alive= 195 types= 162  H= 7.14  size~  57.1  dom=0062axt (4%)  foreign=96% fbreed=99% gen=180",
+  "    54.0M  alive=  86 types=  78  H= 6.20  size~  58.1  dom=0015aaw (6%)  foreign=99% fbreed=100% gen=180",
+  "    57.0M  alive=  87 types=  79  H= 6.22  size~  58.7  dom=0015aaw (6%)  foreign=99% fbreed=100% gen=180",
+  "    60.0M  alive=  87 types=  79  H= 6.22  size~  58.7  dom=0015aaw (6%)  foreign=100% fbreed=100% gen=180",
+  "",
+  "wrote /home/cld/own-claude/experiments/results/grid-c1000-r167-s2.json  (998,142 instructions/sec)",
+  "",
+  " genotype    n  size  births   fid          kind   cost   fcalls parent",
+  "  0015aaw    5    15       7  0.00         inert      -    28393 0062axt",
+  "  0064bfy    2    64       2  0.00    replicator    416    14888 0064bfw",
+  "  0064bgd    2    64       2  0.50    replicator    416    16084 0064bga",
+  "  0062axt    2    62       7  0.43    replicator    402    26806 0062axs",
+  "  0062ayf    2    62       2  0.50    replicator    463    17510 0062aya",
+  "  0066bab    1    66       1  0.00         inert      -    37986 0066azd",
+  "  0066bac    1    66       1  0.00 host-dependent      -    13930 0066azn",
+  "  0066bai    1    66       1  0.00         inert      -    22938 0066awj",
+  "  0029abe    1    29       1  0.00         inert      -    19156 0056bpr",
+  "  0056bqj    1    56       1  0.00    replicator    366    11845 0056box",
+  "  0058bcj    1    58       1  0.00 host-dependent      -    28228 0054acw",
+  "  0064bfs    1    64       1  0.00 host-dependent      -    20816 0064bfc"
+ ]
+}
