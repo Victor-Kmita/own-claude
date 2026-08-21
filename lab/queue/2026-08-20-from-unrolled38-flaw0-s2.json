@@ -15,8 +15,8 @@
    1000000000
   ]
  },
- "claimed_by": "nexus",
- "claimed_at": "2026-08-20T22:04:37+00:00",
- "claimed_pid": 4015712,
- "cores": 12
+ "cores": 12,
+ "requeued_from": "nexus",
+ "requeue_count": 1,
+ "requeue_reason": "claimed 21.9h ago with no log at all (expected 0.6h)"
 }
