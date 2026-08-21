@@ -8,6 +8,15 @@
  "params": {
   "name": "from-unrolled38-long-s1",
   "script": "route_cross.py",
-  "argv": ["unrolled38", 1000, 11, 5000000000]
- }
+  "argv": [
+   "unrolled38",
+   1000,
+   11,
+   5000000000
+  ]
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-21T20:06:35+00:00",
+ "claimed_pid": 4016077,
+ "cores": 12
 }
