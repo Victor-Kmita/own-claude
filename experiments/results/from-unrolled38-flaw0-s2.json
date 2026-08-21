@@ -15,8 +15,8 @@
   "ancestor_size": 38
  },
  "extinct": false,
- "elapsed_sec": 1750.1,
- "instructions_per_sec": 571387,
+ "elapsed_sec": 1459.4,
+ "instructions_per_sec": 685206,
  "totals": {
   "clock": 1000010360,
   "births": 3599060,
