@@ -1,0 +1,17 @@
+{
+ "id": "2026-08-21-grid-c1000-r167-s1",
+ "kind": "soup_run",
+ "priority": 9,
+ "created_by": "cloud",
+ "why": "finding 16 says copy errors and cosmic rays share one budget but a 2x2 at one level cannot say whether the two simply add or interact. this is the dose-response grid: three copy rates crossed with three cosmic rates, flaws off, two seeds each",
+ "expect_hours": 0.06,
+ "params": {
+  "name": "grid-c1000-r167-s1",
+  "instructions": 60000000,
+  "seed": 1,
+  "copy_mutation": 1000,
+  "cosmic": 167,
+  "flaw": 0,
+  "sample_every": 3000000
+ }
+}

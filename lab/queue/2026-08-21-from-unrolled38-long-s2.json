@@ -1,0 +1,13 @@
+{
+ "id": "2026-08-21-from-unrolled38-long-s2",
+ "kind": "experiment",
+ "priority": 13,
+ "created_by": "cloud",
+ "why": "a billion instructions of flaws did not shorten the unrolled 38-cell champion by a single cell in any of three seeds. five billion asks whether the plateau is slow or absolute",
+ "expect_hours": 3,
+ "params": {
+  "name": "from-unrolled38-long-s2",
+  "script": "route_cross.py",
+  "argv": ["unrolled38", 1000, 12, 5000000000]
+ }
+}
