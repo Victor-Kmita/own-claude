@@ -212,7 +212,7 @@ mine, and two of them corrected the instrument rather than the result.
 | 13 | the mutation mode I was missing doubles the rate of evolution | 64 → 27 cells |
 | 14 | about a hundred distinct behaviours, however many genomes | 22–121 phenotypes |
 | 15 | evolvability is expensive | a fifth of all reproduction |
-| 16 | a flaw kills the daughter, a copy error edits her; only edits count | 2% vs 29% still work |
+| 16 | a flaw kills the daughter, a copy error edits her; the two editing sources multiply | 2% vs 29% viable; 141 predicted, 18 observed |
 | 17 | four seeds stop at the same length; shorter and better exists one deletion away | 27 cells, and 9 of 13 shorter variants win |
 | 18 | the cost of a daughter alone is not its cost in a population | 178 alone, 1,573 in company |
 | 19 | both evolved endpoints are frozen; only one of them is an optimum | 38.0 cells after a billion more |
@@ -968,6 +968,35 @@ two interacting — a genome already carrying copy errors being more easily
 finished off by a ray. Separating those needs a dose–response grid, not four
 corners.
 
+**The grid is in, and the two do not simply add.** Three copy rates crossed with
+three cosmic rates, flaws off, two seeds each, generation depth reached in 60M
+instructions:
+
+| | cosmic 1/2,000 | cosmic 1/500 | cosmic 1/167 |
+|---|---:|---:|---:|
+| **copy 1/1,000** | 354, 353 | 303, 320 | 252, 193 |
+| **copy 1/250** | 332, 320 | 289, *124* | 254, 200 |
+| **copy 1/83** | 270, 274 | 248, 264 | **15, 22** |
+
+Move either knob on its own from the mildest setting to the harshest and it
+costs about a quarter to a third of the generation depth: 354 down to 272 for
+copy errors alone, down to 223 for rays alone. Move both and it costs
+ninety-five per cent. An additive model predicts 141 generations for that
+corner and a multiplicative one predicts 171; the observed value is 18.
+
+So the two editing sources are **synergistic, not additive**, by a factor of
+about eight. That is what the 2×2 could not say and it is worth saying plainly,
+because the ledger arithmetic in this finding — events per replication, summed
+across sources — is exactly the model the corner refutes. Whatever the right
+quantity is, it is not a sum.
+
+The italicised 124 is the other thing to notice. At copy 1/250 with cosmic
+1/500, one seed reached 289 generations and the other collapsed to 124 with mean
+genome length at 38 cells and not one self-sufficient replicator left in its
+census, while its twin kept eleven. A boundary where two seeds of the same
+configuration land on opposite sides is what a threshold looks like from close
+up, and it is the reason two seeds per cell is not enough to place one.
+
 That also settles what finding 12 measured. Its sweep moved both editing
 sources together, so its threshold — one mutation per genome per replication —
 is a threshold on their sum, and the cross above says the sum is the right thing
@@ -1276,8 +1305,10 @@ against it (finding 17), and the soup manufactures them continuously — and it
 sits at 27 cells for ten billion instructions anyway. Whatever holds it there is
 not the shape of the fitness landscape around it.
 
-Two five-billion runs from `unrolled38` with flaws on are queued to ask whether
-its plateau is absolute or merely slow.
+Two five-billion runs from `unrolled38` with flaws on now answer whether its
+plateau is absolute or merely slow: after five billion instructions and thirty
+thousand generations, mean genome length is **37.82 and 37.95 cells**. It is
+absolute at every timescale this project can reach.
 
 That is where this stands. The most likely remaining explanation for the 27-cell
 plateau is the one none of these assays can reach: a variant in the real soup arrives as one
