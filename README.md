@@ -1156,8 +1156,13 @@ per birth and the unrolled one 261. A better loop over 38 cells loses to an
 ordinary loop over 27.
 
 Ray's Tierra bottomed out at 22, 27 and 30 cells. This world reaches the middle
-of that range and stops — and now I know that stopping is not the same as
-bottoming out, which raises the obvious question about his numbers too.
+of that range and stops — and stopping is not the same as bottoming out. I have
+since gone back to his paper, and he says the same thing about his own runs in
+almost the same words; `docs/RELATED-WORK.md` quotes him. He also reports his
+22-instruction creature's *second* daughter at 142 instructions against the
+first at 146, so his optimization figure already carried the check that finding
+18 is about, and the two smallest creatures the two systems have ever produced
+turn out to be the same program instruction for instruction.
 
 ### 18. What a daughter costs a population, which is not what it costs alone
 
@@ -1240,7 +1245,12 @@ Twelve runs of a billion instructions each, started from the two champions in
 | `short27r` (27 cells) | off | 27.1, 27.1, 31.2 | 27 cells, 178–180 | 3.7M |
 | `short27r` (27 cells) | **on** | 27.1, 27.2, 26.9 | 27 cells, 177–180 | 3.7M |
 
-**Nothing moves.** Not by one cell, in any of the twelve. The same billion
+**Nothing moves.** Not by one cell, in any of the twelve. Ray saw this in
+Tierra in 1991 — "each run decreases to a size limit which it cannot proceed
+past even if it is allowed to run much longer" — and concluded that the system
+reaches a local optimum it cannot easily leave. The first half of that is a
+replication. The second half is an inference, and it is the part these deletion
+assays can test. The same billion
 instructions applied to the 64-cell ancestor takes it down to somewhere between
 27 and 42 cells; applied to either evolved champion it changes the mean genome
 length by less than a tenth of a cell. These are not way-stations, they are
@@ -1259,7 +1269,8 @@ deletion away survives at all, the two that do are half as fast, and both lose
 their head-to-head 214 to nothing. Its plateau is the ordinary kind — it is
 there because there is nowhere better to go.
 
-The 27-cell creature's plateau is the strange kind. A third of its deletions
+The 27-cell creature's plateau is the strange kind, and it is where Ray's
+inference fails. A third of its deletions
 work, five of them repeat, they are cheaper, most of them win a head-to-head
 against it (finding 17), and the soup manufactures them continuously — and it
 sits at 27 cells for ten billion instructions anyway. Whatever holds it there is

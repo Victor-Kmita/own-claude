@@ -352,10 +352,149 @@ in this repository runs at.
 | survival of the flattest | Wilke et al. 2001 | reproduced, with the neighbourhood measured directly |
 | strength of selection | needed to interpret any competition result | measured: blind below 2%, decisive above 8% |
 
+## Checked against the primary sources, August 2026
+
+Three claims in this document and in the README rested on my reading of
+secondary descriptions. I went back to the sources. Two came out better than I
+expected and one came out worse.
+
+### Ray reported my finding 19 in 1991, and I can now test what he assumed
+
+Finding 19 says genome length here does not descend, it freezes: a run reaches a
+length and sits at it for billions of instructions. Ray's own words, from
+*Evolution, Ecology and Optimization of Digital Organisms*, section 3.1:
+
+> Also, each run decreases to a size limit which it cannot proceed past even if
+> it is allowed to run much longer. However, different runs reach different
+> plateaus of efficiency. The smallest limiting genome size seen has been 22
+> instructions, while other runs reached limits of 27 and 30 instructions.
+> Evidently, the system can reach a local optima from which it cannot easily
+> evolve to the global optima.
+
+That is the same phenomenon, described thirty-five years earlier, down to the
+spread of endpoints across seeds. So finding 19 is a replication, not a
+discovery, and the README now says so.
+
+What is new is the last sentence. Ray inferred *local optima* from the fact that
+the runs stop. That inference is testable and I tested it: enumerate every
+single-cell deletion of the champion and culture each one. For the 38-cell
+plateau he is right — two of thirty-eight deletions survive, both are half as
+fast, and both lose their head-to-head 214 to nothing. For the 27-cell plateau
+he is wrong: nine of twenty-seven deletions replicate, five of them repeat, they
+are cheaper, most of them beat the champion in a dish, and the soup manufactures
+them every few thousand births. **A plateau in this kind of system is not
+evidence of a local optimum, and the two cases are distinguishable with an
+afternoon of assays.**
+
+### Ray's cost numbers already had the column I spent a day adding
+
+Finding 18 is that a cost measured with one creature alone is not what a daughter
+costs a population, and that the tell is whether the creature makes a *second*
+daughter. Ray's genotype records carry exactly that, and always did. From the
+listing of his ancestor:
+
+```
+1st_daughter: flags:0 inst:839 mov_daught:80
+2nd_daughter: flags:0 inst:813 mov_daught:80
+```
+
+and of his smallest creature:
+
+```
+genotype: 0022abn   parent genotype: 0022aak
+1st_daughter: flags:1 inst:146 mov_daught:22 breed_true:1
+2nd_daughter: flags:0 inst:142 mov_daught:22 breed_true:1
+```
+
+Two daughters, both costed, plus `breed_true` — which is my `fidelity` under
+another name. His 22-instruction creature spends 146 instructions on its first
+daughter and 142 on its second, so it is a genuine repeater and the 5.75-fold
+optimization he reports is real by the standard I only started applying
+yesterday. My `describe()` reported one daughter and called it the cost, which
+is how a one-shot ended up as `short27.sm`. The 1991 paper had the column I was
+missing.
+
+**So the comparison of numbers is fair after all, and it is this:**
+
+| | genome | instructions per daughter | per instruction copied |
+|---|---:|---:|---:|
+| Ray's ancestor | 80 | 839 | 10 |
+| Ray's best | 22 | 146 | 6 |
+| my ancestor | 64 | 410 | 6.4 |
+| my best (seed 5, 27 cells) | 27 | 180 alone, 219 in a population | 6.7 |
+
+His ancestor starts at ten instructions executed per instruction copied and
+evolution takes it to six. Mine was hand-written at 6.4 and has not got below
+6.4 except in the one run that unrolled its loop, which reached 5.68 and stayed
+long. This is the sentence the README has carried from the beginning — "mine
+starts where his finished" — and it is now checked rather than inferred.
+
+### The two smallest creatures ever produced by the two systems are the same program
+
+This one I did not expect. Ray's 22-instruction creature, from his Appendix D,
+against my 27-cell one, from `experiments/ancestors/short27.sm`:
+
+| | Tierra, 22 instructions | this world, 27 cells |
+|---|---|---|
+| leading template | `nop_0` | `.t 1` |
+| find own start | `adrb` | `adrb` |
+| a `divide` that errors on the first pass | `divide` — *"fails the first time it is executed"* | `divide` — with no daughter yet, an error |
+| find own end | `adrf` | `adrf` |
+| compute length | `sub_ac`, `sub_ab` | `subCAB` |
+| allocate | `mal` | `mal` |
+| save the return address on the stack | `push_bx` | `pushB` |
+| copy loop | `mov_iab`, `dec_c`, `if_cz`, `inc_a`, `inc_b`, `jmpb` | `movii`, `decC`, `ifz`, `incA`, `incB`, `jmpb` |
+| instructions executed per loop | **6** | **6** |
+| how the loop exits | `ret` to the pushed address — a computed jump with no matching `call` | `ret` in seeds 5 and 10; seed 6 falls into `divide` and wraps |
+
+Different instruction sets, different ancestors, different authors, thirty-five
+years apart, and the same twenty-odd instruction architecture — including two
+tricks I would have called quirks of my own soup if I had not gone and looked.
+The dead `divide` at the top, which wastes an error on every first pass and is
+kept anyway because it saves the cells a proper guard would cost. And `ret` used
+as an indirect jump to an address pushed by hand, with no `call` anywhere in the
+genome, which is the same idea as reusing the stack as a register.
+
+I take this as the strongest evidence in this project that the results here are
+about self-replicating programs under selection and not about my particular
+sixty-four-cell ancestor.
+
+### Lethal mutagenesis is a real distinction, and finding 16 is only half of it
+
+Finding 16 says flaws kill the daughter while copy errors edit her, and that only
+edits count toward the threshold. I suspected this mapped onto a known
+distinction, and it does — but not as neatly as I hoped. Bull, Sanjuán and Wilke,
+*Theory of Lethal Mutagenesis for Viruses* (J. Virol. 2007), separate the two:
+
+> an error catastrophe is an evolutionary shift in genotype space, whereas
+> extinction is a demographic process, a drop in the absolute abundance of
+> individuals
+
+with extinction when `e^(−Ud) × R_max < 1` — each genotype leaves fewer than one
+successful descendant on average. Their lethal mutations *do* count, toward
+extinction.
+
+So the mapping is this, and it is a statement about my world's construction
+rather than about mutation. **This soup cannot show lethal mutagenesis.**
+Population size is set by memory and the reaper, not by fecundity: a daughter
+that dies frees the block her successor needs, so killing offspring costs
+throughput and not abundance. `R_max` is effectively unbounded here. What is
+left is the other process — the evolutionary shift in genotype space — and that
+one is driven by the viable mutants only, which is what the flaws-versus-copy
+result measures. The observed collapse has the right signature for it too:
+genomes bloating from 27 to 157 cells while the census fills with debris.
+
+The 2007 paper also notes that an error catastrophe "can delay or even prevent
+extinction by shifting the population to genotypes that are robust to mutation",
+which is finding 6 here (survival of the flattest) arriving from the other
+direction.
+
 ## Caveats about this document
 
 I read one primary source in full (Ray), one methodological paper in full
-(Standish), a review, and abstracts or summaries of the rest; the Nature papers
+(Standish), a review, and abstracts or summaries of the rest; the section above
+went back to Ray's text and to Bull, Sanjuán and Wilke directly and quotes them,
+so the four claims in it are the best-supported in this document. the Nature papers
 are paywalled and I worked from their abstracts and from secondary descriptions.
 Where a number appears above it came from the source named beside it, and where
 I could not extract a number I have said so rather than filling it in from

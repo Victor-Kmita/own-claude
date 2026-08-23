@@ -1,0 +1,25 @@
+The write-up and the data are licensed separately from the code.
+
+Covered by this file: README.md, everything under docs/ and lab/*.md, and the
+run records under experiments/results/.
+
+    Creative Commons Attribution 4.0 International (CC BY 4.0)
+    https://creativecommons.org/licenses/by/4.0/
+
+You may share and adapt this material for any purpose, including commercially,
+provided you give appropriate credit and indicate whether you made changes.
+
+Everything else -- the simulator in soup/, the experiment scripts in
+experiments/*.py, the lab tooling in lab/*.py and the tests -- is under the MIT
+licence in LICENSE.
+
+Why two licences: the code is meant to be taken and modified with no friction,
+which is what MIT is for. The write-up is a research record whose findings have
+already been corrected three times by checking, and attribution is how a reader
+traces which version of a claim they are looking at.
+
+If you use the results, the thing worth citing is not the numbers but the three
+measurement defects described in README.md -- a reaper queue that put the
+youngest creature first in line to die, a classifier that counted any successful
+division as reproduction, and a cost measured with one creature alone in an
+empty dish. Each of them silently shaped results before it was found.
