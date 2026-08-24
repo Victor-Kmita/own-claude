@@ -1,0 +1,62 @@
+{
+ "id": "2026-08-22-ancb-flaw0-s3",
+ "kind": "experiment",
+ "priority": 7,
+ "created_by": "cloud",
+ "why": "every finding in this project comes from one hand-written 64-cell ancestor. ancestor-b is a second one, written from scratch with no subroutine, three-bit templates and a different register discipline: 53 cells, 495 instructions per daughter, 9.34 per cell against the first ancestor's 6.41. it starts far less efficient, which is roughly where Ray's ancestor started, so there is room for the optimisation the first ancestor never needed. do findings 4, 5, 13 and 17 reproduce from it",
+ "expect_hours": 0.6,
+ "params": {
+  "name": "from-ancestor-b-flaw0-s3",
+  "script": "route_cross.py",
+  "argv": [
+   "ancestor-b",
+   0,
+   3,
+   1000000000
+  ]
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-24T08:07:50+00:00",
+ "claimed_pid": 4016014,
+ "cores": 12,
+ "status": "ok",
+ "host": "nexus",
+ "finished": "2026-08-24T08:33:29+00:00",
+ "seconds": 1530.9,
+ "returncode": 0,
+ "produced": [
+  "experiments/results/from-ancestor-b-flaw0-s1.checkpoint.json",
+  "experiments/results/from-ancestor-b-flaw0-s1.json",
+  "experiments/results/from-ancestor-b-flaw0-s2.checkpoint.json",
+  "experiments/results/from-ancestor-b-flaw0-s2.json",
+  "experiments/results/from-ancestor-b-flaw0-s3.checkpoint.json",
+  "experiments/results/from-ancestor-b-flaw0-s3.json",
+  "experiments/results/from-ancestor-b-flaw1000-s1.checkpoint.json",
+  "experiments/results/from-ancestor-b-flaw1000-s1.json",
+  "experiments/results/from-ancestor-b-flaw1000-s2.checkpoint.json",
+  "experiments/results/from-ancestor-b-flaw1000-s2.json",
+  "experiments/results/from-ancestor-b-flaw1000-s3.checkpoint.json"
+ ],
+ "log_tail": [
+  "   830.0M  alive= 489 types= 224  H= 7.30  size~  51.0  dom=0051tas (4%)  foreign=7% fbreed=27% gen=3948",
+  "   840.0M  alive= 564 types= 247  H= 7.40  size~  50.5  dom=0051yuu (3%)  foreign=8% fbreed=17% gen=3998",
+  "   850.0M  alive= 488 types= 237  H= 7.14  size~  50.7  dom=0051esc (5%)  foreign=8% fbreed=31% gen=4046",
+  "   860.0M  alive= 489 types= 233  H= 7.21  size~  50.5  dom=0051ccz (9%)  foreign=9% fbreed=33% gen=4094",
+  "   870.0M  alive= 480 types= 222  H= 6.88  size~  50.6  dom=0051ipi (7%)  foreign=5% fbreed=23% gen=4143",
+  "   880.0M  alive= 488 types= 235  H= 7.08  size~  50.8  dom=0051hvy (7%)  foreign=6% fbreed=22% gen=4192",
+  "   890.0M  alive= 669 types= 268  H= 7.24  size~  50.8  dom=0051oiz (8%)  foreign=6% fbreed=11% gen=4241",
+  "   900.0M  alive= 510 types= 244  H= 7.42  size~  51.1  dom=0051rje (4%)  foreign=7% fbreed=25% gen=4289",
+  "   910.0M  alive= 554 types= 252  H= 7.40  size~  50.5  dom=0051vsh (4%)  foreign=10% fbreed=26% gen=4339",
+  "   920.0M  alive= 484 types= 226  H= 7.25  size~  51.3  dom=0051vsh (4%)  foreign=6% fbreed=25% gen=4388",
+  "   930.0M  alive= 483 types= 223  H= 7.25  size~  50.8  dom=0051bsx (5%)  foreign=7% fbreed=25% gen=4438",
+  "   940.0M  alive= 482 types= 252  H= 7.43  size~  50.7  dom=0051hth (4%)  foreign=7% fbreed=29% gen=4488",
+  "   950.0M  alive= 487 types= 249  H= 7.42  size~  50.4  dom=0051gay (4%)  foreign=7% fbreed=28% gen=4537",
+  "   960.0M  alive= 550 types= 229  H= 7.17  size~  50.7  dom=0051kqr (5%)  foreign=6% fbreed=16% gen=4587",
+  "   970.0M  alive= 508 types= 238  H= 7.25  size~  50.7  dom=0051mhb (7%)  foreign=8% fbreed=24% gen=4636",
+  "   980.0M  alive= 484 types= 219  H= 7.22  size~  50.1  dom=0047axa (6%)  foreign=8% fbreed=26% gen=4686",
+  "   990.0M  alive= 528 types= 159  H= 5.13  size~  46.4  dom=0047axa (31%)  foreign=7% fbreed=24% gen=4733",
+  "  1000.0M  alive= 526 types= 170  H= 5.41  size~  46.6  dom=0047bkf (26%)  foreign=4% fbreed=8% gen=4779",
+  "",
+  "wrote /home/cld/own-claude/experiments/results/from-ancestor-b-flaw0-s3.json  (653,651 instructions/sec)"
+ ]
+}
