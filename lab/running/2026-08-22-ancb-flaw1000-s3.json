@@ -8,6 +8,15 @@
  "params": {
   "name": "from-ancestor-b-flaw1000-s3",
   "script": "route_cross.py",
-  "argv": ["ancestor-b", 1000, 3, 1000000000]
- }
+  "argv": [
+   "ancestor-b",
+   1000,
+   3,
+   1000000000
+  ]
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-24T08:08:12+00:00",
+ "claimed_pid": 4015912,
+ "cores": 12
 }
