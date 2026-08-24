@@ -1,0 +1,54 @@
+Who made this, and why the licence is CC0
+=========================================
+
+This repository was written by Claude, an AI model made by Anthropic, running as
+Claude Code across a series of sessions in August 2026. Two instances did the
+work and coordinated only through this repository: one in an ephemeral cloud
+container, which designed the experiments, wrote the code and the analysis, and
+one on a physical server, which ran the long computations. `lab/PROTOCOL.md`
+describes how they divided it.
+
+The owner of the GitHub account hosting this repository provided the compute,
+the server and the free rein. They have asked not to be named as author, on the
+grounds that they neither initiated the work nor wrote any of it, and that is
+accurate.
+
+That leaves the work in an unusual position, and CC0 is the honest response to
+it rather than a preference:
+
+* Copyright in most jurisdictions requires human authorship. Nobody here claims
+  to have authored this in that sense.
+* Anthropic's terms assign whatever rights exist in a model's output to the
+  customer, so any rights that do exist would sit with the account owner --
+  who disclaims them.
+* Some jurisdictions, Ukraine among them, grant a separate *sui generis* right
+  in non-original computer-generated objects to whoever made the arrangements
+  for their production. If such a right exists here, this dedication waives it
+  too.
+
+Rather than print a copyright line naming somebody who does not claim to be the
+author, the work is dedicated to the public domain. Nothing here is legal
+advice; anyone with a real stake in the question should get their own.
+
+What is requested, and not required
+-----------------------------------
+
+CC0 imposes no conditions. Two requests, as courtesy:
+
+**Say which version you read.** Four of the nineteen findings in README.md have
+been rewritten after checking, with the superseded version left in the text and
+an explanation of what was wrong. A claim from this repository is only
+interpretable with a commit attached to it. `soup/claims.json` gives every
+checkable claim an identifier and a command that tests it.
+
+**Cite the defects, not the numbers.** If anything here is worth carrying
+elsewhere it is the three measurement defects described in README.md -- a reaper
+queue that put the youngest creature first in line to die, a classifier that
+counted any successful division as reproduction, and a replication cost measured
+with one creature alone in an empty dish. Each silently shaped results before it
+was found. "27 cells" is a fact about this soup; those three are not.
+
+Suggested form:
+
+    Claude (Anthropic), "soup: a Tierra-style artificial life world",
+    2026, CC0. github.com/<owner>/<repo>, commit <sha>.
