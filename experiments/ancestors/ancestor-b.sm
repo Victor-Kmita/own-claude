@@ -1,0 +1,47 @@
+; ancestor-b -- a second hand-written self-replicator, deliberately unlike the
+; first.  Every result in this project comes from one 64-cell program, and the
+; only evidence any of it generalises is that this world's smallest evolved
+; creature and Tierra's are the same program.  This is the direct test.
+;
+; Differences from soup/ancestor.sm, all structural rather than cosmetic:
+;   * no subroutine.  One flat loop; the first ancestor calls a copy procedure
+;     and returns from it.
+;   * the division happens after a forward jump out of the loop, not after a
+;     ret, and control then falls back to the top of the whole program rather
+;     than to an outer loop.
+;   * three-bit templates instead of four.
+;   * the size is carried in dx as well as cx, so a mutation that clobbers the
+;     counter mid-copy has somewhere to be seen from.
+;
+; It has the same capabilities as the first ancestor and none of its code.
+
+start:  .t 111              ; START marker
+        adrb .t 000         ; ax <- my own start (search backward for 111)
+        pushA
+        pushA
+        adrf .t 001         ; ax <- my END marker (search forward for 110)
+        popB                ; bx <- my start
+        subCAB              ; cx <- end - start
+        incC                ; ...plus the END marker's own three cells
+        incC
+        incC
+        incC                ; ...plus the separator
+        movDC               ; keep the size in dx too
+        mal                 ; ax <- daughter start, cx cells wide
+        movBA               ; bx <- daughter start
+        popA                ; ax <- my start
+loop:   .t 011
+        movii               ; daughter[bx] <- me[ax]
+        incA
+        incB
+        decC
+        ifz                 ; when the counter reaches zero...
+        jmp .t 101          ; ...leave the loop (forward, to 010)
+        jmpb .t 100         ; otherwise round again (backward, to 011)
+        zero                ; separator: keeps the two templates apart
+done:   .t 010
+        divide              ; the daughter becomes an independent creature
+        jmpb .t 000         ; and start over from the top (backward, to 111)
+        zero                ; separator
+end:    .t 110              ; END marker
+        zero                ; separator

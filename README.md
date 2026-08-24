@@ -1418,7 +1418,12 @@ identical.
 ## Limitations
 
 * One ancestor, one instruction set. Nothing here shows the results are general
-  rather than particular to this 64-cell program.
+  rather than particular to this 64-cell program, except the convergence with
+  Tierra in `docs/RELATED-WORK.md`. A second hand-written ancestor now exists —
+  `experiments/ancestors/ancestor-b.sm`, 53 cells, no subroutine, three-bit
+  templates, 495 instructions per daughter against the first's 410 — and six runs
+  from it are on the compute server. Until they come back, read every finding
+  below as a statement about one program.
 * The longest finished runs are 10 billion instructions. Genome length stops
   falling long before that, but finding 17 shows the plateau is not a limit:
   shorter, cheaper, competitive variants exist one mutation away and keep being
