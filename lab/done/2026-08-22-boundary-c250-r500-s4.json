@@ -1,0 +1,52 @@
+{
+ "id": "2026-08-22-boundary-c250-r500-s4",
+ "kind": "soup_run",
+ "priority": 8,
+ "created_by": "cloud",
+ "why": "this cell of the dose-response grid had its two seeds on opposite sides of the collapse boundary -- 289 generations against 124, eleven surviving replicators against none. six more seeds turn an anecdote into a probability",
+ "expect_hours": 0.06,
+ "params": {
+  "name": "boundary-c250-r500-s4",
+  "instructions": 60000000,
+  "seed": 4,
+  "copy_mutation": 250,
+  "cosmic": 500,
+  "flaw": 0,
+  "sample_every": 3000000
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-24T07:56:27+00:00",
+ "claimed_pid": 4016014,
+ "cores": 12,
+ "status": "ok",
+ "host": "nexus",
+ "finished": "2026-08-24T07:57:42+00:00",
+ "seconds": 73.1,
+ "returncode": 0,
+ "produced": [
+  "experiments/results/boundary-c250-r500-s3.json",
+  "experiments/results/boundary-c250-r500-s4.json"
+ ],
+ "log_tail": [
+  "    51.0M  alive= 413 types= 318  H= 8.14  size~  61.9  dom=0059afo (2%)  foreign=11% fbreed=8% gen=239",
+  "    54.0M  alive= 435 types= 331  H= 8.20  size~  61.9  dom=0062gkh (1%)  foreign=13% fbreed=13% gen=253",
+  "    57.0M  alive= 399 types= 285  H= 7.97  size~  63.0  dom=0062hro (2%)  foreign=9% fbreed=12% gen=268",
+  "    60.0M  alive= 502 types= 369  H= 8.35  size~  63.2  dom=0064mjw (2%)  foreign=8% fbreed=7% gen=283",
+  "",
+  "wrote /home/cld/own-claude/experiments/results/boundary-c250-r500-s4.json  (827,620 instructions/sec)",
+  "",
+  " genotype    n  size  births   fid          kind   cost   fcalls parent",
+  "  0064mjw    9    64      20  0.95    replicator    414        0 0063rlx",
+  "  0062iwf    5    62      22  0.91    replicator    402        0 0062irh",
+  "  0063rzd    4    63       4  0.50    replicator    406        0 0063rjz",
+  "  0062jgz    4    62       6  0.83    replicator    400        0 0062jbb",
+  "  0063rvr    4    63       6  0.83    replicator    409        0 0063rpd",
+  "  0063rhk    4    63      15  0.93    replicator    405        0 0063qyx",
+  "  0063rsu    4    63       8  0.88    replicator    405        7 0063rcx",
+  "  0062ixh    4    62      15  0.87    replicator    403        0 0062isz",
+  "  0062jfh    4    62       9  0.78    replicator    401        0 0063rpf",
+  "  0062jfj    3    62       5  0.80    replicator    402        0 0062iwf",
+  "  0063rwj    3    63       4  0.75    replicator    406        0 0063rrh",
+  "  0062jiv    3    62       3  0.67    replicator    402        1 0062ivw"
+ ]
+}
