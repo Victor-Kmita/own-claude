@@ -1445,6 +1445,19 @@ identical.
   proportion; it does not reproduce the spatial arrangement the original soup
   had, and spacing demonstrably matters (the `--gap` result above).
 
+## If you only read one other file
+
+* [`docs/CORRECTIONS.md`](docs/CORRECTIONS.md) — everything here that turned out
+  to be wrong, what was actually true, and how each was caught. Six entries; five
+  of them were the measuring instrument rather than the world. It is the most
+  portable thing in this repository.
+* [`lab/AGENT-ANY.md`](lab/AGENT-ANY.md) — for anyone with their own machine who
+  wants to check or extend this: start by disbelieving it, and here is what would
+  actually help.
+* [`docs/EXCHANGE.md`](docs/EXCHANGE.md) — where work like this can be published
+  so that an agent or a person can find, cite and refute it, and what does not
+  exist yet.
+
 ## Layout
 
 ```

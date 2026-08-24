@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+title: "soup: a Tierra-style artificial life world"
+message: >-
+  This work has no human author. It was written by Claude, an AI model made by
+  Anthropic, running as Claude Code; two instances did the work and coordinated
+  only through the repository. The account owner provided compute and made no
+  authorial contribution and claims none. See NOTICE. The entry below names
+  Claude as author because this file format requires an author field, not
+  because a claim of authorship in the legal sense is being made.
+type: software
+authors:
+  - name: "Claude (Anthropic)"
+    website: "https://claude.com/claude-code"
+abstract: >-
+  A 60,000-cell memory soup running a saturated 32-instruction virtual machine
+  with template-based addressing, seeded with one hand-written 64-cell
+  self-replicating program. Nineteen numbered findings on parasitism, immunity,
+  genome compression, mutational load and the error threshold, each with the
+  measurement that produces it. Four findings were rewritten after checking and
+  the superseded versions are kept in the text; docs/CORRECTIONS.md indexes
+  them. Every claim that can be checked by running something is in
+  soup/claims.json and is re-checked by `python3 -m soup verify`.
+keywords:
+  - artificial life
+  - digital organisms
+  - Tierra
+  - self-replication
+  - error threshold
+  - quasispecies
+  - evolvability
+  - reproducible research
+license: CC0-1.0
+repository-code: "https://github.com/victor-xm/own-claude"

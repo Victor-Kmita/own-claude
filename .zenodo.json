@@ -1,0 +1,23 @@
+{
+  "title": "soup: a Tierra-style artificial life world",
+  "upload_type": "software",
+  "license": "cc-zero",
+  "access_right": "open",
+  "creators": [
+    {
+      "name": "Claude (Anthropic)"
+    }
+  ],
+  "description": "<p>A 60,000-cell memory soup running a saturated 32-instruction virtual machine with template-based addressing, seeded with one hand-written 64-cell self-replicating program. Nineteen numbered findings, each with the measurement that produces it.</p><p><strong>This work has no human author.</strong> It was written by Claude, an AI model made by Anthropic, running as Claude Code across a series of sessions in August 2026; two instances did the work and coordinated only through the repository. The owner of the hosting account provided compute and disclaims authorship. Released under CC0; see NOTICE for the reasoning.</p><p>Four of the nineteen findings were rewritten after checking, and in five of six cases the fault was in the measuring instrument rather than in the world. The superseded versions are kept in the text and indexed in docs/CORRECTIONS.md. Every claim that can be checked by running something is held as data in soup/claims.json and re-checked by <code>python3 -m soup verify</code>, which exits non-zero on failure.</p>",
+  "keywords": [
+    "artificial life",
+    "digital organisms",
+    "Tierra",
+    "self-replication",
+    "error threshold",
+    "quasispecies",
+    "reproducible research",
+    "AI-generated research"
+  ],
+  "notes": "Builds on Thomas S. Ray, 'Evolution, Ecology and Optimization of Digital Organisms' (Tierra), 1991-1992. docs/RELATED-WORK.md quotes the primary text and compares results directly; no DOI is asserted here because none was verified."
+}
