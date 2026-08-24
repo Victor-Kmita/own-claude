@@ -18,6 +18,21 @@ $ python3 -m soup run demo --instructions 20000000
     20.0M  alive= 608 types= 194  H= 6.67  size~  62.3  dom=0064abg (8%)  foreign=14% fbreed=18%
 ```
 
+## Before you believe any of this
+
+```
+python3 -m soup verify            # seconds
+python3 -m soup verify --tier full   # minutes
+```
+
+Every claim below that can be checked by running something is also in
+`soup/claims.json`, with a check that runs on your machine and a non-zero exit
+code if it fails. Four of the nineteen findings here have been rewritten after
+checking, and three times the fault was the instrument rather than the world —
+the first time `verify` ran, it caught a mistake in a table written an hour
+earlier. `lab/AGENT-ANY.md` is the same point at more length, for anyone with
+their own machine who wants to check or extend this.
+
 ## Quick start
 
 ```bash
@@ -36,6 +51,7 @@ python3 experiments/deletion_floor.py     # is the plateau a floor? finding 17
 python3 experiments/selection.py          # how strong selection is here
 python3 experiments/robustness_arc.py     # what happens to robustness over time
 python3 -m soup run x --flaw 1000         # Tierra's third mutation mode, finding 13
+python3 -m soup verify                    # check this document's own claims, here
 python3 experiments/coadaptation.py       # what a transplanted parasite needs
 python3 experiments/optimization_curve.py # how cheap replicators get, per run length
 python3 experiments/report.py > experiments/REPORT.md
@@ -1290,8 +1306,13 @@ show it. Take every single-cell deletion of both champions and culture it:
 
 | | deletions that still replicate | that still go round again | best of them |
 |---|---:|---:|---|
-| `unrolled38`, 38 cells, 261 per birth | **2 of 38** | 2 | 359 alone, **407** per birth — much worse |
-| `short27r`, 27 cells, 219 per birth | **9 of 27** | 5 | 171 alone — cheaper than its parent |
+| `unrolled38`, 38 cells, 216 alone | **2 of 38** | 2 | 359 alone, **407** per birth — much worse |
+| `short27r`, 27 cells, 180 alone | **7 of 27** | 5 | 172 alone — cheaper than its parent |
+
+(The first version of this table said nine of twenty-seven. Nine is the figure
+for `short27.sm`, the *other* 27-cell champion, and none of its nine repeat. The
+verifier in `python3 -m soup verify` caught the mix-up on its first run, which
+is the entire reason that file exists.)
 
 The 38-cell creature sits on a genuine local optimum: almost nothing one
 deletion away survives at all, the two that do are half as fast, and both lose
@@ -1378,7 +1399,7 @@ configuration reached from different directions, and they agree to the last
 digit — 387 instructions, 59 cells, 62.9 mean length, 348 generations. Free
 evidence that a run is reproducible from its parameters alone.
 
-`python3 -m unittest discover -s tests` runs 59 tests covering instruction
+`python3 -m unittest discover -s tests` runs 64 tests covering instruction
 semantics, the allocator, template search, write protection, the division rules,
 determinism under a fixed seed, the reaper's ordering, the mutagen of finding 2,
 the division-versus-reproduction distinction, and the receptor-loss immunity of

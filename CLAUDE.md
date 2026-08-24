@@ -24,11 +24,15 @@ depend on [`lab/PROTOCOL.md`](lab/PROTOCOL.md), which says who may write where.
 
 ## Conventions
 
-* `python3 -m unittest discover -s tests` — 59 tests, about twenty-five seconds. Run
+* `python3 -m unittest discover -s tests` — 64 tests, about twenty-five seconds. Run
   it before pushing anything that touches `soup/`.
 * **A run must be reproducible from its parameters and seed alone.** Two runs of
   the same configuration agree to the last digit. If they ever disagree, stop:
   that is a defect in the simulator and it invalidates whatever was measured.
+* `python3 -m soup verify` — check the README's own claims on this machine.
+  `soup/claims.json` holds them as data; a claim that stops being true should
+  fail here before anyone reads it in prose. `lab/AGENT-ANY.md` explains the
+  file to an agent that is not one of the two below.
 * Results are never deleted, including failed ones. Several findings here came
   from runs that went wrong.
 * Long runs write `experiments/results/<name>.checkpoint.json` every few hundred

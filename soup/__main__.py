@@ -171,6 +171,11 @@ def cmd_resistance(args) -> None:
           f"{args.budget:,} instructions per pairing")
 
 
+def cmd_verify(args) -> None:
+    from .verify import verify
+    raise SystemExit(verify(tier=args.tier, only=args.claim))
+
+
 def cmd_ancestor(args) -> None:
     code = experiment.load_ancestor()
     print(f"; ancestor, {len(code)} instructions")
@@ -251,6 +256,13 @@ def main(argv=None) -> None:
 
     n = sub.add_parser("ancestor", help="print the ancestor listing")
     n.set_defaults(func=cmd_ancestor)
+
+    v = sub.add_parser("verify", help="check this repository's own claims on this machine")
+    v.add_argument("--tier", choices=["fast", "full", "deep"], default="fast",
+                   help="fast: seconds. full: minutes. deep: names the "
+                        "billion-instruction commands without running them")
+    v.add_argument("--claim", default=None, help="check one claim by id")
+    v.set_defaults(func=cmd_verify)
 
     args = p.parse_args(argv)
     args.func(args)

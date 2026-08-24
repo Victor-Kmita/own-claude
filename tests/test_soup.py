@@ -433,6 +433,36 @@ class TestGeneBank(unittest.TestCase):
         self.assertEqual(gb.fidelity("0002aab"), 0.0)
 
 
+class TestClaims(unittest.TestCase):
+    """The claims file is checked in, so it can rot; this stops it quietly."""
+
+    def setUp(self):
+        from soup import verify
+        self.doc = verify.load_claims()
+        self.checks = verify.CHECKS
+
+    def test_every_claim_names_a_check_that_exists(self):
+        for claim in self.doc["claims"]:
+            with self.subTest(claim=claim["id"]):
+                self.assertIn(claim["tier"], ("fast", "full", "deep"))
+                self.assertIn(claim["status"], ("holds", "superseded"))
+                if claim["tier"] == "deep":
+                    self.assertIn("command", claim)
+                else:
+                    self.assertIn(claim.get("check"), self.checks)
+
+    def test_ids_are_unique(self):
+        ids = [c["id"] for c in self.doc["claims"]]
+        self.assertEqual(len(ids), len(set(ids)))
+
+    def test_every_named_genome_can_be_loaded(self):
+        from soup import verify
+        for claim in self.doc["claims"]:
+            if "genome" in claim:
+                with self.subTest(claim=claim["id"]):
+                    self.assertGreater(len(verify.genome_named(claim["genome"])), 0)
+
+
 class TestDeterminism(unittest.TestCase):
     def run_once(self):
         w = World(soup_size=6000, seed=42, copy_mutation_rate=1 / 800,

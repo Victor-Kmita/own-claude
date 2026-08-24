@@ -1,0 +1,244 @@
+{
+  "about": [
+    "Every claim in README.md that can be checked by running something, as a",
+    "machine-readable list. `python3 -m soup verify` runs the cheap ones and",
+    "prints a pass/fail table.",
+    "",
+    "This file exists because of how the findings here have behaved. Four of",
+    "nineteen have been rewritten after checking, and in three cases the fault",
+    "was in the measuring instrument rather than in the world. A reader -- human",
+    "or another agent -- should be able to establish which claims still hold on",
+    "their own machine in one command, without trusting this repository and",
+    "without reading it first.",
+    "",
+    "tier: fast   seconds. Assays over stored genomes and short worlds.",
+    "tier: full   minutes. Adds sampling experiments with real trial counts.",
+    "tier: deep   hours to days. Billion-instruction runs; verify does not run",
+    "             these, it only records the command that would.",
+    "",
+    "status: holds       the claim as written is what the check finds.",
+    "status: superseded  kept because the README keeps its history; the note",
+    "                    says what replaced it."
+  ],
+  "claims": [
+    {
+      "id": "ancestor-cost-alone",
+      "finding": 0,
+      "tier": "fast",
+      "status": "holds",
+      "claim": "The hand-written ancestor spends 410 instructions on its first daughter and 407 on every one after that, alone in an empty dish.",
+      "check": "describe_ancestor",
+      "expect": {
+        "cost": 410,
+        "second_copy_cost": 407,
+        "repeats": true
+      }
+    },
+    {
+      "id": "ancestor-cost-population",
+      "finding": 18,
+      "tier": "fast",
+      "status": "holds",
+      "claim": "A population of ancestors spends about 468 instructions per birth, within a fifth of the solo figure. For this genome the solo cost transfers.",
+      "check": "sustained",
+      "genome": "ancestor",
+      "expect": {
+        "instructions_per_birth": [
+          430,
+          510
+        ],
+        "errors_per_creature": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": "short27-is-a-one-shot",
+      "finding": 18,
+      "tier": "fast",
+      "status": "holds",
+      "claim": "The 27-cell champion of flaw-3b-s6 makes one daughter and no more. An earlier version of finding 17 said it repeated; that was the assay counting the genotype's births rather than the mother's.",
+      "check": "describe_ancestor_file",
+      "genome": "short27",
+      "expect": {
+        "cost": 178,
+        "repeats": false
+      }
+    },
+    {
+      "id": "short27-population-cost",
+      "finding": 18,
+      "tier": "fast",
+      "status": "holds",
+      "claim": "That same creature costs its own population more than eight times its solo cost, and its creatures accumulate hundreds of errors each.",
+      "check": "sustained",
+      "genome": "short27",
+      "expect": {
+        "instructions_per_birth": [
+          1200,
+          2200
+        ],
+        "errors_per_creature": [
+          100,
+          600
+        ]
+      }
+    },
+    {
+      "id": "short27r-is-the-best-creature",
+      "finding": 18,
+      "tier": "fast",
+      "status": "holds",
+      "claim": "The 27-cell champion of flaw-3b-s5 does repeat, and costs its population about 219 instructions per birth -- less than half the ancestor's 468, and less than the unrolled 38-cell champion's 261.",
+      "check": "sustained",
+      "genome": "short27r",
+      "expect": {
+        "instructions_per_birth": [
+          205,
+          235
+        ],
+        "errors_per_creature": [
+          0,
+          8
+        ]
+      }
+    },
+    {
+      "id": "unrolled-loop-is-real",
+      "finding": 5,
+      "tier": "fast",
+      "status": "holds",
+      "claim": "The champion of the flawless three-billion run copies two cells per pass of its loop, and comes in below the ancestor's 6.41 instructions per cell.",
+      "check": "describe_ancestor_file",
+      "genome": "unrolled38",
+      "expect": {
+        "cost": 216,
+        "repeats": true,
+        "cost_per_cell": [
+          5.5,
+          5.8
+        ]
+      }
+    },
+    {
+      "id": "unrolled-is-a-local-optimum",
+      "finding": 19,
+      "tier": "fast",
+      "status": "holds",
+      "claim": "Almost nothing one deletion from the 38-cell champion survives: at most three of its 38 single-cell deletions still replicate.",
+      "check": "deletions",
+      "genome": "unrolled38",
+      "expect": {
+        "viable": [
+          0,
+          3
+        ]
+      }
+    },
+    {
+      "id": "short27r-is-not-a-local-optimum",
+      "finding": 19,
+      "tier": "fast",
+      "status": "holds",
+      "claim": "The 27-cell plateau is not one. Seven of the 27 single-cell deletions of the champion still replicate, five of those still go round again, and the cheapest costs 172 instructions against its parent's 180.",
+      "check": "deletions",
+      "genome": "short27r",
+      "expect": {
+        "viable": [
+          6,
+          10
+        ],
+        "repeating": [
+          3,
+          8
+        ],
+        "cheapest_below_parent": true
+      }
+    },
+    {
+      "id": "a-run-is-its-parameters",
+      "finding": 0,
+      "tier": "fast",
+      "status": "holds",
+      "claim": "Two runs of the same configuration and seed agree to the last digit, and measuring the world more often does not change it.",
+      "check": "determinism"
+    },
+    {
+      "id": "flaws-kill-copy-errors-edit",
+      "finding": 16,
+      "tier": "full",
+      "status": "holds",
+      "claim": "Per mutation event both sources alter the daughter about equally often, but an altered daughter still replicates about three times in ten after a copy error and about one time in thirty after an execution flaw.",
+      "check": "heritability",
+      "expect": {
+        "copy_viable": [
+          0.18,
+          0.45
+        ],
+        "flaw_viable": [
+          0.0,
+          0.12
+        ],
+        "ratio_at_least": 3.0
+      }
+    },
+    {
+      "id": "only-flaws-change-length",
+      "finding": 13,
+      "tier": "full",
+      "status": "holds",
+      "claim": "Copy errors and cosmic rays never change a genome's length. Flaws do, including a clean interior deletion in roughly one birth in two hundred.",
+      "check": "spectrum",
+      "expect": {
+        "copy_length_changes": 0,
+        "cosmic_length_changes": 0,
+        "flaw_length_changes_at_least": 1
+      }
+    },
+    {
+      "id": "two-editing-sources-multiply",
+      "finding": 16,
+      "tier": "deep",
+      "status": "holds",
+      "claim": "Copy errors and cosmic rays are synergistic, not additive. Either at its harshest costs a quarter to a third of the generation depth; both together cost ninety-five per cent. Additive arithmetic predicts 141 generations for that corner and the world delivers 18.",
+      "command": "python3 -m soup run grid-c83-r167-s1 --instructions 60000000 --seed 1 --copy-mutation 83 --cosmic 167 --flaw 0",
+      "expect": {
+        "max_generation": [
+          10,
+          40
+        ]
+      }
+    },
+    {
+      "id": "the-plateau-is-absolute",
+      "finding": 19,
+      "tier": "deep",
+      "status": "holds",
+      "claim": "Five billion instructions of flaws leave the 38-cell population at 37.8 to 38.0 cells after thirty thousand generations. It does not move.",
+      "command": "python3 experiments/route_cross.py unrolled38 1000 11 5000000000",
+      "expect": {
+        "mean_size": [
+          37.0,
+          39.0
+        ]
+      }
+    },
+    {
+      "id": "three-of-four-27-cell-champions-repeat",
+      "finding": 17,
+      "tier": "fast",
+      "status": "superseded",
+      "claim": "Superseded. Finding 17 said for a few hours that three of the four 27-cell champions go round again. Two do. The flag it rested on counted births of the genotype rather than of the mother; see short27-is-a-one-shot.",
+      "check": "none"
+    },
+    {
+      "id": "twenty-seven-is-a-floor",
+      "finding": 17,
+      "tier": "fast",
+      "status": "superseded",
+      "claim": "Superseded. Finding 17 first called 27 cells a floor. Cheaper 26-cell repeaters are one deletion away, the soup produces them continuously, and nine of thirteen beat their parent head to head; see short27r-is-not-a-local-optimum.",
+      "check": "none"
+    }
+  ]
+}
