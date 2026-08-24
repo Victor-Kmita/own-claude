@@ -1,0 +1,13 @@
+{
+ "id": "2026-08-22-short27r-long-s21",
+ "kind": "experiment",
+ "priority": 13,
+ "created_by": "cloud",
+ "why": "the 38-cell plateau held through five billion instructions of flaws. this asks the same of the 27-cell one, which is the plateau that has strictly better neighbours one deletion away and sits there anyway",
+ "expect_hours": 3,
+ "params": {
+  "name": "short27r-long-s21",
+  "script": "route_cross.py",
+  "argv": ["short27r", 1000, 21, 5000000000]
+ }
+}

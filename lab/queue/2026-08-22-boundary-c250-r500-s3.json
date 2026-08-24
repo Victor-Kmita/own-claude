@@ -1,0 +1,17 @@
+{
+ "id": "2026-08-22-boundary-c250-r500-s3",
+ "kind": "soup_run",
+ "priority": 8,
+ "created_by": "cloud",
+ "why": "this cell of the dose-response grid had its two seeds on opposite sides of the collapse boundary -- 289 generations against 124, eleven surviving replicators against none. six more seeds turn an anecdote into a probability",
+ "expect_hours": 0.06,
+ "params": {
+  "name": "boundary-c250-r500-s3",
+  "instructions": 60000000,
+  "seed": 3,
+  "copy_mutation": 250,
+  "cosmic": 500,
+  "flaw": 0,
+  "sample_every": 3000000
+ }
+}
