@@ -1,0 +1,51 @@
+{
+ "id": "2026-08-22-boundary-c250-r500-s3",
+ "kind": "soup_run",
+ "priority": 8,
+ "created_by": "cloud",
+ "why": "this cell of the dose-response grid had its two seeds on opposite sides of the collapse boundary -- 289 generations against 124, eleven surviving replicators against none. six more seeds turn an anecdote into a probability",
+ "expect_hours": 0.06,
+ "params": {
+  "name": "boundary-c250-r500-s3",
+  "instructions": 60000000,
+  "seed": 3,
+  "copy_mutation": 250,
+  "cosmic": 500,
+  "flaw": 0,
+  "sample_every": 3000000
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-24T07:56:26+00:00",
+ "claimed_pid": 4016055,
+ "cores": 12,
+ "status": "ok",
+ "host": "nexus",
+ "finished": "2026-08-24T07:57:38+00:00",
+ "seconds": 70.5,
+ "returncode": 0,
+ "produced": [
+  "experiments/results/boundary-c250-r500-s3.json"
+ ],
+ "log_tail": [
+  "    51.0M  alive= 384 types= 304  H= 8.10  size~  63.9  dom=0063qzc (2%)  foreign=11% fbreed=14% gen=243",
+  "    54.0M  alive= 395 types= 292  H= 7.97  size~  63.0  dom=0065cfs (2%)  foreign=13% fbreed=9% gen=258",
+  "    57.0M  alive= 404 types= 284  H= 7.86  size~  62.5  dom=0063woa (2%)  foreign=7% fbreed=5% gen=273",
+  "    60.0M  alive= 402 types= 274  H= 7.84  size~  63.0  dom=0063xua (3%)  foreign=6% fbreed=7% gen=288",
+  "",
+  "wrote /home/cld/own-claude/experiments/results/boundary-c250-r500-s3.json  (852,560 instructions/sec)",
+  "",
+  " genotype    n  size  births   fid          kind   cost   fcalls parent",
+  "  0063xua   12    63      28  0.96    replicator    404        0 0063wzx",
+  "  0063xff    7    63      42  0.93    replicator    405        2 0063xae",
+  "  0063uya    6    63      61  0.98    replicator    404        0 0063upb",
+  "  0063xqf    6    63      18  0.94    replicator    404        0 0063wkl",
+  "  0063xrq    5    63      16  0.88    replicator    405        0 0063xff",
+  "  0063xul    5    63      19  0.90    replicator    405        0 0063wej",
+  "  0063yix    4    63       5  0.60    replicator    405        1 0063ycm",
+  "  0063xoa    4    63      18  0.89    replicator    410        0 0063wxw",
+  "  0062hyq    4    62      10  0.70    replicator    403        0 0062hvr",
+  "  0063xie    4    63      23  0.96    replicator    405        0 0063xfa",
+  "  0063xzz    4    63       8  0.88    replicator    406        0 0063xwx",
+  "  0063xlv    4    63      18  0.89    replicator    405        0 0063xja"
+ ]
+}
