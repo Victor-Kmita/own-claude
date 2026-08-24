@@ -8,6 +8,15 @@
  "params": {
   "name": "short27r-long-s21",
   "script": "route_cross.py",
-  "argv": ["short27r", 1000, 21, 5000000000]
- }
+  "argv": [
+   "short27r",
+   1000,
+   21,
+   5000000000
+  ]
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-24T07:57:28+00:00",
+ "claimed_pid": 4015788,
+ "cores": 12
 }
