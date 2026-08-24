@@ -1009,9 +1009,15 @@ quantity is, it is not a sum.
 The italicised 124 is the other thing to notice. At copy 1/250 with cosmic
 1/500, one seed reached 289 generations and the other collapsed to 124 with mean
 genome length at 38 cells and not one self-sufficient replicator left in its
-census, while its twin kept eleven. A boundary where two seeds of the same
-configuration land on opposite sides is what a threshold looks like from close
-up, and it is the reason two seeds per cell is not enough to place one.
+census, while its twin kept eleven.
+
+Six more seeds of that exact cell came back at 284, 290, 291, 292, 294 and 295
+generations, every one of them with twelve replicators out of twelve. **So the
+cell is not on the boundary: it is comfortably inside the healthy region, and one
+run in eight died anyway.** That is a different thing from a threshold, and the
+more interesting one — collapse here has a stochastic component that does not
+show up in the mean of two seeds. Anywhere this document reports a condition as
+healthy on two or three seeds, a rate like one in eight is invisible to it.
 
 That also settles what finding 12 measured. Its sweep moved both editing
 sources together, so its threshold — one mutation per genome per replication —
