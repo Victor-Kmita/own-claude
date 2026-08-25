@@ -207,7 +207,7 @@ Wherever a cost appears below, finding 18 is the reason to check which one it is
 
 ## What happened
 
-Nineteen findings, in the order they were found. If you read one row of this
+Twenty findings, in the order they were found. If you read one row of this
 table, make it the last column: several of these corrected an earlier answer of
 mine, and two of them corrected the instrument rather than the result.
 
@@ -232,6 +232,7 @@ mine, and two of them corrected the instrument rather than the result.
 | 17 | four seeds stop at the same length; shorter and better exists one deletion away | 27 cells, and 9 of 13 shorter variants win |
 | 18 | the cost of a daughter alone is not its cost in a population | 178 alone, 1,573 in company |
 | 19 | both evolved endpoints are frozen; only one of them is an optimum | 38.0 cells after a billion more |
+| 20 | a second hand-written ancestor reproduces the compression findings, and fixes the machine's floor | three starting points, all end near 6.5 per cell |
 
 ### 1. With mutation off, nothing ever happens
 
@@ -1199,7 +1200,10 @@ find it. What they do instead is throw cells away: every flaw champion sits at
 entirely from being short. Insertions and deletions are good at deleting and bad
 at inventing; substitutions are the other way round. Neither regime has done both
 at once, and the creature that does — 27 cells at 5.7 per cell, about 155
-instructions — has not appeared in any run here.
+instructions — has not appeared in any run here. Finding 20 suggests why: 6.5
+instructions per cell looks like the floor of the machine itself, reached from
+three independent starting points, and 5.68 is the only thing that has ever gone
+under it.
 
 Which route is ahead depends on which number you read, and the population column
 is the one that decides: the short creature costs its own kind 219 instructions
@@ -1344,6 +1348,68 @@ their own, while every assay here hands it twelve clean copies and one clean
 opponent. If that is right, the number this world converges on says more about
 invasion under mutation pressure than about what a short program can do.
 
+### 20. A second ancestor, and the one number that is the machine's rather than mine
+
+Every finding above this one came from a single hand-written 64-cell program, and
+the limitations section has said so from the beginning. `ancestor-b.sm` is a
+second one, written from scratch and deliberately unlike the first: 53 cells, no
+subroutine, three-bit templates instead of four, the division reached by a
+forward jump out of the copy loop rather than by a `ret`, and the size carried in
+`dx` as well as `cx`. Same capabilities, none of the same code. It worked on the
+first attempt, which says more about the instruction set than about me.
+
+It is also usefully **worse**. 495 instructions per daughter against the first
+ancestor's 410, and 9.34 instructions per cell copied against 6.41 — which is
+close to where Ray's 80-instruction ancestor started, and leaves the room for
+optimization that my first ancestor never had.
+
+Six runs of a billion instructions, three seeds with flaws off and three with:
+
+| | genome length | best replicator | per cell | in a population |
+|---|---:|---|---:|---:|
+| `ancestor-b` as written | 53 | 495 | 9.34 | 814 |
+| after 1B, no flaws | 45.5, 57.9, 46.6 | 42 cells at 317 | **7.48–7.55** | **397–414** |
+| after 1B, flaws on | 54.6, 43.0, **24.9** | 24 cells at 157 | **6.54–6.59** | 1,482 |
+
+**Finding 4 reproduces.** Descendants get cheaper by getting shorter, from a
+starting program that shares no code with the one it was first seen in. So does
+finding 13: the flawed runs compress much harder than the flawless ones, and the
+seed that went furthest took a 53-cell ancestor to a population of 25-cell
+creatures in a billion instructions — where the first ancestor's lineage needed
+three billion to reach 27.
+
+**And the plateau is not the world's, it is the lineage's.** The 27-cell
+population that finding 19 could not shift is still at 27.1 cells after five
+billion instructions and twenty-six thousand generations. A different ancestor
+walks past it to 25 in one billion. Whatever holds the first lineage at 27, it is
+not a floor of what this machine can express.
+
+**The number that does look like the machine's:**
+
+| | starts at | ends at |
+|---|---:|---:|
+| Ray's Tierra ancestor, 80 instructions | 10.5 | **6** |
+| my first ancestor, 64 cells | 6.41 | 6.4 – 6.7 |
+| `ancestor-b`, 53 cells | 9.34 | **6.54 – 7.55** |
+
+Instructions executed per cell copied. Three independent starting points — two
+of them mine and written years apart in intent, one of them Ray's on a different
+instruction set — and all three end within a few tenths of six and a half. My
+first ancestor was hand-written at 6.41 and has essentially never improved on it,
+which for two weeks I read as a failure of the runs. It is not. **6.5 is where
+this class of machine bottoms out**, and my first ancestor happened to be written
+sitting on it. Only one lineage in this whole project has ever gone below —
+the unrolled 38-cell champion at 5.68, by copying two cells per pass — and
+finding 18 showed it loses on the measure that counts anyway.
+
+**One warning, and it is the same one as findings 17 and 18.** The champions
+under 30 cells here are all one-shots: the 24-cell creature costs its population
+1,482 instructions per birth, and the best genuine repeater `ancestor-b` produced
+is the 42-cell one at 397. That is better than its own ancestor's 814 and much
+worse than the first ancestor's best of 219. Shorter is still not automatically
+better, and a table of solo costs still cannot tell you which is which.
+
+
 ## How this compares with what was already known
 
 I built the machine before reading the literature, which is the wrong order.
@@ -1417,13 +1483,11 @@ identical.
 
 ## Limitations
 
-* One ancestor, one instruction set. Nothing here shows the results are general
-  rather than particular to this 64-cell program, except the convergence with
-  Tierra in `docs/RELATED-WORK.md`. A second hand-written ancestor now exists —
-  `experiments/ancestors/ancestor-b.sm`, 53 cells, no subroutine, three-bit
-  templates, 495 instructions per daughter against the first's 410 — and six runs
-  from it are on the compute server. Until they come back, read every finding
-  below as a statement about one program.
+* Two ancestors now, still one instruction set. Finding 20 reruns the
+  compression results from `experiments/ancestors/ancestor-b.sm`, written from
+  scratch and sharing no code with the first, and they reproduce. Everything
+  *else* here — the parasites, the immunity, the error threshold, the
+  interaction matrix — has still only ever been seen from one starting program.
 * The longest finished runs are 10 billion instructions. Genome length stops
   falling long before that, but finding 17 shows the plateau is not a limit:
   shorter, cheaper, competitive variants exist one mutation away and keep being

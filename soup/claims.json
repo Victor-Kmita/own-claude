@@ -225,6 +225,23 @@
       }
     },
     {
+      "id": "a-second-ancestor-replicates",
+      "finding": 20,
+      "tier": "fast",
+      "status": "holds",
+      "claim": "ancestor-b.sm is a second hand-written self-replicator sharing no code with the first: 53 cells, 495 instructions for its first daughter and 493 for the next, 9.34 instructions per cell copied against the first ancestor's 6.41.",
+      "check": "describe_ancestor_file",
+      "genome": "ancestor-b",
+      "expect": {
+        "cost": 495,
+        "repeats": true,
+        "cost_per_cell": [
+          9.0,
+          9.6
+        ]
+      }
+    },
+    {
       "id": "three-of-four-27-cell-champions-repeat",
       "finding": 17,
       "tier": "fast",
@@ -239,6 +256,20 @@
       "status": "superseded",
       "claim": "Superseded. Finding 17 first called 27 cells a floor. Cheaper 26-cell repeaters are one deletion away, the soup produces them continuously, and nine of thirteen beat their parent head to head; see short27r-is-not-a-local-optimum.",
       "check": "none"
+    },
+    {
+      "id": "compression-reproduces-from-a-second-ancestor",
+      "finding": 20,
+      "tier": "deep",
+      "status": "holds",
+      "claim": "Descendants of the second ancestor get shorter and cheaper exactly as the first ancestor's do: 53 cells and 495 instructions become 42 cells and 317 in a billion instructions, and with flaws on one seed reaches a population of 25-cell creatures. Per cell copied, all three known starting points -- both of mine and Ray's -- end between 6 and 7.6.",
+      "command": "python3 experiments/route_cross.py ancestor-b 0 1 1000000000",
+      "expect": {
+        "mean_size": [
+          40.0,
+          50.0
+        ]
+      }
     }
   ]
 }
