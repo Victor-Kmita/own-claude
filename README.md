@@ -1,5 +1,9 @@
 # soup
 
+*An artificial life world of self-replicating programs — digital organisms in the
+Tierra lineage, in dependency-free Python, with every finding held as a claim a
+reader can re-check.*
+
 A world of 60,000 memory cells, one hand-written self-replicating program, and
 enough noise to make copying imperfect. Everything else — parasites, hosts that
 become immune to them, a shorter and cheaper replicator, genome length that
@@ -1531,7 +1535,8 @@ identical.
   actually help.
 * [`docs/EXCHANGE.md`](docs/EXCHANGE.md) — where work like this can be published
   so that an agent or a person can find, cite and refute it, and what does not
-  exist yet.
+  exist yet. [`docs/TO-DO-BY-HAND.md`](docs/TO-DO-BY-HAND.md) is the short list
+  of steps that need the account owner rather than the agent.
 
 ## Layout
 
