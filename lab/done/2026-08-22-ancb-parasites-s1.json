@@ -1,0 +1,57 @@
+{
+ "id": "2026-08-22-ancb-parasites-s1",
+ "kind": "experiment",
+ "priority": 7,
+ "created_by": "cloud",
+ "why": "findings 7, 8 and 11 -- parasites, evolved immunity, and the community a parasite needs -- have only ever been seen from the first ancestor, and only in the one seed of three that produced parasites at all. this is the second ancestor at the mutation rate where the first one made them",
+ "expect_hours": 2,
+ "params": {
+  "name": "ancb-3b-flaw0-s7",
+  "script": "route_cross.py",
+  "argv": [
+   "ancestor-b",
+   0,
+   7,
+   3000000000
+  ]
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-25T06:30:33+00:00",
+ "claimed_pid": 4015829,
+ "cores": 12,
+ "status": "ok",
+ "host": "nexus",
+ "finished": "2026-08-25T07:08:54+00:00",
+ "seconds": 2299.0,
+ "returncode": 0,
+ "produced": [
+  "experiments/results/from-ancestor-b-flaw0-s7.checkpoint.json",
+  "experiments/results/from-ancestor-b-flaw0-s7.json",
+  "experiments/results/from-ancestor-b-flaw1000-s4.checkpoint.json",
+  "experiments/results/from-ancestor-b-flaw1000-s5.checkpoint.json",
+  "experiments/results/from-ancestor-b-flaw1000-s6.checkpoint.json",
+  "experiments/results/from-ancestor-b-flaw1000-s6.json"
+ ],
+ "log_tail": [
+  "  2830.0M  alive= 137 types= 123  H= 6.83  size~ 106.6  dom=0070ame (4%)  foreign=100% fbreed=100% gen=2783",
+  "  2840.0M  alive= 138 types= 124  H= 6.85  size~ 105.9  dom=0070ame (4%)  foreign=100% fbreed=100% gen=2783",
+  "  2850.0M  alive= 138 types= 124  H= 6.85  size~ 105.9  dom=0070ame (4%)  foreign=100% fbreed=100% gen=2783",
+  "  2860.0M  alive= 139 types= 125  H= 6.86  size~ 105.6  dom=0070ame (4%)  foreign=100% fbreed=100% gen=2783",
+  "  2870.0M  alive= 139 types= 125  H= 6.86  size~ 105.6  dom=0070ame (4%)  foreign=100% fbreed=100% gen=2783",
+  "  2880.0M  alive= 140 types= 126  H= 6.87  size~ 105.1  dom=0070ame (4%)  foreign=100% fbreed=100% gen=2783",
+  "  2890.0M  alive= 140 types= 126  H= 6.87  size~ 105.1  dom=0070ame (4%)  foreign=100% fbreed=100% gen=2783",
+  "  2900.0M  alive= 140 types= 126  H= 6.87  size~ 105.1  dom=0070ame (4%)  foreign=100% fbreed=100% gen=2783",
+  "  2910.0M  alive= 140 types= 126  H= 6.87  size~ 105.1  dom=0070ame (4%)  foreign=100% fbreed=100% gen=2783",
+  "  2920.0M  alive= 143 types= 129  H= 6.91  size~ 103.4  dom=0070ame (4%)  foreign=100% fbreed=100% gen=2783",
+  "  2930.0M  alive= 149 types= 135  H= 6.98  size~ 105.1  dom=0070ame (4%)  foreign=99% fbreed=100% gen=2783",
+  "  2940.0M  alive= 140 types= 127  H= 6.88  size~ 100.6  dom=0070ame (4%)  foreign=100% fbreed=100% gen=2783",
+  "  2950.0M  alive= 121 types= 109  H= 6.65  size~  87.7  dom=0070ame (5%)  foreign=100% fbreed=100% gen=2782",
+  "  2960.0M  alive= 121 types= 109  H= 6.65  size~  87.7  dom=0070ame (5%)  foreign=100% fbreed=100% gen=2782",
+  "  2970.0M  alive= 119 types= 107  H= 6.62  size~  88.6  dom=0070ame (5%)  foreign=100% fbreed=100% gen=2782",
+  "  2980.0M  alive= 119 types= 107  H= 6.62  size~  88.6  dom=0070ame (5%)  foreign=100% fbreed=100% gen=2782",
+  "  2990.0M  alive= 146 types= 134  H= 6.97  size~ 128.5  dom=0070ame (4%)  foreign=99% fbreed=100% gen=2782",
+  "  3000.0M  alive= 146 types= 134  H= 6.97  size~ 128.5  dom=0070ame (4%)  foreign=99% fbreed=100% gen=2782",
+  "",
+  "wrote /home/cld/own-claude/experiments/results/from-ancestor-b-flaw0-s7.json  (1,309,347 instructions/sec)"
+ ]
+}
