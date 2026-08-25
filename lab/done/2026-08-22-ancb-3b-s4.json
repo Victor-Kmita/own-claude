@@ -1,0 +1,59 @@
+{
+ "id": "2026-08-22-ancb-3b-s4",
+ "kind": "experiment",
+ "priority": 7,
+ "created_by": "cloud",
+ "why": "finding 20 shows the second ancestor reproduces the compression results in a billion instructions and reaches 6.54 instructions per cell. three billion is what the first ancestor needed to reach its plateau, so this asks where the second one stops -- and whether it produces a repeating short creature rather than the one-shots its billion-instruction runs ended on",
+ "expect_hours": 2,
+ "params": {
+  "name": "ancb-3b-flaw1000-s4",
+  "script": "route_cross.py",
+  "argv": [
+   "ancestor-b",
+   1000,
+   4,
+   3000000000
+  ]
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-25T06:28:32+00:00",
+ "claimed_pid": 4015712,
+ "cores": 12,
+ "status": "ok",
+ "host": "nexus",
+ "finished": "2026-08-25T08:09:59+00:00",
+ "seconds": 6084.3,
+ "returncode": 0,
+ "produced": [
+  "experiments/results/from-ancestor-b-flaw0-s7.checkpoint.json",
+  "experiments/results/from-ancestor-b-flaw0-s7.json",
+  "experiments/results/from-ancestor-b-flaw1000-s4.checkpoint.json",
+  "experiments/results/from-ancestor-b-flaw1000-s4.json",
+  "experiments/results/from-ancestor-b-flaw1000-s5.checkpoint.json",
+  "experiments/results/from-ancestor-b-flaw1000-s5.json",
+  "experiments/results/from-ancestor-b-flaw1000-s6.checkpoint.json",
+  "experiments/results/from-ancestor-b-flaw1000-s6.json"
+ ],
+ "log_tail": [
+  "  2830.0M  alive= 852 types= 217  H= 5.88  size~  29.0  dom=0029pdi (11%)  foreign=10% fbreed=7% gen=13126",
+  "  2840.0M  alive= 872 types= 198  H= 5.21  size~  29.1  dom=0029pdi (19%)  foreign=7% fbreed=6% gen=13176",
+  "  2850.0M  alive=1012 types= 211  H= 5.56  size~  29.0  dom=0029pdi (15%)  foreign=5% fbreed=3% gen=13224",
+  "  2860.0M  alive= 915 types= 206  H= 5.54  size~  28.9  dom=0029phl (16%)  foreign=9% fbreed=11% gen=13270",
+  "  2870.0M  alive= 845 types= 192  H= 5.55  size~  29.0  dom=0029phl (11%)  foreign=9% fbreed=10% gen=13320",
+  "  2880.0M  alive= 876 types= 218  H= 5.88  size~  29.1  dom=0029phe (10%)  foreign=8% fbreed=10% gen=13368",
+  "  2890.0M  alive=1055 types= 237  H= 5.85  size~  29.0  dom=0029sct (9%)  foreign=3% fbreed=2% gen=13414",
+  "  2900.0M  alive= 860 types= 213  H= 5.95  size~  29.0  dom=0029pib (10%)  foreign=8% fbreed=9% gen=13460",
+  "  2910.0M  alive= 853 types= 176  H= 5.67  size~  29.0  dom=0029phe (9%)  foreign=6% fbreed=5% gen=13508",
+  "  2920.0M  alive=1062 types= 234  H= 5.66  size~  29.0  dom=0029pnr (13%)  foreign=4% fbreed=2% gen=13555",
+  "  2930.0M  alive= 847 types= 189  H= 5.34  size~  29.0  dom=0029pnr (22%)  foreign=8% fbreed=8% gen=13601",
+  "  2940.0M  alive= 886 types= 189  H= 5.41  size~  29.0  dom=0029pnr (18%)  foreign=4% fbreed=4% gen=13651",
+  "  2950.0M  alive= 941 types= 239  H= 6.07  size~  28.9  dom=0029qau (12%)  foreign=11% fbreed=12% gen=13700",
+  "  2960.0M  alive= 859 types= 221  H= 5.78  size~  29.0  dom=0029pdi (13%)  foreign=9% fbreed=12% gen=13748",
+  "  2970.0M  alive= 994 types= 221  H= 5.51  size~  29.0  dom=0029pdi (16%)  foreign=6% fbreed=6% gen=13797",
+  "  2980.0M  alive= 866 types= 222  H= 5.91  size~  29.0  dom=0029pnr (16%)  foreign=9% fbreed=11% gen=13843",
+  "  2990.0M  alive= 848 types= 193  H= 5.27  size~  29.0  dom=0029pnr (24%)  foreign=9% fbreed=11% gen=13890",
+  "  3000.0M  alive= 906 types= 207  H= 5.60  size~  29.0  dom=0029pnr (22%)  foreign=6% fbreed=6% gen=13938",
+  "",
+  "wrote /home/cld/own-claude/experiments/results/from-ancestor-b-flaw1000-s4.json  (494,330 instructions/sec)"
+ ]
+}
