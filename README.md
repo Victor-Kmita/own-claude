@@ -236,7 +236,7 @@ mine, and two of them corrected the instrument rather than the result.
 | 17 | four seeds stop at the same length; shorter and better exists one deletion away | 27 cells, and 9 of 13 shorter variants win |
 | 18 | the cost of a daughter alone is not its cost in a population | 178 alone, 1,573 in company |
 | 19 | both evolved endpoints are frozen; only one of them is an optimum | 38.0 cells after a billion more |
-| 20 | a second hand-written ancestor reproduces the compression findings, and fixes the machine's floor | three starting points, all end near 6.5 per cell |
+| 20 | a second ancestor reproduces the compression findings — and at three billion, one run becomes a community where nothing can reproduce alone | 8.4M births, 0 self-sufficient genotypes |
 
 ### 1. With mutation off, nothing ever happens
 
@@ -1405,6 +1405,64 @@ this class of machine bottoms out**, and my first ancestor happened to be writte
 sitting on it. Only one lineage in this whole project has ever gone below —
 the unrolled 38-cell champion at 5.68, by copying two cells per pass — and
 finding 18 showed it loses on the measure that counts anyway.
+
+**Three billion instructions later, the second ancestor's lineages come apart.**
+The table above is a billion instructions. Four more runs took it to three,
+which is where the first ancestor reached its plateau and sat:
+
+| run | genome length | alive | generations | births | what the census contains |
+|---|---:|---:|---:|---:|---|
+| flaws, seed 4 | **29.0** | 906 | **13,944** | **8.4M** | 11 host-dependent, 1 inert, **no replicator** |
+| flaws, seed 5 | 161.3 | 111 | 3,901 | 2.1M | 9 inert, 3 host-dependent; sizes to 845 |
+| flaws, seed 6 | 420.2 | 69 | 864 | 0.29M | 12 inert, all 8–11 cells |
+| no flaws, seed 7 | 128.5 | — | 2,826 | 1.0M | 9 replicators, every one a one-shot |
+
+Two of the four have escaped into the allocator's ceiling — `mal` will not hand
+out more than 1,024 cells, and creatures of 845 and 1,023 cells are sitting on
+it while the population falls to seventy. The first ancestor never did this in
+ten billion instructions. Whatever stability its lineages have, `ancestor-b`
+does not share it, and finding 20's cheerful billion-instruction table has to be
+read with that underneath it.
+
+**And seed 4 is the strangest result in this project.** It is not degenerate at
+all: 906 creatures, all but a handful exactly 29 cells, thirteen thousand
+generations deep, 8.4 million births — deeper and more productive than anything
+the first ancestor produced at the same clock. And **not one of its top twelve
+genotypes can reproduce.** Cultured alone in a sterile dish they do not copy
+themselves; cultured beside a copy of themselves they do not copy themselves
+either. Two of them can *divide* — they release something — but never a copy of
+themselves. I re-ran the assay at 500,000 instructions, twelve times what a
+working 29-cell creature needs, in case the budget was the answer. It is not.
+
+So the population is an obligate community. Every member depends on the presence
+of genotypes other than its own kind, and the whole thing is more productive than
+a soup of self-sufficient replicators. Findings 7, 8 and 11 found parasites and
+hosts; this is a step past that, and it arrived from the ancestor that was
+supposed to be the control.
+
+**The suspect is me, again.** `ancestor-b` uses three-bit templates where the
+first ancestor uses four. A three-bit pattern has eight possibilities against
+sixteen, so a template search in a crowded soup is roughly twice as likely to
+land on a neighbour's marker rather than its own — which is exactly the
+machinery an obligate community would be built out of, and exactly the machinery
+whose failure would produce runaway allocation. Every one of these results could
+be a property of self-replicating programs, or a property of a decision I made
+in twenty minutes while writing the file.
+
+`experiments/ancestors/ancestor-c.sm` is the control: the same program,
+instruction for instruction, with every template widened by one bit and one
+extra `incC` for the longer END marker. 63 cells, 650 instructions alone, 807 in
+a population, and it repeats. Three runs of three billion instructions from it,
+at the same seeds and the same flaw rate, are on the compute server. If
+`ancestor-c` stays healthy where `ancestor-b` fell apart, the instability was
+mine; if it does not, three-bit templates are innocent and something more
+interesting is going on.
+
+Until those come back, the honest summary of this finding is narrower than it
+was an hour ago: **the compression results reproduce from a second ancestor over
+a billion instructions, and 6.5 instructions per cell copied looks like the
+machine's floor from three independent starting points. Everything about
+long-run stability is open.**
 
 **One warning, and it is the same one as findings 17 and 18.** The champions
 under 30 cells here are all one-shots: the 24-cell creature costs its population

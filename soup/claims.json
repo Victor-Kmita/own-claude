@@ -270,6 +270,21 @@
           50.0
         ]
       }
+    },
+    {
+      "id": "an-obligate-community",
+      "finding": 20,
+      "tier": "deep",
+      "status": "holds",
+      "claim": "At three billion instructions one run from the second ancestor reaches a stable 29-cell population -- 906 alive, 13,944 generations, 8.4 million births -- in which not one of the twelve commonest genotypes copies itself, alone or beside a copy of itself, at a budget of 500,000 instructions. The population is an obligate community.",
+      "command": "python3 experiments/route_cross.py ancestor-b 1000 4 3000000000",
+      "expect": {
+        "mean_size": [
+          27.0,
+          31.0
+        ],
+        "self_sufficient_in_census": 0
+      }
     }
   ]
 }

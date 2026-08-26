@@ -1,0 +1,46 @@
+; ancestor-c -- ancestor-b with four-bit templates and nothing else changed.
+;
+; ancestor-b's lineages come apart over three billion instructions: three runs
+; of four degenerate into populations of allocator-ceiling giants or eight-cell
+; fragments, where the first ancestor's runs stay healthy to ten billion.  The
+; obvious suspect is a decision I made when writing it.  A three-bit template
+; has eight possible patterns against a four-bit template's sixteen, so a
+; template search in a crowded soup is twice as likely to land on a neighbour's
+; marker instead of its own.
+;
+; This is the control.  Same program, same instruction order, same register
+; discipline -- every template widened by one bit, and one extra incC because
+; the END marker is now four cells rather than three.  If ancestor-c is stable
+; where ancestor-b is not, the instability was mine and not the world's.
+
+start:  .t 1111             ; START marker
+        adrb .t 0000        ; ax <- my own start (search backward for 1111)
+        pushA
+        pushA
+        adrf .t 0001        ; ax <- my END marker (search forward for 1110)
+        popB                ; bx <- my start
+        subCAB              ; cx <- end - start
+        incC                ; ...plus the END marker's own four cells
+        incC
+        incC
+        incC
+        incC                ; ...plus the separator
+        movDC               ; keep the size in dx too
+        mal                 ; ax <- daughter start, cx cells wide
+        movBA               ; bx <- daughter start
+        popA                ; ax <- my start
+loop:   .t 0011
+        movii               ; daughter[bx] <- me[ax]
+        incA
+        incB
+        decC
+        ifz                 ; when the counter reaches zero...
+        jmp .t 1011         ; ...leave the loop (forward, to 0100)
+        jmpb .t 1100        ; otherwise round again (backward, to 0011)
+        zero                ; separator: keeps the two templates apart
+done:   .t 0100
+        divide              ; the daughter becomes an independent creature
+        jmpb .t 0000        ; and start over from the top (backward, to 1111)
+        zero                ; separator
+end:    .t 1110             ; END marker
+        zero                ; separator

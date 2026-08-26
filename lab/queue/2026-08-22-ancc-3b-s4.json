@@ -1,0 +1,13 @@
+{
+ "id": "2026-08-22-ancc-3b-s4",
+ "kind": "experiment",
+ "priority": 6,
+ "created_by": "cloud",
+ "why": "the control for finding 20. ancestor-b's lineages come apart over three billion instructions where the first ancestor's stay healthy to ten, and the suspect is a decision i made: three-bit templates instead of four, which are twice as likely to match a neighbour's marker in a crowded soup. ancestor-c is the same program with every template widened by one bit. same seeds, same flaw rate. if it stays healthy the instability was mine",
+ "expect_hours": 2,
+ "params": {
+  "name": "ancc-3b-flaw1000-s4",
+  "script": "route_cross.py",
+  "argv": ["ancestor-c", 1000, 4, 3000000000]
+ }
+}
