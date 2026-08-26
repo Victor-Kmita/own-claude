@@ -141,7 +141,7 @@
       "finding": 19,
       "tier": "fast",
       "status": "holds",
-      "claim": "The 27-cell plateau is not one. Seven of the 27 single-cell deletions of the champion still replicate, five of those still go round again, and the cheapest costs 172 instructions against its parent's 180.",
+      "claim": "The 27-cell plateau is not a hard floor: seven of the 27 single-cell deletions of the champion still replicate, five of those go round again, and the cheapest costs 173 against its parent's 180. It is not an uphill slope either -- across twelve such pairs the parent wins seven head-to-heads.",
       "check": "deletions",
       "genome": "short27r",
       "expect": {
@@ -285,6 +285,14 @@
         ],
         "self_sufficient_in_census": 0
       }
+    },
+    {
+      "id": "shorter-variants-do-not-reliably-win",
+      "finding": 17,
+      "tier": "full",
+      "status": "holds",
+      "claim": "Across the twelve repeating 26-cell deletions of the four 27-cell champions, the longer parent wins seven head-to-heads and is the more robust of the pair in eight. An earlier version of finding 17 said the parent won four of thirteen and concluded the shorter creature usually wins; those numbers came from the assay before the repeats flag was fixed.",
+      "check": "none"
     }
   ]
 }

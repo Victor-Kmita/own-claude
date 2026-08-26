@@ -153,16 +153,56 @@ predicted in advance and then measured. Those two facts are probably related.
 
 ---
 
+## 8. Numbers that survived the fix that invalidated them
+
+**Claimed** — finding 17's deletion paragraphs: eight to eleven of twenty-seven
+deletions replicate, thirteen of them repeat, the greedy chain reaches 18 cells
+and everything below 26 is a one-shot, and in thirteen head-to-heads the 27-cell
+parent wins only four, twice losing 451–0 and 394–1. Conclusion: "the shorter
+creature is usually the better competitor as well as the cheaper one."
+
+**Actually** — seven to nine deletions replicate, twelve repeat, the chain
+reaches 20 cells and passes a 25-cell *repeater* on the way, and in twelve
+head-to-heads **the parent wins seven**. The conclusion was backwards.
+
+**How it happened, and this is the point** — every one of those numbers was
+measured with the `repeats` flag from defect 5, before it was fixed. The fix
+went in; findings 13, 17 and 18 were rewritten around it; and this paragraph,
+which had been written an hour earlier from the same broken instrument, was left
+standing because it was *about* deletions rather than about repeats and did not
+look like it was affected. It was: `repeats` decides which deletions count as
+repeaters, and therefore which pairs get a head-to-head at all.
+
+**Caught by** — an independent audit, run as a subagent with instructions to
+check every number in findings 16 to 20 against the raw run files and to report
+only mismatches. It found twenty-five, of which this cluster was the one that
+changed a conclusion. Every item I re-verified by hand held up.
+
+**Fixed in** — this commit. `experiments/deletion_floor.py` had been committed
+precisely so the check could be re-run; nobody re-ran it.
+
+**Cost** — a day of a wrong headline in finding 17, propagated into finding 19,
+the summary table and the published artifact page.
+
+**The lesson that is not the same as the others** — the first six defects were
+found by suspecting a surprising number. This one was invisible that way: the
+numbers were unsurprising, internally consistent, and stale. What caught it was
+mechanically re-deriving every figure from the data with no memory of what it
+was supposed to say. **After fixing an instrument, re-run everything that
+instrument ever touched, including the parts that do not look related.**
+
+---
+
 ## What the pattern is worth
 
-Six of seven were measurement, not nature. In every case the wrong number was
+Seven of eight were measurement, not nature. In every case the wrong number was
 *plausible* — that is what made it survive. The reaper produced sensible-looking
 age structure; the fragment that divided in forty instructions looked like a
 brilliant optimisation; the solo cost of a one-shot is a real number honestly
 measured, of the wrong thing.
 
 `python3 -m soup verify` exists because of this list. It re-checks every claim
-that can be checked by running something, and on its first run it caught a
-seventh error — two 27-cell champions with their deletion counts swapped in a
+that can be checked by running something, and on its first run it caught an
+eighth error — two 27-cell champions with their deletion counts swapped in a
 table written an hour earlier. That one never reached this file because it never
 survived an hour, which is the point.

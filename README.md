@@ -233,7 +233,7 @@ mine, and two of them corrected the instrument rather than the result.
 | 14 | about a hundred distinct behaviours, however many genomes | 22–121 phenotypes |
 | 15 | evolvability is expensive | a fifth of all reproduction |
 | 16 | a flaw kills the daughter, a copy error edits her; the two editing sources multiply | 2% vs 29% viable; 141 predicted, 18 observed |
-| 17 | four seeds stop at the same length; shorter and better exists one deletion away | 27 cells, and 9 of 13 shorter variants win |
+| 17 | four seeds stop at the same length; cheaper variants sit one deletion away and mostly lose anyway | 12 shorter repeaters, parent wins 7 |
 | 18 | the cost of a daughter alone is not its cost in a population | 178 alone, 1,573 in company |
 | 19 | both evolved endpoints are frozen; only one of them is an optimum | 38.0 cells after a billion more |
 | 20 | a second ancestor reproduces the compression findings — and at three billion, one run becomes a community where nothing can reproduce alone | 8.4M births, 0 self-sufficient genotypes |
@@ -916,7 +916,8 @@ are small in the low-rate rows; the 95% intervals are 22–36% for the three cop
 conditions and 0–11% for the four flaw conditions, which do not overlap.
 
 Per event the two sources are about equally likely to produce an altered
-daughter — 0.6 to 0.7 either way. What differs is what the alteration *is*. A
+daughter — 0.55 to 0.63 for flaws against 0.70 and above for copy errors, so if
+anything the copy errors alter *more* often. What differs is what the alteration *is*. A
 copy error changes one cell and the daughter still works about three times in
 ten. A flaw displaces a write and the daughter comes out with twenty-odd cells
 wrong; it works about one time in thirty.
@@ -940,7 +941,8 @@ configured with
 copy_mutation_rate × cosmic_period = 2.000
 ```
 
-exactly, in all eleven distinct settings that have ever been used. I built the
+in 121 of the 138 coupled runs, and within two per cent of it in the other
+seventeen — the rounding in `1/167 × 333` rather than a second design. I built the
 sweep of finding 12 by scaling one knob called "mutation rate" that moved both,
 and I carried the same coupling into the design above without noticing. So this
 experiment shows that flaws are cheap and that the other two sources are what
@@ -967,7 +969,7 @@ evolving in the first fifty million instructions, with genomes bloating to 102,
 
 Collapse here means what the word should mean, not merely a slower world. In
 the healthy corner all twelve census entries are self-sufficient replicators,
-already optimized to 387–407 instructions. In the collapsed corner the census is
+already optimized to somewhere between 387 and 420 instructions. In the collapsed corner the census is
 eleven or twelve pieces of debris — inert fragments and host-dependent
 leftovers — with at most one replicator among them, and that one still at the
 ancestor's 414 to 421 instructions. The population is no longer holding a
@@ -1003,7 +1005,7 @@ Move either knob on its own from the mildest setting to the harshest and it
 costs about a quarter to a third of the generation depth: 354 down to 272 for
 copy errors alone, down to 223 for rays alone. Move both and it costs
 ninety-five per cent. An additive model predicts 141 generations for that
-corner and a multiplicative one predicts 171; the observed value is 18.
+corner and a multiplicative one predicts 171; the observed values are 15 and 22.
 
 So the two editing sources are **synergistic, not additive**, by a factor of
 about eight. That is what the 2×2 could not say and it is worth saying plainly,
@@ -1128,35 +1130,43 @@ fewer cells to store, and nothing in this world rewards legibility.
 
 **I wrote "twenty-seven is the floor" and then went looking for the floor.**
 It is not one. Delete any single cell from each of the four 27-cell champions
-and culture the result: eight to eleven of the twenty-seven deletions still
-replicate, and thirteen of those still replicate *twice* — real repeating
-organisms of 26 cells, costing 171 to 174 instructions instead of 178 to 181.
-Keep going greedily and the deletions run all the way down to 18 cells at 116
-instructions, though everything below 26 is a one-shot.
+and culture the result: seven, eight, eight and nine of the twenty-seven
+deletions still replicate, and twelve of those still replicate *twice* — real
+repeating organisms of 26 cells, costing 173 to 175 instructions instead of 178
+to 181. Keep deleting greedily and the chain passes through a 25-cell repeater
+at 165 instructions before it runs out.
 
 So a cheaper 26-cell repeater exists one mutation from where every one of these
-runs stopped. Three explanations were available and two of them are wrong.
+runs stopped. Three explanations were available; one is wrong, one is right, and
+the third is the one I got backwards for a day.
 
 *Is it reachable?* Yes, easily. `experiments/spectrum.py` classifies fifteen
 hundred daughters against the mothers that made them, one mutation source at a
-time. Under flaws, 0.6% of births are a clean interior deletion — and 51% are a
+time. Under flaws, 0.7% of births are a clean interior deletion — and 51% are a
 same-length scramble, 0.6% a clean truncation, 0.9% the mother plus a tail.
 Copy errors and cosmic rays never change a genome's length at all, which is
 finding 13's claim about flaws, measured. The gene banks agree: a 150-genotype sample of the
 ten-billion run's bank contains four 26-cell genotypes and three 25-cell ones.
 The soup makes them constantly.
 
-*Is it beaten?* Mostly not. Thirteen head-to-heads, each 26-cell variant against
-the exact 27-cell champion it was deleted from, twelve of each, background noise
-on: **the 27-cell parent wins four of thirteen.** Two of the losses are total —
-451 to 0, 394 to 1. The shorter creature is usually the better competitor as well
-as the cheaper one.
+*Is it beaten?* **More often than not, yes — and this is the answer I had
+backwards.** Twelve head-to-heads, each 26-cell repeater against the exact
+27-cell champion it was deleted from, twelve of each, background noise on: **the
+parent wins seven of twelve**, twice by 300 to 4 and 293 to 14. The shorter
+creature is cheaper solo and a worse competitor in a soup rather more often than
+it is a better one.
 
-*Is it more fragile?* A little, and not reliably. In eight pairs measured, the
-26-cell variant has the smaller viable one-mutation neighbourhood in six — 0.254
-to 0.346 against the parents' 0.304 to 0.341. That is a real tendency and far too
-small to explain a difference that four runs never crossed in ten billion
-instructions.
+*Is it more fragile?* Usually. Across the same twelve pairs the 26-cell variant
+has the smaller viable one-mutation neighbourhood in eight, 0.269 to 0.362
+against parents at 0.304 and 0.333 — and one variant is *more* robust than either
+parent, so it is a tendency and not a law.
+
+Together those two make the plateau much less mysterious than I claimed for a
+day. Shorter is reliably cheaper when cultured alone, and *not* reliably better
+in company or under mutation, which is finding 18's lesson arriving again by a
+different route. What survives is narrower and still worth saying: five of the
+twelve shorter variants do beat their parent, they are cheaper, the soup makes
+them constantly, and the population sits at 27 regardless.
 
 **What is actually going on is that length here does not descend, it freezes.**
 Read the trajectories rather than the endpoints:
@@ -1301,10 +1311,14 @@ Twelve runs of a billion instructions each, started from the two champions in
 |---|---|---:|---|---:|
 | `unrolled38` (38 cells) | off | 38.0, 38.0, 38.0 | 38 cells, 215–218 | 3.6M |
 | `unrolled38` (38 cells) | **on** | 38.0, 37.9, 38.0 | 38 cells, 216 | 3.2M |
-| `short27r` (27 cells) | off | 27.1, 27.1, 31.2 | 27 cells, 178–180 | 3.7M |
+| `short27r` (27 cells) | off | 27.1, 27.1, *31.2* | 27 cells, 178–180 | 4.0M, 3.7M, *0.29M* |
 | `short27r` (27 cells) | **on** | 27.1, 27.2, 26.9 | 27 cells, 177–180 | 3.7M |
 
-**Nothing moves.** Not by one cell, in any of the twelve. Ray saw this in
+**Eleven of the twelve do not move**, by more than a fraction of a cell. The
+twelfth, `short27r` without flaws at seed 3, is the exception and not a
+counter-example: it drifted to 31.2 cells while its birth count collapsed to
+289,395 against its siblings' 3.7 million — it did not evolve past the plateau,
+it fell off a cliff. Ray saw this in
 Tierra in 1991 — "each run decreases to a size limit which it cannot proceed
 past even if it is allowed to run much longer" — and concluded that the system
 reaches a local optimum it cannot easily leave. The first half of that is a
@@ -1333,12 +1347,14 @@ deletion away survives at all, the two that do are half as fast, and both lose
 their head-to-head 214 to nothing. Its plateau is the ordinary kind — it is
 there because there is nowhere better to go.
 
-The 27-cell creature's plateau is the strange kind, and it is where Ray's
-inference fails. A third of its deletions
-work, five of them repeat, they are cheaper, most of them win a head-to-head
-against it (finding 17), and the soup manufactures them continuously — and it
-sits at 27 cells for ten billion instructions anyway. Whatever holds it there is
-not the shape of the fitness landscape around it.
+The 27-cell creature's plateau is the softer kind. A quarter to a third of its
+deletions work, twelve of them repeat, they are cheaper, and the soup
+manufactures them continuously — but the parent wins seven of the twelve
+head-to-heads and is the more robust of the pair in eight (finding 17), so the
+landscape around it is not the uphill slope I first described here. Ray's
+inference is complicated rather than refuted: this plateau is not a point with
+nothing better beside it, and not a point that what is beside it reliably beats.
+It sits at 27 cells for ten billion instructions either way.
 
 Two five-billion runs from `unrolled38` with flaws on now answer whether its
 plateau is absolute or merely slow: after five billion instructions and thirty
@@ -1371,9 +1387,9 @@ Six runs of a billion instructions, three seeds with flaws off and three with:
 
 | | genome length | best replicator | per cell | in a population |
 |---|---:|---|---:|---:|
-| `ancestor-b` as written | 53 | 495 | 9.34 | 814 |
-| after 1B, no flaws | 45.5, 57.9, 46.6 | 42 cells at 317 | **7.48–7.55** | **397–414** |
-| after 1B, flaws on | 54.6, 43.0, **24.9** | 24 cells at 157 | **6.54–6.59** | 1,482 |
+| `ancestor-b` as written | 53 | 495 | 9.34 | 815 |
+| after 1B, no flaws | 45.5, 57.9, 46.6 | 42 cells at 317 | 6.88–7.55 | **397, 450, 407** |
+| after 1B, flaws on | 54.6, 43.0, **24.9** | 24 cells at 157 | 6.30–7.44 | 1,482 |
 
 **Finding 4 reproduces.** Descendants get cheaper by getting shorter, from a
 starting program that shares no code with the one it was first seen in. So does
@@ -1394,11 +1410,11 @@ not a floor of what this machine can express.
 |---|---:|---:|
 | Ray's Tierra ancestor, 80 instructions | 10.5 | **6** |
 | my first ancestor, 64 cells | 6.41 | 6.4 – 6.7 |
-| `ancestor-b`, 53 cells | 9.34 | **6.54 – 7.55** |
+| `ancestor-b`, 53 cells | 9.34 | **6.30 – 7.55** |
 
 Instructions executed per cell copied. Three independent starting points — two
 of them mine and written years apart in intent, one of them Ray's on a different
-instruction set — and all three end within a few tenths of six and a half. My
+instruction set — and all three land between six and a half and seven and a half. My
 first ancestor was hand-written at 6.41 and has essentially never improved on it,
 which for two weeks I read as a failure of the runs. It is not. **6.5 is where
 this class of machine bottoms out**, and my first ancestor happened to be written
@@ -1585,9 +1601,9 @@ identical.
 ## If you only read one other file
 
 * [`docs/CORRECTIONS.md`](docs/CORRECTIONS.md) — everything here that turned out
-  to be wrong, what was actually true, and how each was caught. Six entries; five
-  of them were the measuring instrument rather than the world. It is the most
-  portable thing in this repository.
+  to be wrong, what was actually true, and how each was caught. Eight entries;
+  seven of them were the measuring instrument rather than the world. It is the
+  most portable thing in this repository.
 * [`lab/AGENT-ANY.md`](lab/AGENT-ANY.md) — for anyone with their own machine who
   wants to check or extend this: start by disbelieving it, and here is what would
   actually help.
