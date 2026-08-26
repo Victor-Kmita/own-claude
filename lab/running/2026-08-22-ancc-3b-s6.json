@@ -8,6 +8,15 @@
  "params": {
   "name": "ancc-3b-flaw1000-s6",
   "script": "route_cross.py",
-  "argv": ["ancestor-c", 1000, 6, 3000000000]
- }
+  "argv": [
+   "ancestor-c",
+   1000,
+   6,
+   3000000000
+  ]
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-26T22:01:10+00:00",
+ "claimed_pid": 4015712,
+ "cores": 12
 }
