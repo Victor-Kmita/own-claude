@@ -1,0 +1,57 @@
+{
+ "id": "2026-08-22-ancc-3b-s4",
+ "kind": "experiment",
+ "priority": 6,
+ "created_by": "cloud",
+ "why": "the control for finding 20. ancestor-b's lineages come apart over three billion instructions where the first ancestor's stay healthy to ten, and the suspect is a decision i made: three-bit templates instead of four, which are twice as likely to match a neighbour's marker in a crowded soup. ancestor-c is the same program with every template widened by one bit. same seeds, same flaw rate. if it stays healthy the instability was mine",
+ "expect_hours": 2,
+ "params": {
+  "name": "ancc-3b-flaw1000-s4",
+  "script": "route_cross.py",
+  "argv": [
+   "ancestor-c",
+   1000,
+   4,
+   3000000000
+  ]
+ },
+ "claimed_by": "nexus",
+ "claimed_at": "2026-08-26T21:59:24+00:00",
+ "claimed_pid": 4015850,
+ "cores": 12,
+ "status": "ok",
+ "host": "nexus",
+ "finished": "2026-08-26T23:46:44+00:00",
+ "seconds": 6438.2,
+ "returncode": 0,
+ "produced": [
+  "experiments/results/from-ancestor-c-flaw1000-s4.checkpoint.json",
+  "experiments/results/from-ancestor-c-flaw1000-s4.json",
+  "experiments/results/from-ancestor-c-flaw1000-s5.checkpoint.json",
+  "experiments/results/from-ancestor-c-flaw1000-s5.json",
+  "experiments/results/from-ancestor-c-flaw1000-s6.checkpoint.json",
+  "experiments/results/from-ancestor-c-flaw1000-s6.json"
+ ],
+ "log_tail": [
+  "  2830.0M  alive= 109 types= 101  H= 6.58  size~ 147.0  dom=0027jlv (4%)  foreign=100% fbreed=100% gen=5828",
+  "  2840.0M  alive= 108 types= 100  H= 6.57  size~ 143.5  dom=0027jlv (4%)  foreign=100% fbreed=100% gen=5828",
+  "  2850.0M  alive= 108 types= 100  H= 6.57  size~ 138.8  dom=0027jlv (4%)  foreign=100% fbreed=100% gen=5828",
+  "  2860.0M  alive= 108 types= 100  H= 6.57  size~ 138.8  dom=0027jlv (4%)  foreign=100% fbreed=100% gen=5828",
+  "  2870.0M  alive= 105 types=  97  H= 6.52  size~ 137.2  dom=0027jlv (4%)  foreign=100% fbreed=100% gen=5828",
+  "  2880.0M  alive= 105 types=  97  H= 6.52  size~ 137.2  dom=0027jlv (4%)  foreign=100% fbreed=100% gen=5828",
+  "  2890.0M  alive= 106 types=  98  H= 6.54  size~ 140.8  dom=0027jlv (4%)  foreign=100% fbreed=100% gen=5828",
+  "  2900.0M  alive= 106 types=  98  H= 6.54  size~ 140.8  dom=0027jlv (4%)  foreign=100% fbreed=100% gen=5828",
+  "  2910.0M  alive= 107 types=  99  H= 6.55  size~ 139.6  dom=0027jlv (4%)  foreign=100% fbreed=100% gen=5829",
+  "  2920.0M  alive=  94 types=  89  H= 6.43  size~ 134.8  dom=0027jlv (3%)  foreign=100% fbreed=100% gen=5829",
+  "  2930.0M  alive=  88 types=  83  H= 6.33  size~ 144.4  dom=0027jlv (3%)  foreign=100% fbreed=100% gen=5830",
+  "  2940.0M  alive=  83 types=  79  H= 6.27  size~ 149.3  dom=0027jlz (4%)  foreign=100% fbreed=100% gen=5830",
+  "  2950.0M  alive=  86 types=  82  H= 6.32  size~ 144.4  dom=0027jlz (4%)  foreign=100% fbreed=100% gen=5829",
+  "  2960.0M  alive=  89 types=  85  H= 6.38  size~ 147.7  dom=0027jlz (3%)  foreign=100% fbreed=100% gen=5829",
+  "  2970.0M  alive=  89 types=  85  H= 6.38  size~ 147.7  dom=0027jlz (3%)  foreign=100% fbreed=100% gen=5829",
+  "  2980.0M  alive=  89 types=  85  H= 6.38  size~ 147.7  dom=0027jlz (3%)  foreign=100% fbreed=100% gen=5829",
+  "  2990.0M  alive=  89 types=  85  H= 6.38  size~ 147.7  dom=0027jlz (3%)  foreign=100% fbreed=100% gen=5829",
+  "  3000.0M  alive=  93 types=  89  H= 6.45  size~ 147.8  dom=0027jlz (3%)  foreign=100% fbreed=100% gen=5828",
+  "",
+  "wrote /home/cld/own-claude/experiments/results/from-ancestor-c-flaw1000-s4.json  (466,784 instructions/sec)"
+ ]
+}
